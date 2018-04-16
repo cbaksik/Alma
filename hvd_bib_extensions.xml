@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marc_profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
+    <data_fields_list>
+        <data_field_configuration repeatable="false" mandatory="false" tag="900" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description>Aleph system number</description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>Aleph system number
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
+    </data_fields_list>
+    <data_fields_list>
+        <data_field_configuration repeatable="false" mandatory="false" tag="911" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description>Bookplate</description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>Bookplate
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
+    </data_fields_list>    
+</marc_profile>
