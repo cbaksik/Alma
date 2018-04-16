@@ -1,0 +1,78 @@
+rule "Brief 9 no-overlay"
+when
+       exists "998.a.*"
+then
+	set brief_level."09"
+end
+
+rule "Brief 01"
+when
+    not exists "245.a.*"
+then
+    set brief_level."01"
+end
+
+rule "Brief 03"
+when
+    existsControl "LDR.{17,1}.3"
+then
+    set brief_level."03"
+end
+
+rule "Brief 08"
+when
+    exists "042.a.pcc"
+then
+    set brief_level."08"
+end
+
+rule "Brief 07"
+when
+    existsControl "LDR.{17,1}. " OR existsControl "LDR.{17,1}.I"
+then
+    set brief_level."07"
+end
+
+rule "Brief 06"
+when
+    exists "6**.a.*"
+OR existsControl "008.{33,1}.1"
+OR existsControl "008.{33,1}.d"
+OR existsControl "008.{33,1}.f"
+OR existsControl "008.{33,1}.h"
+OR existsControl "008.{33,1}.j"
+OR existsControl "008.{33,1}.m"
+OR existsControl "008.{33,1}.p"
+then
+    set brief_level."06"
+end
+
+rule "Brief 02"
+when
+    not exists "020.a.*" AND not exists "022.a.*"
+then
+    set brief_level."02"
+end
+
+rule "Brief 10 catch-all default"
+priority 1
+when
+      TRUE
+then
+	set brief_level."10"
+end
+
+# Note copied from OTB rule set 20171212
+# 1. The priority and the setting of the brief level works as follows:
+#    The higher priority happens before the lower priority (priority 2 before priority 1)
+# CB: in other words it starts at 10 and if that evaluates to true it continues to 9 and stops 
+#       when it evaluates to false, therefore everything needs to be written in NOT syntax END CB COMMENT
+#    The rule will continue through all of the priorities until it reaches the last one for which is is "satisfied"
+
+# 2. The higher the brief_level -> the more complete the record
+#    The lower the brief_level -> the more incomplete the record
+#    (Brief level 10 is more complete than brief level 9)
+# Note that actions stipulated in the rule with the higher priority are performed first. 
+# rule syntax is case sensitive
+# Totally scrambled by Naun 2018-03-09; experimenting, still want to incorporate call number criteria, not sure yet how Priority works
+
