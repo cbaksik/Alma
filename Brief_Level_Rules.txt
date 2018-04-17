@@ -5,63 +5,17 @@
 # 10 is the most complete complete brief level, 1 is the least
 # Priority 10 is processed first
 
-rule "Brief 01"
-when
-    (exists "245.a.*")
-then
-    set brief_level."01"
-end
-
-
-
-rule "Brief 02"
-when
-((existsControl "LDR.{17,1}.5")
-OR (existsControl "LDR.{17,1}.u"))
-then
-    set brief_level."02"
-end
-
-
  
-rule "Brief 03"
-when
-     (existsControl "LDR.{17,1}.3")
-then
-    set brief_level."03"
-end
 
-
-
-rule "Brief 04"
-when
-    (existsControl "LDR.{17,1}.7")
-then
-    set brief_level."04"
-end
-
-
-rule "Brief 05"
-when 
-((existsControl "LDR.{17,1}.K")
-OR (existsControl "LDR.{17,1}.L")
-OR (existsControl "LDR.{17,1}.2")
-OR (existsControl "LDR.{17,1}.M"))
-then
-    set brief_level."05"
-end
-
-
-rule "Brief 06"
+rule "Brief 08"
 when
 ((existsControl "LDR.{17,1}. ")
-OR (existsControl "LDR.{17,1}.4")
-OR (existsControl "LDR.{17,1}.I")
-OR (existsControl "LDR.{17,1}.1")
-OR (existsControl "LDR.{17,1}.8")) 
-AND (not exists "6**.a.*")   
+AND (exists "042.a.pcc" OR exists "042.a.lc" OR exists "042.a.lccopycat"))
+OR
+((existsControl "LDR.{17,1}. ")
+AND (exists "040.a.dlc" OR exists "040.c.dlc"))
 then
-    set brief_level."06"
+    set brief_level."08"
 end
 
 
@@ -77,21 +31,65 @@ then
     set brief_level."07"
 end
 
-rule "Brief 08"
+
+
+
+rule "Brief 06"
 when
 ((existsControl "LDR.{17,1}. ")
-AND (exists "042.a.pcc" OR exists "042.a.lc" OR exists "042.a.lccopycat"))
-OR
-((existsControl "LDR.{17,1}. ")
-AND (exists "040.a.dlc" OR exists "040.c.dlc"))
+OR (existsControl "LDR.{17,1}.4")
+OR (existsControl "LDR.{17,1}.I")
+OR (existsControl "LDR.{17,1}.1")
+OR (existsControl "LDR.{17,1}.8")) 
+AND (not exists "6**.a.*")   
 then
-    set brief_level."08"
+    set brief_level."06"
 end
 
 
-rule "Brief 01 default"
+
+rule "Brief 05"
+when 
+((existsControl "LDR.{17,1}.K")
+OR (existsControl "LDR.{17,1}.L")
+OR (existsControl "LDR.{17,1}.2")
+OR (existsControl "LDR.{17,1}.M"))
+then
+    set brief_level."05"
+end
+
+
+rule "Brief 04"
 when
-    TRUE
+    (existsControl "LDR.{17,1}.7")
+then
+    set brief_level."04"
+end
+
+
+
+
+rule "Brief 03"
+when
+     (existsControl "LDR.{17,1}.3")
+then
+    set brief_level."03"
+end
+
+
+rule "Brief 02"
+when
+((existsControl "LDR.{17,1}.5")
+OR (existsControl "LDR.{17,1}.u"))
+then
+    set brief_level."02"
+end
+
+
+
+rule "Brief 01"
+when
+    (exists "245.a.*")
 then
     set brief_level."01"
 end
