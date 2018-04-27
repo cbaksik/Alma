@@ -2,8 +2,8 @@
 <marc_profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
     <data_fields_list>
-        <data_field_configuration repeatable="false" mandatory="false" tag="900" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <description>Aleph system number</description>
+        <data_field_configuration repeatable="true" mandatory="false" tag="900" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
             <first_indicator_configuration>
                 <description>Undefined</description>
                 <values>
@@ -18,15 +18,15 @@
             </second_indicator_configuration>
             <sub_fields_list>
                 <sub_field_configuration code="a" mandatory="true" repeatable="false">
-                    <description>Aleph system number
+                    <description>
                     </description>
                 </sub_field_configuration>
             </sub_fields_list>
         </data_field_configuration>
     </data_fields_list>
     <data_fields_list>
-        <data_field_configuration repeatable="false" mandatory="false" tag="911" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <description>Bookplate</description>
+        <data_field_configuration repeatable="true" mandatory="false" tag="901" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
             <first_indicator_configuration>
                 <description>Undefined</description>
                 <values>
@@ -41,10 +41,278 @@
             </second_indicator_configuration>
             <sub_fields_list>
                 <sub_field_configuration code="a" mandatory="true" repeatable="false">
-                    <description>Bookplate
+                    <description>
                     </description>
                 </sub_field_configuration>
             </sub_fields_list>
         </data_field_configuration>
-    </data_fields_list>    
+    </data_fields_list>
+    <data_fields_list>
+        <data_field_configuration repeatable="true" mandatory="false" tag="903" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
+    </data_fields_list>
+    <data_fields_list>
+        <data_field_configuration repeatable="false" mandatory="false" tag="905" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
+    </data_fields_list>
+    <data_fields_list>
+        <data_field_configuration repeatable="true" mandatory="false" tag="911" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
+    </data_fields_list>   
+    <data_fields_list>
+        <data_field_configuration repeatable="fase" mandatory="false" tag="929" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="b" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="c" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="h" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="n" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="p" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="d" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="e" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
+    </data_fields_list>  
+    <data_fields_list>
+        <data_field_configuration repeatable="true" mandatory="false" tag="948" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="b" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="c" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>            
+        </data_field_configuration>
+    </data_fields_list>   
+    <data_fields_list>
+        <data_field_configuration repeatable="true" mandatory="false" tag="955" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="b" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="f" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="k" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="5" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>   
+                    </data_field_configuration>
+ <data_fields_list>
+        <data_field_configuration repeatable="fase" mandatory="false" tag="979" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <description></description>
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <second_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </second_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="b" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="c" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="d" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="d" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="f" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="g" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="k" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="l" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="n" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>   
+               <sub_field_configuration code="p" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+                <sub_field_configuration code="q" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>         
+                <sub_field_configuration code="t" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>  
+                <sub_field_configuration code="u" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>      
+                <sub_field_configuration code="4" mandatory="true" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>                                               
+            </sub_fields_list>
+        </data_field_configuration>     
+    </data_fields_list>   
 </marc_profile>
