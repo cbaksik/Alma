@@ -2,6 +2,7 @@ rule "Connexion exports into Alma; per ExL doc, Alma is preferred record, hence 
 when
     merge
 then
+    remove MARC."0"XX
     remove MARC."1"XX
     remove MARC."2"XX
     remove MARC."3"XX
@@ -18,6 +19,22 @@ then
     remove MARC."78"X
     remove MARC."81"X 
     remove MARC."830" if not exists subfield "5"
+    remove MARC."880"
+    remove MARC."998"X 
+    replace MARC.control."LDR"
+    add MARC."005"
+    add MARC."006"
+    add MARC."007"
+    replace MARC.control."008"
+    add MARC."01"X
+    add MARC."02"X
+    add MARC."03"X
+    add MARC."04"X
+    add MARC."05"X
+    add MARC."06"X
+    add MARC."07"X
+    add MARC."08"X
+    add MARC."09"X
     add MARC."1"XX
     add MARC."2"XX
     add MARC."3"XX
