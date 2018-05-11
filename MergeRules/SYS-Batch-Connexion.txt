@@ -7,17 +7,44 @@ then
     remove MARC."2"XX
     remove MARC."3"XX
     remove MARC."4"XX
-    remove MARC."5"XX
-    remove MARC."6"XX
+    remove MARC."50"X
+    remove MARC."51"X
+    remove MARC."52"X
+    remove MARC."53"X
+    remove MARC."54"X
+    remove MARC."55"X
+    remove MARC."56"X
+    remove MARC."57"X
+    remove MARC."580"X
+    remove MARC."581"X
+    remove MARC."586"X
+    remove MARC."585" if not exists subfield "5"
+    remove MARC."588" if not exists subfield "5"
+    remove MARC."600"
+    remove MARC."61"X
+    remove MARC."630"
+    remove MARC."64"X
+    remove MARC."650"
+    remove MARC."651"
+    remove MARC."653"
+    remove MARC."654"
+    remove MARC."655" if not exists subfield "5"
+    remove MARC."656"
+    remove MARC."657"
+    remove MARC."658"
+    remove MARC."662"
     remove MARC."700" if not exists subfield "5"
     remove MARC."710" if not exists subfield "5"
     remove MARC."711" if not exists subfield "5"
     remove MARC."720"
-    remove MARC."730"
+    remove MARC."730" if not exists subfield "5"
+    remove MARC."740" if not exists subfield "5"
     remove MARC."76"X
     remove MARC."77"X
     remove MARC."78"X
-    remove MARC."81"X 
+    remove MARC."800" if not exists subfield "5"
+    remove MARC."810" if not exists subfield "5"
+    remove MARC."811" if not exists subfield "5"
     remove MARC."830" if not exists subfield "5"
     remove MARC."880"
     remove MARC."998"X 
