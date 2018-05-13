@@ -12,7 +12,7 @@ rule "copy 008 to local field for acq status display"
         (TRUE)
     then
         removeField "995"
-	addSystemNumber "995.a" from "008" prefixed by "003"
+		addSystemNumber "995.a" from "008" prefixed by "003"
 end
 
 rule "copy public 541/1 holdings notes to local field for discovery display"
@@ -20,7 +20,7 @@ rule "copy public 541/1 holdings notes to local field for discovery display"
         (exists "541.{1,*}")
     then
 		removeField "997"
-                copyField "541" to "997" if(exists "541.{1,*}")
+        copyField "541" to "997" if(exists "541.{1,*}")
 end
 
 rule "copy public 561/1 or blank holdings notes to local field for discovery display"
@@ -32,12 +32,13 @@ rule "copy public 561/1 or blank holdings notes to local field for discovery dis
 		copyField "561" to "996"  if(exists "561.{ ,*}")
 end
 
+rule "make 994u permalink for number"
 	when
 		(exists "994")
 	then		
 		prefix "994.u" with "http://id.lib.harvard.edu/aleph/" if (not exists "994.u.99*3941")
-                prefix "994.u" with "http://id.lib.harvard.edu/alma/" if (exists "994.u.99*3941")
-                suffix "994.u" with "/catalog" 
+        prefix "994.u" with "http://id.lib.harvard.edu/alma/" if (exists "994.u.99*3941")
+        suffix "994.u" with "/catalog" 
 end
 
 
@@ -46,7 +47,7 @@ rule "Copy 977 subfield f to 994 as permalink"
 		(exists "977")
 	then
 		removeField "994"
-                copyField "977" to "994"
+        copyField "977" to "994"
 		changeSubField "994.f" to "u"
 end
 
