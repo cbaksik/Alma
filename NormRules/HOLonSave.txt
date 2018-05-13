@@ -1,3 +1,11 @@
+rule "copy 008 to local field for acq status display"
+    when
+        (TRUE)
+    then
+        removeField "995"
+	addSystemNumber "995.a" from "008" prefixed by "003"
+end
+
 rule "copy public 541/1 holdings notes to local field for discovery display"
     when
         (exists "541.{1,*}")
