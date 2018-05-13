@@ -1,3 +1,12 @@
+rule "remove 866/7/8 for regeneration"
+    when
+        (TRUE)
+    then
+        removeField "866"
+        removeField "867"
+        removeField "868"
+end
+
 rule "copy 008 to local field for acq status display"
     when
         (TRUE)
