@@ -1,0 +1,26 @@
+rule "Rule for External Resources where Ext Resource is preferred record"
+  when
+	 merge
+  then    
+replace MARC."001"
+add MARC."585" if exists subfield "5"
+    add MARC."588" if exists subfield "5"
+    add MARC."655" if exists subfield "5"
+    add MARC."700" if exists subfield "5"
+    add MARC."710" if exists subfield "5"
+    add MARC."711" if exists subfield "5"
+    add MARC."730" if exists subfield "5"
+    add MARC."740" if exists subfield "5"
+    add MARC."800" if exists subfield "5"
+    add MARC."810" if exists subfield "5"
+    add MARC."811" if exists subfield "5"
+    add MARC."830" if exists subfield "5"
+	add MARC."900"
+        add MARC."901"
+        add MARC."903"
+        add MARC."905"
+        add MARC."911"
+        add MARC."929"
+        add MARC."955"
+        add MARC."979"
+end

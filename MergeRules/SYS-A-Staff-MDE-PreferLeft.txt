@@ -1,13 +1,6 @@
-rule "Rule for staff use in MDE when using Merge Inventory and Combine Records. Primary record on left. WHEN CS IS READY ADD SAVING SF5"
+rule "Rule for staff use in MDE when using Merge Inventory and Combine Records. Primary record on left."
   when
 	 merge
   then
-	add MARC."900"
-        add MARC."901"
-        add MARC."903"
-        add MARC."905"
-        add MARC."911"
-        add MARC."929"
-        add MARC."955"
-        add MARC."979"
+	add MARC."9"XX excluding "998"
 end
