@@ -1,0 +1,6 @@
+rule "Add alert to record because this was brought in via HVD external search target"
+when
+(TRUE)
+then
+addField "999.a.ERROR. This record was imported by mistake when using the HVD external search target. It is a duplicate and should be removed."
+end
