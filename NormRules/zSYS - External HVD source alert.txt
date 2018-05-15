@@ -2,5 +2,5 @@ rule "Add alert to record because this was brought in via HVD external search ta
 when
 (TRUE)
 then
-addField "011.a.OOPS. THIS RECORD WAS IMPORTED BY MISTAKE WHEN USING THE HVD EXTERNAL SEARCH TARGET. IT SHOULD BE REMOVED. If you haven't saved it yet (house icon is black), Release Record to get rid of it. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+addField "011.a.OOPS! THIS RECORD WAS IMPORTED BY MISTAKE WHEN USING THE HVD EXTERNAL SEARCH TARGET. IT SHOULD BE REMOVED. If you haven't saved it yet (house icon is black), Release Record to get rid of it. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 end
