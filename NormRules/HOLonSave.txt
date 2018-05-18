@@ -7,12 +7,25 @@ rule "remove 866/7/8 for regeneration"
         removeField "868"
 end
 
-rule "copy 008 to local field for acq status display"
+rule "copy 008 to local field for acq status display - part 1"
+    when
+        (existsControl "008.{6,1}.3")
+    then
+        addField "995.a.On order"
+end
+
+rule "copy 008 to local field for acq status display - part 2"
+    when
+        (existsControl "008.{6,1}.4")
+    then
+        addField "995.a.Currently received"
+end
+
+rule "copy 008 to local field for acq status display - part 3"
     when
         (TRUE)
     then
         removeField "995"
-		addSystemNumber "995.a" from "008" prefixed by "003"
 end
 
 rule "copy public 541/1 holdings notes to local field for discovery display"
