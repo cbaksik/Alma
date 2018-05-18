@@ -1,0 +1,8 @@
+rule "Identify records that have paired enum/chron statements so we can target those for generation of 866/7/8 for Primo display"
+when
+    exists "863.a.*"
+    exists "864.a.*"
+    exists "865.a.*"
+then
+    set indication."true"
+end
