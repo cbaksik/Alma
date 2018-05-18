@@ -1,0 +1,5 @@
+rule "For vendor loads where we want to prefer our local record"
+  when
+	 merge
+  then
+end

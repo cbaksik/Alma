@@ -1,0 +1,73 @@
+rule "For vendor loads; per ExL doc, Alma is preferred record, hence remove/add rules"
+when
+    merge
+then
+    remove MARC."0"XX
+    remove MARC."1"XX
+    remove MARC."2"XX
+    remove MARC."3"XX
+    remove MARC."4"XX
+    remove MARC."50"X
+    remove MARC."51"X
+    remove MARC."52"X
+    remove MARC."53"X
+    remove MARC."54"X
+    remove MARC."55"X
+    remove MARC."56"X
+    remove MARC."57"X
+    remove MARC."580"X
+    remove MARC."581"X
+    remove MARC."586"X
+    remove MARC."585" if not exists subfield "5"
+    remove MARC."588" if not exists subfield "5"
+    remove MARC."600"
+    remove MARC."61"X
+    remove MARC."630"
+    remove MARC."64"X
+    remove MARC."650"
+    remove MARC."651"
+    remove MARC."653"
+    remove MARC."654"
+    remove MARC."655" if not exists subfield "5"
+    remove MARC."656"
+    remove MARC."657"
+    remove MARC."658"
+    remove MARC."662"
+    remove MARC."700" if not exists subfield "5"
+    remove MARC."710" if not exists subfield "5"
+    remove MARC."711" if not exists subfield "5"
+    remove MARC."720"
+    remove MARC."730" if not exists subfield "5"
+    remove MARC."740" if not exists subfield "5"
+    remove MARC."76"X
+    remove MARC."77"X
+    remove MARC."78"X
+    remove MARC."800" if not exists subfield "5"
+    remove MARC."810" if not exists subfield "5"
+    remove MARC."811" if not exists subfield "5"
+    remove MARC."830" if not exists subfield "5"
+    remove MARC."880"
+    remove MARC."998"X 
+    replace MARC.control."LDR"
+    add MARC."005"
+    add MARC."006"
+    add MARC."007"
+    replace MARC.control."008"
+    add MARC."01"X
+    add MARC."02"X
+    add MARC."03"X
+    add MARC."04"X
+    add MARC."05"X
+    add MARC."06"X
+    add MARC."07"X
+    add MARC."08"X
+    add MARC."09"X
+    add MARC."1"XX
+    add MARC."2"XX
+    add MARC."3"XX
+    add MARC."4"XX
+    add MARC."5"XX
+    add MARC."6"XX
+    add MARC."7"XX
+    add MARC."8"XX
+end
