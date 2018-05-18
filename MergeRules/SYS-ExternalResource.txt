@@ -13,9 +13,9 @@ rule "Rule for External Resources where Ext Resource is preferred record"
     merge
   then    
     replace MARC."001"
-# begin section for 69x
     add MARC."69"X
-# begin section for subfield 5's
+    add MARC."9"XX excluding "998"
+# section for subfield 5's
     add MARC."585" when MARC."585"."5" contains "b*"
     add MARC."585" when MARC."585"."5" contains "d*"
     add MARC."585" when MARC."585"."5" contains "e*"
@@ -172,13 +172,4 @@ rule "Rule for External Resources where Ext Resource is preferred record"
     add MARC."830" when MARC."830"."5" contains "s*"
     add MARC."830" when MARC."830"."5" contains "t*"
     add MARC."830" when MARC."830"."5" contains "w*"
-# begin section for 9xx
-    add MARC."900"
-    add MARC."901"
-    add MARC."903"
-    add MARC."905"
-    add MARC."911"
-    add MARC."929"
-    add MARC."955"
-    add MARC."979"
 end
