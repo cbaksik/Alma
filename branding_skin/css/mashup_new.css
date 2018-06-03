@@ -452,7 +452,10 @@ table tbody tr:not(:last-child) {
     display: inline-block
 } */
 
-/* .filterResults {
+/* BEGIN ITEM FILTER SECTION */
+
+/* this is the filter above the holdings when any item has a description */
+.filterResults {
     list-style: none;
     padding-left: 0;
     padding: 0 0.5em;
@@ -463,9 +466,13 @@ table tbody tr:not(:last-child) {
     display: -ms-flexbox;
     display: flex;
     border-bottom: 1px solid #EDEDED;
-    background-color: rgba(241, 241, 241, 0.5)
-} */
-
+}
+.filterResults::before {
+    content:'PICK UP OPTIONS: click a location to see options. Or use filters and then click location.';
+    color: #000;
+    line-height: 1.5em;
+    padding: 10px 30px 10px 4px;
+}
 /* .filterResults li {
     float: left
 } */
@@ -479,19 +486,22 @@ table tbody tr:not(:last-child) {
     margin-right: 1em
 } */
 
-/* .filterResults select {
-    border-top-width: 0;
-    border-bottom-width: 0;
-    padding: .1em;
+.filterResults select {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    padding: 0.1em;
     font-weight: 400;
-    background: none;
-    border: none;
-    cursor: pointer
-} */
+    background: none;    
+    border: 1px solid #808080;
+    cursor: pointer;
+    margin-left: 5px;
+}
 
 /* .filterResults select:hover {
     background-color: white
 } */
+
+/* END ITEM FILTER SECTION */
 
 /* table tbody td {
     vertical-align: top;
@@ -1100,7 +1110,7 @@ table tbody tr:not(:last-child) {
 } 
 .digitizationRequest div.submitBorder::after {
   content: "Corinna test"; 
-  color: green;
+  color: teal;
 }
 
 
