@@ -5,7 +5,6 @@
 # 10 is the most complete complete brief level, 1 is the least
 # Priority 10 is processed first
 
-
 rule "Brief 02"
 priority 6
 when
@@ -61,7 +60,8 @@ end
 rule "Brief 01"
 priority 10
 when
-    (exists "245.a.*")
+    ((exists "245.a.*")
+    OR  (exists "245.k.*"))
 then
     set brief_level."01"
 end

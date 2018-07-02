@@ -1277,13 +1277,9 @@ table tbody tr:not(:last-child) {
     display: none
 } */
 
-/* .getitNoHoldings {
-    line-height: 1.5;
-    background-color: white;
-    padding: 0.5em 0.75em;
-    font-weight: 300;
-    background-color: #f1f1f1
-} */
+.getitNoHoldings {
+    font-size:18px;
+} 
 
 /* .getitNoHoldings .submitAsLink {
     -webkit-appearance: none;
@@ -1382,3 +1378,8 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
 .alma-social-login-email-form button:hover ,
 .alma-social-login-email-form button:focus {text-align: center; padding-left: 0; padding: 0; width: 250px;background: #49c598;}
 */
+
+.holdingsList table tbody tr>td:first-child a:after, .holdingsList table tbody tr>td:first-child span:not(:last-child):after {
+    font-size:1.4em;
+    line-height:0.5em;
+}
