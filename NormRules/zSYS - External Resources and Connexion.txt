@@ -1,0 +1,18 @@
+rule "Remove unwanted data from External search resources and Connexion records" 
+when
+TRUE
+then
+removeControlField "001"
+removeField "019"
+removeField "029"
+removeField "035" if(exists "035.*.(OCoLC)o*")
+removeField "049"
+removeField "856"
+removeField "936"
+removeField "938"
+removeField "948"
+removeField "956"
+removeField "987"
+removeField "989"
+removeField "994"
+end

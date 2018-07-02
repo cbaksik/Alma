@@ -1,0 +1,12 @@
+rule "Remove fields from data loads that were used for mapping to holdings" 
+when
+TRUE
+then
+changeField "440" to "830"
+removeField "049"
+removeField "856"
+removeField "98*"
+removeField "999"
+
+
+end
