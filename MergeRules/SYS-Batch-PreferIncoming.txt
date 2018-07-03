@@ -4,12 +4,34 @@ when
 then
     remove MARC."0"XX
     remove MARC."1"XX
-    remove MARC."2"XX
+    remove MARC."210"
+    remove MARC."222"
+    remove MARC."240"
+    remove MARC."242"
+    remove MARC."243"
+    remove MARC."245"
+    remove MARC."246" if not exists subfield "5"
+    remove MARC."247"
+    remove MARC."25"X
+    remove MARC."26"X
+    remove MARC."27"X
     remove MARC."3"XX
     remove MARC."4"XX
-    remove MARC."50"X
-    remove MARC."51"X
-    remove MARC."52"X
+    remove MARC."500"
+    remove MARC."501" if not exists subfield "5"
+    remove MARC."502"
+    remove MARC."504"
+    remove MARC."505"
+    remove MARC."506"
+    remove MARC."507"
+    remove MARC."508"
+    remove MARC."51"X    
+    remove MARC."520"
+    remove MARC."521"
+    remove MARC."522"
+    remove MARC."524"
+    remove MARC."525"
+    remove MARC."526" if not exists subfield "5"
     remove MARC."53"X
     remove MARC."54"X
     remove MARC."55"X

@@ -405,7 +405,15 @@ table tbody tr:not(:last-child) {
     margin-right: .2em;
     opacity: .3
 } */
-
+#toggleHolding {
+    display:block;
+}
+/* #displayHolding {
+    display:none;
+} */
+li.column2label {
+    flex-basis: 16%;
+}
 /* #toggleHolding .showMore {
     background-color: white;
     border-top-width: 0;
