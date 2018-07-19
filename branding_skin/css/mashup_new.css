@@ -1391,3 +1391,7 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
     font-size:1.4em;
     line-height:0.5em;
 }
+/* field on request form we want to hide */
+#materialTypeH, #materialTypeV, #termsOfUseH, #termsOfUseV, #noNeedAfterH, #noNeedAfterV, #commentH, #commentV {
+    display:none;
+}

@@ -64,3 +64,9 @@ rule "Copy 977 subfield f to 994 as permalink"
 		changeSubField "994.f" to "u"
 end
 
+rule "Data loads to get right ind in 852 - part 1"
+	when
+		(exists "852")
+	then		
+                changeFirstIndicator "852" to "7" if (exists "852.{*,*}.2.Z*")
+end
