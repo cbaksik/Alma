@@ -1,0 +1,79 @@
+rule "remove 866/7/8 for regeneration"
+    when
+        (TRUE)
+    then
+        removeField "866"
+        removeField "867"
+        removeField "868"
+end
+
+rule "copy 008 to local field for acq status display - part 1"
+    when
+        (existsControl "008.{6,1}.3")
+    then
+        addField "995.a.On order"
+end
+
+rule "copy 008 to local field for acq status display - part 2"
+    when
+        (existsControl "008.{6,1}.4")
+    then
+        addField "995.a.Currently received"
+end
+
+rule "copy 008 to local field for acq status display - part 3"
+    when
+        (TRUE)
+    then
+        removeField "995"
+end
+
+rule "copy public 541/1 holdings notes to local field for discovery display"
+    when
+        (exists "541.{1,*}")
+    then
+		removeField "997"
+        copyField "541" to "997" if(exists "541.{1,*}")
+end
+
+rule "copy public 561/1 or blank holdings notes to local field for discovery display"
+    when
+        ((exists "561.{1,*}") OR (exists "561.{ ,*}"))
+    then
+		removeField "996"
+		copyField "561" to "996"  if(exists "561.{1,*}")
+		copyField "561" to "996"  if(exists "561.{ ,*}")
+end
+
+rule "Pad zeros in Aleph record number in 994.u"
+    when
+        exists "994"
+    then
+        replaceContents "994.u.eph/" with "eph/00000000"
+        replaceContents "994.u.(?<prefix>eph/)*(?<number>.{9})(?<suffix>/cat)" with "${prefix}${number}${suffix}"
+    end
+
+rule "make 994u permalink for number"
+	when
+		(exists "994")
+	then		
+		prefix "994.u" with "http://id.lib.harvard.edu/aleph/" if (not exists "994.u.99*3941")
+        prefix "994.u" with "http://id.lib.harvard.edu/alma/" if (exists "994.u.99*3941")
+        suffix "994.u" with "/catalog" 
+end
+
+rule "Copy 977 subfield f to 994 as permalink"
+	when
+		(exists "977")
+	then
+		removeField "994"
+        copyField "977" to "994"
+		changeSubField "994.f" to "u"
+end
+
+rule "Data loads to get right ind in 852 - part 1"
+	when
+		(exists "852")
+	then		
+                changeFirstIndicator "852" to "7" if (exists "852.{*,*}.2.Z*")
+end
