@@ -1395,3 +1395,10 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
 #materialTypeH, #materialTypeV, #termsOfUseH, #termsOfUseV, #noNeedAfterH, #noNeedAfterV, #commentH, #commentV {
     display:none;
 }
+/* hide Availability:(0 copies, 0 available, 0 requests) */
+li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] {
+    display:none;
+}
+li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] + li.itemAvailabilityInfo {
+    display:none;
+}
