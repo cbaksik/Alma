@@ -14,6 +14,7 @@ rule "Rule for staff use in MDE when using Merge Inventory and Combine Records. 
   then
     add MARC."69"X
     add MARC."9"XX excluding "998"
+    add MARC."752"
 # section for subfield 5's
     add MARC."246" when MARC."246"."5" contains "b*"
     add MARC."246" when MARC."246"."5" contains "d*"
