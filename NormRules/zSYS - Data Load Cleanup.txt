@@ -6,6 +6,7 @@ changeField "440" to "830"
 removeField "049"
 removeField "852"
 removeField "856"
+removeField "938"
 removeField "98*"
 removeField "999"
 
