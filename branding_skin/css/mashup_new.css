@@ -1402,3 +1402,17 @@ li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] {
 li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] + li.itemAvailabilityInfo {
     display:none;
 }
+/* make green if not 0 avail */
+#availableLabel + li.itemAvailabilityInfo {
+    color:#087B00;
+}
+#availableLabel[aria-label*="0 available"] + li.itemAvailabilityInfo {
+    color:#716F6F;
+}
+/* related holdings */
+.isRelatedHolding {
+    margin: 5px 0px;
+}
+.itemBarcode {
+    color: #333;
+}
