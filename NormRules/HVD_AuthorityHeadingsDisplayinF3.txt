@@ -1,0 +1,19 @@
+rule "not preferred + 010"
+when
+   not preferred
+then
+   add to text displayValue
+   add to text " | "
+   add to text preferredDisplay
+end
+
+rule "preferred + 035"
+when
+   preferred
+then
+   add to text displayValue
+   add to text " | "
+   add to text from "372.a" 
+   add to text " | "
+   add to text from "374.a" 
+end
