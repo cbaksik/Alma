@@ -4,11 +4,13 @@ TRUE
 then
 changeField "440" to "830"
 removeField "049"
+removeField "099"
 removeField "506"
 removeField "843"
 removeField "852"
 removeField "853"
 removeField "856"
+removeField "909"
 removeField "938"
 removeField "98*"
 removeField "999"
