@@ -1,3 +1,10 @@
+rule "Add no-overlay field to serials"
+when
+   existsControl "LDR.{7,1}.s"
+then
+        addField "998.{-,-}.a.NO-OVERLAY"
+end
+
 rule "Remove unwanted data from External search resources and Connexion records" 
 when
 TRUE
@@ -8,11 +15,14 @@ removeField "029"
 removeField "035" if(exists "035.*.(OCoLC)o*")
 removeField "049"
 removeField "856"
-removeField "936"
-removeField "938"
-removeField "948"
-removeField "956"
-removeField "987"
-removeField "989"
-removeField "994"
+removeField "90*"
+removeField "91*"
+removeField "92*"
+removeField "93*"
+removeField "94*"
+removeField "95*"
+removeField "96*"
+removeField "97*"
+removeField "98*"
+removeField "99*"
 end
