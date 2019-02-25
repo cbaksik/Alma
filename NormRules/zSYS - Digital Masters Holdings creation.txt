@@ -1,0 +1,27 @@
+rule "update hol for RDM"
+when
+  (exists "852.b.NET") AND (exists "852.c.RDM")
+then
+      prefix "856.u" with "https://nrs.harvard.edu/" 
+      addControlField "007.cr|c||888m|abp"
+      replaceControlContents "008.{6,2}" with "1z"
+      replaceControlContents "008.{20,2}" with "aa"  
+      addField "506.{0, }.a.No restrictions on access copy\\\\."
+      addSubField "506.u.Unrestricted online access"
+      addSubField "506.2.star"
+      addSubField "506.5.MH"
+      addField "538.a.Digital master created according to Benchmark for Faithful Digital Reproductions of Monographs and Serials, Version 1. Digital Library Federation, December 2002\\\\."
+      addSubField "538.u.http://purl.oclc.org/DLF/benchrepro0212"
+      addField "583.{1, }.j.Harvard University Library"
+      addSubField "583.l.committed to preserve"
+      addSubField "583.5.MH" 
+      addField "583.{0, }.a.Volumes disbound and digitized on high-speed ibml ImageTrac scanner in 2018. Original materials discarded\\\\."
+     addField "843.a.Electronic reproduction\\\\."
+     addSubField "843.b.Cambridge, Mass. :"
+     addSubField "843.c.Harvard Law School Library. Digital Lab,"
+     addSubField "843.d.2018\\\\."
+     addSubField "843.f.(Harvard Library Government Document Digitization Project)\\\\."
+     addSubField "843.n.Copy digitized: Government Documents and Microforms Collection, Lamont Library"
+     addSubField "843.7.s2018^^^^maun^s"
+     addField "972.a.dlr"
+end
