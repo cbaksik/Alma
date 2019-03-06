@@ -1416,3 +1416,8 @@ li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] + li.itemAvail
 .itemBarcode {
     color: #333;
 }
+/* portfolio pubilc and auth note displays; hide labels, italicze text */
+div.authNoteTitle {display:none;}
+div.authNote {font-style: italic;font-weight: bolder;}
+div.publicNoteTitle {display:none;}
+div.publicNote {font-style: italic;font-weight: bolder;}
