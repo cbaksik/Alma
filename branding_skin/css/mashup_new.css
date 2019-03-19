@@ -1416,11 +1416,16 @@ li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] + li.itemAvail
     background-color:#ced1d270;
     border-radius: 15px;
     border: 2px solid transparent;
-    width:470px;
+    width:345px;
 }
 div.isRelatedHolding + div.additionalHoldingInfoExpanded {
     font-style:italic;
     margin-left:20px;
+}
+/* this is the bib title that display after you expand a related holding */
+div.relationInfo {
+    font-weight: 800;
+    font-size: 120%;
 }
 /* end related holdings */
 .itemBarcode {
