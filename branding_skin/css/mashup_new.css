@@ -1411,8 +1411,18 @@ li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] + li.itemAvail
 }
 /* related holdings */
 .isRelatedHolding {
+    padding-left:15px;
     margin: 5px 0px;
+    background-color:#ced1d270;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    width:470px;
 }
+div.isRelatedHolding + div.additionalHoldingInfoExpanded {
+    font-style:italic;
+    margin-left:20px;
+}
+/* end related holdings */
 .itemBarcode {
     color: #333;
 }
