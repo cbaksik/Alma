@@ -2,6 +2,20 @@
 <marc_profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
     <data_fields_list>
+        <data_field_configuration repeatable="true" mandatory="false" tag="028" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <sub_fields_list>
+                <sub_field_configuration code="q" mandatory="false" repeatable="true">
+                    <description>Qualifying information</description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
+        <data_field_configuration repeatable="true" mandatory="false" tag="250" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <sub_fields_list>
+                <sub_field_configuration code="3" mandatory="false" repeatable="false">
+                    <description>Materials specified</description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>
         <data_field_configuration repeatable="true" mandatory="false" tag="900" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <description></description>
             <first_indicator_configuration>
