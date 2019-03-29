@@ -1436,3 +1436,26 @@ div.authNoteTitle {display:none;}
 div.authNote {font-style: italic;font-weight: bolder;}
 div.publicNoteTitle {display:none;}
 div.publicNote {font-style: italic;font-weight: bolder;}
+/* unpaywall ges ; can't use image b/c iframe is rendered from alma not primo */
+/* input[value*="Unpaywall"] {
+    background-image: url("/primo-explore/custom/HVD2/img/unpaywall_hvd.png");
+    background-repeat: no-repeat;
+    background-position:left center;
+} */
+/* this part doesn't work, probably b/c OTB is also using :after here */
+/* input[value*="Unpaywall"] + span.recordListActionSeparator::after {
+    content:'If no OA version is found this link will take you to a paywall. Do not pay. Let us get it for you through Scan and Deliver or ILL';
+    color: #000;
+    line-height: 1.5em;
+    padding: 5px;
+} */
+/* public note display display when we have holdings too */
+input[value*="Unpaywall"] + div.publicNote {
+    color: grey;
+    font-style:normal;
+    font-size:medium;
+    font-weight:normal;
+    line-height:120%;
+    margin:0px 20px;
+    vertical-align:top;
+}
