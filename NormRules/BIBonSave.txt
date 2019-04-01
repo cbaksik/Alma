@@ -2,8 +2,9 @@ rule "check for privacy indicators and add invalid subfield with alert to staff 
     when
         (TRUE)
     then
-        addSubField "541.{0,*}.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public."
-        addSubField "542.{0,*}.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public."
-        addSubField "561.{0,*}.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public."
-        addSubField "583.{0,*}.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public."
+        addSubField "541.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "541.{0,*}")
+        addSubField "542.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "542.{0,*}")
+        addSubField "561.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "561.{0,*}")
+        addSubField "583.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "583.{0,*}")
 end
+
