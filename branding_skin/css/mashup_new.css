@@ -1459,3 +1459,8 @@ input[value*="Unpaywall"] + div.publicNote {
     margin:0px 20px;
     vertical-align:top;
 }
+/* add text to UI, when there are mult holdings, patron won't see recent issues since they're not in 866/7/8 */
+.hvd_acq_status ul li:after {
+    content:' – Click Location for recent issues'; 
+    font-weight:bold;
+   }
