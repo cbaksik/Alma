@@ -45,6 +45,15 @@ rule "copy public 561/1 or blank holdings notes to local field for discovery dis
 		copyField "561" to "996"  if(exists "561.{ ,*}")
 end
 
+rule "copy public 583/1 or blank holdings notes to local field for discovery display"
+    when
+        ((exists "583.{1,*}") OR (exists "583.{ ,*}"))
+    then
+		removeField "993"
+		copyField "583" to "993"  if(exists "583.{1,*}")
+		copyField "583" to "993"  if(exists "583.{ ,*}")
+end
+
 rule "make 994u permalink for number"
 	when
 		(exists "994")
@@ -53,7 +62,6 @@ rule "make 994u permalink for number"
         prefix "994.u" with "http://id.lib.harvard.edu/alma/" if (exists "994.u.99*3941")
         suffix "994.u" with "/catalog" 
 end
-
 
 rule "Copy 977 subfield f to 994 as permalink"
 	when
