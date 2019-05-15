@@ -1,0 +1,7 @@
+rule "Rule for brining in ebookplate data"
+
+  when
+    merge
+  then    
+    add MARC."911"
+end
