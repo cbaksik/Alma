@@ -1464,3 +1464,20 @@ div.hvd_acq_status > ul > li:after {
     content:' – Select location name for recent issues'; 
     font-weight:bold;
    }
+/* Get It color contrasts changes to make compliant to wcag */
+.locate  {
+       color:#6f6b6b;
+   }
+.locate:before {
+       opacity:0.4;
+   }
+.requestForm .mandatory {
+        color:#e62300;
+ }
+ .requestForm li select:not([readonly]):focus {
+    box-shadow:none;
+    border:2px solid #e62300;
+ }
+ .paginationContainer ul li .lastPage input, .paginationContainer ul li .nextPage input {
+    font-size: 15px;
+}
