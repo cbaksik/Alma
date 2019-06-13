@@ -1391,6 +1391,10 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
     font-size:1.4em;
     line-height:0.5em;
 }
+/* this line is to prevent GES item links from having different padding than rest of cells in line */
+.itemsList table tbody>tr>td:last-child input {
+    padding-top: .2em;
+}
 /* field on request form we want to hide */
 #materialTypeH, #materialTypeV, #termsOfUseH, #termsOfUseV, #noNeedAfterH, #noNeedAfterV, #commentH, #commentV {
     display:none;
@@ -1465,11 +1469,14 @@ div.hvd_acq_status > ul > li:after {
     font-weight:bold;
    }
 /* Get It color contrasts changes to make compliant to wcag */
-.locate  {
+.holdingInfo .locate, .locate  {
        color:#6f6b6b;
+       font-weight:400;
+       letter-spacing: 0.01em;
    }
-.locate:before {
+   .holdingInfo .locate:before, .locate:before {
        opacity:0.4;
+       margin-right: .35em;
    }
 .requestForm .mandatory {
         color:#e62300;
@@ -1480,4 +1487,13 @@ div.hvd_acq_status > ul > li:after {
  }
  .paginationContainer ul li .lastPage input, .paginationContainer ul li .nextPage input {
     font-size: 15px;
+}
+/* holdings notes */
+li.column2Item {
+    padding-top:.5em;
+    line-height:130%;
+}
+.column2Item .column2Label {
+    min-width:125px;
+    flex-basis: 0%;
 }
