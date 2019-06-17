@@ -1387,10 +1387,51 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
 .alma-social-login-email-form button:focus {text-align: center; padding-left: 0; padding: 0; width: 250px;background: #49c598;}
 */
 
+/* .holdingsList table tbody tr > td > a {
+    border:1px solid #a29e9e;
+    background-color:#a29e9e;
+    color:#fff;
+    border-radius: 4px;
+} */
+/* locate button */
+/* .holdingsList table tbody tr > td > a.locate {
+    background-color: transparent;
+    color:#000;
+} */
+/* ACCESSIBILITY CHANGES FOR HOLDINGS */
 .holdingsList table tbody tr>td:first-child a:after, .holdingsList table tbody tr>td:first-child span:not(:last-child):after {
     font-size:1.4em;
     line-height:0.5em;
 }
+.holdingsList table tbody tr>td:first-child span:not(:last-child):after {
+    content:"";
+}
+.holdingsList table tbody tr>td:first-child a:after {
+    content:""
+}  
+.holdingsList table tbody tr>td:first-child a {
+    padding-right:20px;
+    background:right no-repeat;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
+}
+.holdingsList table tbody tr>td:first-child a:hover {
+    border-bottom:.08em solid #2c85d4;
+    padding-right:30px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
+}
+/* request button */
+input#openRequest {
+    padding-right:20px;
+    background:right no-repeat;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
+}
+input#openRequest:hover {
+    border-bottom:.08em solid #2c85d4;
+    padding-right:30px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
+
+}
+/* ************************* */
 /* this line is to prevent GES item links from having different padding than rest of cells in line */
 .itemsList table tbody>tr>td:last-child input {
     padding-top: .2em;
