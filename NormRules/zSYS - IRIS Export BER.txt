@@ -1,0 +1,49 @@
+rule "1. remove Harvard defined fields except 900, 955"
+# for bibs and holdings. Each has 999 $a: Create date, $b: Update date, $c Suppressed from discovery (true/false)
+
+priority 90
+when 
+ (TRUE)
+then 
+    copyField "001" to "035.9" 
+    prefix "035.9" with "(HOLLIS)"
+    changeSubField "035.9" to "a"
+    removeField "035" if (exists "035.a.(MH)*")
+    replaceContents "010.a.^" with ""    
+    removeField "690" if (not exists "690.5.ber")
+    removeSubField "856.8"
+    removeField "901"
+    removeField "903"
+    removeField "905"
+    removeField "91*"
+    removeField "92*"
+    removeField "94*"
+    copyField "955" to "791.{ , }" if (exists "955.{1, }.a.*")
+    copyField "955" to "792.{ , }" if (exists "955.{2, }.a.*")
+    removeField "955"
+    removeField "97*"
+    removeField "98*"
+    removeField "998"
+    removeField "852" if (not exists "852.b.BER")
+    changeField "852" to "995"
+    removeSubField "995.8"
+    suffix "995.h" with " "
+    suffixSubField "995.h" with "995.i"
+    removeSubField "995.i"
+    removeSubField "995.b"
+    removeSubField "995.x"
+    changeSubField "995.h" to "a" if (exists "995.{0,*}.*")
+    changeSubField "995.h" to "b" if (not exists "995.{0,*}.*")
+    changeSubField "995.m" to "d" if (not exists "995.m.*[offprint]*")
+    changeSubField "995.m" to "e" if (exists "995.m.*[offprint]*")
+    changeSubField "995.z" to "e" if (exists "995.z.Shelved as*")
+    changeSubField "995.z" to "n" if (not exists "995.z.Shelved as*")
+    addSubField "995.j.BEREN"
+    addSubField "995.m.BER"
+    copyField "001" to "995.9" 
+    suffix "995.9" with "/catalog'>Check Holdings/Item information in HOLLIS</a>"
+    prefix "995.9" with "<a href='https://id.lib.harvard.edu/alma/"
+    changeFirstIndicator "995" to "1"
+    addField "PRF.a.PREFERRED"
+    combineFields "995" excluding "c"
+end
