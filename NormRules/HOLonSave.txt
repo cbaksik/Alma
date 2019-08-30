@@ -30,7 +30,7 @@ end
 
 rule "copy public 541/1 holdings notes to local field for discovery display"
     when
-        (exists "541.{1,*}")
+        (exists "541")
     then
 		removeField "997"
         copyField "541" to "997" if(exists "541.{1,*}")
@@ -38,7 +38,7 @@ end
 
 rule "copy public 561/1 or blank holdings notes to local field for discovery display"
     when
-        ((exists "561.{1,*}") OR (exists "561.{ ,*}"))
+        (exists "561")
     then
 		removeField "996"
 		copyField "561" to "996"  if(exists "561.{1,*}")
@@ -47,7 +47,7 @@ end
 
 rule "copy public 583/1 or blank holdings notes to local field for discovery display"
     when
-        ((exists "583.{1,*}") OR (exists "583.{ ,*}"))
+        (exists "583")
     then
 		removeField "993"
 		copyField "583" to "993"  if(exists "583.{1,*}")
@@ -72,7 +72,7 @@ rule "Copy 977 subfield f to 994 as permalink"
 		changeSubField "994.f" to "u"
 end
 
-rule "Data loads to get right ind in 852 - part 1"
+rule "Data loads to get right ind in 852"
 	when
 		(exists "852")
 	then		
