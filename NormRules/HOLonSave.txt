@@ -65,7 +65,7 @@ end
 
 rule "Copy 977 subfield f to 994 as permalink"
 	when
-		(exists "977")
+		(TRUE)
 	then
 		removeField "994"
         copyField "977" to "994"
