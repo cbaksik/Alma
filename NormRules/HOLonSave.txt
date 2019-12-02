@@ -1,3 +1,12 @@
+rule "Rm Jud z-note if 977/9 exists, meaning Aeon item is present and note should be removed"
+	when
+		(exists "977.{9,*}")
+	then		
+                replaceContents "852.z.Consult Judaica Division" with "" if(exists "852.z.Consult Judaica Division")
+                replaceContents "852.z.Consult Judaica Div\\\\." with "" if(exists "852.z.Consult Judaica Div\\\\.")
+                replaceContents "852.z.Consult Judaica Div" with "" if(exists "852.z.Consult Judaica Div")
+end
+
 rule "remove 866/7/8 for regeneration"
     when
         (TRUE)
@@ -79,3 +88,4 @@ rule "Data loads to get right ind in 852"
 	then		
                 changeFirstIndicator "852" to "7" if (exists "852.{*,*}.2.Z*")
 end
+
