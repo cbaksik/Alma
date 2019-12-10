@@ -1,6 +1,13 @@
+rule "clean-up"
+when 
+   (TRUE)
+then 
+    removeField "98*"
+end
+
 rule "Fix 2nd indicator for English"
 when
-    (existsControl "008.{35,3}.eng")
+    (exists "989.l.eng")
 then
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.The *")
     changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.An *")
@@ -9,7 +16,8 @@ end
 
 rule "Fix 2nd indicator for French"
 when
-    (existsControl "008.{35,3}.fre")
+    //(existsControl "008.{35,3}.fre")
+    (exists "989.l.fre")
 then
     changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.La *")
     changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Le *")
@@ -19,9 +27,10 @@ then
     changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.L'*")
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Des *")
 end
+
 rule "Fix 2nd indicator for Spanish"
 when
-    (existsControl "008.{35,3}.spa")
+    (exists "989.l.spa")
 then
     changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.El *")
     changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Lo *")
@@ -37,7 +46,7 @@ end
 
 rule "Fix 2nd indicator for German"
 when
-    (existsControl "008.{35,3}.ger")
+    (exists "989.l.ger")
 then
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Das *")
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Der *")
@@ -48,7 +57,7 @@ end
 
 rule "Fix 2nd indicator for Italian"
 when
-    (existsControl "008.{35,3}.ita")
+    (exists "989.l.ita")
 then
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Gli *")
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Gl' *")
@@ -62,7 +71,7 @@ end
 
 rule "Fix 2nd indicator for Dutch"
 when
-    (existsControl "008.{35,3}.dut")
+    (exists "989.l.dut")
 then
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Een *")
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Het *")
@@ -78,7 +87,7 @@ end
 
 rule "Fix 2nd indicator for Portuguese"
 when
-    (existsControl "008.{35,3}.por")
+    (exists "989.l.por")
 then
     changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.O *")
     changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.A *")
@@ -101,7 +110,7 @@ when
 then
     replaceControlContents "LDR.{17,1}.#" with "5"
     // 008 construction
-    //this line for testing only - removeControlField "008" 
+   //this line for testing only - removeControlField "008" 
     addField "988.a.      s" 
     suffixSubField "988.a" with "989.y" 
     suffix "988.a" with "    " 
@@ -126,6 +135,6 @@ then
     removeField "909"
     removeField "920"
     removeField "938"
-    removeField "98*"
+    //removeField "98*"
     removeField "999"
 end
