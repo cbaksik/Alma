@@ -1,0 +1,6 @@
+rule "remove HOL 908 to enable sending holding to OCLC" 
+when 
+       (exists "908") 
+then 
+     removeField "908"
+end 
