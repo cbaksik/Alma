@@ -108,7 +108,7 @@ rule "Construct 008, Remove fields from data loads that were used for mapping to
 when
     TRUE
 then
-    replaceControlContents "LDR.{17,1}.#" with "3"
+    replaceControlContents "LDR.{17,1}.#" with "5"
     // 008 construction
    //this line for testing only - removeControlField "008" 
     addField "988.a.      s" 
