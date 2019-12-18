@@ -50,9 +50,10 @@ when
 then
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Das *")
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Der *")
-    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Din *")
-    changeSecondIndicator "245" to "5" if (exists "245.{*,*}.a.Dine *")
     changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Die *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Ein *")
+    changeSecondIndicator "245" to "5" if (exists "245.{*,*}.a.Eine *")
+    changeSecondIndicator "245" to "6" if (exists "245.{*,*}.a.Eines *")
 end
 
 rule "Fix 2nd indicator for Italian"
