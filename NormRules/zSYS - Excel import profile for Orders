@@ -110,6 +110,7 @@ when
     TRUE
 then
     replaceControlContents "LDR.{17,1}.#" with "5"
+    replaceControlContents "LDR.{18,1}.u" with "c"
     // 008 construction
    //this line for testing only - removeControlField "008" 
     addField "988.a.      s" 
