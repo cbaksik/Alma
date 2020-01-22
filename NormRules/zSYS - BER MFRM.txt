@@ -1,0 +1,86 @@
+rule "1. fiche: no $h Mfrm, no 843, no 007"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND not (exists "852.h.*Mfm*") AND not (exists "843") AND not (existsControl "007")
+then
+   addField "843.a.Microfiche\\\\."
+   addControlField "007.he"
+end
+
+rule "2. film: no 843 no 007; has $h Mfrm, assuming if there is no 843a there will be no 843e either"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "852.h.*Mfm*") AND not (exists "843") AND not (existsControl "007")
+then
+   addField "843.a.Microfilm\\\\."
+   addControlField "007.h"
+end
+
+# 843a is Microform, no 007
+
+rule "3. change 843 microform to fiche if h is not Mfm"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Microform*") AND not (exists "852.h.*Mfm*") AND not (existsControl "007")
+then
+   replaceContents "843.a.Microform*" with "Microfiche."
+   addControlField "007.he"
+end
+
+rule "4. change 843 microform to film if h is Mfm, reel"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Microform*") AND (exists "852.h.*Mfm*") AND (exists "843.e.*reel*") AND not (existsControl "007")
+then
+   replaceContents "843.a.Microform*" with "Microfilm."
+   addControlField "007.hd"
+end
+
+rule "5. change 843 microform to film if h is Mfm, no reel"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Microform*") AND (exists "852.h.*Mfm*") AND not (exists "843.e.*reel*") AND not (existsControl "007")
+then
+   replaceContents "843.a.Microform*" with "Microfilm."
+   addControlField "007.h"
+end
+
+
+# 843 a is Microform, 007 exists
+
+rule "6. change 843 microform to fiche if h is not Mfm, don't add 007"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Microform*") AND not (exists "852.h.*Mfm*") AND (existsControl "007")
+then
+   replaceContents "843.a.Microform*" with "Microfiche."
+end
+
+rule "7. change 843 microform to film if h is Mfm, reel, don't add 007"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Microform*") AND (exists "852.h.*Mfm*") AND (exists "843.e.*reel*") AND (existsControl "007")
+then
+   replaceContents "843.a.Microform*" with "Microfilm."
+end
+
+rule "8. change 843 microform to film if h is Mfm, no reel, don't add 007"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Microform*") AND (exists "852.h.*Mfm*") AND not (exists "843.e.*reel*") AND (existsControl "007")
+then
+   replaceContents "843.a.Microform*" with "Microfilm."
+  // need to change 007/01 or assume it's correct? 
+  // replaceControlContents "007.{1,1}.*" with "d" this doesn't work if 007 is only one byte long
+end
+
+# 007 exists but 843 does not
+# assuming 007 has correct bytes
+
+rule "9. add 843 film"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND not (exists "843.a.*") AND (exists "852.h.*Mfm*")  AND (existsControl "007")
+then
+   addField "843.a.Microfilm\\\\."
+end
+
+rule "10. add 843 fiche"
+when 
+   (exists "852.b.BER") AND (exists "852.c.MFRM")  AND not (exists "843.a.*") AND not (exists "852.h.*Mfm*")  AND (existsControl "007")
+then
+   addField "843.a.Microfiche\\\\."
+end
+
+
