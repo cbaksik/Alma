@@ -3,7 +3,7 @@ when
    (exists "852.b.BER") AND (exists "852.c.MFRM")  AND not (exists "852.h.*Mfm*") AND not (exists "843") AND not (existsControl "007")
 then
    addField "843.a.Microfiche\\\\."
-   addControlField "007.he"
+   addControlField "007.he |||   ||||"
 end
 
 rule "2. film: no 843 no 007; has $h Mfrm, assuming if there is no 843a there will be no 843e either"
@@ -11,7 +11,7 @@ when
    (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "852.h.*Mfm*") AND not (exists "843") AND not (existsControl "007")
 then
    addField "843.a.Microfilm\\\\."
-   addControlField "007.h"
+   addControlField "007.h| |||   ||||"
 end
 
 # 843a is Micro*, no 007
@@ -21,7 +21,7 @@ when
    (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Micro*") AND not (exists "852.h.*Mfm*") AND not (existsControl "007")
 then
    replaceContents "843.a.Microform*" with "Microfiche."
-   addControlField "007.he"
+   addControlField "007.he |||   ||||"
 end
 
 rule "4. change 843 microform to film if h is Mfm, reel"
@@ -29,7 +29,7 @@ when
    (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Micro*") AND (exists "852.h.*Mfm*") AND (exists "843.e.*reel*") AND not (existsControl "007")
 then
    replaceContents "843.a.Microform*" with "Microfilm."
-   addControlField "007.hd"
+   addControlField "007.hd |||   ||||"
 end
 
 rule "5. change 843 microform to film if h is Mfm, no reel"
@@ -37,7 +37,7 @@ when
    (exists "852.b.BER") AND (exists "852.c.MFRM")  AND (exists "843.a.Micro*") AND (exists "852.h.*Mfm*") AND not (exists "843.e.*reel*") AND not (existsControl "007")
 then
    replaceContents "843.a.Microform*" with "Microfilm."
-   addControlField "007.h"
+   addControlField "007.h| |||   ||||"
 end
 
 
