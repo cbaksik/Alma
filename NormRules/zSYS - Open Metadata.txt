@@ -1,0 +1,21 @@
+rule "1. open metadata set data clean up"
+when 
+    (TRUE)
+then 
+// remove private fields
+   removeField "541" if(exists "541.{0,*}")
+   removeField "561" if(exists "561.{0,*}")
+   removeField "583" if(exists "583.{0,*}")
+// remove most local 9XX
+   removeField "90*"
+   removeField "91*"
+   removeField "92*"
+   removeField "93*"
+   removeField "94*"
+//   removeField "95*" keep 951 for expanded portfolio info
+   // removeField "96*" keep 966, 967, 968 from hol
+   removeField "97*"
+   removeField "98*"
+   removeField "99*"
+end
+

@@ -1589,3 +1589,16 @@ li.column2Item {
     min-width:125px;
     flex-basis: 0%;
 }
+/* request buttons, S&D too close together on mobile; add border to pick up list box */
+@media (max-width: 599px) {
+    .iframeHeader input[type="submit"] {
+        line-height:30px;
+    }
+    .iframeHeader select#pickupLocationCombo {
+        border: 1px solid black;
+        height: 30px;
+    }
+    .iframeHeader input#openRequest {
+        padding-right:35px;
+    }
+}
