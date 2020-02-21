@@ -1,0 +1,21 @@
+rule "1. 843 a Digital --> Electronic reproduction"
+when 
+   (exists "852.b.BER") AND (exists "852.c.CDROM") AND (exists "843.a.Digital*") 
+then
+   replaceContents "843.a.Digital*" with "Electronic reproduction."
+end
+
+rule "2. if no 843, add it"
+when 
+   (exists "852.b.BER") AND (exists "852.c.CDROM") AND not (exists "843.a") 
+then
+   addField "843.a.Electronic reproduction\\\\."
+end
+
+rule "3. if no 007, add it"
+when 
+   (exists "852.b.BER") AND (exists "852.c.CDROM") AND not (existsControl "007")
+then
+   addControlField "007.co#|g|###|||||"
+end
+
