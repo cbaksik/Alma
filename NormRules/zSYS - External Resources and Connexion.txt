@@ -2,7 +2,7 @@ rule "handle non-english language cataloging"
 when
   (exists "040.b.*") 
 then
-   addField "040.x.ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! THIS IS A NON-ENGLISH LANGUAGE CATALOGING RECORD. Best practice is to derive an English language cataloging record in Connexion and use that record. If you must use this record in Alma, please delete the 035 and 040 of this record and change the encoding level to 5." if (not exists "040.b.eng")
+   addField "040.a.ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! THIS IS A NON-ENGLISH LANGUAGE CATALOGING RECORD. Best practice is to derive an English language cataloging record in Connexion and use that record. If you must use this record in Alma, please delete the 035 and 040 of this record and change the encoding level to 5." if (not exists "040.b.eng")
 end
 
 rule "Add no-overlay field to serials"
