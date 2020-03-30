@@ -15,6 +15,7 @@ rule "Rule for External Resources where Ext Resource is preferred record"
     replace MARC."001"
     add MARC."69"X
     add MARC."9"XX excluding "998"
+    remove MARC."914"
     add MARC."752"
 # section for subfield 5's
     add MARC."246" when MARC."246"."5" contains "b*"
