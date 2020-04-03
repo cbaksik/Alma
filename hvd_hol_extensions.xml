@@ -2,6 +2,22 @@
 <marc_profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
     <data_fields_list>
+        <data_field_configuration repeatable="true" mandatory="false" tag="007" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        </data_field_configuration>  
+        <data_field_configuration repeatable="false" mandatory="false" tag="014" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <first_indicator_configuration>
+                <description>Undefined</description>
+                <values>
+                    <value code="#">Undefined</value>
+                </values>
+            </first_indicator_configuration>
+            <sub_fields_list>
+                <sub_field_configuration code="a" mandatory="false" repeatable="false">
+                    <description>
+                    </description>
+                </sub_field_configuration>
+            </sub_fields_list>
+        </data_field_configuration>      
         <data_field_configuration repeatable="true" mandatory="false" tag="867" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <sub_fields_list>
                 <sub_field_configuration code="o" mandatory="false" repeatable="false">
