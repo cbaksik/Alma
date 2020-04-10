@@ -1,0 +1,19 @@
+rule "mv 079 to 014 and change syntax" 
+when
+    (exists "079") and (not exists "014")
+then
+    changeField "079" to "014"
+    replaceContents "014.a.(OCoLC)" with ""
+    replaceContents "014.a.ocm0000000" with ""
+    replaceContents "014.a.ocm000000" with ""
+    replaceContents "014.a.ocm00000" with ""
+    replaceContents "014.a.ocm0000" with ""
+    replaceContents "014.a.ocm000" with ""
+    replaceContents "014.a.ocm00" with ""
+    replaceContents "014.a.ocm0" with ""
+    replaceContents "014.a.o" with ""
+    replaceContents "014.a.c" with ""
+    //replaceContents "014.a.m" with ""
+    replaceContents "014.a.n" with ""
+    addSubField "014.b.OCoLC" 
+end
