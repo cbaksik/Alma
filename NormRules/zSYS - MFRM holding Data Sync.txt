@@ -1,0 +1,62 @@
+rule "1. has 843 Microfilm but no 007, and 843 e with reel"
+priority 95
+when 
+     (exists "843.a.Microfilm*") AND not (existsControl "007") AND (exists "843.e.*reel*")
+then
+     addControlField "007.hd |||   ||||"
+end
+
+rule "2. has 843 Microfilm but no 007, and no 843 e with reel"
+priority 90
+when 
+     (exists "843.a.Microfilm*") AND not (existsControl "007") AND not (exists "843.e.*reel*")
+then
+     addControlField "007.h| |||   ||||"
+end
+
+rule "3. has 843 Microfiche but no 007"
+priority 85
+when 
+     (exists "843.a.Microfiche*") AND not (existsControl "007")
+then
+     addControlField "007.he |||   ||||"
+end
+
+// SECTION TO ADD 843
+
+rule "4. has 007he but no 843"
+priority 80
+when 
+    (existsControl "007.{0,2}.he") AND not (exists "843.a.Micro*") 
+then
+     addField "843.a.Microfiche\\\\."
+end
+
+rule "5. has 007h but no 843"
+priority 75
+when 
+    (existsControl "007.{0,1}.h") AND not (existsControl "007.{0,2}.he") AND not (exists "843.a.Micro*") 
+then
+     addField "843.a.Microfilm\\\\."
+end
+
+
+
+//BEGIN RULES SPECIFIC CALL NUMBER, TO ADD 007 AND 843
+rule "6. has 852 $h Microfiche but no 007 or 843"
+priority 65
+when 
+    (exists "852.h.Microfiche*") AND not (exists "843.a.Micro*") AND not (existsControl "007") 
+then
+     addControlField "007.he |||   ||||"
+     addField "843.a.Microfiche\\\\."
+end
+
+rule "7. has 852 $h Microfilm but no 007 or 843"
+priority 60
+when 
+    (exists "852.h.Microfilm*") AND not (exists "843.a.Micro*") AND not (existsControl "007") 
+then
+     addControlField "007.h| |||   ||||"
+     addField "843.a.Microfilm\\\\."
+end
