@@ -1529,9 +1529,9 @@ div.relationInfo {
 }
 /* portfolio pubilc and auth note displays; hide labels, italicze text */
 div.authNoteTitle {display:none;}
-div.authNote {font-style: italic;font-weight: bolder;}
+div.authNote {font-style: italic;font-weight: bolder;color:#77746f;margin-top: 5px;}
 div.publicNoteTitle {display:none;}
-div.publicNote {font-style: italic;font-weight: bolder;}
+div.publicNote {font-style: italic;font-weight: bolder;color:#77746f}
 /* unpaywall ges ; can't use image b/c iframe is rendered from alma not primo */
 /* input[value*="Unpaywall"] {
     background-image: url("/primo-explore/custom/HVD2/img/unpaywall_hvd.png");
