@@ -17,11 +17,13 @@ when
 TRUE
 then
 removeControlField "001"
+removeField "012"
 removeField "019"
 removeField "029"
 removeField "035" if(exists "035.*.(OCoLC)o*")
 removeField "049"
 removeField "856"
+removeField "89*"
 removeField "90*"
 removeField "91*"
 removeField "92*"
