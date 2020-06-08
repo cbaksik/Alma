@@ -8,7 +8,7 @@ end
 // CAN'T GET PIPE TEST TO WORK
 rule "Brief 02 - oclc sparse"
 when
-    ((NOT (exists "260.a.*") AND NOT (exists "264.a.*") AND NOT (existsControl "LDR.{06,1}.b") AND NOT (existsControl "LDR.{06,1}.d") AND NOT (existsControl "LDR.{06,1}.f") AND NOT (existsControl "LDR.{06,1}.p") AND NOT (existsControl "LDR.{06,1}.t"))
+    ((NOT (exists "260.a.*") AND NOT (exists "264.a.*") AND NOT (existsControl "LDR.{06,1}.b") AND NOT (existsControl "LDR.{06,1}.d") AND NOT (existsControl "LDR.{06,1}.f") AND NOT (existsControl "LDR.{06,1}.p") AND NOT (existsControl "LDR.{06,1}.t") AND NOT (existsControl "LDR.{07,1}.c"))
     OR
     (existsControl "008.{06,1}. ")
      OR
