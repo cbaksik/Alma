@@ -1,0 +1,14 @@
+rule "update hol for new FIG holding"
+when
+  (exists "852.b.FIG") AND (exists "852.c.GEN") AND (existsControl "005.{00,7}.2020061")
+then
+     addControlField "007.cr||n |||||a|p" 
+     replaceControlContents "008.{6,2}" with "1z"
+     replaceControlContents "008.{20,2}" with "aa"  
+     addField "506.{0, }.a.Access to portions of this material may be restricted\\\\." if (not exists "506")
+     addField "843.a.Electronic reproduction\\\\." if (not exists "843") 
+     addSubField "843.b.Mountain View, Calif. :" if (not exists "843.b.*")
+     addSubField "843.c.Google Book Search Library Project," if (not exists "843.c.*")
+     addSubField "843.d.[2018-2020]\\\\." if (not exists "843.d.*")
+     addSubField "843.7.m20182020maun^s" if (not exists "843.7.*")
+end
