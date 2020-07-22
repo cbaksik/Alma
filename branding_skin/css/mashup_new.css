@@ -1602,3 +1602,15 @@ li.column2Item {
         padding-right:35px;
     }
 }
+/* view it for controlled digital lending */
+div.viewIt div#repData li {
+    color:grey;
+    font-weight:bold;
+    margin-top:3px;
+}
+div.viewIt div#repData li .publicNoteRestricted {
+    color:black;
+    font-weight:normal;
+    margin-left:10px;
+    display:inline;
+}
