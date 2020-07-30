@@ -1606,11 +1606,22 @@ li.column2Item {
 div.viewIt div#repData li {
     color:grey;
     font-weight:bold;
-    margin-top:3px;
+    margin-top:10px;
 }
 div.viewIt div#repData li .publicNoteRestricted {
     color:black;
     font-weight:normal;
     margin-left:10px;
     display:inline;
+    font-style:italic;
+}
+div.viewIt div#repData li .publicNote {
+    color:black;
+    font-weight:normal;
+    margin-left:10px;
+    display:inline;
+    font-style:italic;
+}
+div.viewIt div#repDataLong ~ c#showAllLine{
+    display:none;
 }
