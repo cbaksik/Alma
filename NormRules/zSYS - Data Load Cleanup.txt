@@ -17,6 +17,8 @@ removeField "938"
 removeField "98*"
 removeField "994"
 removeField "999"
-
-
+replaceControlContents "LDR.{17,1}.i" with " "
+replaceControlContents "LDR.{17,1}.I" with " "
+replaceControlContents "LDR.{17,1}.k" with "7"
+replaceControlContents "LDR.{17,1}.K" with "7"
 end
