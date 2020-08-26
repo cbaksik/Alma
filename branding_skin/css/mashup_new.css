@@ -1410,6 +1410,16 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
     background-color: transparent;
     color:#000;
 } */
+/* SOCIAL LOGIN CUSTOMIZATION, USED DURING ALMA-D AUTH TESTING TEMPORARY WORKAROUND */
+button.login-external-button {
+    background: #a51c30;
+    text-align: center;
+    padding-left: 0px;  
+}
+button.login-alma-button {
+    padding-left: 0px;
+    background:#5B5B5B;
+}
 /* ACCESSIBILITY CHANGES FOR HOLDINGS */
 .holdingsList table tbody tr>td:first-child a:after, .holdingsList table tbody tr>td:first-child span:not(:last-child):after {
     font-size:1.4em;
@@ -1603,24 +1613,38 @@ li.column2Item {
     }
 }
 /* view it for controlled digital lending */
+div.viewIt div#repData  {
+    font-weight:bold;
+}
 div.viewIt div#repData li {
     color:grey;
-    font-weight:bold;
     margin-top:10px;
+}
+/* div.viewIt div#repData li:before {
+    content: "Item is in use";
+    color:grey;
+    font-weight:bold;
+    padding-right:20px;
+} */
+div.viewIt div#repData li a {
+    padding-right: 20px;
+    background: right no-repeat;
+    background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiAgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPiAgIDxwYXRoIGZpbGw9IiM1QzkyQkQiIGQ9Ik0xNCwzVjVIMTcuNTlMNy43NiwxNC44M0w5LjE3LDE2LjI0TDE5LDYuNDFWMTBIMjFWM00xOSwxOUg1VjVIMTJWM0g1QzMuODksMyAzLDMuOSAzLDVWMTlBMiwyIDAgMCwwIDUsMjFIMTlBMiwyIDAgMCwwIDIxLDE5VjEySDE5VjE5WiIgLz48L3N2Zz4=);
+    background-size: 15px;
 }
 div.viewIt div#repData li .publicNoteRestricted {
     color:black;
     font-weight:normal;
     margin-left:10px;
     display:inline;
-    font-style:italic;
+    font-style:normal;
 }
 div.viewIt div#repData li .publicNote {
     color:black;
     font-weight:normal;
     margin-left:10px;
     display:inline;
-    font-style:italic;
+    font-style:normal;
 }
 div.viewIt div#repDataLong ~ c#showAllLine{
     display:none;
