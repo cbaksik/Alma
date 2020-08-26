@@ -725,3 +725,11 @@ md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-it
     background-color: #000000; }
 
 /* primary color hook end*/
+/* corinna adding text to top bar that item is in use b/c rest of page takes so long to load no one waits for it 20200826 */
+prm-topbar:after {
+  content:'This item is in use, or you have not signed in.';
+  font-size:200%;
+  display:block;
+  margin-top:25px;
+  margin-left:20px;
+}
