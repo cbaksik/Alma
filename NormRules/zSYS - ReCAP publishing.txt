@@ -1,0 +1,45 @@
+rule "2 , build 900 field"
+when 
+    (not exists "876.h.Shared")
+then 
+   replaceContents "900.a.Shared" with "Private" 
+end
+
+rule "1. open metadata set data clean up"
+when 
+    (TRUE)
+then 
+// remove private fields
+   removeField "541" if(exists "541.{0,*}")
+   removeField "561" if(exists "561.{0,*}")
+   removeField "583" if(exists "583.{0,*}")
+   removeSubField "583.x"
+   removeSubField "852.x"
+   removeSubField "856.x"
+// remove most local 9XX
+   removeField "90*"
+   removeField "91*"
+   removeField "92*"
+   removeField "93*"
+   removeField "94*"
+// removeField "95*" keep 951 for expanded portfolio info
+// removeField "96*" keep 966, 967, 968 from hol
+   removeField "97*"
+   removeField "98*"
+   removeField "99*"
+// delete 876 items that are resource sharing transient items
+   removeField "876" if(exists "876.l.RES_SHARE")
+// modify for recap
+   addSubField "876.h. " if (not exists "876.h.*")
+   replaceContents "876.h.01" with " "
+   replaceContents "876.h.61" with " "
+   replaceContents "876.h.02" with "In Library Use" 
+   replaceContents "876.h.62" with "In Library Use" 
+   replaceContents "876.h.1*" with "Supervised Use" 
+   replaceContents "876.h.2*" with "Supervised Use" 
+   replaceContents "876.h.9*" with "Supervised Use" 
+   addField "900.a.Shared"
+   addSubField "900.b.HVD"
+end
+
+

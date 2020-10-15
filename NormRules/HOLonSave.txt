@@ -89,3 +89,11 @@ rule "Data loads to get right ind in 852"
                 changeFirstIndicator "852" to "7" if (exists "852.{*,*}.2.Z*")
 end
 
+rule "copy 014 to 904, replace if exsits"
+	when
+		(exists "014")
+	then		
+                removeField "904"
+                copyField "014" to "904" 
+end
+
