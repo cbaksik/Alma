@@ -95,5 +95,5 @@ rule "copy 014 to 904, replace if exsits"
 	then		
                 removeField "904"
                 copyField "014" to "904" 
+               removeSubField "904.b"
 end
-
