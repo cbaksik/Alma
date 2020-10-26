@@ -91,7 +91,7 @@ end
 
 rule "copy 014 to 904, replace if exsits"
 	when
-		(exists "014")
+		(TRUE)
 	then		
                 removeField "904"
                 copyField "014" to "904" 
