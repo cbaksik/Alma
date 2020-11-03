@@ -1618,7 +1618,9 @@ div.viewIt div#repData  {
 }
 div.viewIt div#repData li {
     color:grey;
-    margin-top:10px;
+    margin-top:20px;
+    padding-left: 0px;
+    text-indent: -5px;
 }
 /* div.viewIt div#repData li:before {
     content: "Item is in use";
