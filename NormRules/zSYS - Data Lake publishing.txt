@@ -1,0 +1,17 @@
+rule "data lake"
+when 
+    (TRUE)
+then 
+//   removeField "005"
+   removeField "035" if (not exists "035.a.(OCoLC)*")
+// remove private fields
+   removeField "541" if(exists "541.{0,*}")
+   removeField "561" if(exists "561.{0,*}")
+   removeField "583" if(exists "583.{0,*}")
+   removeSubField "583.x"
+   removeSubField "852.x"
+   removeField "6**" if (exists "6**.{*,4}")
+   removeField "856" if (exists "856.{4,2}")
+   removeSubField "856.x"
+   removeField "9**"
+end
