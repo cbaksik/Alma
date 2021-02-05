@@ -1,3 +1,19 @@
+rule "5 - delete non-RD 852 fields"
+// WHEN WE DO HD WE'LL HAVE TO ACCOUNT FOR TEMP LOCS
+when
+    (TRUE)
+then
+   removeField "852" if(not exists "852.c.RD")
+end
+
+rule "4  modify 852 c for ETAS offsites, just in case"
+when
+    (TRUE)
+then
+   replaceContents "852.c.*" with "RD" if (exists "852.c.HATHI_ETRD")
+   replaceContents "852.c.*" with "HD" if (exists "852.c.HATHI_ETHD")
+end
+
 rule "3 - delete non offsite storage hol and item step 2"
 when
     (TRUE)
@@ -5,12 +21,14 @@ then
    replaceContents "876.l.KEEP" with "" 
 end
 
-rule "2 - delete non offsite storage hol and item ,step 1"
+rule "2 - delete non ReCAP items ,step 1"
 when
     (TRUE)
 then
-   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.*RD*")
-   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.*HD*")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
+   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETHD")
    removeField "876" if(not exists "876.l.KEEP*") 
 end
 
