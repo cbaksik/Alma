@@ -1,0 +1,8 @@
+rule "manipulate 913"
+when 
+  (exists "913") 
+then
+     addSubfield "913.a.OCLC Data Sync rejected record"
+     prefix "913.b" with "staging number: "
+     moveSubfieldsToEndOfField "913" "b"
+end
