@@ -1,9 +1,18 @@
+rule "6 - restore non-compliant RD codes"
+when
+    (TRUE)
+then
+   replaceContents "852.c.*" with "DOCRD" if (exists "852.c.RDDOC")
+   replaceContents "852.c.*" with "MICRD" if (exists "852.c.RDMIC")
+   replaceContents "852.c.*" with "RUBRD" if (exists "852.c.RDRUB")
+end
+
 rule "5 - delete non-RD 852 fields"
 // WHEN WE DO HD WE'LL HAVE TO ACCOUNT FOR TEMP LOCS
 when
     (TRUE)
 then
-   removeField "852" if(not exists "852.c.RD")
+   removeField "852" if(not exists "852.c.RD*")
 end
 
 rule "4  modify 852 c for ETAS offsites, just in case"
@@ -12,9 +21,13 @@ when
 then
    replaceContents "852.c.*" with "RD" if (exists "852.c.HATHI_ETRD")
    replaceContents "852.c.*" with "HD" if (exists "852.c.HATHI_ETHD")
+   replaceContents "852.c.*" with "RDDOC" if (exists "852.c.DOCRD")
+   replaceContents "852.c.*" with "RDMIC" if (exists "852.c.MICRD")
+   replaceContents "852.c.*" with "RDRUB" if (exists "852.c.RUBRD")
 end
 
 rule "3 - delete non offsite storage hol and item step 2"
+// this will leave 876 l as just "RECAP"
 when
     (TRUE)
 then
@@ -27,6 +40,9 @@ when
 then
    replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
    replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.DOCRD")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.MICRD")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RUBRD")
    //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
    //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETHD")
    removeField "876" if(not exists "876.l.KEEP*") 
