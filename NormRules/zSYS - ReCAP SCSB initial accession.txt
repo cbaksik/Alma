@@ -46,6 +46,10 @@ then
    //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
    //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETHD")
    removeField "876" if(not exists "876.l.KEEP*") 
+// next two lines are to remove HYL and MED items until Coll Dev can identify the ones that belong to BML and HYI
+   removeField "876" if(exists "876.k.MED") 
+   removeField "876" if(exists "876.k.HYL") 
+
 end
 
 rule "1. transforms for scsb initial accession"
