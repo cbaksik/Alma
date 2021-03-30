@@ -5,17 +5,24 @@ then
    replaceContents "852.c.*" with "DOCRD" if (exists "852.c.RDDOC")
    replaceContents "852.c.*" with "MICRD" if (exists "852.c.RDMIC")
    replaceContents "852.c.*" with "RUBRD" if (exists "852.c.RDRUB")
+   replaceContents "852.c.*" with "DOCHD" if (exists "852.c.HDDOC")
+   replaceContents "852.c.*" with "MICHD" if (exists "852.c.HDMIC")
+   replaceContents "852.c.*" with "RUBHD" if (exists "852.c.HDRUB")
 end
 
 rule "5 - delete non-RD 852 fields"
-// WHEN WE DO HD WE'LL HAVE TO ACCOUNT FOR TEMP LOCS
+//nothing should be temp loc'd to RD, or be temp'd at HD and Shared
 when
     (TRUE)
 then
+// ------------------------------------------
+// ---- CHANGE THIS LOGIC AS NEEDED DEPENDING ON WHETHER THIS IS HD OR RD FEED, see also rule 2
+// ------------------------------------------
    removeField "852" if(not exists "852.c.RD*")
+   //removeField "852" if(not exists "852.c.HD*")
 end
 
-rule "4  modify 852 c for ETAS offsites, just in case"
+rule "4  modify 852 c for ETAS offsites, just in case, and modify non-compliant offsite loc codes to make logic in rule 5 easier"
 when
     (TRUE)
 then
@@ -24,27 +31,37 @@ then
    replaceContents "852.c.*" with "RDDOC" if (exists "852.c.DOCRD")
    replaceContents "852.c.*" with "RDMIC" if (exists "852.c.MICRD")
    replaceContents "852.c.*" with "RDRUB" if (exists "852.c.RUBRD")
+   replaceContents "852.c.*" with "HDDOC" if (exists "852.c.DOCHD")
+   replaceContents "852.c.*" with "HDMIC" if (exists "852.c.MICHD")
+   replaceContents "852.c.*" with "HDRUB" if (exists "852.c.RUBHD")
 end
 
 rule "3 - delete non offsite storage hol and item step 2"
-// this will leave 876 l as just "RECAP"
+// this will leave 876 l as just "RECAP" or "HD"
 when
     (TRUE)
 then
    replaceContents "876.l.KEEP" with "" 
 end
 
-rule "2 - delete non ReCAP items ,step 1"
+rule "2 - delete non ReCAP-LAS New Jersey items ,step 1"
 when
     (TRUE)
 then
+//--- begin lines for RD locations COMMENT OUT IF SENDING HD FEED ONLY
    replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
    replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
    replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.DOCRD")
    replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.MICRD")
    replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RUBRD")
+//--- end lines for RD locations 
+//--- begin lines for HD locations COMMENT OUT IF SENDING RECAP-LAS FEED ONLY
    //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
-   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETHD")
+   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HATHI_ETHD")
+   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.DOCHD")
+   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.MICHD")
+   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.RUBHD")
+//--- endlines for RD locations 
    removeField "876" if(not exists "876.l.KEEP*") 
 // next two lines are to remove HYL and MED items until Coll Dev can identify the ones that belong to BML and HYI
    removeField "876" if(exists "876.k.MED") 
