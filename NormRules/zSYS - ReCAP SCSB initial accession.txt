@@ -18,8 +18,8 @@ then
 // ------------------------------------------
 // ---- CHANGE THIS LOGIC AS NEEDED DEPENDING ON WHETHER THIS IS HD OR RD FEED, see also rule 2
 // ------------------------------------------
-   removeField "852" if(not exists "852.c.RD*")
-   //removeField "852" if(not exists "852.c.HD*")
+   //removeField "852" if(not exists "852.c.RD*")
+   removeField "852" if(not exists "852.c.HD*")
 end
 
 rule "4  modify 852 c for ETAS offsites, just in case, and modify non-compliant offsite loc codes to make logic in rule 5 easier"
@@ -49,18 +49,18 @@ when
     (TRUE)
 then
 //--- begin lines for RD locations COMMENT OUT IF SENDING HD FEED ONLY
-   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
-   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
-   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.DOCRD")
-   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.MICRD")
-   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RUBRD")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.DOCRD")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.MICRD")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RUBRD")
 //--- end lines for RD locations 
 //--- begin lines for HD locations COMMENT OUT IF SENDING RECAP-LAS FEED ONLY
-   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
-   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HATHI_ETHD")
-   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.DOCHD")
-   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.MICHD")
-   //replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.RUBHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HATHI_ETHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.DOCHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.MICHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.RUBHD")
 //--- endlines for RD locations 
    removeField "876" if(not exists "876.l.KEEP*") 
 // next two lines are to remove HYL and MED items until Coll Dev can identify the ones that belong to BML and HYI
