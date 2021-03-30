@@ -63,9 +63,6 @@ then
    replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.RUBHD")
 //--- endlines for RD locations 
    removeField "876" if(not exists "876.l.KEEP*") 
-// next two lines are to remove HYL and MED items until Coll Dev can identify the ones that belong to BML and HYI
-   removeField "876" if(exists "876.k.MED") 
-   removeField "876" if(exists "876.k.HYL") 
 
 end
 
@@ -102,6 +99,8 @@ then
    replaceContents "876.h.1*" with "Supervised Use" 
    replaceContents "876.h.2*" with "Supervised Use" 
    replaceContents "876.h.9*" with "Supervised Use" 
+// NEXT TWO LINES FOR MED AND HYL PRIVATE, until coll dev can tell which ones are BML, HYI
+   removeSubField "876.x" if (exists "876.k.MED|HYL")
 //   addField "900.a.Shared"
 //   addSubField "900.b.HVD"
 end
