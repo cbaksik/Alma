@@ -1,0 +1,106 @@
+rule "6 - restore non-compliant RD codes"
+when
+    (TRUE)
+then
+   replaceContents "852.c.*" with "DOCRD" if (exists "852.c.RDDOC")
+   replaceContents "852.c.*" with "MICRD" if (exists "852.c.RDMIC")
+   replaceContents "852.c.*" with "RUBRD" if (exists "852.c.RDRUB")
+   replaceContents "852.c.*" with "DOCHD" if (exists "852.c.HDDOC")
+   replaceContents "852.c.*" with "MICHD" if (exists "852.c.HDMIC")
+   replaceContents "852.c.*" with "RUBHD" if (exists "852.c.HDRUB")
+end
+
+rule "5 - delete non-RD 852 fields"
+//nothing should be temp loc'd to RD, or be temp'd at HD and Shared
+when
+    (TRUE)
+then
+// ------------------------------------------
+// ---- CHANGE THIS LOGIC AS NEEDED DEPENDING ON WHETHER THIS IS HD OR RD FEED, see also rule 2
+// ------------------------------------------
+   //removeField "852" if(not exists "852.c.RD*")
+   removeField "852" if(not exists "852.c.HD*")
+end
+
+rule "4  modify 852 c for ETAS offsites, just in case, and modify non-compliant offsite loc codes to make logic in rule 5 easier"
+when
+    (TRUE)
+then
+   replaceContents "852.c.*" with "RD" if (exists "852.c.HATHI_ETRD")
+   replaceContents "852.c.*" with "HD" if (exists "852.c.HATHI_ETHD")
+   replaceContents "852.c.*" with "RDDOC" if (exists "852.c.DOCRD")
+   replaceContents "852.c.*" with "RDMIC" if (exists "852.c.MICRD")
+   replaceContents "852.c.*" with "RDRUB" if (exists "852.c.RUBRD")
+   replaceContents "852.c.*" with "HDDOC" if (exists "852.c.DOCHD")
+   replaceContents "852.c.*" with "HDMIC" if (exists "852.c.MICHD")
+   replaceContents "852.c.*" with "HDRUB" if (exists "852.c.RUBHD")
+end
+
+rule "3 - delete non offsite storage hol and item step 2"
+// this will leave 876 l as just "RECAP" or "HD"
+when
+    (TRUE)
+then
+   replaceContents "876.l.KEEP" with "" 
+end
+
+rule "2 - delete non ReCAP-LAS New Jersey items ,step 1"
+when
+    (TRUE)
+then
+//--- begin lines for RD locations COMMENT OUT IF SENDING HD FEED ONLY
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.DOCRD")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.MICRD")
+   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RUBRD")
+//--- end lines for RD locations 
+//--- begin lines for HD locations COMMENT OUT IF SENDING RECAP-LAS FEED ONLY
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HATHI_ETHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.DOCHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.MICHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.RUBHD")
+//--- endlines for RD locations 
+   removeField "876" if(not exists "876.l.KEEP*") 
+
+end
+
+rule "1. transforms for scsb initial accession"
+when 
+    (TRUE)
+then 
+// remove private fields
+   removeField "541" if(exists "541.{0,*}")
+   removeField "561" if(exists "561.{0,*}")
+   removeField "583" if(exists "583.{0,*}")
+   removeSubField "583.x"
+   removeSubField "852.x"
+   removeSubField "856.x"
+// remove most local 9XX
+   removeField "90*"
+   removeField "91*"
+   removeField "92*"
+   removeField "93*"
+   removeField "94*"
+// removeField "95*" keep 951 for expanded portfolio info
+// removeField "96*" keep 966, 967, 968 from hol
+   removeField "97*"
+   removeField "98*"
+   removeField "99*"
+// delete 876 items that are resource sharing transient items
+   removeField "876" if(exists "876.l.RES_SHARE")
+// modify for recap
+   addSubField "876.h. " if (not exists "876.h.*")
+   replaceContents "876.h.01" with " "
+   replaceContents "876.h.61" with " "
+   replaceContents "876.h.02" with "In Library Use" 
+   replaceContents "876.h.62" with "In Library Use" 
+   replaceContents "876.h.1*" with "Supervised Use" 
+   replaceContents "876.h.2*" with "Supervised Use" 
+   replaceContents "876.h.9*" with "Supervised Use" 
+// NEXT TWO LINES FOR MED AND HYL PRIVATE, until coll dev can tell which ones are BML, HYI
+   removeSubField "876.x" if (exists "876.k.MED|HYL")
+//   addField "900.a.Shared"
+//   addSubField "900.b.HVD"
+end
