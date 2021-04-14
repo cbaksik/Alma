@@ -16,7 +16,6 @@ when
     (TRUE)
 then
 // ------------------------------------------
-// ---- CHANGE THIS LOGIC AS NEEDED DEPENDING ON WHETHER THIS IS HD OR RD FEED, see also rule 2
 // ------------------------------------------
    //removeField "852" if(not exists "852.c.RD*")
    removeField "852" if(not exists "852.c.HD*")
@@ -99,6 +98,24 @@ then
    replaceContents "876.h.1*" with "Supervised Use" 
    replaceContents "876.h.2*" with "Supervised Use" 
    replaceContents "876.h.9*" with "Supervised Use" 
+// customer codes for 900 subfield b to be mapped by Tim
+// addSubfield 9 HW if k = wid. LAS customer code mapping
+     addSubField "876.9.HC" if (exists "876.k.BAK")
+     addSubField "876.9.HD" if (exists "876.k.CAB")
+     addSubField "876.9.HE" if (exists "876.k.DES")
+     addSubField "876.9.HF" if (exists "876.k.DIV")
+     addSubField "876.9.HG" if (exists "876.k.FAL")
+     addSubField "876.9.HI" if (exists "876.k.GUT")
+     addSubField "876.9.HJ" if (exists "876.k.HYL")
+     addSubField "876.9.HK" if (exists "876.k.KSG")
+     addSubField "876.9.HL" if (exists "876.k.LAM")
+     addSubField "876.9.HM" if (exists "876.k.LAW")
+     addSubField "876.9.HN" if (exists "876.k.MCZ")
+     addSubField "876.9.HO" if (exists "876.k.MED")
+     addSubField "876.9.HP" if (exists "876.k.MUS")
+     addSubField "876.9.HU" if (exists "876.k.TOZ")
+     addSubField "876.9.HW" if (exists "876.k.WID")
+     addSubField "876.9.HY" if (exists "876.k.WOL")     
 // NEXT TWO LINES FOR MED AND HYL PRIVATE, until coll dev can tell which ones are BML, HYI
    removeSubField "876.x" if (exists "876.k.MED|HYL")
 //   addField "900.a.Shared"
