@@ -1,3 +1,11 @@
+rule "7 - delete items that are not committed to retain ReCAP, or aren't in our known list of libs with commits at HD"
+when
+    (TRUE)
+then
+   removeField "876" if(not exists "876.x.*ReCAP*")
+   removeField "876" if(not exists "876.9")
+end
+
 rule "6 - restore non-compliant RD codes"
 when
     (TRUE)
@@ -10,7 +18,7 @@ then
    replaceContents "852.c.*" with "RUBHD" if (exists "852.c.HDRUB")
 end
 
-rule "5 - delete non-RD 852 fields"
+rule "5 - delete non-HD 852 fields"
 //nothing should be temp loc'd to RD, or be temp'd at HD and Shared
 when
     (TRUE)
@@ -36,25 +44,18 @@ then
 end
 
 rule "3 - delete non offsite storage hol and item step 2"
-// this will leave 876 l as just "RECAP" or "HD"
+// this will leave 876 l as just "HD"
 when
     (TRUE)
 then
    replaceContents "876.l.KEEP" with "" 
 end
 
-rule "2 - delete non ReCAP-LAS New Jersey items ,step 1"
+rule "2 - delete non HD items ,step 1"
 when
     (TRUE)
 then
-//--- begin lines for RD locations COMMENT OUT IF SENDING HD FEED ONLY
-   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
-   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
-   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.DOCRD")
-   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.MICRD")
-   //replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RUBRD")
-//--- end lines for RD locations 
-//--- begin lines for HD locations COMMENT OUT IF SENDING RECAP-LAS FEED ONLY
+//--- begin lines for HD locations
    replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
    replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HATHI_ETHD")
    replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.DOCHD")
@@ -113,7 +114,7 @@ then
      addSubField "876.9.TZ" if (exists "876.k.TOZ")
      addSubField "876.9.HW" if (exists "876.k.WID")
 // NEXT TWO LINES FOR MED AND HYL PRIVATE, until coll dev can tell which ones are BML, HYI
-   removeSubField "876.x" if (exists "876.k.MED|HYL")
+//   replaceContents "876.x.*ReCAP*" with "Private" if (exists "876.k.MED")
 //   addField "900.a.Shared"
 //   addSubField "900.b.HVD"
 end
