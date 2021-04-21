@@ -114,7 +114,6 @@ then
      addSubField "876.9.TZ" if (exists "876.k.TOZ")
      addSubField "876.9.HW" if (exists "876.k.WID")
 // NEXT TWO LINES FOR MED AND HYL PRIVATE, until coll dev can tell which ones are BML, HYI
-//   replaceContents "876.x.*ReCAP*" with "Private" if (exists "876.k.MED")
-//   addField "900.a.Shared"
-//   addSubField "900.b.HVD"
+   removeField "876" if(exists "876.k.MED")
+   removeField "876" if(exists "876.k.HYL")
 end
