@@ -1,0 +1,115 @@
+rule "8 - delete items that are HD but not committed"
+when
+    (TRUE)
+then
+   removeField "876" if(not exists "876.9.*INCLUDE*")
+   removeSubField "876.9"
+end
+
+
+rule "7 -create fake subfield to id HD committeds, and all recaps, since those are the two sets we want to include"
+when
+    (TRUE)
+then
+   addSubField "876.9.INCLUDE" if ( exists "876.l.RECAP" )
+   addSubField "876.9.HDINCLUDE" if ( exists "876.l.HD" )
+   replaceContents "876.9.HDINCLUDE" with "" if (not exists "876.x.*ReCAP*")
+end
+
+rule "6 - restore non-compliant HD/RD 852 c codes"
+when
+    (TRUE)
+then
+   replaceContents "852.c.*" with "DOCRD" if (exists "852.c.RDDOC")
+   replaceContents "852.c.*" with "MICRD" if (exists "852.c.RDMIC")
+   replaceContents "852.c.*" with "RUBRD" if (exists "852.c.RDRUB")
+   replaceContents "852.c.*" with "DOCHD" if (exists "852.c.HDDOC")
+   replaceContents "852.c.*" with "MICHD" if (exists "852.c.HDMIC")
+   replaceContents "852.c.*" with "RUBHD" if (exists "852.c.HDRUB")
+end
+
+rule "5 - delete non-HD 852 fields"
+//nothing should be temp loc'd to RD, or be temp'd at HD and Shared
+when
+    (TRUE)
+then
+   removeField "852" if(not exists "852.c.RD*|HD*")
+end
+
+rule "4  modify non-compliant offsite loc codes in 852 to make logic in next rule easier"
+when
+    (TRUE)
+then
+   replaceContents "852.c.*" with "RDDOC" if (exists "852.c.DOCRD")
+   replaceContents "852.c.*" with "RDMIC" if (exists "852.c.MICRD")
+   replaceContents "852.c.*" with "RDRUB" if (exists "852.c.RUBRD")
+   replaceContents "852.c.*" with "HDDOC" if (exists "852.c.DOCHD")
+   replaceContents "852.c.*" with "HDMIC" if (exists "852.c.MICHD")
+   replaceContents "852.c.*" with "HDRUB" if (exists "852.c.RUBHD")
+end
+
+rule "3 - hd/rd flag step 2"
+// this will leave 876 l as just "HD" or "RECAP"
+when
+    (TRUE)
+then
+   replaceContents "876.l.KEEP" with "" 
+end
+
+rule "2 - creating HD/RD flag in sf l"
+when
+    (TRUE)
+then
+//--- begin lines for HD locations
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HD*")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.HATHI_ETHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.DOCHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.MICHD")
+   replaceContents "876.l.*" with "KEEPHD" if (exists "876.l.RUBHD")
+//--- endlines for HD locations 
+//--- begin lines for RD locations 
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RD*")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.HATHI_ETRD")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.DOCRD")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.MICRD")
+   replaceContents "876.l.*" with "KEEPRECAP" if (exists "876.l.RUBRD")
+//--- end lines for RD locations 
+   removeField "876" if(not exists "876.l.KEEP*") 
+
+end
+
+rule "1. transforms for scsb initial accession"
+when 
+    (TRUE)
+then 
+// remove private fields
+   removeField "541" if(exists "541.{0,*}")
+   removeField "561" if(exists "561.{0,*}")
+   removeField "583" if(exists "583.{0,*}")
+   removeSubField "583.x"
+   removeSubField "852.x"
+   removeSubField "856.x"
+// remove most local 9XX
+   removeField "90*"
+   removeField "91*"
+   removeField "92*"
+   removeField "93*"
+   removeField "94*"
+// removeField "95*" keep 951 for expanded portfolio info
+// removeField "96*" keep 966, 967, 968 from hol
+   removeField "97*"
+   removeField "98*"
+   removeField "99*"
+// modify for recap
+   addSubField "876.h. " if (not exists "876.h.*")
+   replaceContents "876.h.01" with " "
+   replaceContents "876.h.61" with " "
+   replaceContents "876.h.02" with "In Library Use" 
+   replaceContents "876.h.62" with "In Library Use" 
+   replaceContents "876.h.1*" with "Supervised Use" 
+   replaceContents "876.h.2*" with "Supervised Use" 
+   replaceContents "876.h.9*" with "Supervised Use" 
+// NEXT TWO LINES FOR MED AND HYL PRIVATE, until coll dev can tell which ones are BML, HYI
+   removeField "876" if(exists "876.k.MED")
+   removeField "876" if(exists "876.k.HYL")
+end
