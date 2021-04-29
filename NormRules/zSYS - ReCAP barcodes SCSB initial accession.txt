@@ -1,3 +1,10 @@
+rule "7 - adjust hathi notes"
+when
+    (TRUE)
+then
+   replaceContents "876.x.*ReCAP, Hathi*" with "committed to retain - ReCAP" 
+end
+
 rule "6 - restore non-compliant RD codes"
 when
     (TRUE)
