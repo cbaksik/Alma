@@ -1,9 +1,21 @@
-rule "8 - delete items that are HD but not committed"
+rule "9 - CGD"
+when
+    (TRUE)
+then
+   replaceContents "876.x.committed to retain - ReCAP" with "Shared"   
+   addSubField "876.x.Private" if (not exists "876.x.*" )
+   replaceContents "876.x.Private" with "Open" if (exists "876.4.ReCAP Open" )
+   removeSubField "876.4"
+end
+
+rule "8 - delete items that are HD but not committed, or just hathi"
 when
     (TRUE)
 then
    removeField "876" if(not exists "876.9.*INCLUDE*")
    removeSubField "876.9"
+   replaceContents "876.x.*ReCAP, Hathi*" with "committed to retain - ReCAP" 
+   removeField "876" if(exists "876.x.committed to retain - Hathi")
 end
 
 
