@@ -5,6 +5,7 @@ then
    replaceContents "876.x.committed to retain - ReCAP" with "Shared"   
    addSubField "876.x.Private" if (not exists "876.x.*" )
    replaceContents "876.x.Private" with "Open" if (exists "876.4.ReCAP Open" )
+   replaceContents "876.x.Private" with "Uncommitable" if (exists "876.4.ReCAP Uncommitable" )
    removeSubField "876.4"
 end
 
@@ -19,13 +20,14 @@ then
 end
 
 
-rule "7 -create fake subfield to id HD committeds, and all recaps, since those are the two sets we want to include"
+rule "7 -create fake subfield to id HD committeds and opens/uncommitteds, and all recaps, since those are the two sets we want to include"
 when
     (TRUE)
 then
-   addSubField "876.9.INCLUDE" if ( exists "876.l.RECAP" )
-   addSubField "876.9.HDINCLUDE" if ( exists "876.l.HD" )
-   replaceContents "876.9.HDINCLUDE" with "" if (not exists "876.x.*ReCAP*")
+   addSubField "876.9.RDINCLUDE" if ( exists "876.l.RECAP" )
+   addSubField "876.9.HDEVAL" if ( exists "876.l.HD" )
+   replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.4.*ReCAP*")
+   replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.x.*ReCAP*")
 end
 
 rule "6 - restore non-compliant HD/RD 852 c codes"
