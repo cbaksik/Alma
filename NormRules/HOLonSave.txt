@@ -39,7 +39,7 @@ end
 
 rule "copy public 541/1 holdings notes to local field for discovery display"
     when
-        (exists "541")
+        (TRUE)
     then
 		removeField "997"
         copyField "541" to "997" if(exists "541.{1,*}")
@@ -47,7 +47,7 @@ end
 
 rule "copy public 561/1 or blank holdings notes to local field for discovery display"
     when
-        (exists "561")
+        (TRUE)
     then
 		removeField "996"
 		copyField "561" to "996"  if(exists "561.{1,*}")
@@ -56,7 +56,7 @@ end
 
 rule "copy public 583/1 or blank holdings notes to local field for discovery display"
     when
-        (exists "583")
+        (TRUE)
     then
 		removeField "993"
 		copyField "583" to "993"  if(exists "583.{1,*}")
