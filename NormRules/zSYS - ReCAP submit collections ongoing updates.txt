@@ -48,6 +48,7 @@ when
     (TRUE)
 then
    removeField "852" if(not exists "852.c.RD*|HD*")
+   changeSubField "852.8" to "0"
 end
 
 rule "4  modify non-compliant offsite loc codes in 852 to make logic in next rule easier"
