@@ -1,0 +1,13 @@
+rule "remove records from scsb submti collection / ongoing updates - USE THIS RULE FOR PUBLISHING AT THE HOLDINGS LEVEL"
+when 
+    (not exists "876")
+then
+     set indication."true"
+end
+
+rule "2 - if item is not shared or open/uncommitable, and not at RD, remove record"
+when 
+    (not exists "876.x.*ReCAP*") AND (not exists "876.4.*RECAP*") AND (not exists "852.c.*RD*")
+then
+     set indication."true"
+end
