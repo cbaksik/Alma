@@ -1,6 +1,0 @@
-rule "remove records from Alma CZ"
-when 
-    (exists "035.a.(CKB)*") AND (exists "035.a.(EXLCZ)*")
-then
-     set indication."true"
-end
