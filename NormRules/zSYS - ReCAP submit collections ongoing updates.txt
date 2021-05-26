@@ -115,6 +115,7 @@ then
    removeField "97*"
    removeField "98*"
    removeField "99*"
+   removeField "H**"   
 // modify for recap
    addSubField "876.h. " if (not exists "876.h.*")
    replaceContents "876.h.01" with " "

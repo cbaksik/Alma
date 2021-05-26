@@ -95,6 +95,7 @@ then
    removeField "97*"
    removeField "98*"
    removeField "99*"
+   removeField "H**"
 // delete 876 items that are resource sharing transient items
    removeField "876" if(exists "876.l.RES_SHARE")
 // modify for recap
