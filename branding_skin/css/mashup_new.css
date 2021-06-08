@@ -1648,6 +1648,10 @@ div.viewIt div#repData li .publicNote {
     display:inline;
     font-style:normal;
 }
-div.viewIt div#repDataLong ~ c#showAllLine{
-    display:none;
+div.viewIt a#showAllLink, div.viewIt a#showLessLink {
+    margin-left:10px;
 }
+/* this was added for alma-d */
+/* div.viewIt div#repDataLong ~ c#showAllLine{
+    display:none;
+} */
