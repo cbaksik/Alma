@@ -1,8 +1,9 @@
-rule "7 - adjust hathi notes"
+rule "7 - adjust hathi notes, add cust code"
 when
     (TRUE)
 then
    replaceContents "876.x.*ReCAP, Hathi*" with "committed to retain - ReCAP" 
+   addSubField "876.9.HV" 
 end
 
 rule "6 - restore non-compliant RD codes"
@@ -22,11 +23,7 @@ rule "5 - delete non-RD 852 fields"
 when
     (TRUE)
 then
-// ------------------------------------------
-// ---- CHANGE THIS LOGIC AS NEEDED DEPENDING ON WHETHER THIS IS HD OR RD FEED, see also rule 2
-// ------------------------------------------
    removeField "852" if(not exists "852.c.RD*")
-   //removeField "852" if(not exists "852.c.HD*")
 end
 
 rule "4  modify 852 c for ETAS offsites, just in case, and modify non-compliant offsite loc codes to make logic in rule 5 easier"
