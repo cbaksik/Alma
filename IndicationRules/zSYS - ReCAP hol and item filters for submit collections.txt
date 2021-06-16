@@ -1,13 +1,24 @@
 rule "remove records from scsb submti collection / ongoing updates - USE THIS RULE FOR PUBLISHING AT THE HOLDINGS LEVEL"
+// throw out records without items
 when 
     (not exists "876")
 then
      set indication."true"
 end
 
-rule "2 - if item is not shared or open/uncommitable, and not at RD, remove record"
+rule "2 - if item is not shared or open, and not at RD, remove record"
+// throw out record if it's not at RD AND lacks stat note 2 recap AND lacks provenance Recap statement
+// this is needed because query is at title level, even tho publishing is at holding level, so all holds on selected title get included, such as GEN
 when 
     (not exists "876.x.*ReCAP*") AND (not exists "876.4.*RECAP*") AND (not exists "852.c.*RD*")
+then
+     set indication."true"
+end
+
+rule "3 - remove record if it has a process status"
+// this is needed because we don't want to include things in Acq status or transit since it may not be on file yet in LAS, which would yield an error
+when 
+    (exists "876.2.*") 
 then
      set indication."true"
 end
