@@ -1,8 +1,17 @@
-rule "check for privacy indicators and add invalid subfield with alert to staff to prevent saving the bib"
+rule "oclc data sync - identify manuscript collection - consult wiki for criteria, delete 951 first to avoid dupes"
+    when
+       ((existsControl "LDR.{06,1}.d") OR (existsControl "LDR.{06,1}.t") OR (existsControl "LDR.{06,1}.f") OR (existsControl "LDR.{08,1}.a") OR (exists "040.e.amim|appm|dacs|dcrmg|dcrmm|dcrmmss"))
+    then        
+        removeField "951"
+        addField "951.a.OCLC Data Sync manuscript workflow"
+end
+
+rule "check for privacy indicators and add invalid subfield with alert to staff to prevent saving the bib, always delete 951 in case record changes make it no longer applicable"
     when
         (TRUE)
     then
         removeField "029"
+        removeField "951"
         replaceContents "035.a.(OCoLC)ocn" with "(OCoLC)" 
         replaceContents "035.a.(OCoLC)ocm" with "(OCoLC)" 
         replaceContents "035.a.(OCoLC)oc" with "(OCoLC)" 
@@ -11,4 +20,3 @@ rule "check for privacy indicators and add invalid subfield with alert to staff 
         addSubField "561.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "561.{0,*}")
         addSubField "583.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "583.{0,*}")
 end
-
