@@ -1,0 +1,9 @@
+rule "HVD rule to run on incoming scsb records" 
+when 
+    (TRUE)
+then 
+    removeControlField "003"
+    addControlField "003.ReCAP"
+    removeControlField "009"
+end 
+
