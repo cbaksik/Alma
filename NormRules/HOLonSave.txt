@@ -42,7 +42,7 @@ rule "copy public 541/1 holdings notes to local field for discovery display"
         (TRUE)
     then
 		removeField "997"
-        copyField "541" to "997" if(exists "541.{1,*}")
+                copyField "541" to "997" if(exists "541.{1,*}")
 end
 
 rule "copy public 561/1 or blank holdings notes to local field for discovery display"
@@ -80,6 +80,8 @@ rule "Copy 977 subfield f to 994 as permalink"
                 copyField "977" to "994" 
                 removeField "994" if (exists "994.{9,*}")
 		changeSubField "994.f" to "u"
+                replaceContents "994.*.<" with "(" 
+                replaceContents "994.*.>" with ")" 
 end
 
 rule "Data loads to get right ind in 852"
@@ -95,5 +97,23 @@ rule "copy 014 to 904, replace if exsits"
 	then		
                 removeField "904"
                 copyField "014" to "904" 
-               removeSubField "904.b"
+                removeSubField "904.b"
+end
+
+rule "workaround for primo bug where any data in angle brackets won't display"
+    when
+        (exists "852.z.*<*") OR (exists "852.z.*>*")
+    then
+		removeField "992"
+                copyField "852" to "992"  if (exists "852.z.*<*")
+                replaceContents "992.z.<" with "(" 
+                replaceContents "992.z.>" with ")" 
+                removeSubField "992.b"
+                removeSubField "992.c"
+                removeSubField "992.h"
+                removeSubField "992.i"
+                removeSubField "992.x"
+                removeSubField "992.k"
+                removeSubField "992.m"
+                removeSubField "992.t"
 end
