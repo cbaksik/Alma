@@ -15,6 +15,7 @@ rule "check for privacy indicators and add invalid subfield with alert to staff 
         replaceContents "035.a.(OCoLC)ocn" with "(OCoLC)" 
         replaceContents "035.a.(OCoLC)ocm" with "(OCoLC)" 
         replaceContents "035.a.(OCoLC)oc" with "(OCoLC)" 
+        replaceContents "035.a.(OCoLC)on" with "(OCoLC)" 
         removeField "035.a" if (exists "035.a.(OCoLC)")
         removeSubField "7**.w" if (exists "7**.w.(OCoLC)")
         addSubField "541.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "541.{0,*}")
