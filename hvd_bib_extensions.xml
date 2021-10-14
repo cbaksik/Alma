@@ -137,7 +137,7 @@ xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
                 </sub_field_configuration>
             </sub_fields_list>
         </data_field_configuration>
-        <data_field_configuration repeatable="false" mandatory="false" tag="929" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <data_field_configuration repeatable="true" mandatory="false" tag="929" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <description></description>
             <first_indicator_configuration>
                 <description>Undefined</description>
@@ -252,7 +252,7 @@ xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
                 </sub_field_configuration>
             </sub_fields_list>   
          </data_field_configuration>    
-        <data_field_configuration repeatable="false" mandatory="false" tag="979" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <data_field_configuration repeatable="true" mandatory="false" tag="979" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <description></description>
             <first_indicator_configuration>
                 <description>Undefined</description>
