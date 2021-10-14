@@ -1,0 +1,25 @@
+rule "HVD rule to run on incoming scsb records" 
+//cul
+when 
+    (exists "852.b.scsbcul")
+then 
+    removeControlField "003"
+    addControlField "003.ReCAP"
+    removeControlField "009"
+end 
+
+rule "nypl"
+when 
+    (exists "852.b.scsbnypl")
+then 
+    removeControlField "003"
+    addControlField "003.ReCAP"
+end 
+
+rule "pul"
+when 
+    (exists "852.b.scsbpul")
+then 
+    removeControlField "003"
+    addControlField "003.ReCAP"
+end 
