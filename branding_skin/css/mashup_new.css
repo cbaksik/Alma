@@ -1655,3 +1655,26 @@ div.viewIt a#showAllLink, div.viewIt a#showLessLink {
 /* div.viewIt div#repDataLong ~ c#showAllLine{
     display:none;
 } */
+@media print {
+    body {
+        font-size:75%;    
+    }
+    div.iframeHeaderContent {
+        display:none;
+    }
+    a#displayHolding {
+        display:none;
+    }
+    div.holdingInfo {
+        padding-bottom:0em;
+    }
+    li#availableLabel {
+        display:none;
+    }
+    a.locate {
+        display:none;
+    }
+    input#mobidgetit {
+        display:none;
+    }
+}
