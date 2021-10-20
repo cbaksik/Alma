@@ -3,7 +3,7 @@ when
     merge
 then
    replace MARC."022" if exists
-//035 placeholder
+   replace MARC."035" if exists
    add MARC."041" if does not exists
    add MARC."043" if does not exists
    add MARC."050" if does not exists
