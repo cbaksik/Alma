@@ -1,0 +1,41 @@
+rule "For incoming WorldCat Updates"
+when
+    merge
+then
+   replace MARC."022" if exists
+//035 placeholder
+   add MARC."041" if does not exists
+   add MARC."043" if does not exists
+   add MARC."050" if does not exists
+   add MARC."060" if does not exists
+   add MARC."043" if does not exists
+   add MARC."246" excluding second indicator "8"
+   add MARC."247" 
+   add MARC."362" 
+   add MARC."504" if does not exists
+   add MARC."505" if does not exists
+   add MARC."510"
+   add MARC."520" if does not exists
+// non-LCSH MeSH have already been deleted from incoming record
+   add MARC."600" if does not exists
+   add MARC."610" if does not exists
+   add MARC."611" if does not exists
+   add MARC."650" if does not exists
+   add MARC."651" if does not exists
+// unwanted indicators have already been deleted from incoming record
+   add MARC."655" excluding second indicator "7" excluding subfield ("2","local")
+   add MARC."700" if does not exists
+   add MARC."710" if does not exists
+   add MARC."711" if does not exists
+   add MARC."752" if does not exists
+   add MARC."760" if does not exists
+   add MARC."762" if does not exists
+   add MARC."765" if does not exists
+   add MARC."767" if does not exists
+   add MARC."770" if does not exists
+   add MARC."772" if does not exists
+   replace MARC."776" if exists
+   add MARC."780" if does not exists
+   add MARC."785" if does not exists
+   add MARC."991"
+end

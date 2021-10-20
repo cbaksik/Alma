@@ -1,0 +1,81 @@
+rule "if not serial, delete serial specific fields" 
+when 
+    (not existsControl "LDR.{7,1}.s") and (not existsControl "LDR.{7,1}.i")
+then 
+    removeField "022"
+    removeField "247"
+    removeField "362"
+end
+
+rule "if not high encoding level, remove all fields except eligible ones" 
+when 
+    (not existsControl "LDR.{17,1}. ") and (not existsControl "LDR.{17,1}.1") and (not existsControl "LDR.{17,1}.4") and (not existsControl "LDR.{17,1}.7") and (not existsControl "LDR.{17,1}.I")
+then 
+    removeControlField "001"
+    removeControlField "003"
+    removeField "012"
+    removeField "019"
+    removeField "029"
+    removeField "035" if (not exists "035.a.(OCoLC)*")
+    removeField "041"
+    removeField "043"
+    removeField "049"
+    removeField "050"
+    removeField "060"
+    removeField "080"
+    removeField "085"
+    removeField "091"
+    removeField "092"
+    removeField "093"
+    removeField "094"
+    removeField "095"
+    removeField "096"
+    removeField "097"
+    removeField "098"
+    removeField "099"
+    removeField "263"
+    removeField "265"
+    removeField "350"
+    removeField "359"
+    removeField "510"
+    removeField "583"
+    removeField "59*"
+    removeField "600"
+    removeField "610"
+    removeField "611"
+    removeField "650" if (exists "650.{*,1}")
+    removeField "650" if (exists "650.{*,3}")
+    removeField "650" if (exists "650.{*,4}")
+    removeField "650" if (exists "650.{*,5}")
+    removeField "650" if (exists "650.{*,6}")
+    removeField "650" if (exists "650.{*,7}")
+    removeField "651" if (exists "650.{*,1}")
+    removeField "651" if (exists "650.{*,3}")
+    removeField "651" if (exists "650.{*,4}")
+    removeField "651" if (exists "650.{*,5}")
+    removeField "651" if (exists "650.{*,6}")
+    removeField "651" if (exists "650.{*,7}")
+    removeField "655" if (exists "655.{*,4}")
+    removeField "69*"
+    removeField "7**"
+    removeField "8**"
+    removeField "90*"
+    removeField "91*"
+    removeField "92*"
+    removeField "93*"
+    removeField "94*"
+    removeField "95*"
+    removeField "96*"
+    removeField "97*"
+    removeField "98*"
+    removeField "90*"
+    removeField "91*"
+    removeField "92*"
+    removeField "93*"
+    removeField "94*"
+    removeField "95*"
+    removeField "96*"
+    removeField "97*"
+    removeField "98*"
+    removeField "994"
+end
