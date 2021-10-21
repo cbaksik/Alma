@@ -1,3 +1,18 @@
+rule "fix 035" 
+when 
+    TRUE
+then 
+    removeControlField "001"
+    removeControlField "003"
+    replaceContents "035.*.(OCoLC)0000000" with "(OCoLC)"
+    replaceContents "035.*.(OCoLC)000000" with "(OCoLC)"
+    replaceContents "035.*.(OCoLC)00000" with "(OCoLC)"
+    replaceContents "035.*.(OCoLC)0000" with "(OCoLC)"
+    replaceContents "035.*.(OCoLC)000" with "(OCoLC)"
+    replaceContents "035.*.(OCoLC)00" with "(OCoLC)"
+    replaceContents "035.*.(OCoLC)0" with "(OCoLC)"
+end
+
 rule "if not serial, delete serial specific fields" 
 when 
     (not existsControl "LDR.{7,1}.s") and (not existsControl "LDR.{7,1}.i")
@@ -11,8 +26,6 @@ rule "if not high encoding level, remove all fields except eligible ones"
 when 
     (not existsControl "LDR.{17,1}. ") and (not existsControl "LDR.{17,1}.1") and (not existsControl "LDR.{17,1}.4") and (not existsControl "LDR.{17,1}.7") and (not existsControl "LDR.{17,1}.I")
 then 
-    removeControlField "001"
-    removeControlField "003"
     removeField "012"
     removeField "019"
     removeField "029"
