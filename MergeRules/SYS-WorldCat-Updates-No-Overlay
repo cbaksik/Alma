@@ -20,6 +20,8 @@ then
    add MARC."600" if does not exists
    add MARC."610" if does not exists
    add MARC."611" if does not exists
+   add MARC."647" if does not exists
+   add MARC."648" if does not exists
    add MARC."650" if does not exists
    add MARC."651" if does not exists
 // unwanted indicators have already been deleted from incoming record
