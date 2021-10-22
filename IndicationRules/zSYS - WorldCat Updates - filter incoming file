@@ -1,0 +1,11 @@
+rule "filter our records from incoming OCLC worldcat updates file for formats we don't want included in the process"
+// true means incoming record will be rejected before import
+when
+    (not existsControl "LDR.{06,1}.a") 
+    OR 
+    (existsControl "LDR.{08,1}.a") 
+    OR
+    ((exists "040.e.amim|appm|dacs|dcrmg|dcrmm|dcrmmss") AND (not exists "502"))
+then
+   set indication."true"
+end
