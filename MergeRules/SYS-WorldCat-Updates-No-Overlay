@@ -16,14 +16,21 @@ then
    add MARC."505" if does not exists
    add MARC."510"
    add MARC."520" if does not exists
-// non-LCSH MeSH have already been deleted from incoming record
+// non-LCSH MeSH have already been deleted from incoming record from 6XX fields
+// with the exception of 650 2nd 7, handled for specific vocabs below
    add MARC."600" if does not exists
    add MARC."610" if does not exists
    add MARC."611" if does not exists
    add MARC."647" if does not exists
    add MARC."648" if does not exists
-   add MARC."650" if does not exists
-   add MARC."651" if does not exists
+// itemizing 2nd ind 0 and 2 separately allows us to import 0 if only 2 is present, and vice versa
+// using rule with indicators as below requires use of "exist" instead of "exists" as in other uses
+   add MARC."650"(" ","0") if does not exist
+   add MARC."650"(" ","2") if does not exist
+   add MARC."651"(" ","0") if does not exist
+   add MARC."651"(" ","2") if does not exist
+// below would end up including all variations of ascl term, e.g. punctuation variations, term changes
+// add MARC."650" when MARC."650"."2" contains "ascl"
 // unwanted indicators have already been deleted from incoming record
    add MARC."655" excluding second indicator "7" excluding subfield ("2","local")
    add MARC."700" if does not exists

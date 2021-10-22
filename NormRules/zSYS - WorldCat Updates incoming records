@@ -61,13 +61,15 @@ then
     removeField "650" if (exists "650.{*,4}")
     removeField "650" if (exists "650.{*,5}")
     removeField "650" if (exists "650.{*,6}")
-    removeField "650" if (exists "650.{*,7}")
-    removeField "651" if (exists "650.{*,1}")
-    removeField "651" if (exists "650.{*,3}")
-    removeField "651" if (exists "650.{*,4}")
-    removeField "651" if (exists "650.{*,5}")
-    removeField "651" if (exists "650.{*,6}")
-    removeField "651" if (exists "650.{*,7}")
+//    removeField "650" if (exists "650.{*,7}")
+// the below rule doesn't work, leaves in all 2nd ind 7
+// removeField "650.{*,7}" if (not exists "650.{*,7}.2.ascl|fnhl|homoit|fast")
+    removeField "651" if (exists "651.{*,1}")
+    removeField "651" if (exists "651.{*,3}")
+    removeField "651" if (exists "651.{*,4}")
+    removeField "651" if (exists "651.{*,5}")
+    removeField "651" if (exists "651.{*,6}")
+    removeField "651" if (exists "651.{*,7}")
     removeField "655" if (exists "655.{*,4}")
     removeField "69*"
     removeField "7**"
