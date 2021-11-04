@@ -24,13 +24,14 @@ when
     OR
     (NOT (exists "300.a.*") AND NOT (exists "300.f.*")))
     AND NOT  (exists "035.a.(OCoLC)*")
+    OR (exists "011.a.*")
 then
     set brief_level."02"
 end
 
 rule "Brief 03 - non-English cat - precedence over other rules except sparse"
 when
-    (exists "040.b.*") AND (not exists "040.b.eng")
+    (exists "040.b.*") AND (not exists "040.b.eng") AND (not exists "011")
 then
     set brief_level."03"
 end
@@ -80,4 +81,3 @@ when
 then
     set brief_level."09"
 end
-
