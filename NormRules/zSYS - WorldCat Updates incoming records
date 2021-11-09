@@ -71,6 +71,7 @@ then
     removeField "651" if (exists "651.{*,6}")
     removeField "651" if (exists "651.{*,7}")
     removeField "655" if (exists "655.{*,4}")
+    removeField "655" if (exists "655.{*,7}.2.local")
     removeField "69*"
     removeField "7**"
     removeField "8**"
