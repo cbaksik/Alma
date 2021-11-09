@@ -11,11 +11,19 @@ then
    add MARC."043" if does not exists
    add MARC."246" excluding second indicator "8"
    add MARC."247" 
+   add MARC."340" if does not exists
+   add MARC."344" if does not exists
+   add MARC."345" if does not exists
+   add MARC."346" if does not exists
+   add MARC."347" if does not exists
+   add MARC."348" if does not exists
    add MARC."362" 
+   add MARC."382" if does not exists
    add MARC."504" if does not exists
    add MARC."505" if does not exists
    add MARC."510"
    add MARC."520" if does not exists
+   add MARC."538" if does not exists
 // non-LCSH MeSH have already been deleted from incoming record from 6XX fields
 // with the exception of 650 2nd 7, handled for specific vocabs below
    add MARC."600" if does not exists
@@ -32,7 +40,7 @@ then
 // below would end up including all variations of ascl term, e.g. punctuation variations, term changes
 // add MARC."650" when MARC."650"."2" contains "ascl"
 // unwanted indicators have already been deleted from incoming record
-   add MARC."655" excluding second indicator "7" excluding subfield ("2","local")
+   add MARC."655" if does not exists
    add MARC."700" if does not exists
    add MARC."710" if does not exists
    add MARC."711" if does not exists
