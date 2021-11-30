@@ -17,7 +17,7 @@ then
    add MARC."346" if does not exists
    add MARC."347" if does not exists
    add MARC."348" if does not exists
-   add MARC."362" 
+   add MARC."362" if does not exists
    add MARC."382" if does not exists
    add MARC."504" if does not exists
    add MARC."505" if does not exists
