@@ -1678,3 +1678,11 @@ div.viewIt a#showAllLink, div.viewIt a#showLessLink {
         display:none;
     }
 }
+/* readability of license terms list */
+form ul#shortContextServiceList c::before{
+    content:"▪  " ;  
+}
+form ul#shortContextServiceList c {
+    display: block;
+    margin-bottom: -10px;
+}
