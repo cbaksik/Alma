@@ -32,6 +32,13 @@ end
 
 rule "copy 008 to local field for acq status display - part 3"
     when
+        (existsControl "008.{6,1}.5") AND ((existsControl "LDR.{6,1}.y") OR (existsControl "LDR.{6,1}.v"))
+    then
+        addField "995.a.Not currently received"
+end
+
+rule "copy 008 to local field for acq status display - part 4"
+    when
         (TRUE)
     then
         removeField "995"
