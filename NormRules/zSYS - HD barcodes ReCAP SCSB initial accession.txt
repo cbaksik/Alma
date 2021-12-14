@@ -2,9 +2,11 @@ rule "7 - delete items that are not committed to retain ReCAP, or aren't in our 
 when
     (TRUE)
 then
-   removeField "876" if(not exists "876.x.*ReCAP*")
+   //THIS SECTION NOW CUSTOM TO HYL HD UNCOMMITTABLE - change as needed
+   //removeField "876" if(not exists "876.x.*ReCAP*")
+   removeField "876" if(not exists "876.4.RECAP_UNCOMMITTABLE")
    removeField "876" if(not exists "876.9")
-   replaceContents "876.x.*ReCAP, Hathi*" with "committed to retain - ReCAP" 
+   //replaceContents "876.x.*ReCAP, Hathi*" with "committed to retain - ReCAP" 
 end
 
 rule "6 - restore non-compliant RD codes"
