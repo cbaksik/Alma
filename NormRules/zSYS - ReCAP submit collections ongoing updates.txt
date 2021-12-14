@@ -3,9 +3,9 @@ when
     (TRUE)
 then
    replaceContents "876.x.committed to retain - ReCAP" with "Shared"   
+   addSubField "876.x.Open" if (exists "876.4.ReCAP Open" )
+   addSubField "876.x.Uncommittable" if (exists "876.4.ReCAP Uncommittable" )
    addSubField "876.x.Private" if (not exists "876.x.*" )
-   replaceContents "876.x.Private" with "Open" if (exists "876.4.ReCAP Open" )
-   replaceContents "876.x.Private" with "Uncommitable" if (exists "876.4.ReCAP Uncommittable" )
    removeSubField "876.4"
 end
 
@@ -26,7 +26,7 @@ when
 then
    addSubField "876.9.RDINCLUDE" if ( exists "876.l.RECAP" )
    addSubField "876.9.HDEVAL" if ( exists "876.l.HD" )
-   replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.4.*RECAP*")
+   replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.4.*ReCAP*")
    replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.x.*ReCAP*")
 end
 
