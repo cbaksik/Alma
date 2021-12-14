@@ -4,8 +4,8 @@ when
 then
    replaceContents "876.x.committed to retain - ReCAP" with "Shared"   
    addSubField "876.x.Private" if (not exists "876.x.*" )
-   replaceContents "876.x.Private" with "Open" if (exists "876.4.RECAP_OPEN" )
-   replaceContents "876.x.Private" with "Uncommitable" if (exists "876.4.RECAP_UNCOMMITABLE" )
+   replaceContents "876.x.Private" with "Open" if (exists "876.4.ReCAP Open" )
+   replaceContents "876.x.Private" with "Uncommitable" if (exists "876.4.ReCAP Uncommittable" )
    removeSubField "876.4"
 end
 
