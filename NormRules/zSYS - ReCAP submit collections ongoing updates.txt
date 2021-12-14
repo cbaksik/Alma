@@ -93,7 +93,7 @@ then
 
 end
 
-rule "1. transforms for scsb initial accession"
+rule "1. transforms for scsb"
 when 
     (TRUE)
 then 
@@ -115,7 +115,7 @@ then
    removeField "97*"
    removeField "98*"
    removeField "99*"
-   removeField "H**"   
+   removeField "H**"
 // modify for recap
    addSubField "876.h. " if (not exists "876.h.*")
    replaceContents "876.h.01" with " "
@@ -125,7 +125,6 @@ then
    replaceContents "876.h.1*" with "Supervised Use" 
    replaceContents "876.h.2*" with "Supervised Use" 
    replaceContents "876.h.9*" with "Supervised Use" 
-// NEXT TWO LINES FOR MED AND HYL PRIVATE, until coll dev can tell which ones are BML, HYI
+// NEXT TWO LINES FOR MED, until coll dev can tell which ones are BML
    removeField "876" if(exists "876.k.MED")
-   removeField "876" if(exists "876.k.HYL")
 end
