@@ -405,15 +405,7 @@ table tbody tr:not(:last-child) {
     margin-right: .2em;
     opacity: .3
 } */
-#toggleHolding {
-    display:block;
-}
-/* #displayHolding {
-    display:none;
-} */
-li.column2label {
-    flex-basis: 16%;
-}
+
 /* #toggleHolding .showMore {
     background-color: white;
     border-top-width: 0;
@@ -459,70 +451,6 @@ li.column2label {
 /* #toggleHolding .additionalHoldingInfo li {
     display: inline-block
 } */
-
-/* BEGIN ITEM FILTER SECTION */
-
-/* this is the filter above the holdings when any item has a description */
-.filterResults {
-    list-style: none;
-    padding-left: 0;
-    padding: 0 0.5em;
-    line-height: 2em;
-    margin-bottom: 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    border-bottom: 1px solid #EDEDED;
-}
-.filterResults::before {
-    content:'PICK UP OPTIONS: click a location to see options. Or use filters and then click location.';
-    color: #000;
-    line-height: 1.5em;
-    padding: 10px 30px 10px 4px;
-}
-/* .filterResults li {
-    float: left
-} */
-/*
-.filterResults li.bold {
-    position: relative;
-    font-weight: 300
-} */
-
-/* .filterResults li.bold+li {
-    margin-right: 1em
-} */
-
-.filterResults select {
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    padding: 0.1em;
-    font-weight: 400;
-    background: none;    
-    border: 1px solid #808080;
-    cursor: pointer;
-    margin-left: 5px;
-}
-.iframeHeader .back a {
-    border: 2px solid #2c85d4;
-}
-.iframeHeader .back a:hover {
-    background-color: #83b7e024;
-    border: 2px solid #808080;
-}
- .filterResults select#selectDescription {
-    max-width: 50%;
-} 
-.paginationContainer ul li input {
-    text-decoration: underline;
-}
-/* .filterResults select:hover {
-    background-color: white
-} */
-
-/* END ITEM FILTER SECTION */
-
 /* table tbody td {
     vertical-align: top;
     padding: 0 0.2em 0 0;
@@ -1125,15 +1053,6 @@ li.column2label {
     background-color: #e4e4e4;
     color: black
 } */
-.digitizationRequest form #submitILLRequest {
-	color:purple;    
-} 
-.digitizationRequest div.submitBorder::after {
-  content: "Corinna test"; 
-  color: teal;
-}
-
-
 /* .holdRequest .resetContainer {
     position: absolute;
     margin-left: -240px;
@@ -1297,10 +1216,6 @@ li.column2label {
     display: none
 } */
 
-.getitNoHoldings {
-    font-size:18px;
-} 
-
 /* .getitNoHoldings .submitAsLink {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1410,6 +1325,96 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
     background-color: transparent;
     color:#000;
 } */
+
+
+/* BEGIN HARVARD CUSTOMIZATIONS */
+a {
+    color:#0579B8;
+}
+a:hover, a:focus {
+    box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+}
+#toggleHolding {
+    display:block;
+}
+.getitNoHoldings {
+    font-size:18px;
+} 
+
+li.column2label {
+    flex-basis: 16%;
+}
+
+.digitizationRequest form #submitILLRequest {
+	color:purple;    
+} 
+.digitizationRequest div.submitBorder::after {
+  content: "Corinna test"; 
+  color: teal;
+}
+
+/* BEGIN ITEM FILTER SECTION */
+
+/* this is the filter above the holdings when any item has a description */
+.filterResults {
+    list-style: none;
+    padding-left: 0;
+    padding: 0 0.5em;
+    line-height: 2em;
+    margin-bottom: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border-bottom: 1px solid #EDEDED;
+}
+.filterResults::before {
+    content:'PICK UP OPTIONS: click a location to see options. Or use filters and then click location.';
+    color: #000;
+    line-height: 1.5em;
+    padding: 10px 30px 10px 4px;
+}
+/* .filterResults li {
+    float: left
+} */
+/*
+.filterResults li.bold {
+    position: relative;
+    font-weight: 300
+} */
+
+/* .filterResults li.bold+li {
+    margin-right: 1em
+} */
+
+.filterResults select {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    padding: 0.1em;
+    font-weight: 400;
+    background: none;    
+    border: 1px solid #808080;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.iframeHeader .back a {
+    border: 2px solid #2c85d4;
+}
+.iframeHeader .back a:hover {
+    background-color: #83b7e024;
+    border: 2px solid #808080;
+}
+ .filterResults select#selectDescription {
+    max-width: 50%;
+} 
+.paginationContainer ul li input {
+    text-decoration: underline;
+}
+/* .filterResults select:hover {
+    background-color: white
+} */
+
+/* END ITEM FILTER SECTION */
 /* SOCIAL LOGIN CUSTOMIZATION, USED DURING ALMA-D AUTH TESTING TEMPORARY WORKAROUND */
 button.login-external-button {
     background: #a51c30;
