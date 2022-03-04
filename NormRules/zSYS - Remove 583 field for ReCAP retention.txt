@@ -1,0 +1,20 @@
+rule "remove 583 Action Note for ReCAP commitment statement" 
+when 
+(exists "583.f.ReCAP Shared Collection") 
+then 
+removeField "583" if (exists "583.f.ReCAP Shared Collection") 
+end 
+
+rule "remove 993 Action Note for ReCAP commitment statement" 
+when 
+(exists "993.f.ReCAP Shared Collection") 
+then 
+removeField "993" if (exists "993.f.ReCAP Shared Collection") 
+end 
+
+rule "set retention byte"
+when 
+(TRUE)
+then 
+replaceControlContents "008.{12,1}" with "0" 
+end
