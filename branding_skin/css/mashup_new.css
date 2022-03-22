@@ -1327,12 +1327,40 @@ body.alma-social-login-email-form {height: 100%;font-family:Arial,verdana,sans-s
 } */
 
 
+
+
 /* BEGIN HARVARD CUSTOMIZATIONS */
+
+
+
+
+
+
+.iframeHeaderContent>em {
+    margin-right:0;
+}
 a {
     color:#0579B8;
 }
 a:hover, a:focus {
+    color:#0579B8;
     box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+    border-bottom: none;
+    outline:none;
+}
+a.popoutExpanded {
+    background-image:none;
+    padding-right:0;
+    padding-bottom:3px;
+}
+a.popoutExpanded:hover {
+    border-bottom: none;
+}
+a[target="_blank"]:hover,
+a[target="_blank"]:focus {
+    color:#0579B8;
+    box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+    border-bottom: none;
 }
 #toggleHolding {
     display:block;
@@ -1343,14 +1371,6 @@ a:hover, a:focus {
 
 li.column2label {
     flex-basis: 16%;
-}
-
-.digitizationRequest form #submitILLRequest {
-	color:purple;    
-} 
-.digitizationRequest div.submitBorder::after {
-  content: "Corinna test"; 
-  color: teal;
 }
 
 /* BEGIN ITEM FILTER SECTION */
@@ -1367,13 +1387,38 @@ li.column2label {
     display: -ms-flexbox;
     display: flex;
     border-bottom: 1px solid #EDEDED;
+} 
+form#selectIssueForm div.serialSelection {
+    /* background-color:rgba(241, 241, 241, 0.5); */
+    margin-top:15px;
 }
-.filterResults::before {
-    content:'PICK UP OPTIONS: click a location to see options. Or use filters and then click location.';
-    color: #000;
+/* .filterResults:before{
+    content:'Harvard Locations';
+    color: #3a3a3a;
+    line-height: 1.5em;
+    font-size:20px;
+    padding: 10px 30px 10px 10px;
+} */
+/* .filterResults:after{
+    content:'Select a location below, or use the drop-downs to filter, then select a location.';
+    color: #3a3a3a;
     line-height: 1.5em;
     padding: 10px 30px 10px 4px;
+} */
+.filterResults:before {
+    content:'Select a location below, or use the drop-downs to filter, then select a location.';
+    color: #3a3a3a;
+    line-height: 1.5em;
+    padding: 10px 30px 10px 4px;
+    min-width:285px;
+    max-width:300px;
 }
+/* .filterResults>li:before {
+    content:'Select a location below, or use the drop-downs to filter, then select a location.';
+    color: #3a3a3a;
+    line-height: 1.5em;
+    padding: 10px 30px 10px 4px;
+} */
 /* .filterResults li {
     float: left
 } */
@@ -1402,10 +1447,16 @@ li.column2label {
 }
 .iframeHeader .back a:hover {
     background-color: #83b7e024;
-    border: 2px solid #808080;
+    box-shadow:none;
+    border: 2px solid #2;
+}
+.iframeHeader .back a:before {
+    background-image:url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+);
+    transform: scaleX(-1);
 }
  .filterResults select#selectDescription {
-    max-width: 50%;
+    max-width: 30%;
+    min-width:80px;
 } 
 .paginationContainer ul li input {
     text-decoration: underline;
@@ -1426,6 +1477,13 @@ button.login-alma-button {
     background:#5B5B5B;
 }
 /* ACCESSIBILITY CHANGES FOR HOLDINGS */
+.holdingsList table tbody tr {
+    border-left:1px solid #e4e4e4;
+    border-right:1px solid #e4e4e4;
+}
+.holdingsList table tbody tr:last-child {
+    border-bottom:1px solid #e4e4e4;
+}
 .holdingsList table tbody tr>td:first-child a:after, .holdingsList table tbody tr>td:first-child span:not(:last-child):after {
     font-size:1.4em;
     line-height:0.5em;
@@ -1437,43 +1495,66 @@ button.login-alma-button {
     content:""
 }  
 .holdingsList table tbody tr>td:first-child a {
-    padding-right:20px;
+    padding-right:30px;
     background:right no-repeat;
     background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
 }
-.holdingsList table tbody tr>td:first-child a:hover {
-    border-bottom:.08em solid #000;
-    padding-right:30px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
+.holdingsList table tbody tr>td:first-child a:hover,
+.holdingsList table tbody tr>td:first-child a:focus {
+    background-color:transparent;
+    color:#0579B8;
+    border-bottom:none;
+    box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+   background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+);
 }
+.holdingsList table tbody tr>td:first-child a:after,
+.holdingsList table tbody tr>td:first-child a:hover:after,
+.holdingsList table tbody tr>td:first-child a:focus:after,
+.holdingsList table tbody tr>td:first-child a:focus:active,
+.holdingsList table tbody tr>td:first-child a:visited:active {
+    transform:none;
+    transition:none;
+}
+/* make request buttons display in column */
+.iframeHeaderContent  {
+    display:inline-block;
+    padding-left:0;
+}
+.iframeHeaderContent>em {
+    display:none;
+} 
+.iframeHeaderContent input[type="submit"] {
+    display:block;
+}
+.iframeHeaderContent .submitAsLink.popout {
+    padding-left:0px;
+    margin-left:0px;
+    text-transform:uppercase;
+    margin-top:15px;
+    font-weight:600;
+}
+.iframeHeaderContent  .submitAsLink.popout+span+input[type="submit"] {
+    margin-left:0px;
+}
+.iframeHeaderContent .submitAsLink.popout+span:before {
+    background-image:none;
+}
+.iframeHeaderContent span.back a {
+    margin-top:20px;
+}
+div.getit {
+    margin-bottom:15px;
+}
+/* add space after final GES */
+
 /* request button */
 input#openRequest {
-    padding-right:20px;
-    background:right no-repeat;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
+    text-transform:uppercase;
+    font-weight:600;
+    padding-right:0;
+    /* background:right no-repeat;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+) */
 }
-input.requestOption:hover {
-    border-bottom:.08em solid #000;
-    background-color:#83b7e024;
-}
-input#openRequest:hover {
-    background-color:#83b7e024;
-    padding-right:30px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
-}
-/* no longer needed ; added OTB with Aug '19 release */
-/* span.openItemLevelGES:after  {
-    content:"";
-    padding-right: 0px;
-    background:right no-repeat;
-    height:15px;
-    width:15px;
-    display: inline-block;
-    background-size: contain;
-    top: 2px;
-    position: relative;
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiAgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPiAgIDxwYXRoIGZpbGw9IiM1QzkyQkQiIGQ9Ik0xNCwzVjVIMTcuNTlMNy43NiwxNC44M0w5LjE3LDE2LjI0TDE5LDYuNDFWMTBIMjFWM00xOSwxOUg1VjVIMTJWM0g1QzMuODksMyAzLDMuOSAzLDVWMTlBMiwyIDAgMCwwIDUsMjFIMTlBMiwyIDAgMCwwIDIxLDE5VjEySDE5VjE5WiIgLz48L3N2Zz4=)
-} */
 span.openItemLevelGES:hover {
     border-bottom:.08em solid #000;
     background-color:#83b7e024;
@@ -1482,21 +1563,62 @@ span.openItemLevelGES:hover {
 a:hover {
     border-bottom:1px solid #000;
 }
+.iframeHeaderContent span.recordListActionSeparator {
+    display:none;
+}
 
 /* ************************* */
 /* this line is to prevent GES item links from having different padding than rest of cells in line */
 /* also for item status */
-.itemsList table tbody>tr>td:last-child  {
-    padding-top: 1em;
+/* paginatio control for when there are more than 10 items */
+.paginationContainer ul li input {
+    color:#0579B8;
+    text-decoration:none;   
 }
-/* .itemsList table tbody>tr>td:last-child input {
-    padding-top: .2em;
-} */
+.paginationContainer ul li input:hover,
+.paginationContainer ul li input:focus {
+    background-color:transparent;
+    box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+    border-radius:0;
+}
+.itemsList a:hover,
+.itemsList a:focus {
+    border-bottom:none;
+}
+.itemsList table tbody>tr>td:last-child a:hover,
+.itemsList table tbody>tr>td:last-child a:focus {
+    color:#0579B8;
+}
+.itemsList table tbody>tr>td:last-child a:last-child:hover,
+.itemsList table tbody>tr>td:last-child a:last-child:focus {
+    background-color:transparent;
+}
 .itemsList table tbody>tr>td:last-child a:last-child {
-    padding-top:0em;
-    padding-right:20px;
-    background:right no-repeat;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+)
+    padding-top:3px;
+}
+/* aeon item-level ges */
+.itemslist input.requestOption:hover {
+
+}
+.itemsList .submitAsLink.popout+span:before {
+    background-image:none;
+    width:0;
+    height:0;
+    padding-right:0;
+}
+.itemsList span.openItemLevelGES {
+    padding-bottom:3px;
+}
+.itemsList input.requestOption:hover,
+.itemsList input.requestOption:focus {
+    color:#0579B8;
+    box-shadow:none;
+}
+.itemsList span.openItemLevelGES:hover {
+    color:#0579B8;
+    border-bottom:none;
+    background-color:transparent;
+    box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
 }
 /* field on request form we want to hide */
 #materialTypeH, #materialTypeV, #termsOfUseH, #termsOfUseV, #noNeedAfterH, #noNeedAfterV, #commentH, #commentV {
@@ -1509,9 +1631,9 @@ li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] {
 li[aria-label="Availability:(0 copies, 0 available, 0 requests)"] + li.itemAvailabilityInfo {
     display:none;
 }
-/* make green if not 0 avail */
+/* make green if not 0 avai; undo that per AD 20220321 */
 #availableLabel + li.itemAvailabilityInfo {
-    color:#087B00;
+    color:#716F6F;
 }
 #availableLabel[aria-label*="0 available"] + li.itemAvailabilityInfo {
     color:#716F6F;
@@ -1590,7 +1712,6 @@ div.hvd_acq_status > ul > li:after {
  }
  .requestForm li select:not([readonly]):focus {
     box-shadow:none;
-    border:2px solid #e62300;
  }
  .paginationContainer ul li .lastPage input, .paginationContainer ul li .nextPage input {
     font-size: 15px;
@@ -1617,6 +1738,15 @@ li.column2Item {
         padding-right:35px;
     }
 }
+div.viewIt a {
+    text-transform:uppercase;
+}
+.viewIt>ul>li a[target="_blank"]:after {
+    display:none;
+}
+.viewIt>ul .internalTitle {
+    margin-right:-0.2em;
+}
 /* view it for controlled digital lending */
 div.viewIt div#repData  {
     font-weight:bold;
@@ -1625,7 +1755,7 @@ div.viewIt div#repData li {
     color:grey;
     margin-top:20px;
     padding-left: 0px;
-    text-indent: -5px;
+    /* text-indent: -5px; */
 }
 /* div.viewIt div#repData li:before {
     content: "Item is in use";
@@ -1634,10 +1764,7 @@ div.viewIt div#repData li {
     padding-right:20px;
 } */
 div.viewIt div#repData li a {
-    padding-right: 20px;
-    background: right no-repeat;
-    background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiAgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPiAgIDxwYXRoIGZpbGw9IiM1QzkyQkQiIGQ9Ik0xNCwzVjVIMTcuNTlMNy43NiwxNC44M0w5LjE3LDE2LjI0TDE5LDYuNDFWMTBIMjFWM00xOSwxOUg1VjVIMTJWM0g1QzMuODksMyAzLDMuOSAzLDVWMTlBMiwyIDAgMCwwIDUsMjFIMTlBMiwyIDAgMCwwIDIxLDE5VjEySDE5VjE5WiIgLz48L3N2Zz4=);
-    background-size: 15px;
+    padding-bottom:3px;
 }
 div.viewIt div#repData li .publicNoteRestricted {
     color:black;
@@ -1690,4 +1817,94 @@ form ul#shortContextServiceList c::before{
 form ul#shortContextServiceList c {
     display: block;
     margin-bottom: -10px;
+}
+.iframeHeader input[type="submit"] {
+    border-radius:0px;
+}
+.iframeHeader input[type="submit"]:hover,
+.iframeHeader input[type="submit"]:focus {
+    color:#0579B8;
+    background-color:transparent;
+}
+input.requestOption:hover,
+input.requestOption:focus {
+    border-bottom:0;
+    box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+}
+input#openRequest:hover,
+input#openRequest:focus {
+    background-color:transparent;
+    background-image:none;
+}
+#displayHolding {
+    color:#0579B8;
+    border-radius:0px;
+    font-weight:300;
+    font-size:15px;
+}
+#displayHolding:hover,
+#displayHolding:focus {
+    background-color:transparent;    
+    box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+    border-bottom:0px;
+}
+.holdingInfo li {
+    color:#3a3a3a;
+    font-size:15px;
+}
+.holdingInfo .locate {
+    border-radius:4px;
+}
+.holdingInfo .locate a:hover,
+.holdingInfo .locate a:focus {
+    box-shadow:none;
+    color:#fff;
+    background-color:#9d9d9d;
+}
+[type="submit"]#exlidRequestTabFormSubmit {
+    color:#0579B8;
+}
+[type="submit"]#exlidRequestTabFormSubmit:hover,
+[type="submit"]#exlidRequestTabFormSubmit:focus {
+    color:#000;
+    background-color:#0579B8;
+}
+[type="submit"]#exlidRequestTabFormSubmit,
+#formActionsContainer input[type="submit"] {
+    color:#FFF;
+    background-color:#0579B8;
+}
+[type="submit"]#exlidRequestTabFormSubmit:hover,
+#formActionsContainer input[type="submit"]:hover,
+[type="submit"]#exlidRequestTabFormSubmit:focus,
+#formActionsContainer input[type="submit"]:focus {
+    color:#FFF;
+    background-color:#2a5280;
+}
+#exlidRequestTabFormSubmit, #formActionsContainer input {
+    border-radius:5px;
+    padding:5px 10px;
+}
+.resetContainer a {
+   color: #0579B8;
+   background-color:transparent;
+}
+.resetContainer a:hover,
+.resetContainer a:focus {
+   color: #0579B8;
+   box-shadow: inset 0 -3px 0 0 rgba(5, 121, 184, 0.3);
+   text-decoration: none;
+   background-color:transparent;
+   border:0;
+   border-radius:0;
+}
+.requestForm li select {
+    border:2px solid transparent; 
+}
+.requestForm li select:not([readonly]):hover,
+.requestForm li select:not([readonly]):focus {
+    border:2px solid #0579B8;
+}
+select {
+    font-size:15px;
 }
