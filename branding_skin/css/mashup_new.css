@@ -1526,6 +1526,9 @@ button.login-alma-button {
 .iframeHeaderContent input[type="submit"] {
     display:block;
 }
+.openItemLevelGES input.submitAsLink {
+    padding-top:.1em;
+}
 .iframeHeaderContent .submitAsLink.popout {
     padding-left:0px;
     margin-left:0px;
@@ -1552,13 +1555,6 @@ input#openRequest {
     text-transform:uppercase;
     font-weight:600;
     padding-right:0;
-    /* background:right no-repeat;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDI0IDI0IiB5PSIzODQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZml0PSIiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiIGZvY3VzYWJsZT0iZmFsc2UiIGZpbGw9IiMyYzg1ZDQiPgogICAgPHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiLz4KPC9zdmc+) */
-}
-span.openItemLevelGES:hover {
-    border-bottom:.08em solid #000;
-    background-color:#83b7e024;
-    padding-right:0px;
 }
 a:hover {
     border-bottom:1px solid #000;
@@ -1585,6 +1581,19 @@ a:hover {
 .itemsList a:focus {
     border-bottom:none;
 }
+.itemsList table tbody tr:last-child td {
+    padding: 1em 0.5em 1.5em 0!important;
+}
+.itemsList table tbody tr td {
+    padding: 1em 0.5em 1.5em 0!important;
+}
+.itemsList table tbody>tr>td:last-child {
+    padding: 1em 0.5em 1.5em 0!important;
+    padding-top:1em;
+    padding-right:0.5em;
+    padding-bottom:1.5em;
+    padding-left:0em;
+}
 .itemsList table tbody>tr>td:last-child a:hover,
 .itemsList table tbody>tr>td:last-child a:focus {
     color:#0579B8;
@@ -1594,20 +1603,30 @@ a:hover {
     background-color:transparent;
 }
 .itemsList table tbody>tr>td:last-child a:last-child {
-    padding-top:3px;
+    padding-top:0px!important;
+}
+.itemsList table tbody>tr>td:last-child span.itemStatus {
+    padding-top:3px!important;
 }
 /* aeon item-level ges */
-.itemslist input.requestOption:hover {
-
-}
 .itemsList .submitAsLink.popout+span:before {
     background-image:none;
     width:0;
     height:0;
     padding-right:0;
 }
+.itemsList span.openItemLevelGES input {
+    padding-top:0;
+    line-height:1.2em;
+    margin-top:-3px;
+}
 .itemsList span.openItemLevelGES {
     padding-bottom:3px;
+}
+.itemsList span.openItemLevelGES:hover {
+    border-bottom:.08em solid #000;
+    background-color:#83b7e024;
+    padding-right:0px;
 }
 .itemsList input.requestOption:hover,
 .itemsList input.requestOption:focus {
