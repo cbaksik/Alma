@@ -104,7 +104,12 @@ then
     add MARC."006"
     add MARC."007"
     replace MARC.control."008"
-    add MARC."01"X
+    add MARC."010"
+    add MARC."013"
+    add MARC."015"
+    add MARC."016"
+    add MARC."017"
+    add MARC."018"
     add MARC."02"X
     add MARC."03"X
     add MARC."04"X
