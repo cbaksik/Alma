@@ -24,19 +24,14 @@ end
 
 rule "if not high encoding level, remove all fields except eligible ones" 
 when 
-    (not existsControl "LDR.{17,1}. ") and (not existsControl "LDR.{17,1}.1") and (not existsControl "LDR.{17,1}.4") and (not existsControl "LDR.{17,1}.7") and (not existsControl "LDR.{17,1}.I")
+    //(not existsControl "LDR.{17,1}. ") and (not existsControl "LDR.{17,1}.1") and (not existsControl "LDR.{17,1}.4") and (not existsControl "LDR.{17,1}.7") and (not existsControl "LDR.{17,1}.I")
+   TRUE
 then 
     removeField "012"
     removeField "019"
     removeField "029"
     removeField "035" if (not exists "035.a.(OCoLC)*")
-    removeField "041"
-    removeField "043"
     removeField "049"
-    removeField "050"
-    removeField "060"
-    removeField "080"
-    removeField "085"
     removeField "091"
     removeField "092"
     removeField "093"
@@ -50,40 +45,13 @@ then
     removeField "265"
     removeField "350"
     removeField "359"
-    removeField "510"
     removeField "583"
     removeField "59*"
-    removeField "600"
-    removeField "610"
-    removeField "611"
-    removeField "650" if (exists "650.{*,1}")
-    removeField "650" if (exists "650.{*,3}")
     removeField "650" if (exists "650.{*,4}")
-    removeField "650" if (exists "650.{*,5}")
-    removeField "650" if (exists "650.{*,6}")
-//    removeField "650" if (exists "650.{*,7}")
 // the below rule doesn't work, leaves in all 2nd ind 7
 // removeField "650.{*,7}" if (not exists "650.{*,7}.2.ascl|fnhl|homoit|fast")
-    removeField "651" if (exists "651.{*,1}")
-    removeField "651" if (exists "651.{*,3}")
-    removeField "651" if (exists "651.{*,4}")
-    removeField "651" if (exists "651.{*,5}")
-    removeField "651" if (exists "651.{*,6}")
-    removeField "651" if (exists "651.{*,7}")
-    removeField "655" if (exists "655.{*,4}")
     removeField "655" if (exists "655.{*,7}.2.local")
     removeField "69*"
-    removeField "7**"
-    removeField "8**"
-    removeField "90*"
-    removeField "91*"
-    removeField "92*"
-    removeField "93*"
-    removeField "94*"
-    removeField "95*"
-    removeField "96*"
-    removeField "97*"
-    removeField "98*"
     removeField "90*"
     removeField "91*"
     removeField "92*"
