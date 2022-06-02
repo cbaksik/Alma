@@ -1760,6 +1760,13 @@ li.column2Item {
 div.viewIt a {
     text-transform:uppercase;
 }
+div.viewIt div.authNote a {
+    text-transform:none;
+}
+div.viewIt div.authNote a:hover,
+div.viewIt div.authNote a:focus {
+    border-bottom:none;
+}
 .viewIt>ul>li a[target="_blank"]:after {
     display:none;
 }
