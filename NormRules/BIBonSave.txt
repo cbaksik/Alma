@@ -13,6 +13,7 @@ rule "check for privacy indicators and add invalid subfield with alert to staff 
     when
         (TRUE)
     then
+        replaceControlContents "LDR.{05,1}" with "c" if (existsControl "LDR.{05,1}.d")
         removeField "029"
         removeField "951"
         replaceContents "035.a.(OCoLC)ocn" with "(OCoLC)" 
