@@ -27,7 +27,7 @@ rule "copy 008 to local field for acq status display - part 2"
     when
         (existsControl "008.{6,1}.4")
     then
-        addField "995.a.Currently received"
+        addField "995.a.Currently received - select location for most recent issues"
 end
 
 rule "copy 008 to local field for acq status display - part 3"

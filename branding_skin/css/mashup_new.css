@@ -1712,10 +1712,10 @@ input[value*="Unpaywall"] + div.publicNote {
     vertical-align:top;
 }
 /* add text to UI, when there are mult holdings, patron won't see recent issues since they're not in 866/7/8 */
-div.hvd_acq_status > ul > li:after {
+/* div.hvd_acq_status > ul > li:after {
     content:' – Select location name for recent issues'; 
     font-weight:bold;
-   }
+   } */
 /* Get It color contrasts changes to make compliant to wcag */
 .holdingInfo .locate, .locate  {
        color:#6f6b6b;
