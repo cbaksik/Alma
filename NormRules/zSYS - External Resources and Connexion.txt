@@ -9,34 +9,40 @@ rule "Add no-overlay field to serials"
 when
    existsControl "LDR.{7,1}.s"
 then
-        addField "998.{-,-}.a.NO-OVERLAY"
+   addField "998.{-,-}.a.NO-OVERLAY"
 end
 
 rule "Remove unwanted data from External search resources and Connexion records" 
 when
-TRUE
+   TRUE
 then
-removeControlField "001"
-removeField "012"
-removeField "019"
-removeField "029"
-removeField "035" if(exists "035.*.(OCoLC)o*")
-removeField "049"
-removeField "506"
-removeField "541"
-removeField "561"
-removeField "562"
-removeField "563"
-removeField "856"
-removeField "89*"
-removeField "90*"
-removeField "91*"
-removeField "92*"
-removeField "93*"
-removeField "94*"
-removeField "95*"
-removeField "96*"
-removeField "97*"
-removeField "98*"
-removeField "99*"
+   removeControlField "001"
+   removeField "012"
+   removeField "019"
+   removeField "029"
+   removeField "035" if(exists "035.*.(OCoLC)o*")
+   removeField "049"
+   removeField "506"
+   removeField "541"
+   removeField "561"
+   removeField "562"
+   removeField "563"
+   removeField "856"
+   removeField "89*"
+   removeField "90*"
+   removeField "91*"
+   removeField "92*"
+   removeField "93*"
+   removeField "94*"
+   removeField "95*"
+   removeField "96*"
+   removeField "97*"
+   removeField "98*"
+   removeField "99*"
+   // rm copy specific notes
+   removeField "2**" if (exists "2**.5.*." )
+   removeField "5**" if (exists "5**.5.*." )
+   removeField "6**" if (exists "6**.5.*." )
+   removeField "7**" if (exists "7**.5.*." )
+   removeField "8**" if (exists "8**.5.*." )
 end
