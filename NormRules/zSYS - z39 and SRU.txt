@@ -1,0 +1,15 @@
+rule "remove local data, KEEP NO-OVERYLAY field, need for SRU WorldCat Updates service"
+when 
+    (TRUE)
+then 
+   removeField "6**" if (exists "6**.{*,4}")
+// remove private fields
+   removeField "541" if(exists "541.{0,*}")
+   removeField "561" if(exists "561.{0,*}")
+   removeField "583" if(exists "583.{0,*}")
+   removeSubField "583.x"
+   removeSubField "852.x"
+   removeSubField "856.x"
+// keep 9XX fields, 998 no-overlay needed for SRU WorldCat Updates service
+end
+
