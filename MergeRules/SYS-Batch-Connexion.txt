@@ -70,6 +70,7 @@ then
     remove MARC."830" if not exists subfield "5"
     remove MARC."880" 
     remove MARC."913" 
+    remove MARC."991" 
     replace MARC.control."LDR"
     add MARC."005"
     add MARC."006"
