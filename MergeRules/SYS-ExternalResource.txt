@@ -14,7 +14,7 @@ rule "Rule for External Resources where Ext Resource is preferred record"
   then    
     replace MARC."001"
     add MARC."69"X
-    add MARC."9"XX excluding "913,998"
+    add MARC."9"XX excluding "913,991,998"
     remove MARC."914"
     add MARC."752"
     remove MARC."246" if exists subfield "5"
