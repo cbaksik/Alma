@@ -115,15 +115,11 @@ then
    removeField "98*"
    removeField "99*"
    removeField "H**"
-// modify for recap
+// modify for recap - add CGD
    addSubField "876.h. " if (not exists "876.h.*")
+   replaceContents "876.h.*" with "Supervised Use" if(not exists "876.h.01|02|61|62") 
    replaceContents "876.h.01" with " "
    replaceContents "876.h.61" with " "
    replaceContents "876.h.02" with "In Library Use" 
    replaceContents "876.h.62" with "In Library Use" 
-   replaceContents "876.h.1*" with "Supervised Use" 
-   replaceContents "876.h.2*" with "Supervised Use" 
-   replaceContents "876.h.9*" with "Supervised Use" 
-// NEXT TWO LINES FOR MED, until coll dev can tell which ones are BML
-   removeField "876" if(exists "876.k.MED")
 end
