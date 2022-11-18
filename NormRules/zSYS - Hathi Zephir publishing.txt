@@ -1,0 +1,89 @@
+rule "1. remove 69X all Harvard defined fields except 908, 950, 951"
+
+priority 90
+when 
+(TRUE)
+then 
+    removeField "69*"
+    removeField "840"
+    removeField "901"
+    removeField "902"
+    removeField "903"
+    removeField "904"
+    removeField "905"
+    removeField "906"
+    removeField "907"
+    removeField "909"
+    removeField "91*"
+    removeField "92*"
+    removeField "93*"
+    removeField "94*"
+    removeField "952"
+    removeField "953"
+    removeField "954"
+    removeField "955"
+    removeField "956"
+    removeField "957"
+    removeField "958"
+    removeField "959"
+    removeField "96*"
+    removeField "97*"
+    removeField "98*"
+    removeField "99*"
+end
+
+rule "2. prefer OCLC number from 014 field in holdings"
+priority 80
+when 
+(exists "014")
+then
+   removeField "035" if (exists "035.a.*(OCoLC)*")
+   removeSubfield "014.8"
+   removeSubfield "014.b"
+   prefix "014.a" with "(OCoLC)"
+   changeField "014" to "035"
+end
+
+rule "3. add 003 field for Harvard organization code"
+priority 70
+when
+(TRUE)
+then
+        addControlField "003.MH"
+end
+
+rule "4. Get Aleph number in 035$z with prefix"
+priority 60
+when
+(exists "900.a")
+then
+        prefix "900.a" with "(MH)Aleph"
+        changeSubField "900.a" to "z"
+        changeField "900" to "035"
+end
+
+rule "5. change item field tag"
+priority 50
+when 
+(TRUE)
+then
+   changeField "888" to "955"
+end
+
+rule "6. change LDR/06 'b' to 't' "
+priority 45
+when
+(existsControl "LDR.{6,1}.b")
+then
+    replaceControlContents "LDR.{6,1}" with "t"
+end
+
+rule "7. replace caret in 010"
+priority 40
+when
+(exists "010")
+then
+        replaceContents "010.a.^" with ""
+        replaceContents "010.z.^" with ""
+end
+
