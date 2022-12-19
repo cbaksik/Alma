@@ -1,10 +1,10 @@
-rule "1. remove 69X all Harvard defined fields except 908, 950, 951"
+rule "1. remove harvard fields"
 
 priority 90
 when 
 (TRUE)
 then 
-    removeField "69*"
+//    removeField "69*"
     removeField "840"
     removeField "901"
     removeField "902"
@@ -13,36 +13,30 @@ then
     removeField "905"
     removeField "906"
     removeField "907"
+    removeField "908"
     removeField "909"
     removeField "91*"
     removeField "92*"
     removeField "93*"
     removeField "94*"
-    removeField "952"
-    removeField "953"
-    removeField "954"
-    removeField "955"
-    removeField "956"
-    removeField "957"
-    removeField "958"
-    removeField "959"
+    removeField "95*"
     removeField "96*"
     removeField "97*"
     removeField "98*"
     removeField "99*"
 end
 
-rule "2. prefer OCLC number from 014 field in holdings"
-priority 80
-when 
-(exists "014")
-then
-   removeField "035" if (exists "035.a.*(OCoLC)*")
-   removeSubfield "014.8"
-   removeSubfield "014.b"
-   prefix "014.a" with "(OCoLC)"
-   changeField "014" to "035"
-end
+//rule "2. prefer OCLC number from 014 field in holdings"
+//priority 80
+//when 
+//(exists "014")
+//then
+//   removeField "035" if (exists "035.a.*(OCoLC)*")
+//   removeSubfield "014.8"
+//   removeSubfield "014.b"
+//   prefix "014.a" with "(OCoLC)"
+//   changeField "014" to "035"
+//end
 
 rule "3. add 003 field for Harvard organization code"
 priority 70
@@ -68,6 +62,8 @@ when
 (TRUE)
 then
    changeField "888" to "955"
+   changeSubField "955.a" to "b"
+   removeSubField "955.8"
 end
 
 rule "6. change LDR/06 'b' to 't' "
