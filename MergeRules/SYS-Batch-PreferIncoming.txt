@@ -33,7 +33,13 @@ then
     remove MARC."525"
     remove MARC."526" if not exists subfield "5"
     remove MARC."53"X
-    remove MARC."54"X
+    remove MARC."540"
+    remove MARC."541" if not exists subfield "5"
+    remove MARC."542"
+    remove MARC."544"
+    remove MARC."545"
+    remove MARC."546"
+    remove MARC."547"
     remove MARC."55"X
     remove MARC."56"X
     remove MARC."57"X
@@ -69,6 +75,7 @@ then
     remove MARC."811" if not exists subfield "5"
     remove MARC."830" if not exists subfield "5"
     remove MARC."880"
+    remove MARC."914"
     remove MARC."998"
     replace MARC.control."LDR"
     add MARC."005"
