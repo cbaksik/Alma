@@ -725,11 +725,12 @@ md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-it
     background-color: #000000; }
 
 /* primary color hook end*/
-/* corinna adding text to top bar that item is in use b/c rest of page takes so long to load no one waits for it 20200826 */
-prm-topbar:after {
+/* corinna adding text to top bar that item is in use b/c rest of page takes so long to load no one waits for it 20200826 
+turned off 1/27/23. breaking fx */
+/* prm-topbar:after {
   content:'Please wait for the page to finish loading. It may be a few minutes.';
   font-size:200%;
   display:block;
   margin-top:20px;
   margin-left:20px;
-}
+} */
