@@ -15,10 +15,11 @@ then
      set indication."true"
 end
 
-rule "3 - remove record if it has a process status"
+//rule "3 - remove record if it has a process status"
 // this is needed because we don't want to include things in Acq status or transit since it may not be on file yet in LAS, which would yield an error
-when 
-    (exists "876.2.*") 
-then
-     set indication."true"
-end
+// 20230329 CB commenting this out because record will be published as deleted if it was previously published
+//when 
+//    (exists "876.2.*") 
+//then
+//     set indication."true"
+//end
