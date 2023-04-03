@@ -1464,7 +1464,10 @@ form#selectIssueForm div.serialSelection {
 /* .filterResults select:hover {
     background-color: white
 } */
-
+/* in safari, filter boxes don't get any treatment when you keyboard. adding thicker border */
+.filterResults input[type="text"]:not([readonly="readonly"]):active, input[type="text"]:not([readonly="readonly"]):focus, select:not([readonly="readonly"]):active, select:not([readonly="readonly"]):focus {
+    border:2px solid #2c85d4;
+}
 /* END ITEM FILTER SECTION */
 /* SOCIAL LOGIN CUSTOMIZATION, USED DURING ALMA-D AUTH TESTING TEMPORARY WORKAROUND */
 button.login-external-button {
