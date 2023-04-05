@@ -102,6 +102,7 @@ var StackMap_dictionary = function () {
 };
 
 var StackMap = StackMap || {
+    
     domain: 'https://harvard.stackmap.com', // TODO
     popupCounter: 0,
     delayImgLoad: true, // TODO
@@ -1383,7 +1384,8 @@ var StackMap = StackMap || {
     }
 };
 // Lookups for integrations if querying multiple libraries.
-function SMSetLibrary(libraryName) {
+function SMSetLibrary(libraryName) {    
+    console.log('locally hosted vendor file - libraryName function');
     if (!libraryName) return false;
     var libCode = {
         "Widener Library": "harvard",
