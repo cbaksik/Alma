@@ -1403,6 +1403,7 @@ function SMSetLibrary(libraryName) {
 }
 
 SMcontentLoaded(window, StackMap.init);
+console.log('locally hosted vendor file');
 
 /*!
  * contentloaded.js
