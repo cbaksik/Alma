@@ -46,14 +46,21 @@ then
         addControlField "003.MH"
 end
 
-rule "4. Get Aleph number in 035$z with prefix"
+rule "4. Get Aleph number in 035$z with prefix, after removing any secondary 900 fields to avoid cluster problems in hathi"
 priority 60
 when
 (exists "900.a")
 then
-        prefix "900.a" with "(MH)Aleph"
-        changeSubField "900.a" to "z"
-        changeField "900" to "035"
+        combineFields "900" excluding ""
+        changeSubFieldExceptFirst "900.a" to "x"
+        removeSubField "900.x"
+        prefix "900.a" with "(MH)"
+        suffix "900.a" with "HVD01-Aleph"
+        copyField "900" to "035"
+        changeSubField "035.a" to "z" if (exists "035.a.*HVD01-Aleph")
+        replaceContents "035.z.(MH)" with "(MH)Aleph"
+        replaceContents "035.z.HVD01-Aleph" with ""
+        changeField "900" to "035"       
 end
 
 rule "5. change item field tag"
@@ -62,7 +69,7 @@ when
 (TRUE)
 then
    changeField "888" to "955"
-   changeSubField "955.a" to "b"
+//   changeSubField "955.a" to "b"
    removeSubField "955.8"
 end
 
