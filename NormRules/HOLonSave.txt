@@ -68,6 +68,12 @@ rule "copy public 583/1 or blank holdings notes to local field for discovery dis
 		removeField "993"
 		copyField "583" to "993"  if(exists "583.{1,*}")
 		copyField "583" to "993"  if(exists "583.{ ,*}")
+                prefix "993.a" with "Action: "
+                prefix "993.c" with "Time/date of action: "
+                prefix "993.i" with "Method of action: "                
+                prefix "993.l" with "Status: "
+                prefix "993.z" with "Note: "
+                suffix "993.*" with "." if (not exists "993.*.*.") 
 end
 
 rule "make 994u permalink for number"
