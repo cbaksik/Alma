@@ -1,0 +1,144 @@
+rule "clean-up"
+when 
+   (TRUE)
+then 
+    removeField "98*"
+end
+
+rule "Fix 2nd indicator for English"
+when
+    (exists "989.l.eng")
+then
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.The *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.An *")
+    changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.A *")
+end
+
+rule "Fix 2nd indicator for French"
+when
+    //(existsControl "008.{35,3}.fre")
+    (exists "989.l.fre")
+then
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.La *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Le *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Les *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Un *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Une *")
+    changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.L'*")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Des *")
+end
+
+rule "Fix 2nd indicator for Spanish"
+when
+    (exists "989.l.spa")
+then
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.El *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Lo *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.La *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Las *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Los *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Uno *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Una *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Un *")
+    changeSecondIndicator "245" to "5" if (exists "245.{*,*}.a.Unos *")
+    changeSecondIndicator "245" to "5" if (exists "245.{*,*}.a.Unas *")
+end
+
+rule "Fix 2nd indicator for German"
+when
+    (exists "989.l.ger")
+then
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Das *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Der *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Die *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Ein *")
+    changeSecondIndicator "245" to "5" if (exists "245.{*,*}.a.Eine *")
+    changeSecondIndicator "245" to "6" if (exists "245.{*,*}.a.Eines *")
+end
+
+rule "Fix 2nd indicator for Italian"
+when
+    (exists "989.l.ita")
+then
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Gli *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Gl' *")
+    changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.I *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Il *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.La *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Le *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Lo *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.L' *")
+end
+
+rule "Fix 2nd indicator for Dutch"
+when
+    (exists "989.l.dut")
+then
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Een *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Het *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.De *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Des *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Der *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.'s *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.'t *")
+    changeSecondIndicator "245" to "5" if (exists "245.{*,*}.a.Eene *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.'n *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Ene *")
+end
+
+rule "Fix 2nd indicator for Portuguese"
+when
+    (exists "989.l.por")
+then
+    changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.O *")
+    changeSecondIndicator "245" to "2" if (exists "245.{*,*}.a.A *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Os *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.As *")
+    changeSecondIndicator "245" to "3" if (exists "245.{*,*}.a.Um *")
+    changeSecondIndicator "245" to "4" if (exists "245.{*,*}.a.Uma *")
+end
+
+rule "Fix 1nd indicator "
+when
+    ((exists "100") or (exists "110") or (exists "111"))
+then
+    changeFirstIndicator "245" to "1"
+end
+
+rule "Construct 008, Remove fields from data loads that were used for mapping to holdings" 
+when
+    TRUE
+then
+    replaceControlContents "LDR.{7,1}.m" with "s"
+    replaceControlContents "LDR.{17,1}.#" with "5"
+    replaceControlContents "LDR.{18,1}.u" with "c"
+    // 008 construction
+    // this line for testing only - 
+removeControlField "008" 
+    addField "988.a.      c" 
+    suffixSubField "988.a" with "989.y" 
+    suffix "988.a" with "9999" 
+    suffixSubField "988.a" with "989.p" 
+    suffix "988.a" with "|r#p#r#####|###a0" 
+    suffixSubField "988.a" with "989.l" 
+    suffix "988.a" with " d" 
+    copyControlField "988.a" to "008" 
+    replaceControlContents "008.{17,1}.^" with " "
+    // clean up
+    changeFirstIndicator "245" to "0"
+    changeSecondIndicator "245" to "0"
+    changeField "440" to "830"
+    removeField "049"
+    removeField "099"
+    removeField "506"
+    removeField "843"
+    removeField "852"
+    removeField "853"
+    removeField "856"
+    removeField "908"
+    removeField "909"
+    removeField "920"
+    removeField "938"
+    //removeField "98*"
+    removeField "999"
+end
