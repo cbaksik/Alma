@@ -111,10 +111,10 @@ when
 then
     replaceControlContents "LDR.{7,1}.m" with "s"
     replaceControlContents "LDR.{17,1}.#" with "5"
-    replaceControlContents "LDR.{18,1}.u" with "c"
+    replaceControlContents "LDR.{18,1}" with "i"
     // 008 construction
     // this line for testing only - removeControlField "008" 
-    addField "988.a.      c" 
+    addField "988.a.######c" 
     suffixSubField "988.a" with "989.y" 
     suffix "988.a" with "9999" 
     suffixSubField "988.a" with "989.p" 
@@ -123,6 +123,7 @@ then
     suffix "988.a" with " d" 
     copyControlField "988.a" to "008" 
     replaceControlContents "008.{17,1}.^" with " "
+    replaceControlContents "008.{26,1}.*" with " "
     // clean up
     changeFirstIndicator "245" to "0"
     changeSecondIndicator "245" to "0"
