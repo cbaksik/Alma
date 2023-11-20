@@ -2,8 +2,14 @@ rule "for NET imports"
 when
    (exists "852.b.NET") or  (exists "852.c.NET") 
 then
-     addControlField "007.cr|cn |||||a|p"
-     addControlField "007.cr|cn |||||a|a"
      replaceControlContents "008.{6,2}" with "1z"
      //replaceControlContents "008.{20,2}" with "aa"  
+end
+
+rule "for NET imports 007"
+when
+   ((exists "852.b.NET") or  (exists "852.c.NET")) AND (exists "843.a.*")
+then
+     addControlField "007.cr|cn |||||a|p" 
+     addControlField "007.cr|cn |||||a|a"
 end
