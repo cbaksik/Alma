@@ -1,7 +1,7 @@
 rule "oclc data sync - identify manuscript collection - consult wiki for criteria, delete 951 first to avoid dupes"
 // these criteria are also used to reject records from worldcat updates -- if there are changes make them there too
 when
-       ((existsControl "LDR.{06,1}.d") OR (existsControl "LDR.{06,1}.t") OR (existsControl "LDR.{06,1}.f") OR (existsControl "LDR.{08,1}.a") OR (exists "040.e.amim|appm|dacs|dcrmg|dcrmm|dcrmmss")) 
+       ((existsControl "LDR.{06,1}.d") OR (existsControl "LDR.{06,1}.t") OR (existsControl "LDR.{06,1}.f") OR (existsControl "LDR.{08,1}.a") OR (exists "040.e.amim|appm|dacs|dcrmg|dcrmmss")) 
         AND (not exists "502")
         AND (not exists "533")
         AND (not exists "040.c.DLC")
