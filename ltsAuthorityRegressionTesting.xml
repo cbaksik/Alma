@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bib>
+    <record_format>marc21</record_format>
+    <linked_record_id/>
+    <author>Doe, John</author>
+    <holdings link="https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/99157251742503941/holdings"/>
+    <created_by>ID543140</created_by>
+    <created_date>2024-03-14Z</created_date>
+    <suppress_from_publishing>false</suppress_from_publishing>
+    <suppress_from_external_search>false</suppress_from_external_search>
+    <suppress_from_metadoor>false</suppress_from_metadoor>
+    <originating_system>Harvard University Library (Alma)</originating_system>
+    <cataloging_level desc="Default Level">00</cataloging_level>
+    <brief_level desc="Insufficient elements for reporting to OCLC">02</brief_level>
+    <record>
+        <leader>03501nam a22006855u 4500</leader>
+        <controlfield tag="008">240312s        xx            000 0 eng d</controlfield>
+        <datafield ind1="0" ind2="0" tag="245">
+            <subfield code="a">LTS RECORD FOR ALMA AUTHORITY CONTROL REGRESSION TESTING</subfield>
+            <subfield code="b">updated by API 20240315</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">Temple 610 headings - one defined in Names and one in LCSH</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">100 John Doe is undifferentiated and should not link</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">International Chamber of Commerce. International Court of Arbitration should flip to  International Court of Arbitration</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">710 Allied &amp;... should flip to Treaty of Versailles</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">650 Motion pictures x Periodicals x History should not flip</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">800 Sibelius - punctuation prevents it from linking</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">2nd Bible should link to LCSH, rather than partial link to LCNAMES a+p</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">World's Exposition $e should not get duplicated</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+            <subfield code="a">first Mohommad Ali should like to n 79027614 and not flip; second Ali should link to 400 in n 84104246 and flip</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Apuleius.</subfield>
+            <subfield code="t">Peri hermēneias</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321.</subfield>
+            <subfield code="t">Correspondence</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321.</subfield>
+            <subfield code="t">Epistolae</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+            <subfield code="x">Criticism and interpretation</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+            <subfield code="x">Criticism and interpretation</subfield>
+            <subfield code="v">Congresses</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321.</subfield>
+            <subfield code="t">Divina commedia</subfield>
+            <subfield code="x">Criticism and interpretation</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321.</subfield>
+            <subfield code="t">Divina commedia</subfield>
+            <subfield code="x">Criticism and interpretation</subfield>
+            <subfield code="v">Congresses</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321.</subfield>
+            <subfield code="t">Divina commedia</subfield>
+            <subfield code="v">Congresses</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+            <subfield code="v">Bibliography</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+            <subfield code="v">Art</subfield>
+            <subfield code="v">Pictorial works</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+            <subfield code="x">Language</subfield>
+            <subfield code="v">Congresses</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+            <subfield code="x">Appreciation</subfield>
+            <subfield code="z">Italy</subfield>
+            <subfield code="v">Pictorial works</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Dante Alighieri,</subfield>
+            <subfield code="d">1265-1321</subfield>
+            <subfield code="x">Appreciation</subfield>
+            <subfield code="z">Italy</subfield>
+            <subfield code="z">Ravenna</subfield>
+            <subfield code="v">Pictorial works</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="600">
+            <subfield code="a">Shakespeare, William,</subfield>
+            <subfield code="d">1564-1616.</subfield>
+            <subfield code="x">Histories</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="600">
+            <subfield code="a">Shakespeare, William,</subfield>
+            <subfield code="d">1564-1616.</subfield>
+            <subfield code="x">Comedies</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="600">
+            <subfield code="a">Dewey, John,</subfield>
+            <subfield code="d">1859-1952.</subfield>
+            <subfield code="t">Ethics</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="600">
+            <subfield code="a">Dewey, John,</subfield>
+            <subfield code="d">1859-1952.</subfield>
+            <subfield code="x">Ethics</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="600">
+            <subfield code="a">Eliot, T. S.</subfield>
+            <subfield code="q">(Thomas Stearns),</subfield>
+            <subfield code="d">1888-1965.</subfield>
+            <subfield code="t">Waste land</subfield>
+            <subfield code="x">Criticism and interpretation</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="0" tag="610">
+            <subfield code="a">Temple of Divus Julius (Rome, Italy)</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="0" tag="610">
+            <subfield code="a">Temple of Artemis (Ephesus)</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="0" tag="610">
+            <subfield code="a">World Trade Center (New York, N.Y.)</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="0" tag="610">
+            <subfield code="a">Catholic Church</subfield>
+            <subfield code="x">Ambrosian rite</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="630">
+            <subfield code="a">Beowulf</subfield>
+            <subfield code="v">Concordances</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="630">
+            <subfield code="a">Bible</subfield>
+            <subfield code="p">New Testament</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="630">
+            <subfield code="a">Bible</subfield>
+            <subfield code="p">New Testament</subfield>
+            <subfield code="x">Criticism, interpretation, etc.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Motion pictures</subfield>
+            <subfield code="x">Periodicals</subfield>
+            <subfield code="x">History</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Canis familiarus</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Canis familiarus</subfield>
+            <subfield code="z">Italy</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Canis familiarus</subfield>
+            <subfield code="x">Adoption</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Dogs</subfield>
+            <subfield code="x">Adoption</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Dogs</subfield>
+            <subfield code="x">Behavior</subfield>
+            <subfield code="v">Anecdotes</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Dogs</subfield>
+            <subfield code="x">Behavior</subfield>
+            <subfield code="y">Wyoming</subfield>
+            <subfield code="v">Anecdotes</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Nazi concentration camps</subfield>
+            <subfield code="z">Poland</subfield>
+            <subfield code="v">Fiction</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Nazi concentration camps</subfield>
+            <subfield code="x">Prisoners</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+            <subfield code="a">Bankruptcy</subfield>
+            <subfield code="z">Michigan</subfield>
+            <subfield code="z">Detroit</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Germany</subfield>
+            <subfield code="x">Politics and government</subfield>
+            <subfield code="y">1789-1900</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Germany</subfield>
+            <subfield code="x">Politics and government</subfield>
+            <subfield code="y">19th century</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Česká republika</subfield>
+            <subfield code="z">Prague</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Germany</subfield>
+            <subfield code="x">Politics and government</subfield>
+            <subfield code="y">19th century</subfield>
+            <subfield code="v">Congresses</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Germany</subfield>
+            <subfield code="x">Emigration and immigration</subfield>
+            <subfield code="x">History</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Germany</subfield>
+            <subfield code="x">Emigration and immigration</subfield>
+            <subfield code="x">History</subfield>
+            <subfield code="v">Sources</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Genoa (Italy)</subfield>
+            <subfield code="x">History</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Genoa (Italy)</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+            <subfield code="a">Massachusetts</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Doe, John</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Matthaiou, Sophia</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Eliot, T. S.</subfield>
+            <subfield code="q">(Thomas Stearns),</subfield>
+            <subfield code="d">1888-1965.</subfield>
+            <subfield code="t">Waste land</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Karg-Elert, Sigfrid,</subfield>
+            <subfield code="d">1877-1933.</subfield>
+            <subfield code="t">Sonatas,</subfield>
+            <subfield code="m">flute,</subfield>
+            <subfield code="n">op. 140,</subfield>
+            <subfield code="r">F♯ minor</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="i">Container of (expression):</subfield>
+            <subfield code="a">Karg-Elert, Sigfrid,</subfield>
+            <subfield code="d">1877-1933.</subfield>
+            <subfield code="t">Sonatas,</subfield>
+            <subfield code="m">flute,</subfield>
+            <subfield code="n">op. 140,</subfield>
+            <subfield code="r">F♯ minor</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="i">Container of (expression):</subfield>
+            <subfield code="a">Karg-Elert, Sigfrid,</subfield>
+            <subfield code="d">1877-1933.</subfield>
+            <subfield code="t">Sonatas,</subfield>
+            <subfield code="m">flute,</subfield>
+            <subfield code="n">op. 140,</subfield>
+            <subfield code="r">F♯ minor;</subfield>
+            <subfield code="o">arranged</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Mohammad, Ali</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="700">
+            <subfield code="a">Mohammad Ali</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Le Guin, Ursula K.,</subfield>
+            <subfield code="d">1929-2018.</subfield>
+            <subfield code="t">Bertha the Dog</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="710">
+            <subfield code="a">Massachusetts</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="710">
+            <subfield code="i">Facsimile from:</subfield>
+            <subfield code="a">French National Library</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="710">
+            <subfield code="a">International Chamber of Commerce.</subfield>
+            <subfield code="b">International Court of Arbitration</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+            <subfield code="a">Allied and Associated Powers (1914-1920).</subfield>
+            <subfield code="t">Treaty of Versailles</subfield>
+            <subfield code="d">(1919 June 28)</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+            <subfield code="a">Germany.</subfield>
+            <subfield code="t">Treaty of Versailles</subfield>
+            <subfield code="d">(1919 June 28)</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+            <subfield code="a">McFarland &amp; Company</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="711">
+            <subfield code="a">World's Columbian Exposition</subfield>
+            <subfield code="d">(1893 :</subfield>
+            <subfield code="c">Chicago, Ill.).</subfield>
+            <subfield code="e">World's Congress Auxiliary</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="800">
+            <subfield code="a">Grey, Marina.</subfield>
+            <subfield code="t">Saga de l'exil</subfield>
+            <subfield code="v">2</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="800">
+            <subfield code="a">Sibelius, Jean,</subfield>
+            <subfield code="d">1865-1957.</subfield>
+            <subfield code="t">Works.</subfield>
+            <subfield code="f">1998 ;</subfield>
+            <subfield code="v">ser. 1, v. 99</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="800">
+            <subfield code="a">Sibelius, Jean,</subfield>
+            <subfield code="d">1865-1957.</subfield>
+            <subfield code="t">Works.</subfield>
+            <subfield code="f">1998</subfield>
+            <subfield code="v">ser. 1, v. 99</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="830">
+            <subfield code="3">&lt;2008-&gt;:</subfield>
+            <subfield code="a">European economy</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="4" tag="830">
+            <subfield code="a">The Penguin English Library</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="3" tag="830">
+            <subfield code="a">Le Chemin</subfield>
+            <subfield code="v">check indicator - past problem: if it flips it will relink and flip again to Museums in the Nile Delta</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="830">
+            <subfield code="a">Studi e ricerche di cultura religiosa.</subfield>
+            <subfield code="p">Testi e monografie ;</subfield>
+            <subfield code="v">11</subfield>
+        </datafield>
+    </record>
+</bib>
