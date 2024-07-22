@@ -153,6 +153,16 @@
             <subfield code="t">Waste land</subfield>
             <subfield code="x">Criticism and interpretation</subfield>
         </datafield>
+         <datafield ind1="2" ind2="0" tag="610">
+            <subfield code="a">Allied and Associated Powers (1914-1920).</subfield>
+            <subfield code="t">Treaty of Versailles</subfield>
+            <subfield code="d">(1919 June 28)</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="0" tag="610">
+            <subfield code="a">Germany.</subfield>
+            <subfield code="t">Treaty of Versailles</subfield>
+            <subfield code="d">(1919 June 28)</subfield>
+        </datafield>
         <datafield ind1="2" ind2="0" tag="610">
             <subfield code="a">Temple of Divus Julius (Rome, Italy)</subfield>
         </datafield>
@@ -338,6 +348,16 @@
         </datafield>
         <datafield ind1="2" ind2=" " tag="710">
             <subfield code="a">McFarland &amp; Company</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+            <subfield code="a">Uruguay Round</subfield>
+            <subfield code="d">(1987-1994).</subfield>
+            <subfield code="e">Trade Negotiations Committee</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+            <subfield code="a">Uruguay Round</subfield>
+            <subfield code="d">(1987-1994).</subfield>
+            <subfield code="e">Trade Negotiations Committee.</subfield>
         </datafield>
         <datafield ind1="2" ind2=" " tag="711">
             <subfield code="a">World's Columbian Exposition</subfield>
