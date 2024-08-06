@@ -4,11 +4,8 @@
     <linked_record_id/>
     <author>Doe, John</author>
     <holdings link="https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/99157251742503941/holdings"/>
-    <created_by>ID543140</created_by>
-    <created_date>2024-03-14Z</created_date>
-    <suppress_from_publishing>false</suppress_from_publishing>
-    <suppress_from_external_search>false</suppress_from_external_search>
-    <suppress_from_metadoor>false</suppress_from_metadoor>
+    <suppress_from_publishing>true</suppress_from_publishing>
+    <suppress_from_external_search>true</suppress_from_external_search>
     <originating_system>Harvard University Library (Alma)</originating_system>
     <cataloging_level desc="Default Level">00</cataloging_level>
     <brief_level desc="Insufficient elements for reporting to OCLC">02</brief_level>
