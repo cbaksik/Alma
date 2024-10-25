@@ -1,0 +1,9 @@
+rule "Change 583 indicator to private" 
+when 
+    exists "583" 
+then 
+    changeFirstIndicator "583" to "0" if (not exists "583.a.committed to retain")
+    removeField "993"
+    copyField "583" to "993"  if(exists "583.{1,*}")
+    copyField "583" to "993"  if(exists "583.{ ,*}")
+end 
