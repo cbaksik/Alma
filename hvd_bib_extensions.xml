@@ -46,8 +46,6 @@ xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
                     <value code="9">Undefined</value>
                 </values>
             </second_indicator_configuration>
-        </data_field_configuration>
-        <data_field_configuration repeatable="true" mandatory="false" tag="690" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <sub_fields_list>
                 <sub_field_configuration code="5" mandatory="false" repeatable="false">
                     <description>Institution to which field applies</description>
@@ -61,8 +59,6 @@ xsi:noNamespaceSchemaLocation="marc21_profile_configuration.xsd">
                     <value code="9">Undefined</value>
                 </values>
             </second_indicator_configuration>
-        </data_field_configuration>
-        <data_field_configuration repeatable="true" mandatory="false" tag="691" xmlns="http://com/exlibris/repository/mdprofile/xmlbeans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <sub_fields_list>
                 <sub_field_configuration code="5" mandatory="false" repeatable="false">
                     <description>Institution to which field applies</description>
