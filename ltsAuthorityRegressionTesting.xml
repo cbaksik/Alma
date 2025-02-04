@@ -48,6 +48,10 @@
             <subfield code="t">Peri hermēneias</subfield>
         </datafield>
         <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Apuleius.</subfield>
+            <subfield code="t">Peri hermēneias</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
             <subfield code="a">Dante Alighieri,</subfield>
             <subfield code="d">1265-1321</subfield>
         </datafield>
@@ -150,7 +154,103 @@
             <subfield code="t">Waste land</subfield>
             <subfield code="x">Criticism and interpretation</subfield>
         </datafield>
-         <datafield ind1="2" ind2="0" tag="610">
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Alcestis</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Andromache</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Andromeda</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Archelaos</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Bacchae</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Bellerophon</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Cresphontes</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Cyclops</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Hecuba</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Medea</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Orestes</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="600">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Supplices</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Alcestis</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Andromache</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Andromeda</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Archelaos</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Bacchae</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Bellerophon</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Cresphontes</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Cyclops</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Hecuba</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Medea</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Orestes</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+            <subfield code="a">Euripides.</subfield>
+            <subfield code="t">Supplices</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="0" tag="610">
             <subfield code="a">Allied and Associated Powers (1914-1920).</subfield>
             <subfield code="t">Treaty of Versailles</subfield>
             <subfield code="d">(1919 June 28)</subfield>
