@@ -1,0 +1,39 @@
+rule "Primo VE - Lds07"
+	when
+		MARC."264" has any "3,a-c" AND
+		MARC."264".ind"2"  equals "0"
+	then
+		set TEMP"1" to MARC."264" sub without sort "3,a-c"
+		add prefix (TEMP"1","Produced: ")
+		create pnx."display"."lds07" with TEMP"1"
+end
+
+rule "Primo VE - 264 2nd ind 2"
+	when
+		MARC."264" has any "3,a-c" AND
+		MARC."264".ind"2"  equals "2"
+	then
+		set TEMP"1" to MARC."264" sub without sort "3,a-c"
+		add prefix (TEMP"1","Distributed: ")
+		create pnx."display"."lds07" with TEMP"1"
+end
+
+rule "Primo VE - 264 2nd ind 3"
+	when
+		MARC."264" has any "3,a-c" AND
+		MARC."264".ind"2"  equals "3"
+	then
+		set TEMP"1" to MARC."264" sub without sort "3,a-c"
+		add prefix (TEMP"1","Manufactured: ")
+		create pnx."display"."lds07" with TEMP"1"
+end
+
+rule "Primo VE - 264 2nd ind 4"
+	when
+		MARC."264" has any "3,a-c" AND
+		MARC."264".ind"2"  equals "4"
+	then
+		set TEMP"1" to MARC."264" sub without sort "3,a-c"
+		add prefix (TEMP"1","Copyright notice: ")
+		create pnx."display"."lds07" with TEMP"1"
+end
