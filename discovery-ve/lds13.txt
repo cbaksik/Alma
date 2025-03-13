@@ -110,3 +110,210 @@ rule "Primo VE - lds13 518"
 		add prefix (TEMP"1","Event: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
+
+rule "Primo VE - Lds13 522"
+	when
+		MARC."522" has any "a"
+	then
+		set TEMP"1" to MARC."522" subfields "a" 
+		add prefix (TEMP"1","Geographic coverage: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - Lds13 525"
+	when
+		MARC."525" has any "a"
+	then
+		create pnx."display"."lds13" with MARC "525" sub without sort "a"
+end
+
+rule "Primo VE - Lds13 530"
+	when
+		MARC."530" has any "a,b"
+	then
+		create pnx."display"."lds13" with MARC "530" sub without sort "a-b" 
+end
+
+rule "Primo VE - lds13 532"
+	when
+		MARC."532" has any "3,a"
+	then
+		set TEMP"1" to MARC."532" subfields "3,a" delimited by ": " remove substring using regex ":" 
+		add prefix (TEMP"1","Accessibility: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 533"
+	when
+		MARC."533" has any "3,a-n" 
+	then
+		set TEMP"1" to MARC."533" sub without sort "3,a-n"
+		add prefix (TEMP"1","Reproduction: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - Lds13 534"
+	when
+		MARC."534" has any "3,a-z"
+	then
+		create pnx."display"."lds13" with MARC "534" sub without sort "3,a-z"
+end
+
+rule "Primo VE - lds13 535"
+	when
+		MARC."535" has any "3,a-c" 
+	then
+		set TEMP"1" to MARC."535" sub without sort "3,a-c"
+		add prefix (TEMP"1","Originals: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 536"
+	when
+		MARC."536" has any "a-h"
+	then
+		set TEMP"1" to MARC."536" subfields "a-h" delimited by " -- " remove substring using regex ":" 
+		add prefix (TEMP"1","Funding: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 540"
+	when
+		MARC."540" has any "3,a-q"
+	then
+		set TEMP"1" to MARC."540" subfields "3,a-q" delimited by " -- " remove substring using regex ":" 
+		add prefix (TEMP"1","Terms of use: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 544"
+	when
+		MARC."544" has any "3,a-e,n" 
+	then
+		set TEMP"1" to MARC."544" sub without sort "3,a-e,n" 
+		add prefix (TEMP"1","Related materials: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 546"
+	when
+		MARC."546" has any "3,a-b" 
+	then
+		set TEMP"1" to MARC."546" sub without sort "3,a-b" 
+		add prefix (TEMP"1","Language: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - Lds13 547"
+	when
+		MARC."547" has any "a"
+	then
+		create pnx."display"."lds13" with MARC "547" sub without sort "a"
+end
+
+rule "Primo VE - Lds13 550"
+	when
+		MARC."550" has any "a"
+	then
+		create pnx."display"."lds13" with MARC "550" sub without sort "a"
+end
+
+rule "Primo VE - Lds13 556"
+	when
+		MARC."556" has any "a,z"
+	then
+		create pnx."display"."lds13" with MARC "556" sub without sort "a,z"
+end
+
+rule "Primo VE - Lds13 561"
+	when
+		MARC."561" has any "3,a" AND 
+		MARC."561".ind"1" equals "1"
+	then
+		set TEMP"1" to MARC."561" subfields "3,a" 
+		add prefix (TEMP"1","Provenance: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 563"
+	when
+		MARC."563" has any "3,a" 
+	then
+		set TEMP"1" to MARC."563" sub without sort "3,a" 
+		add prefix (TEMP"1","Binding: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 565"
+	when
+		MARC."565" has any "3,a-e" 
+	then
+		set TEMP"1" to MARC."565" sub without sort "3,a-e" 
+		add prefix (TEMP"1","Variables: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 567"
+	when
+		MARC."567" has any "a,b" 
+	then
+		set TEMP"1" to MARC."567" sub without sort "a,b" 
+		add prefix (TEMP"1","Methodology: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - Lds13 581"
+	when
+		MARC."581" has any "3,a,z" 
+	then
+		set TEMP"1" to MARC."581" subfields "3,a,z" 
+		add prefix (TEMP"1","Publications: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - lds13 583"
+	when
+		MARC."583" has any "3,a-o,z" AND 
+		MARC."583".ind"1" equals "1"
+	then
+		set TEMP"1" to MARC."583" subfields "3,a-o,z" delimited by " -- " remove substring using regex ":" 
+		add prefix (TEMP"1","Action: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - Lds13 585"
+	when
+		MARC."585" has any "3,a"
+	then
+		create pnx."display"."lds13" with MARC "585" sub without sort "3,a"
+end
+
+rule "Primo VE - Lds13 586"
+	when
+		MARC."586" has any "3,a" 
+	then
+		set TEMP"1" to MARC."586" subfields "3,a" 
+		add prefix (TEMP"1","Awards: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - Lds13 588"
+	when
+		MARC."588" has any "a" AND 
+		(MARC."588".ind"1" equals " " OR 
+		MARC."588".ind"1" equals "0")
+	then
+		set TEMP"1" to MARC."588" subfields "a" 
+		add prefix (TEMP"1","Source of Description: ")
+		create pnx."display"."lds13" with TEMP"1"
+end
+
+rule "Primo VE - Lds13 588 1st ind 1"
+	when
+		MARC."588" has any "a" AND 
+		MARC."588".ind"1" equals "1"
+	then
+		set TEMP"1" to MARC."588" subfields "a" 
+		add prefix (TEMP"1","Latest issue consulted: ")
+		create pnx."display"."lds13" with TEMP"1"
+end

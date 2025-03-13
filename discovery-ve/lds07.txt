@@ -37,3 +37,14 @@ rule "Primo VE - 264 2nd ind 4"
 		add prefix (TEMP"1","Copyright notice: ")
 		create pnx."display"."lds07" with TEMP"1"
 end
+
+// begin 880
+
+
+rule "Primo VE - Lds07 880 264"
+	when
+		MARC."880" has any "3,a-d,u" AND
+		MARC."880"."6" match "264-.*"  
+	then
+		create pnx."display"."lds07" with MARC "880" sub without sort "3,a-d,u"
+end
