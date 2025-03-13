@@ -21,10 +21,9 @@ rule "Primo VE - publisher 264 2nd ind null"
 		create pnx."display"."publisher" with MARC "264" sub without sort "3,a-c"
 end
 
-rule "Primo VE - publisher 362 1st ind 0"
+rule "Primo VE - publisher 362"
 	when
-		MARC is "362"."a" AND
-		MARC."362".ind"1"  equals "0"
+		MARC is "362"."a" 
 	then
 		create pnx."display"."publisher" with MARC "362" sub without sort "a,z"
 end

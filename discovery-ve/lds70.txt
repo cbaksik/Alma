@@ -7,13 +7,13 @@ rule "Primo VE - Lds70"
 		replace wrapping delimiters (TEMP"1","a",""," ")
 		replace wrapping delimiters (TEMP"1","b",""," ")
 		replace wrapping delimiters (TEMP"1","d",""," ")
-		replace wrapping delimiters (TEMP"1","n","\(","\). ")
-		replace wrapping delimiters (TEMP"1","e","\(","\). ")
+		replace wrapping delimiters (TEMP"1","n","(","). ")
+		replace wrapping delimiters (TEMP"1","e","(","). ")
 		replace wrapping delimiters (TEMP"1","p"," Or "," ")
 		replace wrapping delimiters (TEMP"1","r"," Total individuals: ",".")
-		replace wrapping delimiters (TEMP"1","s"," Total performers: ",".)
+		replace wrapping delimiters (TEMP"1","s"," Total performers: ",".")
 		replace wrapping delimiters (TEMP"1","t"," Total ensembles: ",".")
-		replace wrapping delimiters (TEMP"1","t"," . Note: ",".")
+		replace wrapping delimiters (TEMP"1","v"," Note: ",".")
 		create pnx."display"."lds70" with TEMP"1"
 end
 
@@ -30,13 +30,13 @@ rule "Primo VE - Lds70 - 880"
 		replace wrapping delimiters (TEMP"1","a",""," ")
 		replace wrapping delimiters (TEMP"1","b",""," ")
 		replace wrapping delimiters (TEMP"1","d",""," ")
-		replace wrapping delimiters (TEMP"1","n","\(","\). ")
-		replace wrapping delimiters (TEMP"1","e","\(","\). ")
+		replace wrapping delimiters (TEMP"1","n","(","). ")
+		replace wrapping delimiters (TEMP"1","e","(","). ")
 		replace wrapping delimiters (TEMP"1","p"," Or "," ")
 		replace wrapping delimiters (TEMP"1","r"," Total individuals: ",".")
-		replace wrapping delimiters (TEMP"1","s"," Total performers: ",".)
+		replace wrapping delimiters (TEMP"1","s"," Total performers: ",".")
 		replace wrapping delimiters (TEMP"1","t"," Total ensembles: ",".")
-		replace wrapping delimiters (TEMP"1","t"," . Note: ",".")
+		replace wrapping delimiters (TEMP"1","v"," Note: ",".")
 		create pnx."display"."lds70" with TEMP"1"
 end
 
