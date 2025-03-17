@@ -38,6 +38,14 @@ rule "Primo VE - 264 2nd ind 4"
 		create pnx."display"."lds07" with TEMP"1"
 end
 
+rule "Primo VE - 257"
+	when
+		MARC is "257"
+	then
+		set TEMP"1" to MARC."257" sub without sort "a"
+		add prefix (TEMP"1","Country of producer: ")
+		create pnx."display"."lds07" with TEMP"1"
+end
 // begin 880
 
 
@@ -47,4 +55,13 @@ rule "Primo VE - Lds07 880 264"
 		MARC."880"."6" match "264-.*"  
 	then
 		create pnx."display"."lds07" with MARC "880" sub without sort "3,a-d,u"
+end
+
+
+rule "Primo VE - Lds07 880 257"
+	when
+		MARC."880" has any "a" AND
+		MARC."880"."6" match "257-.*"  
+	then
+		create pnx."display"."lds07" with MARC "880" sub without sort "a"
 end
