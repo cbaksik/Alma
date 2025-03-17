@@ -1,0 +1,19 @@
+
+
+111 BO FACET: 0,1,2,4,5,6,7,8,9,I,l,w
+i.e.: acdefgjknpqtu
+(j is relator so shouldn't be in there), so : 
+a c d e f g k n p q t u
+
+aafg linking: agqcdne 
+in order for readability: a c d e g q n
+
+VE 111 display: a-u
+$$Q a,c,d,e,f,k,l,n,p,q,s,t,u
+
+VE search lds06: a-f,k,l,n,p,q,s,t,u
+acdef k l n p q s t u
+
+
+VE facet: a c d e f g k n p q t u
+
