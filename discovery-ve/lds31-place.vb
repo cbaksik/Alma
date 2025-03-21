@@ -2,9 +2,9 @@ rule "Primo VE - Lds31"
 	when
 		MARC is "752"
 	then
-		set TEMP"1" to MARC."752" sub without sorting "a,b,c,d" delimited by " -- "
+		set TEMP"1" to MARC."752" sub without sorting "a-d,f-h" delimited by " -- "
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
-        add prefix (TEMP"1","Hierarchical: ")
+		add prefix (TEMP"1","Hierarchical: ")
 		set TEMP"2" to MARC."752" sub without sort "e"
 		add prefix (TEMP"2","[")
 		add suffix (TEMP"2","]")
@@ -58,7 +58,7 @@ rule "Primo VE - lds38 880-752"
         MARC is "880" AND
         MARC."880"."6" match "752-.*"
 	then
-		set TEMP"1" to MARC."880" sub without sorting "a,b,c,d" delimited by " -- "
+		set TEMP"1" to MARC."880" sub without sorting "a-d,f-h" delimited by " -- "
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
         add prefix (TEMP"1","Hierarchical: ")
 		set TEMP"2" to MARC."880" sub without sort "e"
