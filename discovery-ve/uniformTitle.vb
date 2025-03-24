@@ -7,7 +7,7 @@ rule "Primo VE - Uniform Title 130"
 		remove substring using regex (TEMP"4","(;|,|\\.)+$")
 		add prefix (TEMP"4","$$Q")
 		concatenate with delimiter (TEMP"1",TEMP"4","")
-		set pnx."display"."unititle" to TEMP"1"
+		create pnx."display"."unititle" with TEMP"1"
 end
 
 rule "Primo VE - Uniform Title 240"
@@ -29,7 +29,7 @@ rule "Primo VE - Alternate Uniform Title 880-130"
 		MARC."880"."6" match "130-.*"
 	then
 		set TEMP"1" to MARC."880" excluding num subfields without sort
-		set pnx."display"."alternate_uniform_title" to TEMP"1"
+		create pnx."display"."alternate_uniform_title" with TEMP"1"
 end
 
 rule "Primo VE - Alternate Uniform Title 880-240"
@@ -38,7 +38,7 @@ rule "Primo VE - Alternate Uniform Title 880-240"
 		MARC."880"."6" match "240-.*"
 	then
 		set TEMP"1" to MARC."880" excluding num subfields without sort
-        set pnx."display"."alternate_uniform_title" to TEMP"1"
+		create pnx."display"."alternate_uniform_title" with TEMP"1"
 end
 
 rule "Primo VE - Alternate Uniform Title 880-243"
@@ -47,5 +47,5 @@ rule "Primo VE - Alternate Uniform Title 880-243"
 		MARC."880"."6" match "243-.*"
 	then
 		set TEMP"1" to MARC."880" excluding num subfields without sort
-        set pnx."display"."alternate_uniform_title" to TEMP"1"
+		create pnx."display"."alternate_uniform_title" with TEMP"1"
 end
