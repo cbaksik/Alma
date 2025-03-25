@@ -52,7 +52,11 @@ end
 rule "Primo VE - Lds07 880 264"
 	when
 		MARC."880" has any "3,a-d,u" AND
-		MARC."880"."6" match "264-.*"  
+		MARC."880"."6" match "264-.*" AND
+		(MARC."880".ind"2" equals "0" OR
+		MARC."880".ind"2" equals "2" OR
+		MARC."880".ind"2" equals "3" OR
+		MARC."880".ind"2" equals "4")
 	then
 		create pnx."display"."lds07" with MARC "880" sub without sort "3,a-d,u"
 end

@@ -33,15 +33,17 @@ end
 rule "Primo VE - publisher 260-880"
 	when
 		MARC."880" has any "3,a-g" AND
-		MARC."880"."6" match "260-.*" 
+		MARC."880"."6" match "260-.*"
 	then
 		create pnx."display"."publisher" with MARC "880" sub without sort "3,a-g"
 end
 
-rule "Primo VE - publisher 264-880 any ind"
+rule "Primo VE - publisher 264-880"
 	when
 		MARC."880" has any "3,a-g" AND
-		MARC."880"."6" match "264-.*" 
+		MARC."880"."6" match "264-.*" AND
+		(MARC."880".ind"2"  equals "1" OR
+		MARC."880".ind"2"  equals " ")
 	then
 		create pnx."display"."publisher" with MARC "880" sub without sort "3,a-g"
 end

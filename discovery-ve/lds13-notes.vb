@@ -184,7 +184,6 @@ rule "Primo VE - lds13 546"
 		MARC."546" has any "3,a-b" 
 	then
 		set TEMP"1" to MARC."546" sub without sort "3,a-b" 
-		add prefix (TEMP"1","Language: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
 
