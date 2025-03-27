@@ -28,8 +28,8 @@ rule "Primo VE - Date Of Publication 008 - real one"
 		replace string by string (TEMP"1","9{4}","\\[\\?\\]")
 		replace string by string (TEMP"1","[^0-9]","\\?")
 		replace string by string (TEMP"2","u{4}","\\[\\?\\]")
-		replace string by string (TEMP"2","9{4}","-")
 		replace string by string (TEMP"2","[^0-9]","\\?")
+		replace string by string (TEMP"2","9{4}"," ")
 		concatenate with delimiter (TEMP"1",TEMP"2","-")
 		set pnx."display"."creationdate" to TEMP"1"
 end
