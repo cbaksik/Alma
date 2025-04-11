@@ -20,7 +20,7 @@ rule "Primo VE - Identifier 028"
 	when
 		MARC is "028"."a"
 	then
-		set TEMP"1" to MARC "028"."a"
+		set TEMP"1" to MARC "028" sub without sort "a,b,q"
 		add prefix (TEMP"1","$$CPUBNUM$$V")
 		create pnx."display"."identifier" with TEMP"1"
 end
