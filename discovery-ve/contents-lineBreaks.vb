@@ -7,7 +7,7 @@ rule "Primo VE - contents 505"
 	then
 		set TEMP"1" to MARC."505" sub without sort "a,g,r,t" 
 		add prefix (TEMP"1","<span class='hvd-toc-fields'>")
-		replace string by string (TEMP"1"," -- ","<br> &middot; ")
+		replace string by string (TEMP"1"," -- ","<span class='hvd-toc-chapter'><br></span>")
 		add suffix (TEMP"1","</span>")
 		create pnx."display"."contents" with TEMP"1"
 end
@@ -19,7 +19,7 @@ rule "Primo VE - contents 505 1st ind 1"
 	then
 		set TEMP"1" to MARC."505" sub without sort "a,g,r,t" 
 		add prefix (TEMP"1","<span class='hvd-toc-fields'>Incomplete contents: ")
-		replace string by string (TEMP"1"," -- "," <br> &middot; ")
+		replace string by string (TEMP"1"," -- ","<span class='hvd-toc-chapter'><br></span>")
 		add suffix (TEMP"1","</span>")
 		create pnx."display"."contents" with TEMP"1"
 end
@@ -31,7 +31,7 @@ rule "Primo VE - contents 505 1st ind 2"
 	then
 		set TEMP"1" to MARC."505" sub without sort "a,g,r,t" 
 		add prefix (TEMP"1","<span class='hvd-toc-fields'>Partial contents: ")
-		replace string by string (TEMP"1"," -- ","<br> &middot; ")
+		replace string by string (TEMP"1"," -- ","<span class='hvd-toc-chapter'><br></span>")
 		add suffix (TEMP"1","</span>")
 		create pnx."display"."contents" with TEMP"1"
 end
