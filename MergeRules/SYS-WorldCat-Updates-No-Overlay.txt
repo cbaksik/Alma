@@ -8,7 +8,6 @@ then
    add MARC."043" if does not exists
    add MARC."050" if does not exists
    add MARC."060" if does not exists
-   add MARC."043" if does not exists
    add MARC."246" excluding second indicator "8"
    add MARC."247" 
    add MARC."340" if does not exists
