@@ -24,7 +24,6 @@ rule "Primo VE - Lds31 - 751"
 		replace wrapping delimiters (TEMP"1","a","","")		
 		replace wrapping delimiters (TEMP"1","g"," -- ","")		
 		replace wrapping delimiters (TEMP"1","e"," [","]")
-		add prefix (TEMP"1","Geographic name: ")
 		add suffix (TEMP"1","$$Q")
 		set TEMP"2" to MARC."751" sub without sort "a,g"
 		concatenate with delimiter (TEMP"1",TEMP"2","")
