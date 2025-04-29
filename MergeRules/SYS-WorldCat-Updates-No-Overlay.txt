@@ -1,4 +1,4 @@
-rule "For incoming WorldCat Updates"
+rule "For incoming WorldCat Updates; Alma record is preferred"
 when
     merge
 then
