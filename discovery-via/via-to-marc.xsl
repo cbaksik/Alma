@@ -2,16 +2,24 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xlink="http://www.w3.org/TR/xlink"
-	exclude-result-prefixes="xlink">
+	xmlns:ino="http://namespaces.softwareag.com/tamino/response2"
+	exclude-result-prefixes="ino">
 	
 	<xsl:output method="xml" indent="yes"/>
 	
-	<xsl:template match="/">
+	<xsl:template match="/ino:request">
 		
 		<ListRecords xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">	
 			
-			<xsl:for-each select="viaRecord">
-				
+			<xsl:apply-templates select="ino:object/viaRecord"/>
+
+		</ListRecords>
+		
+	</xsl:template>
+
+	<xsl:template match="viaRecord">
+
+
 				<record>
 					
 					<header>
@@ -774,10 +782,8 @@
 						</record>
 					</metadata>
 				</record>				
-				
-			</xsl:for-each>
-		</ListRecords>
-		
-	</xsl:template>
-	
+
+
+	</xsl:template>	
+
 </xsl:stylesheet>
