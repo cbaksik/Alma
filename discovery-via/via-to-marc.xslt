@@ -34,15 +34,8 @@
 								<xsl:text>rb            000 i zxx d</xsl:text>
 							</controlfield>
 							
-							<!-- <datafield tag="035" ind1=" " ind2=" ">
-								<subfield code="a">
-									<xsl:text>(JSTOR)</xsl:text>
-									<xsl:value-of select="recordId"/>
-								</subfield>
-							</datafield> -->
-							
 							<xsl:for-each select="work/itemIdentifier">
-								<datafield tag="097" ind1=" " ind2=" ">
+								<datafield tag="097" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="type"/>
 										<xsl:text> </xsl:text>
@@ -51,8 +44,32 @@
 								</datafield>
 							</xsl:for-each>
 							
+							<xsl:for-each select="work/oliviaId">
+								<datafield tag="097" ind1=" " ind2="9">
+									<subfield code="a">
+										<xsl:value-of select="."/>
+									</subfield>
+								</datafield>
+							</xsl:for-each>
+							
+							<xsl:for-each select="work/workRecordId">
+								<datafield tag="097" ind1=" " ind2="9">
+									<subfield code="a">
+										<xsl:value-of select="."/>
+									</subfield>
+								</datafield>
+							</xsl:for-each>
+							
+							<xsl:for-each select="work/containerId">
+								<datafield tag="097" ind1=" " ind2="9">
+									<subfield code="a">
+										<xsl:value-of select="."/>
+									</subfield>
+								</datafield>
+							</xsl:for-each>
+							
 							<xsl:for-each select="work/classification">
-								<datafield tag="098" ind1=" " ind2=" ">
+								<datafield tag="098" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="type"/>
 										<xsl:text> </xsl:text>
@@ -80,7 +97,7 @@
 									<xsl:value-of select="work/title[1]/textElement"/>
 								</subfield>
 							</datafield>
-
+							
 							<xsl:for-each select="work/creatorDisplay">
 								<datafield tag="245" ind1="1" ind2="0">
 									<subfield code="c">
@@ -135,17 +152,6 @@
 								</datafield>
 							</xsl:for-each>
 							
-							<xsl:for-each select="work/workType">
-								<datafield tag="655" ind1=" " ind2="7">
-									<subfield code="a">
-										<xsl:value-of select="."/>
-									</subfield>
-									<subfield code="2">
-										<xsl:text>via</xsl:text>
-									</subfield>								
-								</datafield>
-							</xsl:for-each>
-							
 							<xsl:for-each select="work/description">
 								<datafield tag="300" ind1=" " ind2=" ">
 									<subfield code="a">
@@ -162,8 +168,24 @@
 								</datafield>
 							</xsl:for-each>
 							
+							<xsl:for-each select="work/materials">
+								<datafield tag="300" ind1=" " ind2=" ">
+									<subfield code="a">
+										<xsl:value-of select="."/>
+									</subfield>
+								</datafield>
+							</xsl:for-each>
+							
 							<xsl:for-each select="work/notes">
 								<datafield tag="500" ind1=" " ind2=" ">
+									<subfield code="a">
+										<xsl:value-of select="."/>
+									</subfield>
+								</datafield>
+							</xsl:for-each>
+							
+							<xsl:for-each select="work/useRestrictions">
+								<datafield tag="506" ind1=" " ind2=" ">
 									<subfield code="a">
 										<xsl:value-of select="."/>
 									</subfield>
@@ -187,7 +209,7 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/style">
-								<datafield tag="592" ind1="9" ind2="9">
+								<datafield tag="592" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="term"/>
 									</subfield>
@@ -195,7 +217,7 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/culture">
-								<datafield tag="593" ind1="9" ind2="9">
+								<datafield tag="593" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="term"/>
 									</subfield>
@@ -203,7 +225,7 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/relatedWork">
-								<datafield tag="594" ind1="9" ind2="9">
+								<datafield tag="594" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="textElement"/>
 									</subfield>
@@ -214,7 +236,10 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/relatedInformation">
-								<datafield tag="595" ind1="9" ind2="9">
+								<datafield tag="595" ind1=" " ind2="9">
+									<subfield code="a">
+										<xsl:value-of select="@href"/>
+									</subfield>
 									<subfield code="u">
 										<xsl:value-of select="@href"/>
 									</subfield>
@@ -222,15 +247,17 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/repository">
-								<datafield tag="596" ind1="9" ind2="9">
+								<datafield tag="596" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="repositoryName"/>
+										<xsl:text> </xsl:text>
+										<xsl:value-of select="number"/>
 									</subfield>
 								</datafield>
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/hasLargerContext">
-								<datafield tag="597" ind1="8" ind2="8">
+								<datafield tag="597" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="contextTitle"/>
 									</subfield>
@@ -241,11 +268,11 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/largerContextFor/part">
-								<datafield tag="597" ind1="9" ind2="9">
-									<subfield code="a">
+								<datafield tag="597" ind1=" " ind2="9">
+									<subfield code="c">
 										<xsl:value-of select="partTitle"/>
 									</subfield>
-									<subfield code="b">
+									<subfield code="d">
 										<xsl:value-of select="partId"/>
 									</subfield>
 								</datafield>
@@ -286,6 +313,18 @@
 									</subfield>
 								</datafield>
 							</xsl:for-each>
+							
+							
+							<xsl:for-each select="work/workType">
+								<datafield tag="655" ind1=" " ind2="7">
+									<subfield code="a">
+										<xsl:value-of select="."/>
+									</subfield>
+									<subfield code="2">
+										<xsl:text>via</xsl:text>
+									</subfield>								
+								</datafield>
+							</xsl:for-each>							
 							
 							<xsl:for-each select="work/associatedName">
 								<datafield tag="720" ind1=" " ind2=" ">
@@ -333,77 +372,405 @@
 									</subfield>									
 								</datafield>
 							</xsl:for-each>							
-
-			<!-- BEGIN FLATTENED SECTION  -->
+							
+							<!-- BEGIN FLATTENED SECTION  -->
 							<xsl:for-each select="work">
-								<datafield tag="599" ind1="9" ind2="9">
-								</datafield>
-							</xsl:for-each>
-			<!-- END FLATTENED SECTION  -->
-
-			<!-- BEGIN COMPONENT SECTION  -->
-							<xsl:for-each select="work/component">
-								<datafield tag="974" ind1=" " ind2=" ">
+								<datafield tag="599" ind1=" " ind2="9">
+									
 									<subfield code="w">
-										<xsl:value-of select="@componentID"/>
+										<xsl:value-of select="hvd_componentID"/>
 									</subfield>
-									<subfield code="x">
-										<xsl:value-of select="@altComponentID"/>
-									</subfield>
-									<subfield code="h">
-										<xsl:value-of select="image/@restrictedImage"/>
-									</subfield>
-									<subfield code="u">
-										<xsl:value-of select="image/@xlink:href"/>
-									</subfield>
-									<subfield code="t">
-										<xsl:value-of select="hvd_title/textElement"/>
-									</subfield>
-									<subfield code="f">
-										<xsl:value-of select="hvd_workType"/>
-									</subfield>									
+									
+									<xsl:for-each select="hvd_associatedName">
+										<subfield code="n">
+											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_classification">
+										<subfield code="h">
+											<xsl:value-of select="number"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_copyright">
+										<subfield code="c">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
 									<xsl:for-each select="hvd_creator">
 										<subfield code="a">
-											<xsl:value-of select="concat(nameElement, ', ', dates, ' [', role, ']')"/>
-										</subfield>
-									</xsl:for-each>									
-									<subfield code="d">
-										<xsl:value-of select="hvd_freeDate"/>
-									</subfield>									
-									<xsl:for-each select="hvd_associatedName">
-										<subfield code="b">
 											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
 										</subfield>
-									</xsl:for-each>									
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_notes">
+										<subfield code="z">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_repository">
+										<subfield code="r">
+											<xsl:value-of select="repositoryName"/>
+											<xsl:text> </xsl:text>
+											<xsl:value-of select="number"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_title">
+										<subfield code="t">
+											<xsl:value-of select="textElement"/>
+										</subfield>
+									</xsl:for-each>
+									
 									<xsl:for-each select="hvd_topic">
 										<subfield code="s">
 											<xsl:value-of select="term"/>
 										</subfield>
-									</xsl:for-each>									
-									<subfield code="m">
-										<xsl:value-of select="hvd_materials"/>
-									</subfield>									
-									<xsl:if test="hvd_notes">
-										<subfield code="n">
-											<xsl:value-of select="hvd_notes"/>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_workType">
+										<subfield code="g">
+											<xsl:value-of select="."/>
 										</subfield>
-									</xsl:if>									
-									<subfield code="c">
-										<xsl:value-of select="hvd_copyright"/>
-									</subfield>									
-									<subfield code="r">
-										<xsl:value-of select="concat(hvd_repository/repositoryName, ' ', hvd_repository/number)"/>
-									</subfield>
-									<subfield code="y">
-										<xsl:value-of select="concat(hvd_classification/type, ' ', hvd_classification/number)"/>
-									</subfield>
-									<subfield code="z">
-										<xsl:value-of select="concat(hvd_itemIdentifier/type, ' ', hvd_itemIdentifier/number)"/>
-									</subfield>
+									</xsl:for-each>
+									
 								</datafield>
+							</xsl:for-each>						
+							
+							<!-- END FLATTENED SECTION  -->
+							
+							
+							<!-- BEGIN COMPONENT SECTION  -->
+							
+							<xsl:for-each select="work/component">
+								<datafield tag="974" ind1=" " ind2="9">
+									
+									<subfield code="w">
+										<xsl:value-of select="@componentID"/>
+									</subfield>
+									
+									<xsl:for-each select="associatedName">
+										<subfield code="0">
+											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="classification">
+										<subfield code="i">
+											<xsl:value-of select="type"/>
+											<xsl:text> </xsl:text>
+											<xsl:value-of select="number"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="copyright">
+										<subfield code="1">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="creator">
+										<subfield code="2">
+											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="culture">
+										<subfield code="3">
+											<xsl:value-of select="term"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="freeDate">
+										<subfield code="4">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="structuredDate">
+										<subfield code="4">
+											<xsl:value-of select="beginDate"/>
+											<xsl:text>-</xsl:text>
+											<xsl:value-of select="endDate"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="image">
+										
+										<subfield code="u">
+											<xsl:value-of select="@xlink:href"/>
+										</subfield>								
+										<subfield code="y">
+											<xsl:value-of select="thumbnail/@xlink:href"/>
+										</subfield>
+										<subfield code="x">
+											<xsl:value-of select="@restrictedImage"/>
+										</subfield>									
+										
+									</xsl:for-each>							
+									
+									
+									<xsl:for-each select="placeName">
+										<subfield code="p">
+											<xsl:value-of select="place"/>
+										</subfield>
+									</xsl:for-each>
+									<xsl:for-each select="location">
+										<subfield code="p">
+											<xsl:value-of select="place"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="type"/>
+											<xsl:text>]</xsl:text>
+										</subfield>	
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="description">
+										<subfield code="5">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									<xsl:for-each select="dimensions">
+										<subfield code="5">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									<xsl:for-each select="materials">
+										<subfield code="5">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									<xsl:for-each select="notes">
+										<subfield code="5">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="relatedInformation">
+										<subfield code="6">
+											<xsl:value-of select="text"/>
+											<xsl:text>--</xsl:text>
+											<xsl:value-of select="@href"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="relatedWork">
+										<subfield code="7">
+											<xsl:value-of select="textElement"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="relationship"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="repository">
+										<subfield code="8">
+											<xsl:value-of select="repositoryName"/>
+											<xsl:text> </xsl:text>
+											<xsl:value-of select="number"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="title">
+										<subfield code="9">
+											<xsl:value-of select="type"/>
+											<xsl:text>: </xsl:text>
+											<xsl:value-of select="textElement"/>
+										</subfield>			
+									</xsl:for-each>
+									
+									<xsl:for-each select="topic">
+										<subfield code="b">
+											<xsl:value-of select="term"/>
+										</subfield>
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="subjectName">
+										<subfield code="b">
+											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="subjectPlace">
+										<subfield code="b">
+											<xsl:value-of select="place"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="useRestrictions">
+										<subfield code="j">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="workType">
+										<subfield code="f">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>	
+									
+									
+									<xsl:for-each select="hvd_associatedName">
+										<subfield code="n">
+											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="hvd_classification">
+										<subfield code="h">
+											<xsl:value-of select="type"/>
+											<xsl:text> </xsl:text>
+											<xsl:value-of select="number"/>
+										</subfield>
+									</xsl:for-each>	
+									
+									<xsl:for-each select="hvd_copyright">
+										<subfield code="c">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="hvd_useRestrictions">
+										<subfield code="k">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_creator">
+										<subfield code="a">
+											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_description">
+										<subfield code="z">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									<xsl:for-each select="hvd_dimensions">
+										<subfield code="z">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									<xsl:for-each select="hvd_materials">
+										<subfield code="z">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									<xsl:for-each select="hvd_notes">
+										<subfield code="z">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_freeDate">
+										<subfield code="d">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_structuredDate">
+										<subfield code="d">
+											<xsl:value-of select="beginDate"/>
+											<xsl:text>-</xsl:text>
+											<xsl:value-of select="endDate"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_repository">
+										<subfield code="r">
+											<xsl:value-of select="repositoryName"/>
+											<xsl:text> </xsl:text>
+											<xsl:value-of select="number"/>
+										</subfield>
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="hvd_subjectName">
+										<subfield code="s">
+											<xsl:value-of select="nameElement"/>
+											<xsl:text>, </xsl:text>
+											<xsl:value-of select="dates"/>
+											<xsl:text> [</xsl:text>
+											<xsl:value-of select="role"/>
+											<xsl:text>]</xsl:text>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_subjectPlace">
+										<subfield code="s">
+											<xsl:value-of select="place"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_topic">
+										<subfield code="s">
+											<xsl:value-of select="term"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="hvd_title">
+										<subfield code="t">
+											<xsl:value-of select="textElement"/>
+										</subfield>			
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select="hvd_workType">
+										<subfield code="g">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>	
+									
+								</datafield>
+								
 							</xsl:for-each>
-			<!-- BEGIN COMPONENT SECTION  -->
-
+							
+							<!-- END COMPONENT SECTION  -->
+							
 						</record>
 					</metadata>
 				</record>				
