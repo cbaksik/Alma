@@ -19,13 +19,6 @@ rule "Primo VE - Lds13 504"
 		create pnx."display"."lds13" with MARC "504" sub without sorting "a,b" delimited by "--" 
 end
 
-rule "Primo VE - Lds13 506"
-	when
-		MARC."506" has any "3,a-g,q"
-	then
-		create pnx."display"."lds13" with MARC "506" sub without sort "3,a-g,q" 
-end
-
 rule "Primo VE - Lds13 - 508"
 	when
 		MARC."508" has any "3,a"
