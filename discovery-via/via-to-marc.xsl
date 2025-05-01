@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:xlink="http://www.w3.org/TR/xlink"
-	xmlns:ino="http://namespaces.softwareag.com/tamino/response2"
-	exclude-result-prefixes="ino">
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:ino="http://namespaces.softwareag.com/tamino/response2">
 	
 	<xsl:output method="xml" indent="yes"/>
 	
@@ -43,7 +42,7 @@
 							</controlfield>
 							
 							
-							<datafield tag="099" ind1=" " ind2="9">
+							<datafield tag="590" ind1=" " ind2="9">
 								<subfield code="u">
 									<xsl:value-of select="@primaryImageThumbnailURN"/>
 								</subfield>
@@ -53,51 +52,39 @@
 								<subfield code="b">
 									<xsl:value-of select="@numberOfImages"/>
 								</subfield>
-							</datafield>
-							
-							<xsl:for-each select="work/itemIdentifier">
-								<datafield tag="097" ind1=" " ind2="9">
-									<subfield code="a">
+								<subfield code="c">
+									<xsl:value-of select="@originalAtHarvard"/>
+								</subfield>
+								<xsl:for-each select="work/itemIdentifier">
+									<subfield code="w">
 										<xsl:value-of select="type"/>
 										<xsl:text> </xsl:text>
 										<xsl:value-of select="number"/>
 									</subfield>
-								</datafield>
-							</xsl:for-each>
-							
-							<xsl:for-each select="work/oliviaId">
-								<datafield tag="097" ind1=" " ind2="9">
-									<subfield code="a">
+								</xsl:for-each>
+								<xsl:for-each select="work/oliviaId">
+									<subfield code="w">
 										<xsl:value-of select="."/>
 									</subfield>
-								</datafield>
-							</xsl:for-each>
-							
-							<xsl:for-each select="work/workRecordId">
-								<datafield tag="097" ind1=" " ind2="9">
-									<subfield code="a">
+								</xsl:for-each>
+								<xsl:for-each select="work/workRecordId">
+									<subfield code="w">
 										<xsl:value-of select="."/>
 									</subfield>
-								</datafield>
-							</xsl:for-each>
-							
-							<xsl:for-each select="work/containerId">
-								<datafield tag="097" ind1=" " ind2="9">
-									<subfield code="a">
+								</xsl:for-each>
+								<xsl:for-each select="work/containerId">
+									<subfield code="w">
 										<xsl:value-of select="."/>
 									</subfield>
-								</datafield>
-							</xsl:for-each>
-							
-							<xsl:for-each select="work/classification">
-								<datafield tag="098" ind1=" " ind2="9">
-									<subfield code="a">
+								</xsl:for-each>
+								<xsl:for-each select="work/classification">
+									<subfield code="w">										
 										<xsl:value-of select="type"/>
 										<xsl:text> </xsl:text>
 										<xsl:value-of select="number"/>
 									</subfield>
-								</datafield>
-							</xsl:for-each>
+								</xsl:for-each>
+							</datafield>							
 							
 							<xsl:for-each select="work/creator">
 								<datafield tag="100" ind1=" " ind2=" ">
@@ -259,7 +246,7 @@
 							<xsl:for-each select="work/relatedInformation">
 								<datafield tag="595" ind1=" " ind2="9">
 									<subfield code="a">
-										<xsl:value-of select="@href"/>
+										<xsl:value-of select="text"/>
 									</subfield>
 									<subfield code="u">
 										<xsl:value-of select="@href"/>
@@ -397,7 +384,7 @@
 							<!-- BEGIN FLATTENED SECTION  -->
 							<xsl:if test="work/hvd_componentID">
 
-								<datafield tag="599" ind1=" " ind2="9">
+								<datafield tag="598" ind1=" " ind2="9">
 									
 									<xsl:for-each select="work/hvd_componentID">
 										<subfield code="w">
@@ -480,7 +467,7 @@
 							<!-- BEGIN COMPONENT SECTION  -->
 							
 							<xsl:for-each select="work/component">
-								<datafield tag="974" ind1=" " ind2="9">
+								<datafield tag="599" ind1=" " ind2="9">
 									
 									<subfield code="w">
 										<xsl:value-of select="@componentID"/>
