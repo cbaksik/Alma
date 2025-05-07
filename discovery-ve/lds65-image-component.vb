@@ -1,8 +1,8 @@
 rule "Primo VE - Lds65"
 	when
-		MARC."974" has any "a-z"
+		MARC."599" has any "a-z"
 	then
-		set TEMP"1" to MARC."974" sub without sort "0-9,a-z" wrap subfields
+		set TEMP"1" to MARC."599" sub without sort "0-9,a-z" wrap subfields
 		replace wrapping delimiters (TEMP"1","0","==0","")
 		replace wrapping delimiters (TEMP"1","1","==1","")
 		replace wrapping delimiters (TEMP"1","2","==2","")
