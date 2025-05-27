@@ -7,24 +7,6 @@ rule "Primo VE Marc - Lsr06"
 		create pnx."search"."lsr06" with TEMP"1"
 end
 
-rule "Primo VE - Lsr06 - 110"
-	when
-		 MARC."110" has any "a-d"
-	then
-		set TEMP"1" to MARC."110" sub without sort "a,b,t,c,d,g,n,p"
-		remove substring using regex (TEMP"1","(;|,|\\.)+$")
-		create pnx."search"."lsr06" with TEMP"1"
-end
-
-rule "Primo VE - Lsr06 - 111"
-	when
-		 MARC."111" has any "a-g"
-	then
-		set TEMP"1" to MARC."111" sub without sort "a-g,k,n,p,q,t,u"
-		remove substring using regex (TEMP"1","(;|,|\\.)+$")
-		create pnx."search"."lsr06" with TEMP"1"
-end
-
 rule "Primo VE Marc - Lsr06 - 700"
 	when
 		 MARC."700" has any "a-d"
@@ -34,11 +16,29 @@ rule "Primo VE Marc - Lsr06 - 700"
 		create pnx."search"."lsr06" with TEMP"1"
 end
 
+rule "Primo VE - Lsr06 - 110"
+	when
+		 MARC."110" has any "a-d"
+	then
+		set TEMP"1" to MARC."110" sub without sort "a,b,t,c,d,g,n,p"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		create pnx."search"."lsr06" with TEMP"1"
+end
+
 rule "Primo VE - Lsr06 - 710"
 	when
 		 MARC."710" has any "a-d"
 	then
 		set TEMP"1" to MARC."710" sub without sort "a,b,t,c,d,g,n,p"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		create pnx."search"."lsr06" with TEMP"1"
+end
+
+rule "Primo VE - Lsr06 - 111"
+	when
+		 MARC."111" has any "a-g"
+	then
+		set TEMP"1" to MARC."111" sub without sort "a-g,k,n,p,q,t,u"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		create pnx."search"."lsr06" with TEMP"1"
 end
