@@ -9,7 +9,9 @@ end
 
 rule "Primo VE Marc - Lsr06 - 700"
 	when
-		 MARC."700" has any "a-d"
+		 MARC."700" has any "a-d" AND NOT
+		MARC."700"."e" match "former owner" AND NOT
+		MARC."700"."a" match "Unidentified"
 	then
 		set TEMP"1" to MARC."700" sub without sort "a,b,c,q,d,j"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
@@ -18,36 +20,36 @@ end
 
 rule "Primo VE - Lsr06 - 110"
 	when
-		 MARC."110" has any "a-d"
+		 MARC."110" has any "a-b"
 	then
-		set TEMP"1" to MARC."110" sub without sort "a,b,t,c,d,g,n,p"
+		set TEMP"1" to MARC."110" sub without sort "a,b"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		create pnx."search"."lsr06" with TEMP"1"
 end
 
 rule "Primo VE - Lsr06 - 710"
 	when
-		 MARC."710" has any "a-d"
+		 MARC."710" has any "a-b"
 	then
-		set TEMP"1" to MARC."710" sub without sort "a,b,t,c,d,g,n,p"
+		set TEMP"1" to MARC."710" sub without sort "a,b"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		create pnx."search"."lsr06" with TEMP"1"
 end
 
 rule "Primo VE - Lsr06 - 111"
 	when
-		 MARC."111" has any "a-g"
+		 MARC."111" has any "a"
 	then
-		set TEMP"1" to MARC."111" sub without sort "a-g,k,n,p,q,t,u"
+		set TEMP"1" to MARC."111" sub without sort "a,e"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		create pnx."search"."lsr06" with TEMP"1"
 end
 
 rule "Primo VE - Lsr06 - 711"
 	when
-		 MARC."711" has any "a-g"
+		 MARC."711" has any "a"
 	then
-		set TEMP"1" to MARC."711" sub without sort "a-g,k,n,p,q,t,u"
+		set TEMP"1" to MARC."711" sub without sort "a,e"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		create pnx."search"."lsr06" with TEMP"1"
 end

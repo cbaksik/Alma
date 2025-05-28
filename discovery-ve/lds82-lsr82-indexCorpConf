@@ -1,0 +1,69 @@
+rule "Primo VE Marc - Lsr82"
+	when
+		 MARC."110" has any "a-d"
+	then
+		set TEMP"1" to MARC."110" sub without sort "a,b,t,c,d,e,g,k,n,p"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		create pnx."search"."lds82" with TEMP"1"
+end
+
+rule "Primo VE Marc - Lsr82 - 710"
+	when
+		 MARC."710" has any "a-d"
+	then
+		set TEMP"1" to MARC."710" sub without sort "a,b,t,c,d,e,g,k,n,p"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		create pnx."search"."lds82" with TEMP"1"
+end
+
+rule "Primo VE - lsr82 - 111"
+	when
+		 MARC."111" has any "a-g"
+	then
+		set TEMP"1" to MARC."111" sub without sort "a,c,d,e,f,g,j,k,n,p,q,t"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		create pnx."search"."lds82" with TEMP"1"
+end
+
+rule "Primo VE - lsr82 - 711"
+	when
+		 MARC."711" has any "a-g"
+	then
+		set TEMP"1" to MARC."711" sub without sort "a,c,d,e,f,g,j,k,n,p,q,t"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		create pnx."search"."lds82" with TEMP"1"
+end
+
+// 880
+
+rule "Primo VE - lsr82 - 880-110"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "110-.*"
+	then
+        create pnx."search"."lds82" with MARC."880" sub without sort "3,a-z" 
+end
+
+rule "Primo VE - lsr82 - 880-710"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "710-.*"
+	then
+        create pnx."search"."lds82" with MARC."880" sub without sort "3,a-z" 
+end
+
+rule "Primo VE - lsr82 - 880-111"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "111-.*"
+	then
+        create pnx."search"."lds82" with MARC."880" sub without sort "3,a-z" 
+end
+
+rule "Primo VE - lsr82 - 880-711"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "711-.*"
+	then
+        create pnx."search"."lds82" with MARC."880" sub without sort "3,a-z" 
+end
