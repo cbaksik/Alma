@@ -28,3 +28,22 @@ rule "check for privacy indicators and add invalid subfield with alert to staff 
         addSubField "561.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "561.{0,*}")
         addSubField "583.9.YOU HAVE ADDED A PRIVATE NOTE. Private notes must go in the holdings to prevent their exposure to the public." if (exists "583.{0,*}")
 end
+
+rule "VE dedupe key for serials that lack ISSN and have OCLC number"
+when
+       ((existsControl "LDR.{06,1}.a") AND (existsControl "LDR.{07,1}.s") AND (not exists "022") AND (exists "035.a.(OCoLC)*"))
+then        
+        removeField "959"
+        copyField "035.a" to "959.a" if (exists "035.a.(OCoLC)*")
+        copyField "035.z" to "959.a" if (exists "035.a.(OCoLC)*")
+        splitSubField "776.w.(" to "TMP.a"
+        changeField "TMP" to "959" if (exists "TMP.a.OCoLC)*")
+        removeField "TMP"
+        replaceContents "959.a.OCoLC)" with "(OCoLC)" if (exists "959.a.OCoLC)*")
+        ///replaceContents "959.a.(OCoLC)" with "" 
+        //copyField "245.a" to "TMP.a"
+        //replaceContents "TMP.a.The" with ""
+        //replaceContents "TMP.a. " with ""
+        //replaceContents "TMP.a.\\\\." with ""
+        
+end
