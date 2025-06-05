@@ -172,14 +172,6 @@ rule "Primo VE - lds13 544"
 		create pnx."display"."lds13" with TEMP"1"
 end
 
-rule "Primo VE - lds13 546"
-	when
-		MARC."546" has any "3,a-b" 
-	then
-		set TEMP"1" to MARC."546" sub without sort "3,a-b" 
-		create pnx."display"."lds13" with TEMP"1"
-end
-
 rule "Primo VE - Lds13 547"
 	when
 		MARC."547" has any "a"
@@ -494,16 +486,6 @@ rule "Primo VE - lds13 544-880"
 	then
 		set TEMP"1" to MARC."880" sub without sort "3,a-e,n" 
 		add prefix (TEMP"1","Related materials: ")
-		create pnx."display"."lds13" with TEMP"1"
-end
-
-rule "Primo VE - lds13 546-880"
-	when
-		MARC is "880" AND
-		MARC."880"."6" match "546.*"
-	then
-		set TEMP"1" to MARC."880" sub without sort "3,a-b" 
-		add prefix (TEMP"1","Language: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
 
