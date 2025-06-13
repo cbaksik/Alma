@@ -5,6 +5,5 @@ rule "Primo VE - Lds06"
 	then
 		set TEMP"1" to MARC."911"."a"
 		replace string by string (TEMP"1","(.{3}).{8}(.{6}).*","$1_$2")
-		replace string by string (TEMP"1","415_565408","Raimundo Lida Memorial Fund")
 		create pnx."display"."lds06" with TEMP"1"
 end

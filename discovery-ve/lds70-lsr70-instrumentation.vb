@@ -1,7 +1,7 @@
 rule "Primo VE Marc - Lsr70"
 	when
 		MARC."382" has any "3,a-v" 
-	then
+	thenlds
 		create pnx."search"."lsr70" with MARC."382" sub without sort "3,a-v" 
 end
 
