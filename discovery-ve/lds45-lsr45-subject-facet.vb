@@ -55,25 +55,6 @@ rule "Primo VE Marc -  Subject 611 fast"
 		create pnx."search"."lsr45" with TEMP"1"
 end
 
-rule "Primo VE Marc -  Subject 648"
-	when
-		MARC."648" has any "a-z" AND
-		MARC."648".ind"2" equals "0"
-	then
-		set TEMP"1" to MARC."648" subfields "a-u" delimited by " " remove substring using regex "\\.$"
-		create pnx."search"."lsr45" with TEMP"1"
-end
-
-rule "Primo VE Marc -  Subject 648 fast"
-	when
-		MARC."648" has any "a-z" AND
-		MARC."648".ind"2" equals "7" AND
-		MARC."648"."2" match "fast"
-	then
-		set TEMP"1" to MARC."648" subfields "a-u" delimited by " " remove substring using regex "\\.$"	
-		create pnx."search"."lsr45" with TEMP"1"
-end
-
 rule "Primo VE Marc -  Subject 650"
 	when
 		MARC."650" has any "a-z" AND
@@ -210,16 +191,6 @@ rule "Primo VE Marc -  Subject 880-630"
 		MARC."880" has any "a-z" AND
 		MARC."880".ind"2"  equals "0" AND
 		MARC."880"."6" match "630-.*"
-	then
-		set TEMP"1" to MARC."880" subfields "a-u" delimited by " " remove substring using regex "\\.$"
-		create pnx."search"."lsr45" with TEMP"1"
-end
-
-rule "Primo VE Marc -  Subject 880-648"
-	when
-		MARC."880" has any "a-z" AND
-		MARC."880".ind"2"  equals "0" AND
-		MARC."880"."6" match "648-.*"
 	then
 		set TEMP"1" to MARC."880" subfields "a-u" delimited by " " remove substring using regex "\\.$"
 		create pnx."search"."lsr45" with TEMP"1"
