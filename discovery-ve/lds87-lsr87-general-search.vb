@@ -179,3 +179,11 @@ rule "Primo VE Marc - Lsr87 588"
 	then
 		create pnx."search"."lsr87" with MARC "588" sub without sort "a-z"
 end
+
+rule "Primo VE Marc - Lsr87 242"
+	when
+		MARC is "242"
+	then
+		create pnx."search"."lsr87" with MARC "242" sub without sort "a-z"
+end
+
