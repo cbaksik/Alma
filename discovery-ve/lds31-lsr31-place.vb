@@ -94,3 +94,31 @@ rule "Primo VE Marc - Lsr31 370"
 		create pnx."search"."lsr31" with TEMP"1"
 end
 
+// 880
+
+rule "Primo VE - Lsr31 - 880-752"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "752-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-d" 
+end
+
+rule "Primo VE - Lsr31 - 880-650"
+	when
+        MARC is "880" AND
+        MARC."880".ind"2" equals "0" 
+        MARC."880"."6" match "650-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "z" 
+end
+
+rule "Primo VE - Lsr31 - 880-651"
+	when
+        MARC is "880" AND
+        MARC."880".ind"2" equals "0" 
+        MARC."880"."6" match "651-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a,z" 
+end
+
