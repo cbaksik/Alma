@@ -13,5 +13,6 @@ rule "Primo VE - Lds46"
 		replace string by string (TEMP"1","index","Indexes/bibliographies")
 		replace string by string (TEMP"1","news","News, current and historical")
 		replace string by string (TEMP"1","ref","Reference and guides")
+		concatenate with delimiter (TEMP"1",TEMP"1","$$Q")
 		create pnx."display"."lds46" with TEMP"1"
 end
