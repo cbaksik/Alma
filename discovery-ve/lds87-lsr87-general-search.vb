@@ -110,11 +110,11 @@ rule "Primo VE Marc - Lsr87 511"
 		create pnx."search"."lsr87" with MARC "511" sub without sort "a-z"
 end
 
-rule "Primo VE Marc - Lsr87 514"
+rule "Primo VE Marc - Lsr87 515"
 	when
-		MARC is "514"
+		MARC is "515"
 	then
-		create pnx."search"."lsr87" with MARC "514" sub without sort "a-z"
+		create pnx."search"."lsr87" with MARC "515" sub without sort "a-z"
 end
 
 rule "Primo VE Marc - Lsr87 532"
@@ -187,3 +187,116 @@ rule "Primo VE Marc - Lsr87 242"
 		create pnx."search"."lsr87" with MARC "242" sub without sort "a-z"
 end
 
+// 880
+
+rule "Primo VE Marc - Lsr87 880-500"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "500-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-504"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "504-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-510"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "510-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-511"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "511-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-515"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "515-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-532"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "532-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-536"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "536-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-538"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "538-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-545"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "545-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-546"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "546-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-552"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "552-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-555"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "555-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-565"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "565-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end
+
+rule "Primo VE Marc - Lsr87 880-588"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "588-.*"
+	then
+        create pnx."search"."lsr31" with MARC."880" sub without sort "a-z" 
+end

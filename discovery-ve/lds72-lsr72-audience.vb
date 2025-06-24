@@ -69,3 +69,12 @@ rule "Primo VE Marc - Lsr72 special - 655 2nd ind 7"
 		create pnx."search"."lsr72" with "People with visual disabilities"
 end
 
+// 880
+
+rule "Primo VE Marc - Lsr72 - 521-880"
+	when
+		MARC is "880" AND
+		MARC."880"."6" match "521.*" 
+	then		
+		create pnx."search"."lsr72" with MARC "880" sub without sort "a,b" 
+end
