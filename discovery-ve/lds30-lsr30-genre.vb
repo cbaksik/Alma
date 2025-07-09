@@ -150,6 +150,8 @@ rule "Primo VE - lsr30 655 sf 7"
 		create pnx."search"."lsr30" with TEMP"1"
 end
 
+// 880
+
 rule "Primo VE - lsr30 880-655"
 	when
 		MARC is "880" AND
@@ -160,3 +162,169 @@ rule "Primo VE - lsr30 880-655"
 		create pnx."search"."lsr30" with TEMP"1"
 end
 
+// mapping from 008 values only when ldr06and7 are am
+
+rule "Primo VE - lsr30 008 mapping a"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "a" OR 
+		MARC.control."008"(19-20) equals "a" OR
+		MARC.control."008"(20-21) equals "a" OR
+		MARC.control."008"(21-22) equals "a")
+	then
+		create pnx."search"."lsr30" with "illustrations"
+end
+
+rule "Primo VE - lsr30 008 mapping b"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "b" OR 
+		MARC.control."008"(19-20) equals "b" OR
+		MARC.control."008"(20-21) equals "b" OR
+		MARC.control."008"(21-22) equals "b")
+	then
+		create pnx."search"."lsr30" with "maps"
+end
+
+rule "Primo VE - lsr30 008 mapping c"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "c" OR 
+		MARC.control."008"(19-20) equals "c" OR
+		MARC.control."008"(20-21) equals "c" OR
+		MARC.control."008"(21-22) equals "c")
+	then
+		create pnx."search"."lsr30" with "portraits"
+end
+
+rule "Primo VE - lsr30 008 mapping d"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "d" OR 
+		MARC.control."008"(19-20) equals "d" OR
+		MARC.control."008"(20-21) equals "d" OR
+		MARC.control."008"(21-22) equals "d")
+	then
+		create pnx."search"."lsr30" with "charts"
+end
+
+rule "Primo VE - lsr30 008 mapping e"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "e" OR 
+		MARC.control."008"(19-20) equals "e" OR
+		MARC.control."008"(20-21) equals "e" OR
+		MARC.control."008"(21-22) equals "e")
+	then
+		create pnx."search"."lsr30" with "plans"
+end
+
+rule "Primo VE - lsr30 008 mapping f"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "f" OR 
+		MARC.control."008"(19-20) equals "f" OR
+		MARC.control."008"(20-21) equals "f" OR
+		MARC.control."008"(21-22) equals "f")
+	then
+		create pnx."search"."lsr30" with "plates"
+end
+
+rule "Primo VE - lsr30 008 mapping g"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "g" OR 
+		MARC.control."008"(19-20) equals "g" OR
+		MARC.control."008"(20-21) equals "g" OR
+		MARC.control."008"(21-22) equals "g")
+	then
+		create pnx."search"."lsr30" with "music"
+end
+
+rule "Primo VE - lsr30 008 mapping h"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "h" OR 
+		MARC.control."008"(19-20) equals "h" OR
+		MARC.control."008"(20-21) equals "h" OR
+		MARC.control."008"(21-22) equals "h")
+	then
+		create pnx."search"."lsr30" with "facsimiles"
+end
+
+rule "Primo VE - lsr30 008 mapping i"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "i" OR 
+		MARC.control."008"(19-20) equals "i" OR
+		MARC.control."008"(20-21) equals "i" OR
+		MARC.control."008"(21-22) equals "i")
+	then
+		create pnx."search"."lsr30" with "coats of arms"
+end
+
+rule "Primo VE - lsr30 008 mapping j"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "j" OR 
+		MARC.control."008"(19-20) equals "j" OR
+		MARC.control."008"(20-21) equals "j" OR
+		MARC.control."008"(21-22) equals "j")
+	then
+		create pnx."search"."lsr30" with "genealogical tables"
+end
+
+rule "Primo VE - lsr30 008 mapping k"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "k" OR 
+		MARC.control."008"(19-20) equals "k" OR
+		MARC.control."008"(20-21) equals "k" OR
+		MARC.control."008"(21-22) equals "k")
+	then
+		create pnx."search"."lsr30" with "forms"
+end
+
+rule "Primo VE - lsr30 008 mapping l"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "l" OR 
+		MARC.control."008"(19-20) equals "l" OR
+		MARC.control."008"(20-21) equals "l" OR
+		MARC.control."008"(21-22) equals "l")
+	then
+		create pnx."search"."lsr30" with "samples"
+end
+
+rule "Primo VE - lsr30 008 mapping m"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "m" OR 
+		MARC.control."008"(19-20) equals "m" OR
+		MARC.control."008"(20-21) equals "m" OR
+		MARC.control."008"(21-22) equals "m")
+	then
+		create pnx."search"."lsr30" with "phonodisc phonowire"
+end
+
+rule "Primo VE - lsr30 008 mapping o"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "o" OR 
+		MARC.control."008"(19-20) equals "o" OR
+		MARC.control."008"(20-21) equals "o" OR
+		MARC.control."008"(21-22) equals "o")
+	then
+		create pnx."search"."lsr30" with "photographs"
+end
+
+rule "Primo VE - lsr30 008 mapping p"
+	when
+		MARC.control."LDR"(6-8) equals "am" AND
+		(MARC.control."008"(18-19) equals "p" OR 
+		MARC.control."008"(19-20) equals "p" OR
+		MARC.control."008"(20-21) equals "p" OR
+		MARC.control."008"(21-22) equals "p")
+	then
+		create pnx."search"."lsr30" with "illuminations"
+end
