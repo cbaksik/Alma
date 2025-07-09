@@ -46,15 +46,21 @@
 								<subfield code="u">
 									<xsl:value-of select="@primaryImageThumbnailURN"/>
 								</subfield>
-								<subfield code="a">
-									<xsl:value-of select="@images"/>
-								</subfield>
 								<subfield code="b">
 									<xsl:value-of select="@numberOfImages"/>
 								</subfield>
 								<subfield code="c">
 									<xsl:value-of select="@originalAtHarvard"/>
 								</subfield>
+							<!-- work/image will onlyy appear for single image records -->
+								<xsl:if test="work/image">
+									<subfield code="h">
+										<xsl:value-of select="work/image/@xlink:href"/>
+									</subfield>
+									<subfield code="r">
+										<xsl:value-of select="work/image/@restrictedImage"/>
+									</subfield>
+								</xsl:if>
 								<xsl:for-each select="work/itemIdentifier">
 									<subfield code="w">
 										<xsl:value-of select="type"/>
@@ -364,20 +370,6 @@
 									<subfield code="e">
 										<xsl:value-of select="type"/>
 									</subfield>
-								</datafield>
-							</xsl:for-each>
-							
-							<xsl:for-each select="work/image">
-								<datafield tag="956" ind1=" " ind2="9">
-									<subfield code="u">
-										<xsl:value-of select="@xlink:href"/>
-									</subfield>								
-									<subfield code="v">
-										<xsl:value-of select="thumbnail/@xlink:href"/>
-									</subfield>
-									<subfield code="9">
-										<xsl:value-of select="@restrictedImage"/>
-									</subfield>									
 								</datafield>
 							</xsl:for-each>							
 							
