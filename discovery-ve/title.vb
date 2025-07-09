@@ -9,5 +9,8 @@ rule "Primo VE - Title"
 		remove string (TEMP"1","\\[videorecording\\]")
 		remove string (TEMP"1","\\[sound recording\\]")
 		remove substring using regex (TEMP"1","(,|/|:|;)+$")
+		remove substring using regex (TEMP"1","\\.+$")
 		create pnx."display"."title" with TEMP"1"
 end
+
+
