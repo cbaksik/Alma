@@ -5,8 +5,7 @@ rule "Primo VE - Uniform Title 130"
 		set TEMP"1" to MARC."130" excluding num subfields without sort
 		set TEMP"4" to MARC."130" sub without sort "a,d,g,k-t"
 		remove substring using regex (TEMP"4","(;|,|\\.)+$")
-		add prefix (TEMP"4","$$Q")
-		concatenate with delimiter (TEMP"1",TEMP"4","")
+		concatenate with delimiter (TEMP"1",TEMP"4","$$Q")
 		create pnx."display"."unititle" with TEMP"1"
 end
 
