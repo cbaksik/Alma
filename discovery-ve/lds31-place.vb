@@ -4,7 +4,6 @@ rule "Primo VE - Lds31"
 	then
 		set TEMP"1" to MARC."752" sub without sorting "a-d,f-h" delimited by " -- "
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
-		add prefix (TEMP"1","Hierarchical: ")
 		set TEMP"2" to MARC."752" sub without sort "e"
 		add prefix (TEMP"2","[")
 		add suffix (TEMP"2","]")
@@ -59,7 +58,6 @@ rule "Primo VE - lds38 880-752"
 	then
 		set TEMP"1" to MARC."880" sub without sorting "a-d,f-h" delimited by " -- "
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
-        add prefix (TEMP"1","Hierarchical: ")
 		set TEMP"2" to MARC."880" sub without sort "e"
 		add prefix (TEMP"2","[")
 		add suffix (TEMP"2","]")
@@ -80,7 +78,6 @@ rule "Primo VE - lds38 880-751"
 		replace wrapping delimiters (TEMP"1","a","","")		
 		replace wrapping delimiters (TEMP"1","g"," -- ","")		
 		replace wrapping delimiters (TEMP"1","e"," [","]")
-		add prefix (TEMP"1","Geographic name: ")
 		add suffix (TEMP"1","$$Q")
 		set TEMP"2" to MARC."880" sub without sort "a,g"
 		concatenate with delimiter (TEMP"1",TEMP"2","")
