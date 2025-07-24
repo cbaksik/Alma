@@ -38,14 +38,26 @@
 							<controlfield tag="008">
 								<xsl:text>      m</xsl:text>
 								<xsl:text>        </xsl:text>
-								<xsl:text>rb            000 i zxx d</xsl:text>
+								<xsl:text>rb            000 i ||| d</xsl:text>
 							</controlfield>
 							
 							
 							<datafield tag="590" ind1=" " ind2="9">
-								<subfield code="u">
-									<xsl:value-of select="@primaryImageThumbnailURN"/>
-								</subfield>
+								<xsl:if test="@images='true'">
+									<subfield code="u">
+										<xsl:choose>
+											<xsl:when test="@primaryImageThumbnailURN">
+												<xsl:value-of select="@primaryImageThumbnailURN"/>
+											</xsl:when>
+											<xsl:when test="work/image">
+												<xsl:value-of select="work/image/@xlink:href"/>
+											</xsl:when>
+											<xsl:otherwise test="work/component">
+												<xsl:value-of select="work/component/image/@xlink:href"/>
+											</xsl:otherwise>
+										</xsl:choose>
+									</subfield>
+								</xsl:if>
 								<subfield code="b">
 									<xsl:value-of select="@numberOfImages"/>
 								</subfield>
@@ -97,12 +109,16 @@
 									<subfield code="a">
 										<xsl:value-of select="nameElement"/>
 									</subfield>
-									<subfield code="d">
-										<xsl:value-of select="dates"/>
-									</subfield>
-									<subfield code="e">
-										<xsl:value-of select="role"/>
-									</subfield>
+									<xsl:if test="dates">
+										<subfield code="d">
+											<xsl:value-of select="dates"/>
+										</subfield>
+									</xsl:if>	
+									<xsl:if test="role">
+										<subfield code="e">
+											<xsl:value-of select="role"/>
+										</subfield>
+									</xsl:if>	
 								</datafield>
 							</xsl:for-each>
 							
@@ -139,24 +155,26 @@
 								</datafield>
 							</xsl:for-each>
 							
-							<xsl:for-each select="work/freeDate">
-								<datafield tag="264" ind1=" " ind2="1">
-									<subfield code="c">
-										<xsl:value-of select="."/>
-									</subfield>
-								</datafield>
-							</xsl:for-each>
-							
 							<!-- make sure structured date is second so that's what Primo will use to set creationDate for control/search in addition to pubinfo -->
-							<xsl:for-each select="work/structuredDate">
-								<datafield tag="264" ind1=" " ind2="1">
+
+							<xsl:choose>
+								<xsl:when test="work/freeDate">
+									<datafield tag="264" ind1=" " ind2="1">
+										<subfield code="c">
+											<xsl:value-of select="work/freeDate"/>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:otherwise test="work/structuredDate">
+									<datafield tag="264" ind1=" " ind2="1">
 									<subfield code="c">
-										<xsl:value-of select="beginDate"/>
+										<xsl:value-of select="work/structuredDate/beginDate"/>
 										<xsl:text>-</xsl:text>
-										<xsl:value-of select="endDate"/>
+										<xsl:value-of select="work/structuredDate/endDate"/>
 									</subfield>
 								</datafield>
-							</xsl:for-each>
+								</xsl:otherwise>
+							</xsl:choose>
 							
 							<xsl:for-each select="work/production/placeOfProduction">
 								<datafield tag="264" ind1=" " ind2="0">
@@ -167,7 +185,7 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/description">
-								<datafield tag="300" ind1=" " ind2=" ">
+								<datafield tag="520" ind1=" " ind2=" ">
 									<subfield code="a">
 										<xsl:value-of select="."/>
 									</subfield>
@@ -240,12 +258,16 @@
 							
 							<xsl:for-each select="work/relatedWork">
 								<datafield tag="594" ind1=" " ind2="9">
+									<xsl:if test="relationship">
+										<subfield code="e">
+											<xsl:value-of select="relationship"/>
+											<xsl:text>: </xsl:text>
+										</subfield>
+									</xsl:if>
 									<subfield code="a">
 										<xsl:value-of select="textElement"/>
 									</subfield>
-									<subfield code="e">
-										<xsl:value-of select="relationship"/>
-									</subfield>
+										
 								</datafield>
 							</xsl:for-each>
 							
@@ -264,9 +286,12 @@
 								<datafield tag="596" ind1=" " ind2="9">
 									<subfield code="a">
 										<xsl:value-of select="repositoryName"/>
-										<xsl:text> </xsl:text>
-										<xsl:value-of select="number"/>
 									</subfield>
+									<xsl:if test="number">
+										<subfield code="b">
+											<xsl:value-of select="number"/>
+										</subfield>
+									</xsl:if>
 								</datafield>
 							</xsl:for-each>
 							
@@ -276,7 +301,7 @@
 										<xsl:value-of select="contextTitle"/>
 									</subfield>
 									<subfield code="b">
-										<xsl:value-of select="contextID"/>
+										<xsl:value-of select="contextId"/>
 									</subfield>
 								</datafield>
 							</xsl:for-each>
@@ -297,12 +322,16 @@
 									<subfield code="a">
 										<xsl:value-of select="nameElement"/>
 									</subfield>
-									<subfield code="d">
-										<xsl:value-of select="dates"/>
-									</subfield>
-									<subfield code="e">
-										<xsl:value-of select="role"/>
-									</subfield>
+									<xsl:if test="dates">
+										<subfield code="d">
+											<xsl:value-of select="dates"/>
+										</subfield>
+									</xsl:if>		
+									<xsl:if test="role">
+										<subfield code="e">
+											<xsl:value-of select="role"/>
+										</subfield>
+									</xsl:if>	
 								</datafield>
 							</xsl:for-each>
 							
@@ -345,12 +374,16 @@
 									<subfield code="a">
 										<xsl:value-of select="nameElement"/>
 									</subfield>
-									<subfield code="d">
-										<xsl:value-of select="dates"/>
-									</subfield>
-									<subfield code="e">
-										<xsl:value-of select="role"/>
-									</subfield>
+									<xsl:if test="dates">
+										<subfield code="d">
+											<xsl:value-of select="dates"/>
+										</subfield>
+									</xsl:if>	
+									<xsl:if test="role">
+										<subfield code="e">
+											<xsl:value-of select="role"/>
+										</subfield>
+									</xsl:if>	
 								</datafield>
 							</xsl:for-each>
 							
@@ -367,9 +400,11 @@
 									<subfield code="a">
 										<xsl:value-of select="place"/>
 									</subfield>								
-									<subfield code="e">
-										<xsl:value-of select="type"/>
-									</subfield>
+									<xsl:if test="type">
+										<subfield code="e">
+											<xsl:value-of select="type"/>
+										</subfield>
+									</xsl:if>
 								</datafield>
 							</xsl:for-each>							
 							
