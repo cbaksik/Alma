@@ -119,3 +119,25 @@ rule "Primo VE Marc - Lsr38 880-490"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		create pnx."search"."lsr38" with TEMP"1"
 end
+
+// rule for via contains to get parent record
+
+rule "Primo VE Marc - Lsr38 VIA contains"
+	when
+		MARC."597" has any "d" AND
+		MARC.control is "001"
+	then
+		set TEMP"1" to MARC.control."001"
+		create pnx."search"."lsr38" with TEMP"1"
+end
+
+// rule for via ispartof to gather children
+
+rule "Primo VE Marc - Lsr38 VIA ispartof"
+	when
+		MARC."597" has any "b"
+	then
+		set TEMP"1" to MARC."597" sub without sort "b"
+		create pnx."search"."lsr38" with TEMP"1"
+end
+
