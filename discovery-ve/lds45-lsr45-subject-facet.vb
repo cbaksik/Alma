@@ -116,11 +116,12 @@ end
 
 // begin other vocabs
 
-rule "Primo VE Marc - Subject 651 wikidata"
+rule "Primo VE Marc - Subject 651 wikidata, via"
 	when
 		MARC."651" has any "a-z" AND
 		MARC."651".ind"2"  equals "7" AND
-		MARC."651"."2" match "wikidata"
+		(MARC."651"."2" match "wikidata" OR
+		MARC."651"."2" match "via")
 	then
 		set TEMP"1" to MARC."651" subfields "a-u" delimited by " " remove substring using regex "\\.$"
 		set TEMP"2" to MARC."651" sub without sort "x"
@@ -129,14 +130,15 @@ rule "Primo VE Marc - Subject 651 wikidata"
 		create pnx."search"."lsr45" with TEMP"1"
 end
 
-rule "Primo VE Marc - Subject 650 ascl,homoit,fnhl,wikidata"
+rule "Primo VE Marc - Subject 650 ascl,homoit,fnhl,wikidata, via"
 	when
 		MARC."650" has any "a-z" AND
 		MARC."650".ind"2"  equals "7" AND
 		(MARC."650"."2" match "wikidata" OR
 		MARC."650"."2" match "ascl" OR
 		MARC."650"."2" match "homoit" OR
-		MARC."650"."2" match "fnhl")
+		MARC."650"."2" match "fnhl" OR
+		MARC."650"."2" match "via")
 	then
 		set TEMP"1" to MARC."650" subfields "a-u" delimited by " " remove substring using regex "\\.$"
 		set TEMP"2" to MARC."650" sub without sort "x" 
