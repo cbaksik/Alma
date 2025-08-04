@@ -35,6 +35,10 @@
 								<xsl:value-of select="recordId"/>
 							</controlfield>
 							
+							<controlfield tag="003">
+								<xsl:text>jstorHvdImg</xsl:text>
+							</controlfield>
+							
 							<controlfield tag="008">
 								<xsl:text>      m</xsl:text>
 								<xsl:text>        </xsl:text>
@@ -69,9 +73,11 @@
 									<subfield code="h">
 										<xsl:value-of select="work/image/@xlink:href"/>
 									</subfield>
-									<subfield code="r">
-										<xsl:value-of select="work/image/@restrictedImage"/>
-									</subfield>
+									<xsl:if test="work/image/@restrictedImage='true'">
+										<subfield code="r">
+											<xsl:value-of select="work/image/@restrictedImage"/>
+										</subfield>
+									</xsl:if>
 								</xsl:if>
 								<xsl:for-each select="work/itemIdentifier">
 									<subfield code="w">
@@ -137,10 +143,16 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/title[position() &gt; 1]">
-								<datafield tag="246" ind1="1" ind2="1">
-									<subfield code="i">
-										<xsl:value-of select="type"/>
-									</subfield>								
+								<datafield tag="246" ind1="2" ind2=" ">
+									<xsl:choose>
+										<xsl:when test="type='Alternate Title'"></xsl:when>
+										<xsl:when test="type='alternate'"></xsl:when>
+										<xsl:otherwise>
+											<subfield code="i">
+												<xsl:value-of select="type"/>
+											</subfield>	
+										</xsl:otherwise>
+									</xsl:choose>
 									<subfield code="a">
 										<xsl:value-of select="textElement"/>
 									</subfield>
@@ -165,7 +177,7 @@
 										</subfield>
 									</datafield>
 								</xsl:when>
-								<xsl:otherwise test="work/structuredDate">
+								<xsl:when test="work/structuredDate">
 									<datafield tag="264" ind1=" " ind2="1">
 									<subfield code="c">
 										<xsl:value-of select="work/structuredDate/beginDate"/>
@@ -173,7 +185,8 @@
 										<xsl:value-of select="work/structuredDate/endDate"/>
 									</subfield>
 								</datafield>
-								</xsl:otherwise>
+								</xsl:when>
+								<xsl:otherwise></xsl:otherwise>
 							</xsl:choose>
 							
 							<xsl:for-each select="work/production/placeOfProduction">
@@ -535,11 +548,16 @@
 											<xsl:value-of select="role"/>
 											<xsl:text>]</xsl:text>
 										</subfield>
-									</xsl:for-each>
-									
+									</xsl:for-each>									
 									
 									<xsl:for-each select="culture">
 										<subfield code="3">
+											<xsl:value-of select="term"/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="style">
+										<subfield code="m">
 											<xsl:value-of select="term"/>
 										</subfield>
 									</xsl:for-each>
@@ -566,10 +584,11 @@
 										<subfield code="y">
 											<xsl:value-of select="thumbnail/@xlink:href"/>
 										</subfield>
-										<subfield code="x">
-											<xsl:value-of select="@restrictedImage"/>
-										</subfield>									
-										
+										<xsl:if test="@restrictedImage='true'">
+											<subfield code="x">
+												<xsl:value-of select="@restrictedImage"/>
+											</subfield>									
+										</xsl:if>
 									</xsl:for-each>							
 									
 									
@@ -668,6 +687,12 @@
 									
 									<xsl:for-each select="useRestrictions">
 										<subfield code="j">
+											<xsl:value-of select="."/>
+										</subfield>
+									</xsl:for-each>
+									
+									<xsl:for-each select="standardizedRights">
+										<subfield code="q">
 											<xsl:value-of select="."/>
 										</subfield>
 									</xsl:for-each>
