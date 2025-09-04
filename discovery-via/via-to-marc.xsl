@@ -243,7 +243,7 @@
 												<xsl:text>facet-img-the</xsl:text>
 											</subfield>
 										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard University Archive']">
+										<xsl:when test="repositoryName[contains(., 'Harvard University Archive')]">
 											<subfield code="f">
 												<xsl:text>facet-img-hua</xsl:text>
 											</subfield>
