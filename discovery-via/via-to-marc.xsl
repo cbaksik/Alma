@@ -120,225 +120,310 @@
 									<subfield code="v">										
 										<xsl:value-of select="."/>
 									</subfield>
-								</xsl:for-each>
-								<xsl:for-each select="//repository">					
-									<xsl:choose>
-										<xsl:when test="repositoryName[contains(., 'Arnold Arboretum')]">
-											<subfield code="f">
-												<xsl:text>facet-img-ajp</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Artemas Ward')]">
-											<subfield code="f">
-												<xsl:text>facet-img-artw</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Baker Library')]">
-											<subfield code="f">
-												<xsl:text>facet-img-bak</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Berenson Art')]">
-											<subfield code="f">
-												<xsl:text>facet-img-bera</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Fototeca') and contains(., 'Berenson')]">
-											<subfield code="f">
-												<xsl:text>facet-img-berf</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Biblioteca Berenson')]">
-											<subfield code="f">
-												<xsl:text>facet-img-ber</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Cabot Science')]">
-											<subfield code="f">
-												<xsl:text>facet-img-cab</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Hellenic Studies')]">
-											<subfield code="f">
-												<xsl:text>facet-img-hel</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Dumbarton Oaks')]">
-											<subfield code="f">
-												<xsl:text>facet-img-ddo</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Ernst Mayr')]">
-											<subfield code="f">
-												<xsl:text>facet-img-mcz</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Fung')]">
-											<subfield code="f">
-												<xsl:text>facet-img-fun</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Gray Herbarium')]">
-											<subfield code="f">
-												<xsl:text>facet-img-gra</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Gutman')]">
-											<subfield code="f">
-												<xsl:text>facet-img-gut</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Art Museum') or contains(., 'Harvard University Art')]">
-											<subfield code="f">
-												<xsl:text>facet-img-art</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Business')]">
-											<subfield code="f">
-												<xsl:text>facet-img-bak</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Divinity') or contains(., 'Andover-Harvard')]">
-											<subfield code="f">
-												<xsl:text>facet-img-div</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Film')]">
-											<subfield code="f">
-												<xsl:text>facet-img-hfa</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Fine Arts') and contains(., 'Digital')]">
-											<subfield code="f">
-												<xsl:text>facet-img-fald</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Fine Arts') and contains(., 'Special')]">
-											<subfield code="f">
-												<xsl:text>facet-img-fal</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Forest')]">
-											<subfield code="f">
-												<xsl:text>facet-img-for</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Kennedy')]">
-											<subfield code="f">
-												<xsl:text>facet-img-ksg</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Law')]">
-											<subfield code="f">
-												<xsl:text>facet-img-law</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Portrait')]">
-											<subfield code="f">
-												<xsl:text>facet-img-lawp</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard Theatre')]">
-											<subfield code="f">
-												<xsl:text>facet-img-the</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard University Archive')]">
-											<subfield code="f">
-												<xsl:text>facet-img-hua</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Harvard-Yenching')]">
-											<subfield code="f">
-												<xsl:text>facet-img-hyl</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'History of Medicine') and contains(., 'Warren')]">
-											<subfield code="f">
-												<xsl:text>facet-img-medw</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'History of Medicine')]">
-											<subfield code="f">
-												<xsl:text>facet-img-med</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Houghton Library')]">
-											<subfield code="f">
-												<xsl:text>facet-img-hou</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Loeb') and contains(., 'Design')]">
-											<subfield code="f">
-												<xsl:text>facet-img-des</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Loeb Music')]">
-											<subfield code="f">
-												<xsl:text>facet-img-mus</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Milman Parry')]">
-											<subfield code="f">
-												<xsl:text>facet-img-ora</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Observatory')]">
-											<subfield code="f">
-												<xsl:text>facet-img-hco</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Peabody Museum')]">
-											<subfield code="f">
-												<xsl:text>facet-img-pea</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Radcliffe College')]">
-											<subfield code="f">
-												<xsl:text>facet-img-schr</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Schlesinger Library')]">
-											<subfield code="f">
-												<xsl:text>facet-img-sch</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Theodore Roosevelt')]">
-											<subfield code="f">
-												<xsl:text>facet-img-hout</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Tozzer Library')]">
-											<subfield code="f">
-												<xsl:text>facet-img-toz</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Slavic') and contains(., 'Widener')]">
-											<subfield code="f">
-												<xsl:text>facet-img-wids</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Middle East') and contains(., 'Widener')]">
-											<subfield code="f">
-												<xsl:text>facet-img-widm</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Judaica') and contains(., 'Widener')]">
-											<subfield code="f">
-												<xsl:text>facet-img-widj</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:when test="repositoryName[contains(., 'Widener')]">
-											<subfield code="f">
-												<xsl:text>facet-img-wid</xsl:text>
-											</subfield>
-										</xsl:when>
-										<xsl:otherwise>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:for-each>
+								</xsl:for-each>								
 							</datafield>							
 							
+							<xsl:for-each select="//repository">
+							<xsl:choose>
+								<xsl:when test="repositoryName[contains(., 'Arnold Arboretum')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-ajp</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Artemas Ward')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-artw</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Baker Library')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-bak</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Berenson Art')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-bera</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Fototeca') and contains(., 'Berenson')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-berf</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Biblioteca Berenson')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-ber</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Cabot Science')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-cab</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Hellenic Studies')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-hel</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Dumbarton Oaks')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-ddo</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Ernst Mayr')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-mcz</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Fung')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-fun</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Gray Herbarium')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-gra</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Gutman')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-gut</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Art Museum') or contains(., 'Harvard University Art')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-art</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Business')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-bak</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Divinity') or contains(., 'Andover-Harvard')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-div</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Film')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-hfa</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Fine Arts') and contains(., 'Digital')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-fald</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Fine Arts') and contains(., 'Special')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-fal</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Forest')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-for</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Kennedy')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-ksg</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Law')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-law</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Portrait')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-lawp</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard Theatre')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-the</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard University Archive')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-hua</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Harvard-Yenching')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-hyl</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'History of Medicine') and contains(., 'Warren')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-medw</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'History of Medicine')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-med</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Houghton Library')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-hou</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Loeb') and contains(., 'Design')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-des</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Loeb Music')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-mus</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Milman Parry')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-ora</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Observatory')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-hco</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Peabody Museum')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-pea</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Radcliffe College')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-schr</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Schlesinger Library')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-sch</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Theodore Roosevelt')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-hout</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Tozzer Library')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-toz</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Slavic') and contains(., 'Widener')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-wids</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Middle East') and contains(., 'Widener')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-widm</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Judaica') and contains(., 'Widener')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-widj</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:when test="repositoryName[contains(., 'Widener')]">
+									<datafield tag="590" ind1=" " ind2="9">
+										<subfield code="f">
+											<xsl:text>facet-img-wid</xsl:text>
+										</subfield>
+									</datafield>
+								</xsl:when>
+								<xsl:otherwise>
+								</xsl:otherwise>
+							</xsl:choose>
+							</xsl:for-each>
+
 							<xsl:for-each select="work/creator">
 								<datafield tag="100" ind1=" " ind2=" ">
 									<subfield code="a">
