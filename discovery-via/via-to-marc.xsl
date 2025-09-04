@@ -52,12 +52,15 @@
 										<xsl:choose>
 											<xsl:when test="@primaryImageThumbnailURN">
 												<xsl:value-of select="@primaryImageThumbnailURN"/>
+												<xsl:text>?height=150&amp;width=150</xsl:text>
 											</xsl:when>
 											<xsl:when test="work/image">
 												<xsl:value-of select="work/image/@xlink:href"/>
+												<xsl:text>?height=150&amp;width=150</xsl:text>
 											</xsl:when>
 											<xsl:otherwise test="work/component">
 												<xsl:value-of select="work/component/image/@xlink:href"/>
+												<xsl:text>?height=150&amp;width=150</xsl:text>
 											</xsl:otherwise>
 										</xsl:choose>
 									</subfield>
@@ -475,8 +478,10 @@
 									<xsl:for-each select="work/hvd_repository">
 										<subfield code="r">
 											<xsl:value-of select="repositoryName"/>
-											<xsl:text> </xsl:text>
-											<xsl:value-of select="number"/>
+											<xsl:if test="number">
+												<xsl:text> </xsl:text>
+												<xsl:value-of select="number"/>
+											</xsl:if>
 										</subfield>
 									</xsl:for-each>
 									
