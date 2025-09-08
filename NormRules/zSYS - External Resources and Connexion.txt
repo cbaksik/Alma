@@ -5,9 +5,11 @@ then
    addField "040.a.ATTENTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! THIS IS A NON-ENGLISH LANGUAGE CATALOGING RECORD. Best practice is to derive an English language cataloging record in Connexion and use that record. If you must use this record in Alma, please delete the 035 and 040 of this record and change the encoding level to 5." if (not exists "040.b.eng")
 end
 
-rule "Add no-overlay field to serials if not authenticated"
+rule "Add no-overlay if serial is un-authenticated"
 when
-   (existsControl "LDR.{7,1}.s") AND (not exists "010.a.*") AND (not exists "042.a.*") AND ((not existsControl "LDR.{17,1}. ") OR (not existsControl "LDR.{17,1}.7"))
+   ((existsControl "LDR.{7,1}.s") AND (existsControl "LDR.{17,1}.1|2|3|4|5|6|8|I|L|K")) OR  
+  ((existsControl "LDR.{7,1}.s") AND (existsControl "LDR.{17,1}. |7")
+AND NOT ((exists "010.a.*") AND (exists "042.a.*")))
 then
    addField "998.{-,-}.a.NO-OVERLAY"
 end
