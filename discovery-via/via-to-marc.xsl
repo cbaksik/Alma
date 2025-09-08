@@ -123,7 +123,7 @@
 								</xsl:for-each>								
 							</datafield>							
 							
-							<xsl:for-each select="//repository">
+							<xsl:for-each select="//repository|//hvd_repository">
 							<xsl:choose>
 								<xsl:when test="repositoryName[contains(., 'Arnold Arboretum')]">
 									<datafield tag="590" ind1=" " ind2="9">
@@ -163,7 +163,7 @@
 								<xsl:when test="repositoryName[contains(., 'Biblioteca Berenson')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-ber</xsl:text>
+											<xsl:text>facet-img-berb</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
@@ -219,7 +219,7 @@
 								<xsl:when test="repositoryName[contains(., 'Harvard Art Museum') or contains(., 'Harvard University Art')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-art</xsl:text>
+											<xsl:text>facet-img-artm</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
@@ -254,7 +254,7 @@
 								<xsl:when test="repositoryName[contains(., 'Harvard Fine Arts') and contains(., 'Special')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-fal</xsl:text>
+											<xsl:text>facet-img-fals</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
@@ -275,7 +275,7 @@
 								<xsl:when test="repositoryName[contains(., 'Harvard Law')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-law</xsl:text>
+											<xsl:text>facet-img-lawl</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
@@ -317,14 +317,14 @@
 								<xsl:when test="repositoryName[contains(., 'History of Medicine')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-med</xsl:text>
+											<xsl:text>facet-img-medh</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
 								<xsl:when test="repositoryName[contains(., 'Houghton Library')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-hou</xsl:text>
+											<xsl:text>facet-img-houl</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
@@ -373,7 +373,7 @@
 								<xsl:when test="repositoryName[contains(., 'Schlesinger Library')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-sch</xsl:text>
+											<xsl:text>facet-img-schl</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
@@ -415,7 +415,7 @@
 								<xsl:when test="repositoryName[contains(., 'Widener')]">
 									<datafield tag="590" ind1=" " ind2="9">
 										<subfield code="f">
-											<xsl:text>facet-img-wid</xsl:text>
+											<xsl:text>facet-img-widl</xsl:text>
 										</subfield>
 									</datafield>
 								</xsl:when>
