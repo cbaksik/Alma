@@ -7,8 +7,6 @@ rule "Primo VE Display - Subject 600"
 		set TEMP"2" to MARC."600" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-lc600'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."600" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")
@@ -25,8 +23,6 @@ rule "Primo VE Display- Subject 600 fast"
 		set TEMP"2" to MARC."600" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-fast600'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."600" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")	
@@ -42,31 +38,29 @@ rule "Primo VE Display- Subject 610"
 		set TEMP"2" to MARC."610" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-lc610'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."610" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")
 		create pnx."display"."subject" with TEMP"1"
 end
 
-rule "Primo VE Display- Subject 610 fast"
-	when
-		MARC."610" has any "a-z" AND
-		MARC."610".ind"2" equals "7" AND
-		MARC."610"."2" match "fast"
-	then
-		set TEMP"1" to MARC."610" subfields "a-u" delimited by " " remove substring using regex "\\.$"
-		set TEMP"2" to MARC."610" sub without sorting "v-z" delimited by " -- "
-		remove substring using regex (TEMP"2","\\.$")		
-		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-fast610'>")
-		add suffix (TEMP"1","</span>")
-		set TEMP"3" to MARC."610" sub without sort "a-z"
-		remove substring using regex (TEMP"3","\\.$")
-		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")		
-		create pnx."display"."subject" with TEMP"1"
-end
+#rule "Primo VE Display- Subject 610 fast"
+#	when
+#		(MARC."610" has any "a-z" AND
+#		MARC."610".ind"2" equals "7" AND
+#		MARC."610"."2" match "fast") AND NOT
+#		MARC is "991"
+#
+#	then
+#		set TEMP"1" to MARC."610" subfields "a-u" delimited by " " remove substring using regex "\\.$"
+#		set TEMP"2" to MARC."610" sub without sorting "v-z" delimited by " -- "
+#		remove substring using regex (TEMP"2","\\.$")		
+#		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
+#		set TEMP"3" to MARC."610" sub without sort "a-z"
+#		remove substring using regex (TEMP"3","\\.$")
+#		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")		
+#		create pnx."display"."subject" with TEMP"1"
+#end
 
 rule "Primo VE Display- Subject 611"
 	when
@@ -77,31 +71,27 @@ rule "Primo VE Display- Subject 611"
 		set TEMP"2" to MARC."611" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-lc611'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."611" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")
 		create pnx."display"."subject" with TEMP"1"
 end
 
-rule "Primo VE Display- Subject 611 fast"
-	when
-		MARC."611" has any "a-z" AND
-		MARC."611".ind"2" equals "7" AND
-		MARC."611"."2" match "fast"
-	then
-		set TEMP"1" to MARC."611" subfields "a-u" delimited by " " remove substring using regex "\\.$"
-		set TEMP"2" to MARC."611" sub without sorting "v-z" delimited by " -- "
-		remove substring using regex (TEMP"2","\\.$")		
-		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-fast611'>")
-		add suffix (TEMP"1","</span>")
-		set TEMP"3" to MARC."611" sub without sort "a-z"
-		remove substring using regex (TEMP"3","\\.$")
-		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")	
-		create pnx."display"."subject" with TEMP"1"
-end
+#rule "Primo VE Display- Subject 611 fast"
+#	when
+#		MARC."611" has any "a-z" AND
+#		MARC."611".ind"2" equals "7" AND
+#		MARC."611"."2" match "fast"
+#	then
+#		set TEMP"1" to MARC."611" subfields "a-u" delimited by " " remove substring using regex "\\.$"
+#		set TEMP"2" to MARC."611" sub without sorting "v-z" delimited by " -- "
+#		remove substring using regex (TEMP"2","\\.$")		
+#		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
+#		set TEMP"3" to MARC."611" sub without sort "a-z"
+#		remove substring using regex (TEMP"3","\\.$")
+#		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")	
+#		create pnx."display"."subject" with TEMP"1"
+#end
 
 rule "Primo VE Display- Subject 648"
 	when
@@ -112,8 +102,6 @@ rule "Primo VE Display- Subject 648"
 		set TEMP"2" to MARC."648" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-lc648'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."648" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")
@@ -130,8 +118,6 @@ rule "Primo VE Display- Subject 648 fast"
 		set TEMP"2" to MARC."648" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-fast648'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."648" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")		
@@ -147,31 +133,27 @@ rule "Primo VE Display- Subject 650"
 		set TEMP"2" to MARC."650" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-lc650'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."650" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")
 		create pnx."display"."subject" with TEMP"1"
 end
 
-rule "Primo VE Display- Subject 650 fast"
-	when
-		MARC."650" has any "a-z" AND
-		MARC."650".ind"2" equals "7" AND
-		MARC."650"."2" match "fast"
-	then
-		set TEMP"1" to MARC."650" subfields "a-u" delimited by " " remove substring using regex "\\.$"
-		set TEMP"2" to MARC."650" sub without sorting "v-z" delimited by " -- "
-		remove substring using regex (TEMP"2","\\.$")		
-		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-fast650'>")
-		add suffix (TEMP"1","</span>")
-		set TEMP"3" to MARC."650" sub without sort "a-z"
-		remove substring using regex (TEMP"3","\\.$")
-		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")	
-		create pnx."display"."subject" with TEMP"1"
-end
+#rule "Primo VE Display- Subject 650 fast"
+#	when
+#		MARC."650" has any "a-z" AND
+#		MARC."650".ind"2" equals "7" AND
+#		MARC."650"."2" match "fast"
+#	then
+#		set TEMP"1" to MARC."650" subfields "a-u" delimited by " " remove substring using regex "\\.$"
+#		set TEMP"2" to MARC."650" sub without sorting "v-z" delimited by " -- "
+#		remove substring using regex (TEMP"2","\\.$")		
+#		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
+#		set TEMP"3" to MARC."650" sub without sort "a-z"
+#		remove substring using regex (TEMP"3","\\.$")
+#		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")	
+#		create pnx."display"."subject" with TEMP"1"
+#end
 
 rule "Prima_Display - Subject 651"
 	when
@@ -182,8 +164,6 @@ rule "Prima_Display - Subject 651"
 		set TEMP"2" to MARC."651" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-lc651'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."651" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")
@@ -200,8 +180,6 @@ rule "Primo VE Display- Subject 651 fast"
 		set TEMP"2" to MARC."651" sub without sorting "v-z" delimited by " -- "
 		remove substring using regex (TEMP"2","\\.$")		
 		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
-		add prefix (TEMP"1","<span class='hvd-fast651'>")
-		add suffix (TEMP"1","</span>")
 		set TEMP"3" to MARC."651" sub without sort "a-z"
 		remove substring using regex (TEMP"3","\\.$")
 		concatenate with delimiter (TEMP"1",TEMP"3","$$Q")		
