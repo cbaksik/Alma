@@ -40,8 +40,16 @@
 							</controlfield>
 							
 							<controlfield tag="008">
-								<xsl:text>      m</xsl:text>
-								<xsl:text>        </xsl:text>
+								<xsl:text>      s</xsl:text>
+								<xsl:choose>
+									<xsl:when test="string-length(work/structuredDate/beginDate) = 4 and translate(work/structuredDate/beginDate, '0123456789', '') = '' and (starts-with(work/structuredDate/beginDate, '1') or starts-with(work/structuredDate/beginDate, '2'))">
+											<xsl:value-of select="work/structuredDate/beginDate"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>    </xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+								<xsl:text>    </xsl:text>
 								<xsl:text>rb            000 i ||| d</xsl:text>
 							</controlfield>
 							
