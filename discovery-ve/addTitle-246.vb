@@ -14,6 +14,14 @@ rule "Primo VE - addtitle - 1st ind 0"
 		create pnx."display"."addtitle" with MARC."246" sub without sort "a-p"
 end
 
+rule "Primo VE - addtitle - 1st ind 2"
+	when
+		MARC."246" has any "a-p" AND 
+		MARC."246".ind"1" equals "2"
+	then
+		create pnx."display"."addtitle" with MARC."246" sub without sort "a-p"
+end
+
 rule "Primo VE - addtitle - 1st ind 3"
 	when
 		MARC."246" has any "a-p" AND 
