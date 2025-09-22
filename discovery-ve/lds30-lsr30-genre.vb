@@ -328,3 +328,24 @@ rule "Primo VE - lsr30 008 mapping p"
 	then
 		create pnx."search"."lsr30" with "illuminations"
 end
+
+// via
+
+rule "Primo VE Marc - lsr30 via surrogate"	
+	when
+		MARC."598" has any "g" AND
+		MARC."598".ind"2"  equals "9"
+	then
+		create pnx."search"."lsr30" with MARC."598" sub without sort "g" 
+end
+
+rule "Primo VE Marc - lsr30 via components"	
+	when
+		MARC."599" has any "f,g" AND
+		MARC."599".ind"2"  equals "9"
+	then
+		create pnx."search"."lsr30" with MARC."599" sub without sort "f,g" 
+end
+
+
+
