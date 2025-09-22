@@ -844,11 +844,16 @@
 										</subfield>
 									</xsl:for-each>
 									
-									<xsl:for-each select="work/hvd_topic">
+									<xsl:if test="work/hvd_topic">
 										<subfield code="s">
-											<xsl:value-of select="term"/>
+											<xsl:for-each select="work/hvd_topic">
+												<xsl:if test="position() > 1">
+													<xsl:text> ; </xsl:text>
+												</xsl:if>
+												<xsl:value-of select="term"/>
+											</xsl:for-each>
 										</subfield>
-									</xsl:for-each>
+									</xsl:if>
 									
 									<xsl:for-each select="work/hvd_workType">
 										<subfield code="g">
@@ -1021,8 +1026,10 @@
 									
 									<xsl:for-each select="title">
 										<subfield code="9">
-											<xsl:value-of select="type"/>
-											<xsl:text>: </xsl:text>
+											<xsl:if test="type">
+												<xsl:value-of select="type"/>
+												<xsl:text>: </xsl:text>
+											</xsl:if>
 											<xsl:value-of select="textElement"/>
 										</subfield>			
 									</xsl:for-each>
