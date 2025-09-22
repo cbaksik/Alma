@@ -4,7 +4,6 @@ rule "Primo VE - Lds07"
 		MARC."264".ind"2"  equals "0"
 	then
 		set TEMP"1" to MARC."264" sub without sort "3,a-c"
-		add prefix (TEMP"1","Produced: ")
 		create pnx."display"."lds07" with TEMP"1"
 end
 
