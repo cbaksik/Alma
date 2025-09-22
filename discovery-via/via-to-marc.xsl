@@ -496,9 +496,7 @@
 										<xsl:value-of select="."/>
 									</subfield>
 								</datafield>
-							</xsl:for-each>
-							
-							<!-- make sure structured date is second so that's what Primo will use to set creationDate for control/search in addition to pubinfo -->
+							</xsl:for-each>							
 
 							<xsl:choose>
 								<xsl:when test="work/freeDate">
@@ -1032,6 +1030,12 @@
 											</xsl:if>
 											<xsl:value-of select="textElement"/>
 										</subfield>			
+									</xsl:for-each>
+
+									<xsl:for-each select="image/caption">
+										<subfield code="9">
+											<xsl:value-of select="."/>
+										</subfield>
 									</xsl:for-each>
 									
 									<xsl:for-each select="topic">
