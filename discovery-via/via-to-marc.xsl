@@ -1021,7 +1021,7 @@
 									</xsl:for-each>
 									
 									<xsl:for-each select="title">
-										<subfield code="9">
+										<subfield code="l">
 											<xsl:if test="type">
 												<xsl:value-of select="type"/>
 												<xsl:text>: </xsl:text>
@@ -1031,7 +1031,7 @@
 									</xsl:for-each>
 
 									<xsl:for-each select="image/caption">
-										<subfield code="9">
+										<subfield code="l">
 											<xsl:value-of select="."/>
 										</subfield>
 									</xsl:for-each>
