@@ -1,6 +1,6 @@
 rule "Primo VE - Lds65"
 	when
-		MARC."599" has any "a-z"  AND
+		MARC."599" has any "w"  AND
 		MARC."599".ind"2"  equals "9"
 	then
 		set TEMP"1" to MARC."599" sub without sort "0-9,a-z" wrap subfields
