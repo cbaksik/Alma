@@ -935,13 +935,13 @@
 										</subfield>
 									</xsl:for-each>
 									
-									<xsl:for-each select="structuredDate">
+									<!-- <xsl:for-each select="structuredDate">
 										<subfield code="4">
 											<xsl:value-of select="beginDate"/>
 											<xsl:text>-</xsl:text>
 											<xsl:value-of select="endDate"/>
 										</subfield>
-									</xsl:for-each>
+									</xsl:for-each> -->
 									
 									<xsl:for-each select="image">
 										
@@ -975,10 +975,11 @@
 									
 									
 									<xsl:for-each select="description">
-										<subfield code="5">
+										<subfield code="9">
 											<xsl:value-of select="."/>
 										</subfield>
 									</xsl:for-each>
+
 									<xsl:for-each select="dimensions">
 										<subfield code="5">
 											<xsl:value-of select="."/>
@@ -989,8 +990,9 @@
 											<xsl:value-of select="."/>
 										</subfield>
 									</xsl:for-each>
-									<xsl:for-each select="notes">
-										<subfield code="5">
+									
+									<xsl:for-each select="notes|note">
+										<subfield code="e">
 											<xsl:value-of select="."/>
 										</subfield>
 									</xsl:for-each>
@@ -1000,6 +1002,7 @@
 											<xsl:value-of select="text"/>
 											<xsl:text>--</xsl:text>
 											<xsl:value-of select="@href"/>
+											<xsl:value-of select="link"/>
 										</subfield>
 									</xsl:for-each>
 									
@@ -1162,13 +1165,13 @@
 										</subfield>
 									</xsl:for-each>
 									
-									<xsl:for-each select="hvd_structuredDate">
+									<!-- <xsl:for-each select="hvd_structuredDate">
 										<subfield code="d">
 											<xsl:value-of select="beginDate"/>
 											<xsl:text>-</xsl:text>
 											<xsl:value-of select="endDate"/>
 										</subfield>
-									</xsl:for-each>
+									</xsl:for-each> -->
 									
 									<xsl:for-each select="hvd_repository">
 										<subfield code="r">
