@@ -718,7 +718,6 @@ rule "Primo VE - Related 787"
 		MARC."787".ind"1" equals "0"
 	then
 		set TEMP"1" to MARC."787" sub without sort "a-v"
-		add prefix (TEMP"1","Other relationship: ")
 		set TEMP"2" to MARC."787" sub without sort "z"
 		add prefix (TEMP"2","ISBN: ")
 		concatenate with delimiter (TEMP"1",TEMP"2"," ")
@@ -1070,7 +1069,6 @@ rule "Primo VE - Related 880-787"
 		MARC."880".ind"1" equals "0"
 	then
 		set TEMP"1" to MARC."880" sub without sort "a-v"
-		add prefix (TEMP"1","Other relationship: ")
 		set TEMP"2" to MARC."880" sub without sort "z"
 		add prefix (TEMP"2","ISBN: ")
 		concatenate with delimiter (TEMP"1",TEMP"2"," ")
