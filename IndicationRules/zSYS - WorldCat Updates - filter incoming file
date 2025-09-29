@@ -8,15 +8,9 @@ when
     OR
     ((exists "040.e.amim|appm|dacs|dcrmg|dcrmm|dcrmmss") AND (not exists "502") AND (not exists "040.c.DLC"))
     OR 
+    (existsControl "LDR.{07,1}.s") 
+    OR 
     (existsControl "LDR.{07,1}.i") 
-    OR
-    ((existsControl "LDR.{7,1}.s") AND (existsControl "LDR.{17,1}.1|2|3|4|5|6|8|I|L|K"))
-    OR
-    ((existsControl "LDR.{07,1}.s") AND (existsControl "LDR.{17,1}. |7") AND NOT (exists "010.a.*") AND NOT (exists "042.a.*"))
-    OR
-    ((existsControl "LDR.{07,1}.s") AND (existsControl "LDR.{17,1}. |7") AND (exists "010.a.*") AND NOT (exists "042.a.*"))
-    OR
-    ((existsControl "LDR.{07,1}.s") AND (existsControl "LDR.{17,1}. |7") AND NOT (exists "010.a.*") AND (exists "042.a.*"))
 then
    set indication."true"
 end
