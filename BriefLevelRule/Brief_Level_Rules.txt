@@ -54,15 +54,22 @@ end
 
 rule "Brief 06"
 when
-    (existsControl "LDR.{17,1}.3") 
+    (existsControl "LDR.{17,1}.3") OR (existsControl "LDR.{17,1}.8") 
 then
     set brief_level."06"
 end
 
 
+rule "Brief 09"
+when
+    ((existsControl "LDR.{17,1}. ") OR (existsControl "LDR.{17,1}.7")) AND (exists "010.a.*") AND (exists "042.a.*")
+then
+    set brief_level."09"
+end
+
 rule "Brief 07"
 when
-    (existsControl "LDR.{17,1}.7") OR (existsControl "LDR.{17,1}.K") OR (existsControl "LDR.{17,1}.M")
+    (existsControl "LDR.{17,1}.7") OR (existsControl "LDR.{17,1}.K") OR (existsControl "LDR.{17,1}.M") OR (existsControl "LDR.{17,1}.2") OR (existsControl "LDR.{17,1}.4") OR (existsControl "LDR.{17,1}.L")
 then
     set brief_level."07"
 end
@@ -73,11 +80,4 @@ when
     (existsControl "LDR.{17,1}. ") OR (existsControl "LDR.{17,1}.1") OR (existsControl "LDR.{17,1}.I")
 then
     set brief_level."08"
-end
-
-rule "Brief 09 - all encoding levels"
-when
-    (TRUE)
-then
-    set brief_level."09"
 end
