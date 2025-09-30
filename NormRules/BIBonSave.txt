@@ -35,9 +35,9 @@ when
 then        
         removeField "959"
         copyField "035.a" to "959.a" if (exists "035.a.(OCoLC)*")
-        copyField "035.z" to "959.a" if (exists "035.a.(OCoLC)*")
         splitSubField "776.w.(" to "TMP.a"
         replaceContents "TMP.a.OCoLC" with "(OCoLC"
         changeField "TMP" to "959" if (exists "TMP.a.(OCoLC)*")
         removeField "TMP"          
+        correctDuplicateFields "959"
 end
