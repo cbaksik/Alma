@@ -1430,8 +1430,69 @@
 										<subfield code="g">
 											<xsl:value-of select="."/>
 										</subfield>
-									</xsl:for-each>	
+									</xsl:for-each>
 									
+									<xsl:for-each select="subjectPlace/coordinates|hvd_subjectPlace/coordinates">
+									<subfield code="o">										
+										<xsl:if test="latitude">
+											<xsl:text>~lat </xsl:text>
+											<xsl:if test="latitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="latitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="latitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="latitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="latitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="latitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+										<xsl:if test="longitude">
+											<xsl:text>~long </xsl:text>
+											<xsl:if test="longitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="longitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="longitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="longitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="longitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="longitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+										</subfield>
+									</xsl:for-each>
+																	
 								</datafield>
 								
 							</xsl:for-each>
