@@ -128,20 +128,217 @@
 										<xsl:value-of select="number"/>
 									</subfield>
 								</xsl:for-each>
-								<xsl:for-each select="//alternativeTerm">
+
+								<!-- alt terms for indexing-->
+								<xsl:for-each select="work//alternativeTerm|work//component/alternativeTerm">
 									<subfield code="v">										
 										<xsl:value-of select="."/>
 									</subfield>
 								</xsl:for-each>
-								<xsl:for-each select="//alternativeName">
+								<xsl:for-each select="work//alternativeName|work//component/alternativeName">
 									<subfield code="v">										
 										<xsl:value-of select="."/>
 									</subfield>
-								</xsl:for-each>								
+								</xsl:for-each>
+
+								<!-- lat/long at work level-->
+								 <xsl:for-each select="work/location/coordinates">
+									<subfield code="l">										
+										<xsl:if test="latitude">
+											<xsl:text>~lat </xsl:text>
+											<xsl:if test="latitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="latitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="latitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="latitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="latitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="latitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+										<xsl:if test="longitude">
+											<xsl:text>~long </xsl:text>
+											<xsl:if test="longitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="longitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="longitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="longitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="longitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="longitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+									</subfield>
+								</xsl:for-each>
+								<xsl:for-each select="work/subjectPlace/coordinates">
+									<subfield code="n">										
+										<xsl:if test="latitude">
+											<xsl:text>~lat </xsl:text>
+											<xsl:if test="latitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="latitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="latitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="latitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="latitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="latitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+										<xsl:if test="longitude">
+											<xsl:text>~long </xsl:text>
+											<xsl:if test="longitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="longitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="longitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="longitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="longitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="longitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+									</subfield>
+								</xsl:for-each>
+								<xsl:for-each select="work/placeOfProduction/coordinates">
+									<subfield code="m">										
+										<xsl:if test="latitude">
+											<xsl:text>~lat </xsl:text>
+											<xsl:if test="latitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="latitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="latitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="latitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="latitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="latitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="latitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+										<xsl:if test="longitude">
+											<xsl:text>~long </xsl:text>
+											<xsl:if test="longitude/@decimal">
+												<xsl:text>decimal="</xsl:text>
+												<xsl:value-of select="longitude/@decimal"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@degree">
+												<xsl:text>degree="</xsl:text>
+												<xsl:value-of select="longitude/@degree"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@minute">
+												<xsl:text>minute="</xsl:text>
+												<xsl:value-of select="longitude/@minute"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@second">
+												<xsl:text>second="</xsl:text>
+												<xsl:value-of select="longitude/@second"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+											<xsl:if test="longitude/@direction">
+												<xsl:text>direction="</xsl:text>
+												<xsl:value-of select="longitude/@direction"/>
+												<xsl:text>" </xsl:text>
+											</xsl:if>
+										</xsl:if>
+									</subfield>
+								</xsl:for-each>
+								
+
+
 							</datafield>							
 
+							
+                                    <xsl:variable name="allRepositories" select="work/repository|work/hvd_repository|work/component/repository|work/component/hvd_repository" />
 
-                                    <xsl:variable name="allRepositories" select="//repository|//hvd_repository" />
+								
+								<!-- for troubleshooting only -->
+							 	<!-- <xsl:for-each select="$allRepositories/repositoryName">
+									<datafield tag="590" ind1=" " ind2="9">
+											<subfield code="|">
+												<xsl:value-of select="."/>
+											</subfield>
+									</datafield>									
+								</xsl:for-each> -->
 
 
 									<xsl:if test="$allRepositories/repositoryName[contains(., 'Arnold Arboretum')]">
@@ -158,7 +355,7 @@
 											</subfield>
 										</datafield>
 									</xsl:if>
-									<xsl:if test="$allRepositories/repositoryName[contains(., 'Baker Library')]">
+									<xsl:if test="$allRepositories/repositoryName[contains(., 'Baker Library') or contains(., 'Harvard Business')]">
 										<datafield tag="590" ind1=" " ind2="9">
 											<subfield code="f">
 												<xsl:text>facet-img-bak</xsl:text>
@@ -179,7 +376,7 @@
 											</subfield>
 										</datafield>
 									</xsl:if>
-									<xsl:if test="$allRepositories/repositoryName[contains(., 'Biblioteca Berenson')]">
+									<xsl:if test="$allRepositories/repositoryName[contains(., 'Biblioteca Berenson') and not(contains(., 'Fototeca'))]">
 										<datafield tag="590" ind1=" " ind2="9">
 											<subfield code="f">
 												<xsl:text>facet-img-berb</xsl:text>
@@ -239,13 +436,6 @@
 										<datafield tag="590" ind1=" " ind2="9">
 											<subfield code="f">
 												<xsl:text>facet-img-artm</xsl:text>
-											</subfield>
-										</datafield>
-									</xsl:if>
-									<xsl:if test="$allRepositories/repositoryName[contains(., 'Harvard Business')]">
-										<datafield tag="590" ind1=" " ind2="9">
-											<subfield code="f">
-												<xsl:text>facet-img-bak</xsl:text>
 											</subfield>
 										</datafield>
 									</xsl:if>
@@ -333,7 +523,7 @@
 											</subfield>
 										</datafield>
 									</xsl:if>
-									<xsl:if test="$allRepositories/repositoryName[contains(., 'History of Medicine')]">
+									<xsl:if test="$allRepositories/repositoryName[contains(., 'History of Medicine')and not(contains(., 'Warren'))]">
 										<datafield tag="590" ind1=" " ind2="9">
 											<subfield code="f">
 												<xsl:text>facet-img-medh</xsl:text>
@@ -431,7 +621,7 @@
 											</subfield>
 										</datafield>
 									</xsl:if>
-									<xsl:if test="$allRepositories/repositoryName[contains(., 'Widener')]">
+									<xsl:if test="$allRepositories/repositoryName[contains(., 'Widener') and not(contains(., 'Slavic')) and not(contains(., 'Middle East')) and not(contains(., 'Judaica'))]">
 										<datafield tag="590" ind1=" " ind2="9">
 											<subfield code="f">
 												<xsl:text>facet-img-widl</xsl:text>
@@ -516,7 +706,7 @@
 								<xsl:otherwise></xsl:otherwise>
 							</xsl:choose>
 							
-							<xsl:for-each select="work/production/placeOfProduction">
+							<xsl:for-each select="work/production/placeOfProduction|work/placeOfProduction">
 								<datafield tag="264" ind1=" " ind2="0">
 									<subfield code="a">
 										<xsl:value-of select="place"/>
@@ -801,6 +991,26 @@
 									<xsl:if test="work/hvd_creator">
 										<subfield code="a">
 											<xsl:for-each select="work/hvd_creator">
+												<xsl:if test="position() > 1">
+													<xsl:text> ; </xsl:text>
+												</xsl:if>
+												<xsl:value-of select="nameElement"/>
+												<xsl:if test="dates">
+													<xsl:text>, </xsl:text>
+													<xsl:value-of select="dates"/>
+												</xsl:if>
+												<xsl:if test="role">
+													<xsl:text> [</xsl:text>
+													<xsl:value-of select="role"/>
+													<xsl:text>]</xsl:text>
+												</xsl:if>
+											</xsl:for-each>
+										</subfield>
+									</xsl:if>
+
+									<xsl:if test="work/hvd_subjectName">
+										<subfield code="s">
+											<xsl:for-each select="work/hvd_subjectName">
 												<xsl:if test="position() > 1">
 													<xsl:text> ; </xsl:text>
 												</xsl:if>
