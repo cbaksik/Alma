@@ -1,0 +1,47 @@
+rule "rule to run on incoming scsb records for ReCAP external data source in Primo VE" 
+when 
+    (TRUE)
+then 
+    removeControlField "003"
+    addControlField "003.ReCAP"
+    removeControlField "009"
+    replaceContents "035.a.(OCoLC)ocn" with "(OCoLC)" 
+    replaceContents "035.a.(OCoLC)ocm" with "(OCoLC)" 
+    replaceContents "035.a.(OCoLC)oc" with "(OCoLC)" 
+    replaceContents "035.a.(OCoLC)on" with "(OCoLC)" 
+    correctDuplicateFields "035"
+    removeField "59*"
+    removeField "853"
+    removeField "854"
+    removeField "855"
+    removeField "856"
+    removeField "86*"
+    removeField "87*"
+    removeField "89*"
+    removeField "900"
+    // keep 901 with has scsb dedupe key
+    removeField "902"
+    removeField "903"
+    removeField "904"
+    removeField "905"
+    removeField "906"
+    removeField "907"
+    removeField "908"
+    removeField "909"
+    removeField "91*"
+    removeField "92*"
+    removeField "93*"
+    removeField "94*"
+    removeField "95*"
+    removeField "96*"
+    removeField "97*"
+    removeField "98*"
+    removeField "99*"
+    // copy 901 dedupe key if present into our 959, validate ^[0-9a-zA-Z-]{36}$
+    // because partners put other stuff in there
+    replaceContents "901.a.^(.{35}).*" with "SCSBdedupe-$1"
+    copyField "901" to "959" if (exists "901.a.SCSBdedupe*")
+    removeField "901"
+    removeSubField "959.b"
+    removeSubField "959.c"
+end
