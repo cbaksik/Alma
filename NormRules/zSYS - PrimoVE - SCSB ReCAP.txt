@@ -11,6 +11,8 @@ then
     replaceContents "035.a.(OCoLC)on" with "(OCoLC)" 
     correctDuplicateFields "035"
     removeField "59*"
+    removeField "69*"
+    removeField "79*"
     removeField "853"
     removeField "854"
     removeField "855"
