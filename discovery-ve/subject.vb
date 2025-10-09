@@ -223,6 +223,7 @@ rule "Prima_Display - Subject 650 ascl,homoit,fnhl,wikidata,via"
 		(MARC."650"."2" match "wikidata" OR
 		MARC."650"."2" match "ascl" OR
 		MARC."650"."2" match "homoit" OR
+		MARC."650"."2" match "homoit/eng" OR
 		MARC."650"."2" match "fnhl" OR
 		MARC."650"."2" match "via")
 	then
