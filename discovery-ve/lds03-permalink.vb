@@ -8,8 +8,15 @@ rule "Primo VE - Lds03"
 		replace string by string (TEMP"1","^99.*","")
 		replace string by string (TEMP"1","^alma","99")
 		replace string by string (TEMP"1","harvardAlma$","3941")
-		add prefix (TEMP"1","<a href=\"https://id.lib.harvard.edu/alma/")
-		add suffix (TEMP"1","/catalog\">Permanent link to HOLLIS record</a>")
+		set TEMP"2" to MARC.control."001"
+		replace string by string (TEMP"2","^99([0-9]*)3941$","alma$1harvardAlma")
+		replace string by string (TEMP"2","^99.*","")
+		replace string by string (TEMP"2","^alma","99")
+		replace string by string (TEMP"2","harvardAlma$","3941")
+		add prefix (TEMP"1","<a aria-label=\"Permanent link to item\" href=\"https://id.lib.harvard.edu/alma/")
+		add suffix (TEMP"1","/catalog\">https://id.lib.harvard.edu/alma/")
+		concatenate with delimiter  (TEMP"1",TEMP"2","")
+		add suffix (TEMP"1","/catalog</a>")
 		create pnx."display"."lds03" with TEMP"1"
 end
 
@@ -21,8 +28,11 @@ priority 80
 		MARC is "852"
 	then
 		set TEMP"1" to MARC.control."001"
-		add prefix (TEMP"1","<a href=\"https://id.lib.harvard.edu/via/")
-		add suffix (TEMP"1","/catalog\">Permanent link to HOLLIS record</a>")
+		set TEMP"2" to MARC.control."001"
+		add prefix (TEMP"1","<a aria-label=\"Permanent link to item\" href=\"https://id.lib.harvard.edu/via/")
+		add suffix (TEMP"1","/catalog\">https://id.lib.harvard.edu/via/")
+		concatenate with delimiter  (TEMP"1",TEMP"2","")
+		add suffix (TEMP"1","/catalog</a>")
 		create pnx."display"."lds03" with TEMP"1"
 end
 
