@@ -19,6 +19,7 @@ rule "Primo VE - Genre 655 sf 7"
 		MARC."655".ind"2" equals "7" AND NOT
 		(MARC."655"."2" match "barngf" OR
 		MARC."655"."2" match "bellobv" OR
+		MARC."655"."2" match "bisacsh" OR
 		MARC."655"."2" match "buscxf" OR
 		MARC."655"."2" match "gatbeg" OR
 		MARC."655"."2" match "gnd.*" OR
