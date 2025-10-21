@@ -33,7 +33,7 @@ then
     remove MARC."525"
     remove MARC."526" if not exists subfield "5"
     remove MARC."53"X
-    remove MARC."540"
+    remove MARC."540" if not exists subfield "5"
     remove MARC."541" if not exists subfield "5"
     remove MARC."542"
     remove MARC."544"
