@@ -731,7 +731,7 @@
 							</xsl:for-each>
 							
 							<xsl:for-each select="work/materials">
-								<datafield tag="300" ind1=" " ind2=" ">
+								<datafield tag="340" ind1=" " ind2=" ">
 									<subfield code="a">
 										<xsl:value-of select="."/>
 									</subfield>
