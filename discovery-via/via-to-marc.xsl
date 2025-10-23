@@ -764,7 +764,7 @@
 							
 							<xsl:for-each select="work/copyright">
 								<datafield tag="542" ind1=" " ind2=" ">
-									<subfield code="a">
+									<subfield code="n">
 										<xsl:value-of select="."/>
 									</subfield>
 								</datafield>
