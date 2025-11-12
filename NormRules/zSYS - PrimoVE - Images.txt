@@ -1,0 +1,7 @@
+rule "rule to run on incoming VIA records for external data source in Primo VE" 
+when 
+    (TRUE)
+then
+ //  replaceContents "590.u.\\?height=1*" with ":THUMBNAIL"
+     suffix "590.u" with ":THUMBNAIL"
+end
