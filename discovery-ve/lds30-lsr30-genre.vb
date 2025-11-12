@@ -331,12 +331,25 @@ end
 
 // via
 
+rule "Primo VE Marc - marc 340 and via materials"	
+	when
+		MARC."340" has any "a"
+	then
+		set TEMP"1" to MARC."340" sub without sort "a"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		lower case (TEMP"1")
+		create pnx."search"."lsr30" with TEMP"1"
+end
+
 rule "Primo VE Marc - lsr30 via surrogate"	
 	when
 		MARC."598" has any "g" AND
 		MARC."598".ind"2"  equals "9"
 	then
-		create pnx."search"."lsr30" with MARC."598" sub without sort "g" 
+		set TEMP"1" to MARC."598" sub without sort "g"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		lower case (TEMP"1")
+		create pnx."search"."lsr30" with TEMP"1"
 end
 
 rule "Primo VE Marc - lsr30 via components"	
@@ -344,7 +357,10 @@ rule "Primo VE Marc - lsr30 via components"
 		MARC."599" has any "f,g" AND
 		MARC."599".ind"2"  equals "9"
 	then
-		create pnx."search"."lsr30" with MARC."599" sub without sort "f,g" 
+		set TEMP"1" to MARC."599" sub without sort "f,g"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		lower case (TEMP"1")
+		create pnx."search"."lsr30" with TEMP"1"
 end
 
 
