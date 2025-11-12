@@ -60,15 +60,12 @@
 										<xsl:choose>
 											<xsl:when test="@primaryImageThumbnailURN">
 												<xsl:value-of select="@primaryImageThumbnailURN"/>
-												<xsl:text>?height=150&amp;width=150</xsl:text>
 											</xsl:when>
 											<xsl:when test="work/image">
 												<xsl:value-of select="work/image/@xlink:href"/>
-												<xsl:text>?height=150&amp;width=150</xsl:text>
 											</xsl:when>
 											<xsl:otherwise test="work/component">
 												<xsl:value-of select="work/component/image/@xlink:href"/>
-												<xsl:text>?height=150&amp;width=150</xsl:text>
 											</xsl:otherwise>
 										</xsl:choose>
 									</subfield>
