@@ -1,137 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet 
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-   xmlns:ead="urn:isbn:1-931666-22-9"
-   exclude-result-prefixes="ead"
-   version="1.0">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:ead="urn:isbn:1-931666-22-9"
+    exclude-result-prefixes="ead"
+    version="1.0">
 
-   <!-- Output as plain text -->
-   <xsl:output method="text" encoding="UTF-8"/>
+    <xsl:output method="text" encoding="UTF-8"/>
 
-   <!-- Root template -->
-   <xsl:template match="/">
-       <xsl:apply-templates select="//ead:archdesc"/>
-   </xsl:template>
+    <!-- Start processing at the root 'ead:archdesc' -->
+    <xsl:template match="/">
+        <xsl:apply-templates select="ead:ead/ead:archdesc"/>
+    </xsl:template>
 
-   <!-- Top-level finding aid summary -->
-   <xsl:template match="ead:archdesc">
+    <!-- Main archdesc -->
+    <xsl:template match="ead:archdesc">
+        <xsl:apply-templates select="ead:did/ead:abstract"/>
+        <xsl:apply-templates select="ead:relatedmaterial/ead:p"/>
+        <xsl:apply-templates select="ead:bioghist"/>   <!-- select list -->
+        <xsl:apply-templates select="ead:bibliography/ead:bibref"/>
+        <xsl:apply-templates select="ead:scopecontent/ead:p"/>
+        <xsl:apply-templates select="ead:odd/ead:list/ead:item"/>  <!-- select list -->
+        <xsl:apply-templates select="ead:dsc/ead:c"/>
+    </xsl:template>
 
-   		<xsl:for-each select="ead:did"> 
-			<xsl:value-of select="ead:abstract"/><xsl:text> </xsl:text>
-		</xsl:for-each> 
+    <!-- Bioghist and its sub-structures -->
+    <xsl:template match="ead:bioghist">
+        <xsl:apply-templates select="
+	   ead:p | 
+	   ead:persname | 
+	   ead:title | 
+	   ead:list | 
+	   ead:note | 
+	   ead:chronlist"/>
+    </xsl:template>
 
-		<!-- CHECK THIS -->
-		<xsl:value-of select="ead:relatedmaterial/ead:p"/><xsl:text>&#10;</xsl:text>
+    <xsl:template match="ead:chronlist">
+        <xsl:apply-templates select="ead:head"/>
+        <xsl:apply-templates select="ead:chronitem"/>
+    </xsl:template>
 
-		<xsl:for-each select="ead:bioghist"> 
-			<xsl:for-each select="ead:p">
-				<xsl:value-of select="."/><xsl:text> </xsl:text>
-			</xsl:for-each>
-			<xsl:for-each select="ead:list">
-				<xsl:value-of select="."/><xsl:text> </xsl:text>
-			</xsl:for-each>
-			<xsl:for-each select="ead:chronlist">				
-				<xsl:for-each select="ead:head">					
-					<xsl:value-of select="."/><xsl:text> </xsl:text>			
-				</xsl:for-each>
-				<xsl:for-each select="ead:chronitem">		
-					<xsl:for-each select="ead:date">
-						<xsl:value-of select="."/><xsl:text> </xsl:text>
-					</xsl:for-each>
-					<xsl:for-each select="ead:event">
-						<xsl:value-of select="."/><xsl:text> </xsl:text>
-					</xsl:for-each>
-					<xsl:for-each select="ead:eventgrp/ead:event">
-						<xsl:value-of select="."/><xsl:text> </xsl:text>
-					</xsl:for-each>
-				</xsl:for-each>
-				</xsl:for-each>
-			</xsl:for-each>
+    <xsl:template match="ead:chronitem">
+        <xsl:apply-templates select="
+	   ead:date | 
+	   ead:event | 
+	   ead:eventgrp/ead:event"/>
+    </xsl:template>
 
-		<xsl:for-each select="ead:bibliography/ead:bibref">
-			<xsl:value-of select="."/><xsl:text> </xsl:text>
-		</xsl:for-each>
+    <xsl:template match="ead:chronitem">
+        <xsl:apply-templates select="
+	   ead:date | 
+	   ead:event | 
+	   ead:eventgrp/ead:event"/>
+    </xsl:template>
 
-   		 <!-- <xsl:for-each select="ead:arrangement/ead:list/ead:item">
-   			<xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
-		 </xsl:for-each> -->
-
-		<xsl:for-each select="ead:scopecontent/ead:p">
-			<xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
-		</xsl:for-each>
-
-		<xsl:for-each select="ead:odd/ead:list/ead:item/ead:persname">
-			<xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
-		</xsl:for-each>
-
-		<xsl:for-each select="ead:odd/ead:list/ead:item/ead:corpname">
-			<xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
-		</xsl:for-each>
-
-		<xsl:for-each select="ead:odd/ead:list/ead:item/ead:subject">
-			<xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
-		</xsl:for-each>
-
-		<xsl:for-each select="ead:odd/ead:list/ead:item/ead:genreform">
-			<xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
-		</xsl:for-each>
-		
-		<!-- first c -->
-		<xsl:for-each select="ead:dsc/ead:c">
-			<xsl:for-each select="ead:bioghist"> 
-				<xsl:for-each select="ead:p">
-					<xsl:value-of select="."/><xsl:text> </xsl:text>
-				</xsl:for-each>
-			</xsl:for-each>
-			<xsl:value-of select="ead:did/ead:unittitle"/><xsl:text>&#10;</xsl:text>
-			<xsl:value-of select="ead:scopecontent/ead:p"/><xsl:text>&#10;</xsl:text>
-			<!-- second c -->
-			<xsl:for-each select="ead:c">
-
-				<xsl:value-of select="ead:did/ead:unittitle"/><xsl:text> </xsl:text>
-
-				<xsl:for-each select="ead:bioghist"> 
-					<xsl:for-each select="ead:p">
-						<xsl:value-of select="."/><xsl:text> </xsl:text>
-					</xsl:for-each>
-				</xsl:for-each>
-
-				<xsl:value-of select="ead:relatedmaterial/ead:p"/><xsl:text>&#10;</xsl:text>
-
-				<xsl:for-each select="ead:scopecontent/ead:p">
-					<xsl:value-of select="."/><xsl:text>&#10;</xsl:text>
-				</xsl:for-each>
-
-				<!-- third c -->
-				<xsl:for-each select="ead:c">
-					
-
-					<xsl:for-each select="ead:bioghist"> 
-						<xsl:for-each select="ead:p">
-							<xsl:value-of select="."/><xsl:text> </xsl:text>
-						</xsl:for-each>
-					</xsl:for-each>
+    <xsl:template match="ead:item">
+        <xsl:apply-templates select="
+	   ead:corpname | 
+	   ead:genreform | 
+	   ead:subject | 
+	   ead:persname"/>
+    </xsl:template>
 
 
-				</xsl:for-each>
-				<!-- fourth c -->
-					<xsl:for-each select="ead:c">
+    <xsl:template match="
+    ead:abstract|
+    ead:bibref|
+    ead:corpname|
+    ead:date|
+    ead:event|
+    ead:genreform |
+    ead:head|
+    ead:item|
+    ead:list|
+    ead:note|
+    ead:persname|
+    ead:p|
+    ead:relatedmaterial/ead:p|
+    ead:scopecontent/ead:p|
+    ead:subject|
+    ead:title|
+    ead:unittitle|
+    ead:unitdate 
+    ">
+<xsl:value-of select="normalize-space(.)"/>
+<xsl:text>&#10;</xsl:text>
+    </xsl:template>
 
-						<xsl:for-each select="ead:bioghist"> 
-							<xsl:for-each select="ead:p">
-								<xsl:value-of select="."/><xsl:text> </xsl:text>
-							</xsl:for-each>
-						</xsl:for-each>
-
-
-					</xsl:for-each>
-			</xsl:for-each>
-		</xsl:for-each>
-		
-
-   </xsl:template>
-
-
+    <!-- Recursive component handling (ALL levels) -->
+    <xsl:template match="ead:c">
+        <xsl:apply-templates select="ead:bioghist"/> <!-- select list -->
+        <xsl:apply-templates select="ead:did/ead:unittitle"/>
+        <xsl:apply-templates select="ead:did/ead:unitdate"/>
+        <xsl:apply-templates select="ead:scopecontent/ead:p"/>
+        <xsl:apply-templates select="ead:bibliography/ead:bibref"/>
+        <xsl:apply-templates select="ead:relatedmaterial/ead:p"/>
+        <xsl:apply-templates select="ead:odd/ead:p"/>
+        <xsl:apply-templates select="ead:odd/ead:list/ead:item"/>
+        <!-- Process child components recursively -->
+        <xsl:apply-templates select="ead:c"/>
+    </xsl:template>
 
 
 </xsl:stylesheet>
