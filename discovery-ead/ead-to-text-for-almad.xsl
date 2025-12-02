@@ -61,7 +61,7 @@
 	   ead:persname"/>
     </xsl:template>
 
-
+<!-- these templates are for elements that don't need commas for snippet readability -->
     <xsl:template match="
     ead:abstract|
     ead:bibref|
@@ -70,7 +70,6 @@
     ead:event|
     ead:genreform |
     ead:head|
-    ead:item|
     ead:list|
     ead:note|
     ead:persname|
@@ -78,13 +77,21 @@
     ead:relatedmaterial/ead:p|
     ead:scopecontent/ead:p|
     ead:subject|
-    ead:title|
-    ead:unittitle|
-    ead:unitdate 
+    ead:title
     ">
 <xsl:value-of select="normalize-space(.)"/>
 <xsl:text>&#10;</xsl:text>
     </xsl:template>
+<!-- these templates are for elements that DO need commas for snippet readability -->
+    <xsl:template match="
+    ead:item|
+    ead:unittitle|
+    ead:unitdate 
+    ">
+<xsl:value-of select="normalize-space(.)"/>
+<xsl:text>,&#10;</xsl:text>
+    </xsl:template>
+
 
     <!-- Recursive component handling (ALL levels) -->
     <xsl:template match="ead:c">
