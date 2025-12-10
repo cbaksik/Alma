@@ -25,9 +25,9 @@ rule "Primo VE - Rights"
 		replace wrapping delimiters (TEMP"1","q","Information supplied by: "," -- ")
 		replace wrapping delimiters (TEMP"1","r","Jurisdiction: "," -- ")
 		replace wrapping delimiters (TEMP"1","s","Source: "," -- ")
-		replace string by string (TEMP"1"," -- $",".")
+		replace string by string (TEMP"1"," -- $","")
 		replace string by string (TEMP"1",":.$",".")
-		replace string by string (TEMP"1","..$",".")
+		replace string by string (TEMP"1","\\.\\.$",".")
 		set TEMP"2" to MARC."542" sub without sort "u"
 		add prefix (TEMP"2","<a href=\"")
 		add suffix (TEMP"2","\">Rights details</a>")
