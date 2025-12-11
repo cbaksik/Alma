@@ -78,6 +78,24 @@
 							</subfield>
 						</datafield>
 
+						<datafield tag="597" ind1=" " ind2="9">
+							<subfield code="a">								
+								<xsl:text>SEE ALL DATA LAYERS IN THIS SERIES</xsl:text>
+							</subfield>
+							<subfield code="b">
+								<xsl:value-of select="@hollisno"/>
+							</subfield>
+						</datafield>
+
+						<datafield tag="597" ind1=" " ind2="9">
+							<subfield code="a">								
+								<xsl:text>COLLECTION-LEVEL RECORD</xsl:text>
+							</subfield>
+							<subfield code="u">
+								<xsl:text>https://id.lib.harvard.edu/alma/</xsl:text><xsl:value-of select="@hollisno"/><xsl:text>/catalog</xsl:text>
+							</subfield>
+						</datafield>
+
 						<xsl:for-each select="idinfo/citation/citeinfo/pubinfo">
 							<datafield tag="264" ind1="3" ind2="1">
 								<subfield code="a">
@@ -91,7 +109,7 @@
 						
 						<datafield tag="264" ind1="3" ind2="1">
 							<subfield code="c">
-								<xsl:value-of select="idinfo/timeperd/timeinfo/sngdate/caldate"/>
+								<xsl:value-of select="substring(idinfo/timeperd/timeinfo/sngdate/caldate,1,4)"/>
 							</subfield>
 						</datafield>
 
@@ -104,7 +122,7 @@
 						</xsl:for-each>
 
 						<xsl:for-each select="idinfo/descript/purpose">
-							<datafield tag="545" ind1=" " ind2=" ">
+							<datafield tag="500" ind1=" " ind2=" ">
 								<subfield code="a">
 									<xsl:value-of select="."/>
 								</subfield>
@@ -151,15 +169,15 @@
 						</xsl:for-each>		
 
 						<xsl:for-each select="idinfo/keywords/place">
-							<xsl:if test="placekt ='GNS' or placekt ='LCSH'">
+							<!-- <xsl:if test="placekt ='GNS' or placekt ='LCSH' or placekt ='GNIS' "> -->
 								<xsl:for-each select="placekey">
-									<datafield tag="651" ind1=" " ind2="0">
+									<datafield tag="751" ind1=" " ind2=" ">
 										<subfield code="a">
 											<xsl:value-of select="."/>
 										</subfield>
 									</datafield>
 								</xsl:for-each>
-							</xsl:if>
+							<!-- </xsl:if> -->
 						</xsl:for-each>	
 						
 						<xsl:for-each select="idinfo/keywords/temporal">
@@ -177,7 +195,7 @@
 								<xsl:text>Geospatial data</xsl:text>
 							</subfield>
 							<subfield code="2">
-								<xsl:text>lcgft </xsl:text>
+								<xsl:text>lcgft</xsl:text>
 							</subfield>		
 						</datafield>
 
