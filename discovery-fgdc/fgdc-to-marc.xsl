@@ -56,13 +56,13 @@
 									</subfield>
 								</datafield>
 							</xsl:for-each>
-							<xsl:for-each select="edition">
+							<!-- <xsl:for-each select="edition">
 								<datafield tag="250" ind1=" " ind2=" ">
 									<subfield code="a">
 										<xsl:value-of select="."/>
 									</subfield>
 								</datafield>
-							</xsl:for-each>
+							</xsl:for-each> -->
 							<xsl:for-each select="geoform">
 								<datafield tag="300" ind1=" " ind2=" ">
 									<subfield code="a">
