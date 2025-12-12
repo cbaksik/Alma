@@ -74,7 +74,8 @@
 						
 						<datafield tag="590" ind1=" " ind2="9">
 							<subfield code="u">
-								<xsl:value-of select="idinfo/citation/citeinfo/onlink"/>
+								<!-- <xsl:value-of select="idinfo/citation/citeinfo/onlink"/> -->
+								<xsl:text>https://hgl.harvard.edu/catalog/harvard-</xsl:text><xsl:value-of select="translate(@layerid, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')"/>
 							</subfield>
 						</datafield>
 
@@ -87,7 +88,7 @@
 							</subfield>
 						</datafield>
 
-						<datafield tag="597" ind1=" " ind2="9">
+						<datafield tag="595" ind1=" " ind2="9">
 							<subfield code="a">								
 								<xsl:text>COLLECTION-LEVEL RECORD</xsl:text>
 							</subfield>
