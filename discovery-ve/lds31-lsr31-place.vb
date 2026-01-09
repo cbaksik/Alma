@@ -126,10 +126,10 @@ end
 
 rule "Primo VE Marc - Lsr31 via components"	
 	when
-		MARC."599" has any "b,p" AND
+		MARC."599" has any "p" AND
 		MARC."599".ind"2"  equals "9"
 	then
-		create pnx."search"."lsr31" with MARC."599" sub without sort "b,p" 
+		create pnx."search"."lsr31" with MARC."599" sub without sort "p" 
 end
 
 
