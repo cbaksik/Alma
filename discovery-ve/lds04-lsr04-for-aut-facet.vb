@@ -79,8 +79,6 @@ rule "Primo VE - Lsr04 - 880-111"
         create pnx."search"."lsr04" with MARC."880" sub without sort "a-z" 
 end
 
-
-
 rule "Primo VE - Lsr04 - 880-700"
 	when
         MARC is "880" AND
@@ -104,3 +102,41 @@ rule "Primo VE - Lsr04 - 880-711"
 	then
         create pnx."search"."lsr04" with MARC."880" sub without sort "a-z" 
 end
+
+// via
+
+rule "Primo VE - Lsr04 via surrogates"	
+	when
+		MARC."598" has any "a" AND
+		MARC."598".ind"2"  equals "9"
+	then
+		set TEMP"1" to MARC."598" sub without sort "a"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		remove substring using regex (TEMP"1","\\[.*\\]")
+		create pnx."search"."lsr04" with TEMP"1"
+end
+
+rule "Primo VE - Lsr04 via components"	
+	when
+		MARC."599" has any "a" AND
+		MARC."599".ind"2"  equals "9"
+	then
+		set TEMP"1" to MARC."599" sub without sort "a"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		remove substring using regex (TEMP"1","\\[.*\\]")
+		create pnx."search"."lsr04" with TEMP"1"
+end
+
+rule "Primo VE - Lsr04 via components surrogates"	
+	when
+		MARC."599" has any "2" AND
+		MARC."599".ind"2"  equals "9"
+	then
+		set TEMP"1" to MARC."599" sub without sort "2"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		remove substring using regex (TEMP"1","\\[.*\\]")
+		create pnx."search"."lsr04" with TEMP"1"
+end
+
+
+
