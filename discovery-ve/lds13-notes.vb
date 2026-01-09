@@ -2,7 +2,9 @@ rule "Primo VE - Lds13"
 	when
 		MARC."500" has any "3,a"
 	then
-		create pnx."display"."lds13" with MARC "500" subfields "3,a" delimited by ": " remove substring using regex ":"
+		set TEMP"1" to MARC "500" sub without sorting "3,a" delimited by ": " 
+		replace string by string (TEMP"1","::",":")
+		create pnx."display"."lds13" with TEMP"1"
 end
 
 rule "Primo VE - Lds13 501"
@@ -23,7 +25,9 @@ rule "Primo VE - Lds13 - 508"
 	when
 		MARC."508" has any "3,a"
 	then
-		create pnx."display"."lds13" with MARC "508" subfields "3,a" delimited by ": " remove substring using regex ":"
+		set TEMP"1" to MARC "508" sub without sorting "3,a" delimited by ": " 
+		replace string by string (TEMP"1","::",":")
+		create pnx."display"."lds13" with TEMP"1"
 end
 
 rule "Primo VE - Lds13 - 510 first ind 0,1,2"
@@ -62,7 +66,8 @@ rule "Primo VE - lds13 511"
 	when
 		MARC."511" has any "3,a"
 	then
-		set TEMP"1" to MARC."511" subfields "3,a" delimited by ": " remove substring using regex ":" 
+		set TEMP"1" to MARC."511" sub without sorting "3,a" delimited by ": " 
+		replace string by string (TEMP"1","::",":")
 		add prefix (TEMP"1","Participants: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -92,7 +97,8 @@ rule "Primo VE - lds13 518"
 	when
 		MARC."518" has any "3,a,d,o,p"
 	then
-		set TEMP"1" to MARC."518" subfields "3,a,d,o,p" delimited by ": " remove substring using regex ":" 
+		set TEMP"1" to MARC."518" sub without sorting "3,a,d,o,p" delimited by ": " 
+		replace string by string (TEMP"1","::",":")
 		add prefix (TEMP"1","Event: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -124,7 +130,8 @@ rule "Primo VE - lds13 532"
 	when
 		MARC."532" has any "3,a"
 	then
-		set TEMP"1" to MARC."532" subfields "3,a" delimited by ": " remove substring using regex ":" 
+		set TEMP"1" to MARC."532" sub without sorting "3,a" delimited by ": " 
+		replace string by string (TEMP"1","::",":")
 		add prefix (TEMP"1","Accessibility: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -158,7 +165,7 @@ rule "Primo VE - lds13 536"
 	when
 		MARC."536" has any "a-h"
 	then
-		set TEMP"1" to MARC."536" subfields "a-h" delimited by " -- " remove substring using regex ":" 
+		set TEMP"1" to MARC."536" sub without sorting "a-h" delimited by " -- "
 		add prefix (TEMP"1","Funding: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -244,7 +251,7 @@ rule "Primo VE - lds13 583"
 		MARC."583" has any "3,a-o,z" AND 
 		MARC."583".ind"1" equals "1"
 	then
-		set TEMP"1" to MARC."583" subfields "3,a-o,z" delimited by " -- " remove substring using regex ":" 
+		set TEMP"1" to MARC."583" sub without sorting "3,a-o,z" delimited by " -- " 
 		add prefix (TEMP"1","Action: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -292,7 +299,7 @@ rule "Primo VE - Lds13 500-880"
 		MARC is "880" AND
 		MARC."880"."6" match "500.*"
 	then
-		create pnx."display"."lds13" with MARC "880" subfields "3,a" delimited by ": " remove substring using regex ":"
+		create pnx."display"."lds13" with MARC "880" sub without sort "3,a" 
 end
 
 rule "Primo VE - Lds13 501-880"
@@ -324,7 +331,7 @@ rule "Primo VE - Lds13 - 508-880"
 		MARC is "880" AND
 		MARC."880"."6" match "508.*"
 	then
-		create pnx."display"."lds13" with MARC "880" subfields "3,a" delimited by ": " remove substring using regex ":"
+		create pnx."display"."lds13" with MARC "880" sub without sorting "3,a" delimited by ": " 
 end
 
 rule "Primo VE - Lds13 - 510 first ind 0,1,2-880"
@@ -366,7 +373,7 @@ rule "Primo VE - lds13 511-880"
 		MARC is "880" AND
 		MARC."880"."6" match "511.*"
 	then
-		set TEMP"1" to MARC."880" subfields "3,a" delimited by ": " remove substring using regex ":" 
+		set TEMP"1" to MARC."880" sub without sorting "3,a" delimited by ": "
 		add prefix (TEMP"1","Participants: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -400,7 +407,7 @@ rule "Primo VE - lds13 518-880"
 		MARC is "880" AND
 		MARC."880"."6" match "518.*"
 	then
-		set TEMP"1" to MARC."880" subfields "3,a,d,o,p" delimited by ": " remove substring using regex ":" 
+		set TEMP"1" to MARC."880" sub without sorting "3,a,d,o,p" delimited by ": "
 		add prefix (TEMP"1","Event: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -436,7 +443,7 @@ rule "Primo VE - lds13 532-880"
 		MARC is "880" AND
 		MARC."880"."6" match "532.*"
 	then
-		set TEMP"1" to MARC."880" subfields "3,a" delimited by ": " remove substring using regex ":" 
+		set TEMP"1" to MARC."880" sub without sorting "3,a" delimited by ": "
 		add prefix (TEMP"1","Accessibility: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -474,7 +481,7 @@ rule "Primo VE - lds13 536-880"
 		MARC is "880" AND
 		MARC."880"."6" match "536.*"
 	then
-		set TEMP"1" to MARC."880" subfields "a-h" delimited by " -- " remove substring using regex ":" 
+		set TEMP"1" to MARC."880" sub without sorting "a-h" delimited by " -- "
 		add prefix (TEMP"1","Funding: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
@@ -570,7 +577,7 @@ rule "Primo VE - lds13 583-880"
 		MARC."880"."6" match "583.*" AND 
 		MARC."880".ind"1" equals "1"
 	then
-		set TEMP"1" to MARC."880" subfields "3,a-o,z" delimited by " -- " remove substring using regex ":" 
+		set TEMP"1" to MARC."880" sub without sorting "3,a-o,z" delimited by " -- "
 		add prefix (TEMP"1","Action: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
