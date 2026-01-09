@@ -217,3 +217,40 @@ rule "Primo VE Marc -  Subject 880-651"
 		set TEMP"1" to MARC."880" subfields "a-u" delimited by " " remove substring using regex "\\.$"
 		create pnx."search"."lsr45" with TEMP"1"
 end
+
+// via
+
+rule "Primo VE Marc -  Subject via surrogates"
+	when
+		MARC."598" has any "s" AND
+		MARC."598".ind"2"  equals "9"
+	then
+		set TEMP"1" to MARC."598" sub without sort "s"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		remove substring using regex (TEMP"1","\\[.*\\]")
+		create pnx."search"."lsr45" with TEMP"1"
+end
+
+rule "Primo VE Marc -  Subject via components"	
+	when
+		MARC."599" has any "b" AND
+		MARC."599".ind"2"  equals "9"
+	then
+		set TEMP"1" to MARC."599" sub without sort "b"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		remove substring using regex (TEMP"1","\\[.*\\]")
+		create pnx."search"."lsr45" with TEMP"1"
+end
+
+rule "Primo VE Marc -  Subject via components surrogates"	
+	when
+		MARC."599" has any "s" AND
+		MARC."599".ind"2"  equals "9"
+	then
+		set TEMP"1" to MARC."599" sub without sort "s"
+		remove substring using regex (TEMP"1","(;|,|\\.)+$")
+		remove substring using regex (TEMP"1","\\[.*\\]")
+		create pnx."search"."lsr45" with TEMP"1"
+end
+
+
