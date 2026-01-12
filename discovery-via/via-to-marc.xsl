@@ -27,9 +27,20 @@
 					
 					<metadata>
 						
-						<record>
-							
-							<leader>     nkm a22002295u 4500</leader>
+						<record>	
+
+							<leader>
+								<xsl:text>     </xsl:text>
+								<xsl:choose>
+									<xsl:when test="deleted = 'Y'">
+										<xsl:text>d</xsl:text>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>n</xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+								<xsl:text>km a22002295u 4500</xsl:text>
+							</leader>
 							
 							<controlfield tag="001">
 								<xsl:value-of select="recordId"/>
