@@ -9,7 +9,9 @@
 
     <!-- Start processing at the root 'ead:archdesc' -->
     <xsl:template match="/">
-        <xsl:apply-templates select="ead:ead/ead:archdesc"/>
+        <xsl:if test="ead:ead/ead:eadheader/ead:eadid">
+        	<xsl:apply-templates select="ead:ead/ead:archdesc"/>
+    	   </xsl:if>
     </xsl:template>
 
     <!-- Main archdesc -->
