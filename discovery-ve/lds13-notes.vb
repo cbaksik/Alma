@@ -279,6 +279,7 @@ rule "Primo VE - Lds13 588"
 		MARC."588".ind"1" equals "0")
 	then
 		set TEMP"1" to MARC."588" subfields "a" 
+		add prefix (TEMP"1","Source of description: ")
 		create pnx."display"."lds13" with TEMP"1"
 end
 
