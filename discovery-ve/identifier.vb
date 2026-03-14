@@ -42,3 +42,12 @@ rule "Primo VE - Identifier 017"
 		add prefix (TEMP"1","$$CDEPOSIT$$V")
 		create pnx."display"."identifier" with TEMP"1"
 end
+
+
+rule "Primo VE - Identifier VIA"
+	when
+		MARC."590" has any "w" AND
+		MARC."590".ind"2"  equals "9"
+	then
+		create pnx."display"."identifier" with MARC."590" sub without sort "w" 
+end

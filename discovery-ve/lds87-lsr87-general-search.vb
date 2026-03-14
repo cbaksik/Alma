@@ -303,12 +303,12 @@ end
 
 // via
 
-rule "Primo VE Marc - Lsr87 via alt terms"	
+rule "Primo VE Marc - Lsr87 via alt terms and identifiers"	
 	when
-		MARC."590" has any "v" AND
+		MARC."590" has any "v,w" AND
 		MARC."590".ind"2"  equals "9"
 	then
-		create pnx."search"."lsr87" with MARC."590" sub without sort "v" 
+		create pnx."search"."lsr87" with MARC."590" sub without sort "v,w" 
 end
 
 rule "Primo VE Marc - Lsr87 via surrogates"	
