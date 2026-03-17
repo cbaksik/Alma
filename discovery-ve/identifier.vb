@@ -49,5 +49,8 @@ rule "Primo VE - Identifier VIA"
 		MARC."590" has any "w" AND
 		MARC."590".ind"2"  equals "9"
 	then
-		create pnx."display"."identifier" with MARC."590" sub without sort "w" 
+		set TEMP"1" to MARC."590" sub without sort "w"
+		remove substring using regex (TEMP"1","ss_[0-9]{10} ")
+		remove substring using regex (TEMP"1","ss_[0-9]{10}$")
+		create pnx."display"."identifier" with TEMP"1"
 end
