@@ -327,5 +327,40 @@ rule "Primo VE Marc - Lsr87 via components"
 		create pnx."search"."lsr87" with MARC."599" sub without sort "0,2,5,9,a-b,s-t,n,w,z" 
 end
 
+rule "Primo VE Marc - Lsr87 via related work"	
+	when
+		MARC."594" has any "a" AND
+		MARC."594".ind"2"  equals "9"
+	then
+		create pnx."search"."lsr87" with MARC."594" sub without sort "a" 
+end
+
+rule "Primo VE Marc - Lsr87 via related info subfield u"	
+	when
+		MARC."595" has any "u" AND
+		MARC."595".ind"2"  equals "9" AND
+		MARC."595"."u" match ".*/catalog"
+	then
+		set TEMP"1" to MARC."595" sub without sort "u"
+		remove substring using regex (TEMP"1","^http.*alma.")
+		remove substring using regex (TEMP"1","^http.*aleph.")
+		remove substring using regex (TEMP"1","^http.*via.")
+		remove substring using regex (TEMP"1","^http.*images.")
+		remove substring using regex (TEMP"1",".catalog$")	
+		create pnx."search"."lsr87" with TEMP"1"
+end
+
+rule "Primo VE Marc - Lsr87 via related info subfield u aleph"	
+	when
+		MARC."595" has any "u" AND
+		MARC."595".ind"2"  equals "9" AND
+		MARC."595"."u" match ".*aleph.*/catalog"
+	then
+		set TEMP"1" to MARC."595" sub without sort "u"
+		remove substring using regex (TEMP"1","^http.*aleph.")
+		remove substring using regex (TEMP"1",".catalog$")	
+		remove substring using regex (TEMP"1","^0+")
+		create pnx."search"."lsr87" with TEMP"1"
+end
 
 
