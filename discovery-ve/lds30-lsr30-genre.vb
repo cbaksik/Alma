@@ -3,7 +3,7 @@ rule "Primo VE Marc - Lsr30"
 		MARC."655" has any "a-z" AND
 		MARC."655".ind"2" equals "0"
 	then
-		set TEMP"1" to MARC."655" sub without sort "a"
+		set TEMP"1" to MARC."655" sub without sort "a,x"
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		lower case (TEMP"1")
 		create pnx."search"."lsr30" with TEMP"1"
@@ -144,7 +144,7 @@ rule "Primo VE - lsr30 655 sf 7"
 		MARC."655"."2" match "tgfc" OR
 		MARC."655"."2" match "tpro")
 	then
-		set TEMP"1" to MARC."655" sub without sort  "a" 
+		set TEMP"1" to MARC."655" sub without sort  "a,x" 
 		remove substring using regex (TEMP"1","(;|,|\\.)+$")
 		lower case (TEMP"1")
 		create pnx."search"."lsr30" with TEMP"1"
