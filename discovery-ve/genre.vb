@@ -6,9 +6,9 @@ rule "Primo VE - Genre 600"
 		set TEMP"1" to MARC."655" subfields "3,a-z" delimited by " -- " remove substring using regex "\\.+$"
 		lower case (TEMP"1")
 		add suffix (TEMP"1","$$Q")
-		set TEMP"2" to MARC."655" sub without sort "a"
+		set TEMP"2" to MARC."655" sub without sort "a,x"
 		lower case (TEMP"2")
-		remove substring using regex (TEMP"2","\\.+$")
+		remove substring using regex (TEMP"2","(\\(|\\)|\\.+$)")
 		concatenate with delimiter (TEMP"1",TEMP"2","")
 		create pnx."display"."genre" with TEMP"1"
 end
@@ -42,9 +42,9 @@ rule "Primo VE - Genre 655 sf 7"
 		set TEMP"1" to MARC."655" subfields "3,a-z" delimited by " -- " remove substring using regex "\\.+$"
 		lower case (TEMP"1")
 		add suffix (TEMP"1","$$Q")
-		set TEMP"2" to MARC."655" sub without sort "a"
+		set TEMP"2" to MARC."655" sub without sort "a,x"
 		lower case (TEMP"2")
-		remove substring using regex (TEMP"2","\\.+$")
+		remove substring using regex (TEMP"2","(\\(|\\)|\\.+$)")
 		concatenate with delimiter (TEMP"1",TEMP"2","")
 		create pnx."display"."genre" with TEMP"1"
 end
