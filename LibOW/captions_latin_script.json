@@ -16,7 +16,13 @@
     "21": "Spring", 
     "22": "Summer", 
     "23": "Fall", 
-    "24": "Winter"
+    "24": "Winter",
+    "ordinal": {
+		"default":"th",
+		"1":"st",
+		"2":"nd",
+		"3":"rd"
+    }
   },
   "bel": {
     "name": "Belorusian",
@@ -31,7 +37,11 @@
     "09": "veras.",
     "10": "kastr.",
     "11": "list.",
-    "12": "snezh."
+    "12": "snezh.",
+    "21": "viasna", 
+    "22": "leto", 
+    "23": "vosen", 
+    "24": "zima"
   },
   "bos": {
     "name": "Bosnian",
@@ -61,7 +71,11 @@
     "09": "sept.",
     "10": "okt.",
     "11": "noem.",
-    "12": "dek."
+    "12": "dek.",
+    "21": "prolet", 
+    "22": "liato", 
+    "23": "esen", 
+    "24": "zima"
   },
   "hrv": {
     "name": "Croatian",
@@ -76,7 +90,11 @@
     "09": "ruj.",
     "10": "list.",
     "11": "stud.",
-    "12": "pros."
+    "12": "pros.",
+    "21": "prolece", 
+    "22": "ljeto", 
+    "23": "jesen", 
+    "24": "zima"
   },
   "cze": {
         "name": "Czech",
@@ -91,7 +109,11 @@
         "09": "září",
         "10": "říj.",
         "11": "list.",
-        "12": "pros."
+        "12": "pros.",    
+        "21": "jaro", 
+        "22": "léto", 
+        "23": "podzim", 
+        "24": "zima"
     },
   "dan": {
     "name": "Danish",
@@ -121,7 +143,11 @@
     "09": "sept.",
     "10": "oct./okt.",
     "11": "nov.",
-    "12": "dec."
+    "12": "dec.",
+    "21": "lente", 
+    "22": "zomer", 
+    "23": "herfst", 
+    "24": "winter"
   },
   "est": {
     "name": "Estonian",
@@ -151,7 +177,15 @@
     "09": "sept.",
     "10": "oct.",
     "11": "nov.",
-    "12": "déc."
+    "12": "déc.",
+    "21": "printemps", 
+    "22": "été", 
+    "23": "automne", 
+    "24": "hiver",
+    "ordinal": {
+		"default":"ième",
+		"1":"ière"
+    }
   },
   "ger": {
     "name": "German",
@@ -166,7 +200,11 @@
     "09": "Sept.",
     "10": "Okt.",
     "11": "Nov.",
-    "12": "Dez."
+    "12": "Dez.",
+    "21": "Frühling", 
+    "22": "Sommer", 
+    "23": "Herbst", 
+    "24": "Winter"
   },
   "gre": {
     "name": "Greek, Modern",
@@ -181,7 +219,11 @@
     "09": "Sept.",
     "10": "Okt.",
     "11": "Noem.",
-    "12": "Dek."
+    "12": "Dek.",
+    "21": "anoixis", 
+    "22": "theros", 
+    "23": "phthinoporon", 
+    "24": "cheimon"
   },
   "hun": {
     "name": "Hungarian",
@@ -196,7 +238,11 @@
     "09": "szept.",
     "10": "okt.",
     "11": "nov.",
-    "12": "dec."
+    "12": "dec.",
+    "21": "tavasz", 
+    "22": "nyár", 
+    "23": "osz", 
+    "24": "tél"
   },
   "ind": {
     "name": "Indonesian",
@@ -226,7 +272,11 @@
     "09": "sett.",
     "10": "ott.",
     "11": "nov.",
-    "12": "dic."
+    "12": "dic.",
+    "21": "primavera", 
+    "22": "estate", 
+    "23": "autumno",
+    "24": "inverno"
   },
   "lat": {
     "name": "Latin",
@@ -241,7 +291,11 @@
     "09": "Sept.",
     "10": "Oct.",
     "11": "Nov.",
-    "12": "Dec."
+    "12": "Dec.",
+    "21": "ver", 
+    "22": "aestas", 
+    "23": "autumnus", 
+    "24": "hiems"
   },
   "lav": {
     "name": "Latvian",
@@ -256,7 +310,11 @@
     "09": "sept.",
     "10": "okt.",
     "11": "nov.",
-    "12": "dec."
+    "12": "dec.",
+    "21": "pavasaris", 
+    "22": "vasar", 
+    "23": "rudens", 
+    "24": "zìema"
   },
   "lit": {
     "name": "Lithuanian",
@@ -271,7 +329,11 @@
     "09": "rugs.",
     "10": "spalis",
     "11": "lapkr.",
-    "12": "gr."
+    "12": "gr.",
+    "21": "pavasaris", 
+    "22": "vasara", 
+    "23": "ruduo", 
+    "24": "ziema"
   },
   "may": {
     "name": "Malaysian",
@@ -316,7 +378,11 @@
     "09": "wrzes.",
     "10": "pazdz.",
     "11": "listop.",
-    "12": "grudz."
+    "12": "grudz.",
+    "21": "wiosna", 
+    "22": "lato", 
+    "23": "jesien", 
+    "24": "zima"
   },
   "por": {
     "name": "Portuguese",
@@ -331,7 +397,11 @@
     "09": "set.",
     "10": "out.",
     "11": "nov.",
-    "12": "dez."
+    "12": "dez.",
+    "21": "primavera", 
+    "22": "verão", 
+    "23": "outono", 
+    "24": "inverno"
   },
   "rum": {
     "name": "Romanian",
@@ -346,7 +416,11 @@
     "09": "Sept.",
     "10": "Oct.",
     "11": "Noiem.",
-    "12": "Dec."
+    "12": "Dec.",
+    "21": "primavera", 
+    "22": "vara", 
+    "23": "toamna", 
+    "24": "iarno"
   },
   "rus": {
     "name": "Russian",
@@ -361,7 +435,11 @@
     "09": "sent.",
     "10": "okt.",
     "11": "noiabr'",
-    "12": "dek."
+    "12": "dek.",
+    "21": "vesna", 
+    "22": "leto", 
+    "23": "osen", 
+    "24": "zima"
   },
   "srp": {
     "name": "Serbian",
@@ -376,7 +454,11 @@
     "09": "sept.",
     "10": "okt.",
     "11": "nov.",
-    "12": "dec."
+    "12": "dec.",
+    "21": "prolece", 
+    "22": "leto", 
+    "23": "osen", 
+    "24": "zima"
   },
   "slo": {
     "name": "Slovak",
@@ -391,7 +473,11 @@
     "09": "zári./sept.",
     "10": "ruj./okt.",
     "11": "list./nov.",
-    "12": "pros./dec."
+    "12": "pros./dec.",
+    "21": "jaro", 
+    "22": "leto", 
+    "23": "jasen", 
+    "24": "zima"
   },
   "slv": {
     "name": "Slovenian",
@@ -421,7 +507,11 @@
     "09": "sept./set.",
     "10": "oct.",
     "11": "nov.",
-    "12": "dic."
+    "12": "dic.",
+    "21": "primavera", 
+    "22": "verano", 
+    "23": "otoño", 
+    "24": "invierno"
   },
   "swe": {
     "name": "Swedish",
@@ -436,7 +526,11 @@
     "09": "sept.",
     "10": "okt.",
     "11": "nov.",
-    "12": "dec."
+    "12": "dec.",
+    "21": "vår", 
+    "22": "sommar", 
+    "23": "höst", 
+    "24": "vinter"
   },
   "tur": {
     "name": "Turkish",
@@ -451,7 +545,11 @@
     "09": "Eylul",
     "10": "Ekim",
     "11": "Kasim",
-    "12": "Aralik"
+    "12": "Aralik",
+    "21": "ilkbahar", 
+    "22": "yaz", 
+    "23": "sonbahar", 
+    "24": "kis"
   },
   "ukr": {
     "name": "Ukranian",
@@ -466,7 +564,11 @@
     "09": "ver.",
     "10": "zhovt.",
     "11": "lyst.",
-    "12": "hrud."
+    "12": "hrud.",
+    "21": "vesna", 
+    "22": "lito", 
+    "23": "osin", 
+    "24": "zima"
   },
   "wel": {
     "name": "Welsh",
