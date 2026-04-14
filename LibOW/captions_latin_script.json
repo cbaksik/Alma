@@ -12,7 +12,11 @@
     "09": "Sept.",
     "10": "Oct.",
     "11": "Nov.",
-    "12": "Dec."
+    "12": "Dec.",
+    "21": "Spring", 
+    "22": "Summer", 
+    "23": "Fall", 
+    "24": "Winter"
   },
   "bel": {
     "name": "Belorusian",
