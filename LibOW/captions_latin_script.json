@@ -24,6 +24,50 @@
 			"3": "rd"
 		}
 	},
+	"ara": {
+		"name": "Arabic",
+		"01": "Yan.",
+		"02": "Fibr.",
+		"03": "Mār.",
+		"04": "Ibr.",
+		"05": "Māyū",
+		"06": "Yūn.",
+		"07": "Yūl.",
+		"08": "Agh.",
+		"09": "Sibt.",
+		"10": "Ukt.",
+		"11": "Nūf.",
+		"12": "Dīs.",
+		"21": "rabīʻ",
+		"22": "ṣayf",
+		"23": "kharīf",
+		"24": "shitāʼ",
+		"ordinal": {
+			"default": "."
+		}
+	},
+	"arm": {
+		"name": "Armenian",
+		"01": "Hunu.",
+		"02": "Pʻetr.",
+		"03": "Mart",
+		"04": "April",
+		"05": "Mayis",
+		"06": "Hunis",
+		"07": "Hulis",
+		"08": "Ōg'",
+		"09": "Sept.",
+		"10": "Hokt.",
+		"11": "Noy.",
+		"12": "Dekt.",
+		"21": "garun",
+		"22": "amaṛ",
+		"23": "ashun",
+		"24": "dzmeṛ",
+		"ordinal": {
+			"default": "."
+		}
+	},
 	"bel": {
 		"name": "Belorusian",
 		"01": "studz.",
