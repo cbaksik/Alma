@@ -32,7 +32,7 @@ end
 
 rule "VE dedupe key for serials that lack ISSN and have OCLC number"
 when
-       ((existsControl "LDR.{06,1}.a") AND (existsControl "LDR.{07,1}.s") AND (not exists "022") AND (exists "035.a.(OCoLC)*"))
+       ((existsControl "LDR.{06,1}.a") AND (existsControl "LDR.{07,1}.s") AND (not exists "022.a.*") AND (exists "035.a.(OCoLC)*"))
 then        
         removeField "959"
         copyField "035.a" to "959.a" if (exists "035.a.(OCoLC)*")
@@ -41,4 +41,12 @@ then
         changeField "TMP" to "959" if (exists "TMP.a.(OCoLC)*")
         removeField "TMP"          
         correctDuplicateFields "959"
+end
+
+rule "another VE dedupe key for serials based on cluster ISSN-L"
+when
+       ((existsControl "LDR.{06,1}.a") AND (existsControl "LDR.{07,1}.s") AND (exists "023.{0,*}.a.*"))
+then        
+        removeField "959"
+        copyField "023.{0,*}.a" to "959.a" if (exists "023.{0,*}.a.*")
 end
