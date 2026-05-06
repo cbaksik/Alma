@@ -235,6 +235,22 @@ rule "Prima_Display - Subject 650 ascl,homoit,fnhl,wikidata,via"
 		create pnx."display"."subject" with TEMP"1"
 end
 
+// special rule for 600 from via jstor bib because they transformed without indicators or thesauri codes
+
+rule "Prima_Display - Subject 600 via"
+	when
+		MARC."600" has any "a-z" AND
+		MARC.control is "003" AND NOT
+		MARC is "852"
+	then
+		set TEMP"1" to MARC."600" subfields "a-u" delimited by " " remove substring using regex "\\.$"
+		set TEMP"2" to MARC."600" sub without sorting "v-z" delimited by " -- "
+		remove substring using regex (TEMP"2","\\.$")		
+		concatenate with delimiter (TEMP"1",TEMP"2"," -- ")
+		concatenate with delimiter (TEMP"1",TEMP"1","$$Q")
+		create pnx."display"."subject" with TEMP"1"
+end
+
 rule "Primo VE - Lds31 662"
 	when
 		MARC is "662"
