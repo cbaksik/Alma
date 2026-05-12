@@ -128,9 +128,36 @@ then
     add MARC."2"XX
     add MARC."3"XX
     add MARC."4"XX
-    add MARC."5"XX
-    add MARC."6"XX
-    add MARC."7"XX
-    add MARC."8"XX
+    add MARC."50"X
+    add MARC."51"X
+    add MARC."52"X
+    add MARC."53"X
+    add MARC."54"X
+    add MARC."55"X
+    add MARC."56"X
+    add MARC."57"X
+    add MARC."58"X
+    add MARC."60"X
+    add MARC."61"X
+    add MARC."62"X
+    add MARC."63"X
+    add MARC."64"X
+    add MARC."65"X
+    add MARC."66"X
+    add MARC."67"X
+    add MARC."68"X
+    add MARC."70"X
+    add MARC."71"X
+    add MARC."72"X
+    add MARC."73"X
+    add MARC."74"X
+    add MARC."75"X
+    add MARC."76"X
+    add MARC."77"X
+    add MARC."78"X
+    add MARC."80"X
+    add MARC."81"X
+    add MARC."82"X
+    add MARC."88"X
     add MARC."991"
 end
