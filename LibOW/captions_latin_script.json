@@ -1,3 +1,4 @@
+const captions = 
 {
 	"eng": {
 		"name": "English",
@@ -758,3 +759,12 @@
 		}
 	}
 }
+;
+
+// Attach the dictionary to the very first item in your data stream
+const items = $input.all();
+if (items.length > 0) {
+  items[0].json.global_captions = captions;
+}
+
+return items;
