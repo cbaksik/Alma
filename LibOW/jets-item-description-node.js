@@ -84,7 +84,9 @@ if (data.chron_j) {
     let yVal = prefixMap['y'] || "";
     
     // Check if subfield 'y' starts with 'pm' or 'ps', and chron_j contains a slash
-    if ((yVal.startsWith("pm") || yVal.startsWith("ps")) && jVal.includes("/")) {
+    //if ((yVal.startsWith("pm") || yVal.startsWith("ps")) && jVal.includes("/")) {
+    // check only for slash, not all 853 will have y filled in based on user feedback
+    if (jVal.includes("/")) {
       // Split the values (e.g. "04/05"), translate each one independently, and rejoin them with the slash
       jVal = jVal.split("/").map(part => langDict[part] || part).join("/");
     } else if (langDict[jVal]) {
