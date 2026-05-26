@@ -313,18 +313,18 @@ end
 
 rule "Primo VE Marc - Lsr87 via surrogates"	
 	when
-		MARC."598" has any "a,n,s,t,w,z" AND
+		MARC."598" has any "a,h,n,s,t,w,z" AND
 		MARC."598".ind"2"  equals "9"
 	then
-		create pnx."search"."lsr87" with MARC."598" sub without sort "a,n,s,t,w,z" 
+		create pnx."search"."lsr87" with MARC."598" sub without sort "a,h,n,s,t,w,z" 
 end
 
 rule "Primo VE Marc - Lsr87 via components"	
 	when
-		MARC."599" has any "0,2,5,9,a-b,s-t,n,w,z" AND
+		MARC."599" has any "0,2,5,9,a-b,h-i,s-t,n,w,z" AND
 		MARC."599".ind"2"  equals "9"
 	then
-		create pnx."search"."lsr87" with MARC."599" sub without sort "0,2,5,9,a-b,s-t,n,w,z" 
+		create pnx."search"."lsr87" with MARC."599" sub without sort "0,2,5,9,a-b,h-i,s-t,n,w,z" 
 end
 
 rule "Primo VE Marc - Lsr87 via related work"	
