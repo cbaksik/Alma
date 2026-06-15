@@ -42,7 +42,7 @@ rule "Primo VE - Lds31 - 370"
 		replace wrapping delimiters (TEMP"1","s","Start period: ",". ")		
 		replace wrapping delimiters (TEMP"1","t","End period: ",". ")	
 		replace string by string (TEMP"1","::",":")
-		replace string by string (TEMP"1","..",".")
+		replace string by string (TEMP"1","\\.\\.",".")
 		add suffix (TEMP"1","$$Q")
 		set TEMP"2" to MARC."370" sub without sort "c,f,g"
 		concatenate with delimiter (TEMP"1",TEMP"2","") 		
