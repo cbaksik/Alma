@@ -1,0 +1,39 @@
+rule "Primo VE- Language 041 a"
+	when
+        MARC is "041"."a"
+	then
+	    set TEMP"2" to MARC."041"."a"
+        lower case (TEMP"2")
+	    normalize discovery language (TEMP"1",TEMP"2")
+        create pnx."display"."language" with list TEMP"1"
+end
+
+rule "Primo VE- Language 041 d"
+	when
+        MARC is "041"."d"
+	then
+	    set TEMP"2" to MARC."041"."d"
+        lower case (TEMP"2")
+	    normalize discovery language (TEMP"1",TEMP"2")
+        create pnx."display"."language" with list TEMP"1"
+end
+
+rule "Primo VE- Language 041 e"
+	when
+        MARC is "041"."e"
+	then
+	    set TEMP"2" to MARC."041"."e"
+        lower case (TEMP"2")
+	    normalize discovery language (TEMP"1",TEMP"2")
+        create pnx."display"."language" with list TEMP"1"
+end
+
+rule "Primo VE - Language 008"
+	when
+        MARC.control is "008"
+	then
+		set TEMP"2" to MARC.control."008".Language
+		return list using regex (TEMP"1",TEMP"2","[a-z]{3}")
+		normalize discovery lang (TEMP"1")
+        create pnx."display"."language" with list TEMP"1"
+end
