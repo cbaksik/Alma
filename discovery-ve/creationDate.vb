@@ -1,7 +1,7 @@
 rule "Primo VE - Date Of Publication 008"
 priority 40
 	when
-		MARC.control is "008"
+		MARC.control."008"(6-7) does not equal "e" 
 	then
 	    set TEMP"1" to MARC.control."008".Date1
 	    set TEMP"2" to MARC.control."008".Date2
@@ -14,6 +14,19 @@ priority 40
 	    concatenate with delimiter (TEMP"1",TEMP"2","-")
 		set pnx."display"."creationdate" to TEMP"1"
 end
+
+rule "Primo VE - 008 detailed date"
+priority 39
+	when
+		MARC.control."008"(6-7) equals "e" 
+	then
+	    set TEMP"1" to MARC.control."008".Date1
+	    replace string by string (TEMP"1","[^0-9]","\\?")
+	    replace string by string (TEMP"1","9{4}","")
+	    remove substring using regex (TEMP"1","^(0|\\?)+$")
+		set pnx."display"."creationdate" to TEMP"1"
+end
+
 
 rule "Primo VE - Date Of Publication 260"
 priority 30
