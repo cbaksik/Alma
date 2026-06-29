@@ -1,10 +1,10 @@
 // n8n Code node (JavaScript)
 
 // ------------------------------------
-// 1. CONFIGURE YOUR TAG FILTERS HERE
+// 1. CONFIGURE YOUR TAG / SUBFIELD FILTERS HERE
 // ------------------------------------
 
-// Tags you do NOT want (any matching datafield will be removed)
+// Tags you do NOT want (any matching datafield or controlfield will be removed)
 // Supports "*" wildcards:
 //   "9**"  =>  900–999
 //   "90*"  =>  900–909
@@ -23,6 +23,13 @@ const EXCLUDE_TAGS = [
   '86*',
   '9**',   // remove all 9xx tags
 ];
+
+// Exclude any datafield that has a subfield with code "5"
+const EXCLUDE_IF_SUBFIELD_5_EXISTS = true;
+
+// Exclude any datafield that has subfield $2 with one of these values
+// (comparison is case-sensitive; change to lower-case compare if needed)
+const EXCLUDE_CODE2_VALUES = ['gnd', 'cash', 'rvm','swd','jhpk'];
 
 // (Optional) If you instead want to define tags to KEEP and drop everything else,
 // uncomment and use this, and set USE_INCLUDE_MODE = true.
@@ -53,6 +60,42 @@ function tagIsIncluded(tag, includePatterns) {
   return includePatterns.some(pat => wildcardMatch(pat, tag));
 }
 
+// ---------- NEW: subfield helpers ----------
+
+// Normalize alma subfields to an array (handles both array and single object)
+function getSubfields(df) {
+  if (!df || df.subfield == null) return [];
+  return Array.isArray(df.subfield) ? df.subfield : [df.subfield];
+}
+
+// Does this field have a subfield with a given code?
+function hasSubfieldCode(df, code) {
+  const sfs = getSubfields(df);
+  return sfs.some(sf => sf.$?.code === code);
+}
+
+// Does this field have subfield $2 with value in EXCLUDE_CODE2_VALUES?
+function hasExcludedCode2Value(df) {
+  if (!EXCLUDE_CODE2_VALUES || EXCLUDE_CODE2_VALUES.length === 0) return false;
+  const sfs = getSubfields(df);
+  return sfs.some(sf => {
+    if (sf.$?.code !== '2' || typeof sf._ !== 'string') return false;
+    return EXCLUDE_CODE2_VALUES.includes(sf._);
+  });
+}
+
+// Combined subfield-based exclusion
+function shouldExcludeBySubfields(df) {
+  if (EXCLUDE_IF_SUBFIELD_5_EXISTS && hasSubfieldCode(df, '5')) {
+    return true;
+  }
+  if (hasExcludedCode2Value(df)) {
+    return true;
+  }
+  return false;
+}
+
+
 function modifyLeader(oldLeader) {
 
   var ldr = oldLeader;
@@ -71,7 +114,7 @@ function modifyLeader(oldLeader) {
 // ------------------------------------
 // 3. PROCESS ITEMS
 //    STEP 1: EDIT VALUES
-//    STEP 2: APPLY EXCLUDE / INCLUDE
+//    STEP 2: APPLY EXCLUDE / INCLUDE + SUBFIELD RULES
 // ------------------------------------
 const newItems = items.map(item => {
   const data = item.json;
@@ -80,15 +123,13 @@ const newItems = items.map(item => {
     return item; // nothing to do
   }
 
-  // Make a shallow copy of datafield so we don't mutate the original array reference
+  // Make shallow copies so we don't mutate original array references
   let fields = data.alma.datafield.map(df => ({ ...df }));
-
   let cfields = data.alma.controlfield.map(cf => ({ ...cf }));
 
   // ------------------------------------
   // STEP 1: EDIT VALUES FIRST
   //  - tag = 300 -> replace "p." with "pages" in subfield a
-  //  (Adjust this block for any other transformations you need)
   // ------------------------------------
   for (const df of fields) {
     if (df.$?.tag === '300' && Array.isArray(df.subfield)) {
@@ -106,44 +147,53 @@ const newItems = items.map(item => {
 
   for (const cf of cfields) {
     if (cf.$?.tag === '008') {
-        if (cf._.length > 37) {
-          cf._ = cf._.replace(/^.{6}/, "______");
-          cf._ = cf._.replace(/^(.{19}).{16}/, "$1________________");
-          cf._ = cf._.replace(/^(.{38}).{2}/, "$1__");
+      if (cf._.length > 37) {
+        cf._ = cf._.replace(/^.{6}/, "______");
+        cf._ = cf._.replace(/^(.{19}).{16}/, "$1________________");
+        cf._ = cf._.replace(/^(.{38}).{2}/, "$1__");
       }
     }
   }
 
   // ------------------------------------
-  // STEP 2: FILTER FIELDS (EXCLUDE / INCLUDE)
+  // STEP 2: FILTER FIELDS (EXCLUDE / INCLUDE + SUBFIELD RULES)
   // ------------------------------------
   const filteredFields = fields.filter(df => {
     const tag = df.$?.tag;
     if (!tag) return true; // keep if no tag for safety
 
+    // First apply tag-based include/exclude logic
+    let keep;
     if (USE_INCLUDE_MODE) {
       // keep only tags that match INCLUDE_TAGS (uncomment INCLUDE_TAGS above)
-      return tagIsIncluded(tag, INCLUDE_TAGS);
+      keep = tagIsIncluded(tag, INCLUDE_TAGS);
     } else {
       // drop tags that match EXCLUDE_TAGS
-      return !tagIsExcluded(tag);
+      keep = !tagIsExcluded(tag);
     }
+    if (!keep) return false;
+
+    // Then apply subfield-based exclusions
+    if (shouldExcludeBySubfields(df)) {
+      return false;
+    }
+
+    return true;
   });
 
   const filteredControl = cfields.filter(cf => {
     const tag = cf.$?.tag;
     if (!tag) return true; // keep if no tag for safety
+    // Only tag-based rules apply to controlfields
     return !tagIsExcluded(tag);
-    
   });
 
   // HANDLE CONTROL FIELDS
   if (data.alma.leader[0]) {
-     data.alma.leader[0] = modifyLeader(data.alma.leader[0]);
- }
- 
+    data.alma.leader[0] = modifyLeader(data.alma.leader[0]);
+  }
 
-  // Write back the modified + filtered datafield array
+  // Write back the modified + filtered arrays
   data.alma.datafield = filteredFields;
   data.alma.controlfield = filteredControl;
 
