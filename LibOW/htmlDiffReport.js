@@ -97,14 +97,11 @@ for (let i = 0; i < allItems.length; i++) {
   if (titleField) {
     recordTitle = titleField.text.replace(/^245\s+..\s+‡a/, '');
   }
-  // EXTRACT IDs for header
-   let mmsid = item.json.mms_id + ' vs. ' + ;
-
   // BUILD THE SEPARATOR AND HEADER FOR THIS RECORD{}
   if (i > 0) {
     html += `<hr style="margin: 50px 0 30px 0; border: 0; border-top: 3px solid #d0d7de;">`;
   }
-  html += `<h2 style="color: #0969da; margin-bottom: 15px;">${escapeHtml(recordTitle)}</h2><div>${mmsid}</div>`;
+  html += `<h2 style="color: #0969da; margin-bottom: 15px;">${escapeHtml(recordTitle)}</h2>`;
 
   if (oclcParsed.length === 0 && almaParsed.length === 0) {
      html += `<div style="color: red;"><strong>⚠️ ERROR:</strong> Could not locate MARC data for this record.</div>`;
@@ -145,8 +142,8 @@ for (let i = 0; i < allItems.length; i++) {
   html += `<table style="width: 100%; border-collapse: collapse; font-family: monospace; font-size: 13px; white-space: pre-wrap; word-break: break-word; outline: 1px solid #ccc;">`;
   html += `<thead style="background-color: #f6f8fa;">
             <tr>
-              <th style="width:50%; text-align:left; border-bottom: 1px solid #ccc; padding: 10px; font-size: 14px;">Alma Record (Current)</th>
-              <th style="width:50%; text-align:left; border-bottom: 1px solid #ccc; padding: 10px; font-size: 14px; border-left: 1px solid #ccc;">OCLC Record (New)</th>
+              <th style="width:50%; text-align:left; border-bottom: 1px solid #ccc; padding: 10px; font-size: 14px;">Alma record ${item.json.mms_id}</th>
+              <th style="width:50%; text-align:left; border-bottom: 1px solid #ccc; padding: 10px; font-size: 14px; border-left: 1px solid #ccc;">OCLC record ${item.json.ocn}</th>
             </tr>
            </thead>`;
   html += `<tbody>`;
