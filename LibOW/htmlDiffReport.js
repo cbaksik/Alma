@@ -59,7 +59,10 @@ function getInlineDiff(oldStr, newStr) {
   return { aHtml, oHtml };
 }
 
-// 2. START BUILDING THE MASTER HTML DOCUMENT
+// 2. START BUILDING THE HTML DOCUMENT
+
+const allItems = $input.all();
+
 let html = `<!DOCTYPE html>
 <html>
 <head>
@@ -68,29 +71,17 @@ let html = `<!DOCTYPE html>
 </head>
 <body style="font-family: sans-serif; font-size: 14px; padding: 20px; background: #f6f8fa; color: #333;">
   <div style="max-width: 1400px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-  <h1 style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0;">Batch MARC Record Comparison</h1>`;
+  <h1 >Batch comparison for set ${allItems[0].json.set_id}. Set name: ${allItems[0].json.set_name.substring(0,50)}</h1>
+  <h4 style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0;"># records: ${allItems[0].json.set_count}. Set creator: ${allItems[0].json.set_creator}. Report produced: ${$now.toFormat("yyyy-MM-dd-HHMM")}</h4>`;
 
-const allItems = $input.all();
 
 // 3. PROCESS EVERY RECORD
 for (let i = 0; i < allItems.length; i++) {
   const item = allItems[i];
+   
+  let oclc = item.json.oclc;
+  let alma = item.json.alma;
   
-  // --- AGGRESSIVE DATA HUNTING ---
-  let oclc = item.json.oclc || (item.json.bothrecords && item.json.bothrecords.oclc);
-  let alma = item.json.alma || (item.json.bothrecords && item.json.bothrecords.alma);
-  
-  if (Array.isArray(item.json.bothrecords)) {
-    const oclcObj = item.json.bothrecords.find(r => r.oclc);
-    const almaObj = item.json.bothrecords.find(r => r.alma);
-    if (oclcObj) oclc = oclcObj.oclc;
-    if (almaObj) alma = almaObj.alma;
-  }
-  
-  oclc = oclc || {};
-  alma = alma || {};
-  // -------------------------------
-
   const oclcFields = [...(oclc.controlfield || []), ...(oclc.datafield || [])];
   if (oclc.leader && oclc.leader[0]) oclcFields.unshift({ tag: "LDR", "_": oclc.leader[0] });
 
@@ -107,7 +98,7 @@ for (let i = 0; i < allItems.length; i++) {
     recordTitle = titleField.text.replace(/^245\s+..\s+‡a/, '');
   }
   // EXTRACT IDs for header
-   let mmsid = item.json.mms_id;
+   let mmsid = item.json.mms_id + ' vs. ' + ;
 
   // BUILD THE SEPARATOR AND HEADER FOR THIS RECORD{}
   if (i > 0) {
@@ -186,6 +177,7 @@ for (let i = 0; i < allItems.length; i++) {
 
   html += `</tbody></table>`;
 }
+// end of for loop of step 3
 
 // 4. CLOSE THE MASTER HTML DOCUMENT
 html += `</div></body></html>`;
@@ -200,7 +192,8 @@ return [{
     report_file: {
       data: Buffer.from(html, 'utf8').toString('base64'),
       mimeType: 'text/html',
-      fileName: 'MARC_Batch_Comparison_Report.html'
+      fileName: 'set-' + allItems[0].json.set_id + '-' + $now.toFormat("yyyy-MM-dd-HHMM") + '-report.html'
     }
   }
+  //item.json.set_id + '-' + 
 }];
