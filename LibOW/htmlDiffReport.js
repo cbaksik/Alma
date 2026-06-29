@@ -33,8 +33,8 @@ function escapeHtml(str) {
 
 // INLINE DIFF ALGORITHM
 function getInlineDiff(oldStr, newStr) {
-  if (!oldStr) return { aHtml: "", oHtml: `<span style="background-color: #bbf5ce; color: #1a7f37; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${escapeHtml(newStr)}</span>` };
-  if (!newStr) return { aHtml: `<span style="background-color: #ffcdd2; color: #b30000; font-weight: bold; text-decoration: line-through; padding: 1px 3px; border-radius: 3px;">${escapeHtml(oldStr)}</span>`, oHtml: "" };
+  if (!oldStr) return { aHtml: "", oHtml: `<span style="background-color: #bbf5ce; color: #3f413f; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${escapeHtml(newStr)}</span>` };
+  if (!newStr) return { aHtml: `<span style="background-color: #ffcdd2; color: #3f413f; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${escapeHtml(oldStr)}</span>`, oHtml: "" };
   if (oldStr === newStr) return { aHtml: escapeHtml(oldStr), oHtml: escapeHtml(newStr) };
 
   let start = 0;
@@ -53,8 +53,8 @@ function getInlineDiff(oldStr, newStr) {
   const oldDiff = escapeHtml(oldStr.substring(start, endOld + 1));
   const newDiff = escapeHtml(newStr.substring(start, endNew + 1));
 
-  const aHtml = prefix + (oldDiff ? `<span style="background-color: #ffcdd2; color: #b30000; font-weight: bold; text-decoration: line-through; padding: 1px 3px; border-radius: 3px;">${oldDiff}</span>` : "") + suffix;
-  const oHtml = prefix + (newDiff ? `<span style="background-color: #bbf5ce; color: #1a7f37; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${newDiff}</span>` : "") + suffix;
+  const aHtml = prefix + (oldDiff ? `<span style="background-color: #ffcdd2; color: #3f413f; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${oldDiff}</span>` : "") + suffix;
+  const oHtml = prefix + (newDiff ? `<span style="background-color: #bbf5ce; color: #3f413f; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${newDiff}</span>` : "") + suffix;
 
   return { aHtml, oHtml };
 }
@@ -104,14 +104,16 @@ for (let i = 0; i < allItems.length; i++) {
   let recordTitle = `Record ${i + 1} (Title Unknown)`;
   const titleField = oclcParsed.find(f => f.tag === "245") || almaParsed.find(f => f.tag === "245");
   if (titleField) {
-    recordTitle = titleField.text.replace(/^245\s+..\s+/, '');
+    recordTitle = titleField.text.replace(/^245\s+..\s+‡a/, '');
   }
+  // EXTRACT IDs for header
+   let mmsid = item.json.mms_id;
 
-  // BUILD THE SEPARATOR AND HEADER FOR THIS RECORD
+  // BUILD THE SEPARATOR AND HEADER FOR THIS RECORD{}
   if (i > 0) {
     html += `<hr style="margin: 50px 0 30px 0; border: 0; border-top: 3px solid #d0d7de;">`;
   }
-  html += `<h2 style="color: #0969da; margin-bottom: 15px;">📄 ${escapeHtml(recordTitle)}</h2>`;
+  html += `<h2 style="color: #0969da; margin-bottom: 15px;">${escapeHtml(recordTitle)}</h2><div>${mmsid}</div>`;
 
   if (oclcParsed.length === 0 && almaParsed.length === 0) {
      html += `<div style="color: red;"><strong>⚠️ ERROR:</strong> Could not locate MARC data for this record.</div>`;
