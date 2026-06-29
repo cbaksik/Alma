@@ -10,15 +10,18 @@
 //   "90*"  =>  900–909
 //   "035"  =>  exactly 035
 const EXCLUDE_TAGS = [
-  '9**',   // remove all 9xx tags
-  '035',
-  '005',
+  '001',
   '003',
+  '005',
+  '035',
   '040',
   '050',
   '060',
   '082',
-  // '035', // example: remove 035 as well
+  '090',
+  '85*',
+  '86*',
+  '9**',   // remove all 9xx tags
 ];
 
 // (Optional) If you instead want to define tags to KEEP and drop everything else,
@@ -50,6 +53,20 @@ function tagIsIncluded(tag, includePatterns) {
   return includePatterns.some(pat => wildcardMatch(pat, tag));
 }
 
+function modifyLeader(oldLeader) {
+
+  var ldr = oldLeader;
+  
+  if (ldr.length > 17) {
+    ldr = ldr.replace(/^.{6}/, "______");
+    ldr = ldr.replace(/^(.{8}).{9}/, "$1________");
+    ldr = ldr.replace(/^(.{16}) /, "$1^");
+    ldr = ldr.replace(/^(.{17}).{6}/, "$1______");
+
+   }
+  return ldr;
+}
+
 
 // ------------------------------------
 // 3. PROCESS ITEMS
@@ -59,12 +76,14 @@ function tagIsIncluded(tag, includePatterns) {
 const newItems = items.map(item => {
   const data = item.json;
 
-  if (!data.alma || !Array.isArray(data.alma.datafield)) {
+  if (!data.alma) {
     return item; // nothing to do
   }
 
   // Make a shallow copy of datafield so we don't mutate the original array reference
   let fields = data.alma.datafield.map(df => ({ ...df }));
+
+  let cfields = data.alma.controlfield.map(cf => ({ ...cf }));
 
   // ------------------------------------
   // STEP 1: EDIT VALUES FIRST
@@ -85,6 +104,16 @@ const newItems = items.map(item => {
     // if (df.$?.tag === '245') { ... }
   }
 
+  for (const cf of cfields) {
+    if (cf.$?.tag === '008') {
+        if (cf._.length > 37) {
+          cf._ = cf._.replace(/^.{6}/, "______");
+          cf._ = cf._.replace(/^(.{19}).{16}/, "$1________________");
+          cf._ = cf._.replace(/^(.{38}).{2}/, "$1__");
+      }
+    }
+  }
+
   // ------------------------------------
   // STEP 2: FILTER FIELDS (EXCLUDE / INCLUDE)
   // ------------------------------------
@@ -101,8 +130,22 @@ const newItems = items.map(item => {
     }
   });
 
+  const filteredControl = cfields.filter(cf => {
+    const tag = cf.$?.tag;
+    if (!tag) return true; // keep if no tag for safety
+    return !tagIsExcluded(tag);
+    
+  });
+
+  // HANDLE CONTROL FIELDS
+  if (data.alma.leader[0]) {
+     data.alma.leader[0] = modifyLeader(data.alma.leader[0]);
+ }
+ 
+
   // Write back the modified + filtered datafield array
   data.alma.datafield = filteredFields;
+  data.alma.controlfield = filteredControl;
 
   return { json: data };
 });
