@@ -7,15 +7,18 @@
 // --- 1a. Leader modification ---
 // Supply a function that takes the old leader string and returns the new one.
 function modifyLeader(oldLeader) {
-  if (typeof oldLeader !== 'string') return oldLeader;
 
-  // EXAMPLE: force position 17 to ' ' (just an example tweak).
-  // Adjust to whatever MARC leader rule you need.
-  const chars = oldLeader.split('');
-  if (chars.length > 17) {
-    chars[17] = ' ';
+  var ldr = oldLeader;
+  
+  if (ldr.length > 17) {
+    // show only values we want to review
+    ldr = ldr.replace(/^.{6}/, "______");
+    ldr = ldr.replace(/^(.{8}).{9}/, "$1________");
+    ldr = ldr.replace(/^(.{16}) /, "$1^");
+    ldr = ldr.replace(/^(.{17}).{6}/, "$1______");
+
   }
-  return chars.join('');
+  return ldr;
 }
 
 
@@ -29,17 +32,36 @@ function modifyLeader(oldLeader) {
 //  - Remove any 650 with 2nd indicator = "7"
 //  - Remove any 758 field regardless of indicators
 const EXCLUDE_BY_TAG_AND_INDICATORS = [
-  { tag: '650', ind1: null, ind2: '6' },
-  { tag: '758', ind1: null, ind2: null },
+  { tag: '001', ind1: null, ind2: null },
+  { tag: '003', ind1: null, ind2: null },
+  { tag: '005', ind1: null, ind2: null },
+  { tag: '009', ind1: null, ind2: null },
+  { tag: '010', ind1: null, ind2: null },
+  { tag: '014', ind1: null, ind2: null },
+  { tag: '015', ind1: null, ind2: null },
+  { tag: '017', ind1: null, ind2: null },
+  { tag: '024', ind1: null, ind2: null },
+  { tag: '028', ind1: null, ind2: null },
   { tag: '029', ind1: null, ind2: null },
+  { tag: '035', ind1: null, ind2: null },
   { tag: '040', ind1: null, ind2: null },
   { tag: '050', ind1: null, ind2: null },
   { tag: '060', ind1: null, ind2: null },
+  { tag: '082', ind1: null, ind2: null },
+  { tag: '090', ind1: null, ind2: null },
+  { tag: '098', ind1: null, ind2: null },
+  { tag: '099', ind1: null, ind2: null },
   { tag: '336', ind1: null, ind2: null },
   { tag: '337', ind1: null, ind2: null },
   { tag: '338', ind1: null, ind2: null },
-  { tag: '082', ind1: null, ind2: null },
-  { tag: '090', ind1: null, ind2: null },
+  { tag: '650', ind1: null, ind2: '6' },
+  { tag: '650', ind1: null, ind2: '1' },
+  { tag: '655', ind1: null, ind2: '6' },
+  { tag: '758', ind1: null, ind2: null },
+  { tag: '776', ind1: null, ind2: null },
+  { tag: '850', ind1: null, ind2: null },
+  { tag: '852', ind1: null, ind2: null },
+  { tag: '9**', ind1: null, ind2: null },
 ];
 
 
@@ -54,7 +76,7 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
 //  - Any field with subfield: code=2 and value containing "fast"
 //  - Any field with subfield: code=1 and value starting with "https://id.oclc.org"
 const EXCLUDE_BY_SUBFIELD = [
-  { tagPattern: /.*/, code: '2', valuePattern: /fast/ },
+  { tagPattern: /.*/, code: '2', valuePattern: /gnd|cash|rvm|swd|jhpk/ },
   { tagPattern: /.*/, code: '1', valuePattern: /^https:\/\/id\.oclc\.org/ },
 ];
 
@@ -146,7 +168,18 @@ const newItems = items.map(item => {
     oclc.datafield = oclc.datafield.filter(df => !fieldShouldBeExcluded(df));
   }
 
-  // (Optionally also filter controlfield by similar rules; right now we keep all)
+    // --- Filter controlfield(s) ---
+  if (Array.isArray(oclc.controlfield)) {
+    oclc.controlfield = oclc.controlfield.filter(cf => !fieldShouldBeExcluded(cf));
+  }
+
+for (const cf of oclc.controlfield) {
+  if (cf.tag === '008') {
+        cf._ = cf._.replace(/^.{6}/, "______");
+        cf._ = cf._.replace(/^(.{19}).{16}/, "$1________________");
+        cf._ = cf._.replace(/^(.{38}).{2}/, "$1__");
+  }
+}
 
   return {
     json: {
