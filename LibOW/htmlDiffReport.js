@@ -72,7 +72,7 @@ let html = `<!DOCTYPE html>
 <body style="font-family: sans-serif; font-size: 14px; padding: 20px; background: #f6f8fa; color: #333;">
   <div style="max-width: 1400px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
   <h1 >Batch comparison for set ${allItems[0].json.set_id}. Set name: ${allItems[0].json.set_name.substring(0,50)}</h1>
-  <h4 style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0;"># records: ${allItems[0].json.set_count}. Set creator: ${allItems[0].json.set_creator}. Report produced: ${$now.toFormat("yyyy-MM-dd-HHMM")}</h4>`;
+  <h4 style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0;">${allItems[0].json.set_count} records. Set creator: ${allItems[0].json.set_creator}. Report produced: ${$now.toFormat("yyyy-MM-dd-HHMM")}</h4>`;
 
 
 // 3. PROCESS EVERY RECORD
