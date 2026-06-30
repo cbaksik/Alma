@@ -47,6 +47,7 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '040', ind1: null, ind2: null },
   { tag: '050', ind1: null, ind2: null },
   { tag: '060', ind1: null, ind2: null },
+  { tag: '066', ind1: null, ind2: null },
   { tag: '082', ind1: null, ind2: null },
   { tag: '090', ind1: null, ind2: null },
   { tag: '098', ind1: null, ind2: null },
@@ -54,14 +55,28 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '336', ind1: null, ind2: null },
   { tag: '337', ind1: null, ind2: null },
   { tag: '338', ind1: null, ind2: null },
-  { tag: '650', ind1: null, ind2: '6' },
   { tag: '650', ind1: null, ind2: '1' },
+  { tag: '650', ind1: null, ind2: '3' },
+  { tag: '650', ind1: null, ind2: '4' },
+  { tag: '650', ind1: null, ind2: '5' },
+  { tag: '650', ind1: null, ind2: '6' },
+  { tag: '651', ind1: null, ind2: '1' },
+  { tag: '651', ind1: null, ind2: '3' },
+  { tag: '651', ind1: null, ind2: '4' },
+  { tag: '651', ind1: null, ind2: '5' },
+  { tag: '651', ind1: null, ind2: '6' },
+  { tag: '655', ind1: null, ind2: '1' },
+  { tag: '655', ind1: null, ind2: '3' },
+  { tag: '655', ind1: null, ind2: '4' },
+  { tag: '655', ind1: null, ind2: '5' },
   { tag: '655', ind1: null, ind2: '6' },
   { tag: '758', ind1: null, ind2: null },
   { tag: '776', ind1: null, ind2: null },
   { tag: '850', ind1: null, ind2: null },
   { tag: '852', ind1: null, ind2: null },
-  { tag: '9**', ind1: null, ind2: null },
+  { tag: '938', ind1: null, ind2: null }
+  { tag: '983', ind1: null, ind2: null }
+  { tag: '950', ind1: null, ind2: null }
 ];
 
 
@@ -77,7 +92,6 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
 //  - Any field with subfield: code=1 and value starting with "https://id.oclc.org"
 const EXCLUDE_BY_SUBFIELD = [
   { tagPattern: /.*/, code: '2', valuePattern: /gnd|cash|rvm|swd|jhpk/ },
-  { tagPattern: /.*/, code: '1', valuePattern: /^https:\/\/id\.oclc\.org/ },
 ];
 
 
