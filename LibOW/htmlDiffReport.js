@@ -5,11 +5,6 @@ function formatMarcField(field) {
   const tag = field.tag || (field["$"] && field["$"].tag);
   if (!tag) return null;
 
-  if (tag === "LDR" || tag.startsWith("00")) {
-    const val = field["_"] || "";
-    return { tag, text: `${tag}    ${val}` };
-  }
-
   const ind1 = field.ind1 || (field["$"] && field["$"].ind1) || " ";
   const ind2 = field.ind2 || (field["$"] && field["$"].ind2) || " ";
   
@@ -19,9 +14,13 @@ function formatMarcField(field) {
 
   const sfText = subfields.map(sf => {
     const code = sf.code || (sf["$"] && sf["$"].code);
-    const val = sf["_"] || "";
+    var val = sf["_"] || "";
+    if (code === "6") {
+ 	val = val.replace(/880-../,'880');
+    }
     return `‡${code} ${val}`;
   }).join(" ");
+
 
   return { tag, text: `${tag} ${ind1}${ind2} ${sfText}` };
 }
@@ -31,9 +30,31 @@ function escapeHtml(str) {
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+// Decompose precomposed Unicode in Alma fields, except tag 880
+function decomposeAlmaUnicode(alma) {
+  const decompose = (s) => (typeof s === "string" ? s.normalize("NFD") : s);  
+
+  // Datafields
+  (alma.datafield || []).forEach(f => {
+    const tag = f.tag || (f["$"] && f["$"].tag);
+    if (!tag || tag === "880") return;
+
+    const subfields = Array.isArray(f.subfield)
+      ? f.subfield
+      : (f.subfield ? [f.subfield] : []);
+
+    subfields.forEach(sf => {
+      if (sf && typeof sf._ === "string") {
+        sf._ = decompose(sf._);
+      }
+    });
+  });
+
+}
+
 // INLINE DIFF ALGORITHM
 function getInlineDiff(oldStr, newStr) {
-  if (!oldStr) return { aHtml: "", oHtml: `<span style="background-color: #bbf5ce; color: #3f413f; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${escapeHtml(newStr)}</span>` };
+  if (!oldStr) return { aHtml: "", oHtml: `<span color: #3f413f; padding: 1px 3px; border-radius: 3px;">${escapeHtml(newStr)}</span>` };
   if (!newStr) return { aHtml: `<span style="background-color: #ffcdd2; color: #3f413f; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${escapeHtml(oldStr)}</span>`, oHtml: "" };
   if (oldStr === newStr) return { aHtml: escapeHtml(oldStr), oHtml: escapeHtml(newStr) };
 
@@ -63,6 +84,20 @@ function getInlineDiff(oldStr, newStr) {
 
 const allItems = $input.all();
 
+// Build a timestamp like yyyy-MM-dd-HHMM
+function pad(n) {
+  return String(n).padStart(2, '0');
+}
+const now = new Date();
+const ts = [
+  now.getFullYear(),
+  pad(now.getMonth() + 1),
+  pad(now.getDate())
+].join('-') + '-' + pad(now.getHours()) + pad(now.getMinutes());
+
+const setId = allItems[0].json.set_id;  // adjust if set_id is elsewhere
+
+
 let html = `<!DOCTYPE html>
 <html>
 <head>
@@ -71,8 +106,8 @@ let html = `<!DOCTYPE html>
 </head>
 <body style="font-family: sans-serif; font-size: 14px; padding: 20px; background: #f6f8fa; color: #333;">
   <div style="max-width: 1400px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-  <h1 >Batch comparison for set ${allItems[0].json.set_id}. Set name: ${allItems[0].json.set_name.substring(0,50)}</h1>
-  <h4 style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0;">${allItems[0].json.set_count} records. Set creator: ${allItems[0].json.set_creator}. Report produced: ${$now.toFormat("yyyy-MM-dd-HHMM")}</h4>`;
+  <h1 >Batch comparison for set ${setId}. Set name: ${allItems[0].json.set_name.substring(0,50)}</h1>
+  <h4 style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0;">${allItems[0].json.set_count} records. Set creator: ${allItems[0].json.set_creator}. Report produced: ${ts}</h4>`;
 
 
 // 3. PROCESS EVERY RECORD
@@ -81,6 +116,9 @@ for (let i = 0; i < allItems.length; i++) {
    
   let oclc = item.json.oclc;
   let alma = item.json.alma;
+
+   // Decompose Unicode in Alma (except tag 880)
+  decomposeAlmaUnicode(alma);
   
   const oclcFields = [...(oclc.controlfield || []), ...(oclc.datafield || [])];
   if (oclc.leader && oclc.leader[0]) oclcFields.unshift({ tag: "LDR", "_": oclc.leader[0] });
@@ -180,17 +218,19 @@ for (let i = 0; i < allItems.length; i++) {
 html += `</div></body></html>`;
 
 // 5. RETURN A SINGLE ITEM WITH THE BINARY ATTACHMENT
-return [{
-  json: {
-    message: "Batch report successfully generated.",
-    records_processed: allItems.length
+
+return [
+  {
+    json: {
+      message: 'Batch report successfully generated.',
+      records_processed: allItems.length,
+    },
+    binary: {
+      report_file: {
+        data: Buffer.from(html, 'utf8').toString('base64'),
+        mimeType: 'text/html',
+        fileName: `set-${setId}-${ts}-report.html`,
+      },
+    },
   },
-  binary: {
-    report_file: {
-      data: Buffer.from(html, 'utf8').toString('base64'),
-      mimeType: 'text/html',
-      fileName: 'set-' + allItems[0].json.set_id + '-' + $now.toFormat("yyyy-MM-dd-HHMM") + '-report.html'
-    }
-  }
-  //item.json.set_id + '-' + 
-}];
+];
