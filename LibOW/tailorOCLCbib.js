@@ -4,22 +4,7 @@
 // 1. CONFIGURATION
 // ===============================
 
-// --- 1a. Leader modification ---
-// Supply a function that takes the old leader string and returns the new one.
-function modifyLeader(oldLeader) {
 
-  var ldr = oldLeader;
-  
-  if (ldr.length > 17) {
-    // show only values we want to review
-    ldr = ldr.replace(/^.{6}/, "______");
-    ldr = ldr.replace(/^(.{8}).{9}/, "$1________");
-    ldr = ldr.replace(/^(.{16}) /, "$1^");
-    ldr = ldr.replace(/^(.{17}).{6}/, "$1______");
-
-  }
-  return ldr;
-}
 
 
 // --- 1b. Exclude rules by tag + indicators ---
@@ -44,10 +29,14 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '028', ind1: null, ind2: null },
   { tag: '029', ind1: null, ind2: null },
   { tag: '035', ind1: null, ind2: null },
+  { tag: '037', ind1: null, ind2: null },
   { tag: '040', ind1: null, ind2: null },
+  { tag: '042', ind1: null, ind2: null },
   { tag: '050', ind1: null, ind2: null },
   { tag: '060', ind1: null, ind2: null },
   { tag: '066', ind1: null, ind2: null },
+  { tag: '072', ind1: null, ind2: null },
+  { tag: '080', ind1: null, ind2: null },
   { tag: '082', ind1: null, ind2: null },
   { tag: '090', ind1: null, ind2: null },
   { tag: '098', ind1: null, ind2: null },
@@ -74,9 +63,10 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '776', ind1: null, ind2: null },
   { tag: '850', ind1: null, ind2: null },
   { tag: '852', ind1: null, ind2: null },
-  { tag: '938', ind1: null, ind2: null }
-  { tag: '983', ind1: null, ind2: null }
-  { tag: '950', ind1: null, ind2: null }
+  { tag: '936', ind1: null, ind2: null },
+  { tag: '938', ind1: null, ind2: null },
+  { tag: '983', ind1: null, ind2: null },
+  { tag: '950', ind1: null, ind2: null },
 ];
 
 
@@ -91,7 +81,7 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
 //  - Any field with subfield: code=2 and value containing "fast"
 //  - Any field with subfield: code=1 and value starting with "https://id.oclc.org"
 const EXCLUDE_BY_SUBFIELD = [
-  { tagPattern: /.*/, code: '2', valuePattern: /gnd|cash|rvm|swd|jhpk/ },
+  { tagPattern: /.*/, code: '2', valuePattern: /fast|gnd|cash|rvm|swd|jhpk|ram/ },
 ];
 
 
@@ -172,10 +162,6 @@ const newItems = items.map(item => {
     delete oclc.xmlns;
   }
 
-  // --- Modify leader ---
-  if (oclc.leader) {
-    oclc.leader = modifyLeader(oclc.leader);
-  }
 
   // --- Filter datafield(s) ---
   if (Array.isArray(oclc.datafield)) {
@@ -187,13 +173,18 @@ const newItems = items.map(item => {
     oclc.controlfield = oclc.controlfield.filter(cf => !fieldShouldBeExcluded(cf));
   }
 
-for (const cf of oclc.controlfield) {
-  if (cf.tag === '008') {
-        cf._ = cf._.replace(/^.{6}/, "______");
-        cf._ = cf._.replace(/^(.{19}).{16}/, "$1________________");
-        cf._ = cf._.replace(/^(.{38}).{2}/, "$1__");
-  }
-}
+	for (const cf of oclc.controlfield) {
+	  if (cf.tag === '008') {
+		if (cf._.length > 37) {	
+			  cf._ = "DtSt: " + cf._.substring(6,7) + 
+				"	Dates: " + cf._.substring(7,14) + 
+				"	Pub: " + cf._.substring(15,17) + 
+				"	Lang: " + cf._.substring(35,37)  
+		;
+		}
+	  }
+	}
+
 
   return {
     json: {

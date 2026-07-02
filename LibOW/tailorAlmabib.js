@@ -20,10 +20,14 @@ const EXCLUDE_TAGS = [
   '028',
   '029',
   '035',
+  '037',
   '040',
+  '042',
   '050',
   '060',
   '066',
+  '072',
+  '080',
   '082',
   '090',
   '098',
@@ -42,7 +46,7 @@ const EXCLUDE_IF_SUBFIELD_5_EXISTS = true;
 
 // Exclude any datafield that has subfield $2 with one of these values
 // (comparison is case-sensitive; change to lower-case compare if needed)
-const EXCLUDE_CODE2_VALUES = ['gnd', 'cash', 'rvm','swd','jhpk'];
+const EXCLUDE_CODE2_VALUES = ['fast','gnd', 'cash', 'rvm','swd','jhpk'];
 
 // (Optional) If you instead want to define tags to KEEP and drop everything else,
 // uncomment and use this, and set USE_INCLUDE_MODE = true.
@@ -109,21 +113,6 @@ function shouldExcludeBySubfields(df) {
 }
 
 
-function modifyLeader(oldLeader) {
-
-  var ldr = oldLeader;
-  
-  if (ldr.length > 17) {
-    ldr = ldr.replace(/^.{6}/, "______");
-    ldr = ldr.replace(/^(.{8}).{9}/, "$1________");
-    ldr = ldr.replace(/^(.{16}) /, "$1^");
-    ldr = ldr.replace(/^(.{17}).{6}/, "$1______");
-
-   }
-  return ldr;
-}
-
-
 // ------------------------------------
 // 3. PROCESS ITEMS
 //    STEP 1: EDIT VALUES
@@ -152,18 +141,25 @@ const newItems = items.map(item => {
           sf._ = sf._.replace(/p\./g, 'pages');
         }
       }
+	 for (const sf of df.subfield) {
+        if (sf.$?.code === 'b' && typeof sf._ === 'string') {
+          sf._ = sf._.replace(/ill\./g, 'illustrations');
+        }
+      }
     }
 
     // Add more edit rules here if needed, e.g.:
     // if (df.$?.tag === '245') { ... }
   }
 
-  for (const cf of cfields) {
+for (const cf of cfields) {
     if (cf.$?.tag === '008') {
-      if (cf._.length > 37) {
-        cf._ = cf._.replace(/^.{6}/, "______");
-        cf._ = cf._.replace(/^(.{19}).{16}/, "$1________________");
-        cf._ = cf._.replace(/^(.{38}).{2}/, "$1__");
+      if (cf._.length > 37) {	
+        cf._ = "DtSt: " + cf._.substring(6,7) + 
+               "	Dates: " + cf._.substring(7,14) + 
+               "	Pub: " + cf._.substring(15,17) + 
+               "	Lang: " + cf._.substring(35,37)  
+	   ;
       }
     }
   }
@@ -201,10 +197,6 @@ const newItems = items.map(item => {
     return !tagIsExcluded(tag);
   });
 
-  // HANDLE CONTROL FIELDS
-  if (data.alma.leader[0]) {
-    data.alma.leader[0] = modifyLeader(data.alma.leader[0]);
-  }
 
   // Write back the modified + filtered arrays
   data.alma.datafield = filteredFields;

@@ -5,24 +5,35 @@ function formatMarcField(field) {
   const tag = field.tag || (field["$"] && field["$"].tag);
   if (!tag) return null;
 
+  if (tag === "LDR" || tag.startsWith("00")) {
+    const val = field["_"] || "";
+    return { tag, text: `${tag}    ${val}` };
+  }
+
   const ind1 = field.ind1 || (field["$"] && field["$"].ind1) || " ";
   const ind2 = field.ind2 || (field["$"] && field["$"].ind2) || " ";
   
-  const subfields = Array.isArray(field.subfield) 
-    ? field.subfield 
-    : (field.subfield ? [field.subfield] : []);
+const subfields = (
+  Array.isArray(field.subfield)
+    ? field.subfield
+    : (field.subfield ? [field.subfield] : [])
+).filter(sf => {
+  const code = sf.code || (sf["$"] && sf["$"].code);
+  // Drop subfields whose code is 0, 1
+  return !["0", "1", "6", 0, 1, 6].includes(code);
+});
 
   const sfText = subfields.map(sf => {
     const code = sf.code || (sf["$"] && sf["$"].code);
     var val = sf["_"] || "";
-    if (code === "6") {
- 	val = val.replace(/880-../,'880');
+    if (code === "a") {
+ 	val = val.replace(/\.$/,"");
     }
     return `‡${code} ${val}`;
   }).join(" ");
 
-
-  return { tag, text: `${tag} ${ind1}${ind2} ${sfText}` };
+   // replace period at end of value with nothing
+  return { tag, text: `${tag} ${ind1}${ind2} ${sfText.replace(/\.$/,"")}` };
 }
 
 // Escapes HTML so angle brackets don't break the table
@@ -102,7 +113,7 @@ let html = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Batch MARC Comparison</title>
+  <title>MARC Compare ${allItems[0].json.set_name}</title>
 </head>
 <body style="font-family: sans-serif; font-size: 14px; padding: 20px; background: #f6f8fa; color: #333;">
   <div style="max-width: 1400px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
@@ -121,25 +132,20 @@ for (let i = 0; i < allItems.length; i++) {
   decomposeAlmaUnicode(alma);
   
   const oclcFields = [...(oclc.controlfield || []), ...(oclc.datafield || [])];
-  if (oclc.leader && oclc.leader[0]) oclcFields.unshift({ tag: "LDR", "_": oclc.leader[0] });
-
+ // if (oclc.leader && oclc.leader[0]) oclcFields.unshift({ tag: "LDR", "_": oclc.leader[0] });
+  if (oclc.leader && oclc.leader[0] && oclc.fixed) oclcFields.unshift({ tag: "LDR", "_":  "Type(06) Bib Level(07): " + oclc.fixed.typeLevel});
   const almaFields = [...(alma.controlfield || []), ...(alma.datafield || [])];
-  if (alma.leader && alma.leader[0]) almaFields.unshift({ tag: "LDR", "_": alma.leader[0] });
+  //if (alma.leader && alma.leader[0]) almaFields.unshift({ tag: "LDR", "_": alma.leader[0] });
+  if (alma.leader && alma.leader[0] && alma.fixed) almaFields.unshift({ tag: "LDR", "_":  "Type(06) Bib Level(07): " + alma.fixed.typeLevel});
 
   const oclcParsed = oclcFields.map(formatMarcField).filter(Boolean);
   const almaParsed = almaFields.map(formatMarcField).filter(Boolean);
 
-  // EXTRACT TITLE (Find the 245 tag and strip the "245 10 " off the front)
-  let recordTitle = `Record ${i + 1} (Title Unknown)`;
-  const titleField = oclcParsed.find(f => f.tag === "245") || almaParsed.find(f => f.tag === "245");
-  if (titleField) {
-    recordTitle = titleField.text.replace(/^245\s+..\s+‡a/, '');
-  }
   // BUILD THE SEPARATOR AND HEADER FOR THIS RECORD{}
   if (i > 0) {
-    html += `<hr style="margin: 50px 0 30px 0; border: 0; border-top: 3px solid #d0d7de;">`;
+    html += `<hr style="margin: 50px 0 30px 0; border: 0; border-top: 5px solid #d0d7de;">`;
   }
-  html += `<h2 style="color: #0969da; margin-bottom: 15px;">${escapeHtml(recordTitle)}</h2>`;
+  html += `<h2 style="color: #0969da; margin-bottom: 15px;">${escapeHtml(item.json.title)}</h2>`;
 
   if (oclcParsed.length === 0 && almaParsed.length === 0) {
      html += `<div style="color: red;"><strong>⚠️ ERROR:</strong> Could not locate MARC data for this record.</div>`;
@@ -202,6 +208,8 @@ for (let i = 0; i < allItems.length; i++) {
       const diffs = getInlineDiff(row.alma, row.oclc);
       aHtml = diffs.aHtml;
       oHtml = diffs.oHtml;
+    } if (aHtml.indexOf("ffcdd2") > 0 && aHtml.indexOf(">752") > 0) {
+		aHtml = aHtml + " (PROTECTED)";
     }
 
     html += `<tr>`;
