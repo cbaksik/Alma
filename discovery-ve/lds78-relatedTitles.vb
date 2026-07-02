@@ -455,22 +455,13 @@ rule "Primo VE - Related 785 0"
 	then
 		set TEMP"1" to MARC."785" sub without sort "a-v"
 		add prefix (TEMP"1","Continued by: ")
-		set TEMP"2" to MARC."785" sub without sort "z"
-		add prefix (TEMP"2","ISBN: ")
+		set TEMP"2" to MARC."785" sub without sort "x"
+		add prefix (TEMP"2","ISSN: ")
 		concatenate with delimiter (TEMP"1",TEMP"2"," ")
-		set TEMP"3" to MARC."785" sub without sort "x"
-		add prefix (TEMP"3","ISSN: ")
+		set TEMP"3" to MARC."785" sub without sort "a,g,k,s,t,x"
+		remove substring using regex (TEMP"3","(;|,|\\.)+$")
+		add prefix (TEMP"3","$$Q")
 		concatenate with delimiter (TEMP"1",TEMP"3"," ")
-		set TEMP"4" to MARC."785" sub without sort "x,z"
-		remove substring using regex (TEMP"4","(;|,|\\.)+$")
-		add prefix (TEMP"4","$$Q")
-		concatenate with delimiter (TEMP"1",TEMP"4"," ")
-		set TEMP"5" to MARC."785" sub without sort "a,k,o,p,s,t"
-		remove substring using regex (TEMP"5","(;|,|\\.)+$")
-		add prefix (TEMP"5","$$R")
-		concatenate with delimiter (TEMP"1",TEMP"5"," ")
-		replace string by string (TEMP"1","\\$\\$Q(.*?)\\$\\$R.*","\\$\\$Q$1")
-		replace string by string (TEMP"1","\\$\\$R","\\$\\$Q")
 		create pnx."display"."lds78" with TEMP"1"
 end
 
