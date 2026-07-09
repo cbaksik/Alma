@@ -145,7 +145,8 @@ for (let i = 0; i < allItems.length; i++) {
   if (i > 0) {
     html += `<hr style="margin: 50px 0 30px 0; border: 0; border-top: 5px solid #d0d7de;">`;
   }
-  html += `<h2 style="color: #0969da; margin-bottom: 15px;">${escapeHtml(item.json.title)}</h2>`;
+  let bibInstance = i + 1;
+  html += `<h2 style="color: #0969da; margin-bottom: 15px;">${bibInstance + '.  ' + escapeHtml(item.json.title)}</h2>`;
 
   if (oclcParsed.length === 0 && almaParsed.length === 0) {
      html += `<div style="color: red;"><strong>⚠️ ERROR:</strong> Could not locate MARC data for this record.</div>`;
