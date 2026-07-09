@@ -25,6 +25,7 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '014', ind1: null, ind2: null },
   { tag: '015', ind1: null, ind2: null },
   { tag: '017', ind1: null, ind2: null },
+  { tag: '019', ind1: null, ind2: null },
   { tag: '024', ind1: null, ind2: null },
   { tag: '028', ind1: null, ind2: null },
   { tag: '029', ind1: null, ind2: null },
@@ -38,6 +39,7 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '072', ind1: null, ind2: null },
   { tag: '080', ind1: null, ind2: null },
   { tag: '082', ind1: null, ind2: null },
+  { tag: '084', ind1: null, ind2: null },
   { tag: '090', ind1: null, ind2: null },
   { tag: '098', ind1: null, ind2: null },
   { tag: '099', ind1: null, ind2: null },
@@ -59,10 +61,12 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '655', ind1: null, ind2: '4' },
   { tag: '655', ind1: null, ind2: '5' },
   { tag: '655', ind1: null, ind2: '6' },
+  { tag: '758', ind1: ' ', ind2: ' ' },
   { tag: '758', ind1: null, ind2: null },
   { tag: '776', ind1: null, ind2: null },
   { tag: '850', ind1: null, ind2: null },
   { tag: '852', ind1: null, ind2: null },
+  { tag: '856', ind1: null, ind2: null },
   { tag: '936', ind1: null, ind2: null },
   { tag: '938', ind1: null, ind2: null },
   { tag: '983', ind1: null, ind2: null },
@@ -173,17 +177,6 @@ const newItems = items.map(item => {
     oclc.controlfield = oclc.controlfield.filter(cf => !fieldShouldBeExcluded(cf));
   }
 
-	for (const cf of oclc.controlfield) {
-	  if (cf.tag === '008') {
-		if (cf._.length > 37) {	
-			  cf._ = "DtSt: " + cf._.substring(6,7) + 
-				"	Dates: " + cf._.substring(7,14) + 
-				"	Pub: " + cf._.substring(15,17) + 
-				"	Lang: " + cf._.substring(35,37)  
-		;
-		}
-	  }
-	}
 
 
   return {

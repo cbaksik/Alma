@@ -152,17 +152,6 @@ const newItems = items.map(item => {
     // if (df.$?.tag === '245') { ... }
   }
 
-for (const cf of cfields) {
-    if (cf.$?.tag === '008') {
-      if (cf._.length > 37) {	
-        cf._ = "DtSt: " + cf._.substring(6,7) + 
-               "	Dates: " + cf._.substring(7,14) + 
-               "	Pub: " + cf._.substring(15,17) + 
-               "	Lang: " + cf._.substring(35,37)  
-	   ;
-      }
-    }
-  }
 
   // ------------------------------------
   // STEP 2: FILTER FIELDS (EXCLUDE / INCLUDE + SUBFIELD RULES)
