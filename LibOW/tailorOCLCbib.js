@@ -46,6 +46,26 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '336', ind1: null, ind2: null },
   { tag: '337', ind1: null, ind2: null },
   { tag: '338', ind1: null, ind2: null },
+  { tag: '600', ind1: null, ind2: '1' },
+  { tag: '600', ind1: null, ind2: '3' },
+  { tag: '600', ind1: null, ind2: '4' },
+  { tag: '600', ind1: null, ind2: '5' },
+  { tag: '600', ind1: null, ind2: '6' },
+  { tag: '610', ind1: null, ind2: '1' },
+  { tag: '610', ind1: null, ind2: '3' },
+  { tag: '610', ind1: null, ind2: '4' },
+  { tag: '610', ind1: null, ind2: '5' },
+  { tag: '610', ind1: null, ind2: '6' },
+  { tag: '611', ind1: null, ind2: '1' },
+  { tag: '611', ind1: null, ind2: '3' },
+  { tag: '611', ind1: null, ind2: '4' },
+  { tag: '611', ind1: null, ind2: '5' },
+  { tag: '611', ind1: null, ind2: '6' },
+  { tag: '630', ind1: null, ind2: '1' },
+  { tag: '630', ind1: null, ind2: '3' },
+  { tag: '630', ind1: null, ind2: '4' },
+  { tag: '630', ind1: null, ind2: '5' },
+  { tag: '630', ind1: null, ind2: '6' },
   { tag: '650', ind1: null, ind2: '1' },
   { tag: '650', ind1: null, ind2: '3' },
   { tag: '650', ind1: null, ind2: '4' },
@@ -61,7 +81,6 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
   { tag: '655', ind1: null, ind2: '4' },
   { tag: '655', ind1: null, ind2: '5' },
   { tag: '655', ind1: null, ind2: '6' },
-  { tag: '758', ind1: ' ', ind2: ' ' },
   { tag: '758', ind1: null, ind2: null },
   { tag: '776', ind1: null, ind2: null },
   { tag: '850', ind1: null, ind2: null },
@@ -85,7 +104,7 @@ const EXCLUDE_BY_TAG_AND_INDICATORS = [
 //  - Any field with subfield: code=2 and value containing "fast"
 //  - Any field with subfield: code=1 and value starting with "https://id.oclc.org"
 const EXCLUDE_BY_SUBFIELD = [
-  { tagPattern: /.*/, code: '2', valuePattern: /fast|gnd|cash|rvm|swd|jhpk|ram/ },
+  { tagPattern: /.*/, code: '2', valuePattern: /fast|gnd|cash|rvm|swd|jhpk/ },
 ];
 
 
