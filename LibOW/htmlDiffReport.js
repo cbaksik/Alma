@@ -2,11 +2,27 @@
 
 // Translates messy MARC JSON into standard, readable MARC strings
 function formatMarcField(field) {
-  const tag = field.tag || (field["$"] && field["$"].tag);
+  var tag = field.tag || (field["$"] && field["$"].tag);
   if (!tag) return null;
 
+  // alter 880 so they will sort with pair, accounting for different syntax in alma and oclc
+  // also drop 880 if it's for 758
+  if (tag === "880" && (field.subfield[0].code === "6" || field.subfield[0]["$"].code === "6")) {
+	var pairField= field.subfield[0]._.substring(0,3);
+	if (pairField === '758') return null;	
+	tag = field.subfield[0]._.substring(0,3) ;
+  }
+
   if (tag === "LDR" || tag.startsWith("00")) {
-    const val = field["_"] || "";
+    var val = field["_"] || "";
+    if (tag === "008" && val.length > 37) {
+		val = 
+			"DtSt: " + val.substring(6,7) + 
+               "	Dates: " + val.substring(7,15) + 
+               "		Pub: " + val.substring(15,18) + 
+               "	Lang: " + val.substring(35,38)  
+		;
+    }
     return { tag, text: `${tag}    ${val}` };
   }
 
@@ -238,7 +254,7 @@ return [
       report_file: {
         data: Buffer.from(html, 'utf8').toString('base64'),
         mimeType: 'text/html',
-        fileName: `set-${setId}-${ts}-report.html`,
+        fileName: `compare-${setId.substring(2,12)}-${allItems[0].json.set_name.replace(/\s/g,'-')}-${ts}.html`,
       },
     },
   },
