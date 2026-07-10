@@ -34,6 +34,10 @@ const EXCLUDE_TAGS = [
   '336',
   '337',
   '338',
+  '690',
+  '691',
+  '693',
+  '695',
   '758',
   '776',
   '85*',
@@ -112,6 +116,16 @@ function shouldExcludeBySubfields(df) {
   return false;
 }
 
+// Combined tag indicator based exclusion
+// if this returns true than that df is not included in final array
+function shouldExcludeByTagIndicators(df) {
+  var topic = df.$?.tag;
+  var topic = topic.substring(0,1);
+  if ( topic === '6' && ((df.$?.ind2 === '1') || (df.$?.ind2 === '3') || (df.$?.ind2 === '4') || (df.$?.ind2 === '5') || (df.$?.ind2 === '6'))) {
+    return true;
+  }
+  return false;
+}
 
 // ------------------------------------
 // 3. PROCESS ITEMS
@@ -173,6 +187,10 @@ const newItems = items.map(item => {
 
     // Then apply subfield-based exclusions
     if (shouldExcludeBySubfields(df)) {
+      return false;
+    }
+    // Then apply tag and ind based exclusions
+    if (shouldExcludeByTagIndicators(df)) {
       return false;
     }
 
