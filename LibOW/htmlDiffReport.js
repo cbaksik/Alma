@@ -81,7 +81,9 @@ function decomposeAlmaUnicode(alma) {
 
 // INLINE DIFF ALGORITHM
 function getInlineDiff(oldStr, newStr) {
-  if (!oldStr) return { aHtml: "", oHtml: `<span color: #3f413f; padding: 1px 3px; border-radius: 3px;">${escapeHtml(newStr)}</span>` };
+   // next line is for rows where oclc data will be added b/c there is no corresonding alma data
+  if (!oldStr) return { aHtml: "", oHtml: `<span style="color: #3f413f; padding: 1px 3px; border-radius: 3px;">${escapeHtml(newStr)}</span>` };
+  // next line is potential alma data loss - there is no corresponding oclc row
   if (!newStr) return { aHtml: `<span style="background-color: #ffcdd2; color: #3f413f; font-weight: bold; padding: 1px 3px; border-radius: 3px;">${escapeHtml(oldStr)}</span>`, oHtml: "" };
   if (oldStr === newStr) return { aHtml: escapeHtml(oldStr), oHtml: escapeHtml(newStr) };
 
@@ -244,6 +246,14 @@ html += `</div></body></html>`;
 
 // 5. RETURN A SINGLE ITEM WITH THE BINARY ATTACHMENT
 
+
+// Calculate size in bytes from the HTML string
+const fileSizeBytes = Buffer.byteLength(html, 'utf8');
+
+// Or, if you prefer size of the base64 string:
+// const base64Data = Buffer.from(html, 'utf8').toString('base64');
+// const fileSizeBytes = Buffer.byteLength(base64Data, 'utf8');
+
 return [
   {
     json: {
@@ -255,6 +265,7 @@ return [
         data: Buffer.from(html, 'utf8').toString('base64'),
         mimeType: 'text/html',
         fileName: `compare-${setId.substring(2,12)}-${allItems[0].json.set_name.replace(/\s/g,'-')}-${ts}.html`,
+	   fileSize: fileSizeBytes, 
       },
     },
   },
