@@ -19,11 +19,22 @@ then
    add MARC."348" if does not exists
    add MARC."362" if does not exists
    add MARC."382" if does not exists
+   add MARC."502" if does not exists
    add MARC."504" if does not exists
    add MARC."505" if does not exists
+   add MARC."508" if does not exists
    add MARC."510"
+   add MARC."511" if does not exists
+   add MARC."513" if does not exists
+   add MARC."515" if does not exists
+   add MARC."518" if does not exists
    add MARC."520" if does not exists
+   add MARC."521" if does not exists
+   add MARC."525" if does not exists
+   add MARC."536" if does not exists
    add MARC."538" if does not exists
+   add MARC."545" if does not exists
+   add MARC."550" if does not exists
 // non-LCSH MeSH have already been deleted from incoming record from 6XX fields
 // with the exception of 650 2nd 7, handled for specific vocabs below
    add MARC."600" if does not exists
@@ -45,6 +56,7 @@ then
    add MARC."710" if does not exists
    add MARC."711" if does not exists
    add MARC."752" if does not exists
+   replace MARC."758" if exists
    add MARC."760" if does not exists
    add MARC."762" if does not exists
    add MARC."765" if does not exists
