@@ -2,162 +2,298 @@ rule "For OCLC overlays; per ExL doc, Alma is preferred record, hence remove/add
 when
     merge
 then
+    replace MARC.control."LDR"
+    replace MARC.control."005"
     remove MARC."006"
+    add MARC."006"
     remove MARC."007"
-    remove MARC."01"X
+    add MARC."007"
+    replace MARC.control."008"
+    remove MARC."010"
+    add MARC."010"
+    remove MARC."013"
+    add MARC."013"
+    remove MARC."015"
+    add MARC."015"
+    remove MARC."016"
+    add MARC."016"
+    remove MARC."017"
+    add MARC."017"
+    remove MARC."018"
+    add MARC."018"
     remove MARC."02"X
+    add MARC."02"X
     remove MARC."03"X
+    add MARC."03"X
     remove MARC."040" 
+    add MARC."040" 
     replace MARC."041" if exists
+    add MARC."041"
     remove MARC."042"
+    add MARC."042"
     replace MARC."043" if exists
+    add MARC."043"
     remove MARC."044"
+    add MARC."044"
     remove MARC."045"
+    add MARC."045"
     remove MARC."046"
+    add MARC."046"
     remove MARC."047"
+    add MARC."047"
     remove MARC."048"
+    add MARC."048"
     replace MARC."050" if exists
     remove MARC."051"
     remove MARC."052"
     remove MARC."055"
+    add MARC."05"X
     replace MARC."060" if exists
     remove MARC."061"
     remove MARC."066"
-    remove MARC."07"X
-    remove MARC."08"X
-    remove MARC."09"X
-    remove MARC."1"XX
-    remove MARC."210"
-    remove MARC."222"
-    remove MARC."240"
-    remove MARC."242"
-    remove MARC."243"
-    remove MARC."245"
-    remove MARC."246" if not exists subfield "5"
-    replace MARC."247" if exists
-    remove MARC."25"X
-    remove MARC."26"X
-    remove MARC."27"X
-    remove MARC."3"XX
-    remove MARC."4"XX
-    remove MARC."500" if not exists subfield "5"
-    remove MARC."501" if not exists subfield "5"
-    remove MARC."502"
-    replace MARC."504" if exists
-    replace MARC."505" if exists
-    remove MARC."506"
-    remove MARC."507"
-    remove MARC."508"
-    replace MARC."510" if exists
-    remove MARC."511" 
-    remove MARC."513" 
-    remove MARC."514" 
-    remove MARC."515" 
-    remove MARC."516" 
-    remove MARC."518" 
-    replace MARC."520" if exists
-    remove MARC."521"
-    remove MARC."522"
-    remove MARC."524"
-    remove MARC."525"
-    remove MARC."526" if not exists subfield "5"
-    remove MARC."53"X
-    remove MARC."540" if not exists subfield "5"
-    remove MARC."541" if not exists subfield "5"
-    remove MARC."542"
-    remove MARC."544"
-    remove MARC."545"
-    replace MARC."546" if exists
-    remove MARC."547"
-    remove MARC."55"X
-    remove MARC."56"X
-    remove MARC."57"X
-    remove MARC."580"X
-    remove MARC."581"X
-    remove MARC."586"X
-    remove MARC."585" if not exists subfield "5"
-    remove MARC."588" if not exists subfield "5"
-    remove MARC."600"
-    remove MARC."61"X
-    remove MARC."630"
-    remove MARC."64"X
-    remove MARC."650"
-    remove MARC."651"
-    remove MARC."653"
-    remove MARC."654"
-    remove MARC."655" if not exists subfield "5"
-    remove MARC."656"
-    remove MARC."657"
-    remove MARC."658"
-    remove MARC."662"
-    remove MARC."700" if not exists subfield "5"
-    remove MARC."710" if not exists subfield "5"
-    remove MARC."711" if not exists subfield "5"
-    remove MARC."720"
-    remove MARC."730" if not exists subfield "5"
-    remove MARC."740" if not exists subfield "5"
-    remove MARC."76"X
-    remove MARC."77"X
-    remove MARC."78"X
-    remove MARC."800" if not exists subfield "5"
-    remove MARC."810" if not exists subfield "5"
-    remove MARC."811" if not exists subfield "5"
-    remove MARC."830" if not exists subfield "5"
-    remove MARC."880"
-    remove MARC."998"
-    replace MARC.control."LDR"
-    replace MARC.control."005"
-    add MARC."006"
-    add MARC."007"
-    replace MARC.control."008"
-    add MARC."010"
-    add MARC."013"
-    add MARC."015"
-    add MARC."016"
-    add MARC."017"
-    add MARC."018"
-    add MARC."02"X
-    add MARC."03"X
-    add MARC."04"X
-    add MARC."05"X
     add MARC."06"X
+    remove MARC."07"X
     add MARC."07"X
+    remove MARC."08"X
     add MARC."08"X
+    remove MARC."09"X
     add MARC."09"X
+    remove MARC."1"XX
     add MARC."1"XX
-    add MARC."2"XX
+    remove MARC."210"
+    add MARC."210"
+    remove MARC."222"
+    add MARC."222"
+    remove MARC."240"
+    add MARC."240"
+    remove MARC."242"
+    add MARC."242"
+    remove MARC."243"
+    add MARC."243"
+    remove MARC."245"
+    add MARC."245"
+    remove MARC."246" if not exists subfield "5"
+    add MARC."246"
+    replace MARC."247" if exists
+    add MARC."247"
+    remove MARC."25"X
+    add MARC."25"X
+    remove MARC."26"X
+    add MARC."26"X
+    remove MARC."27"X
+    add MARC."27"X
+    remove MARC."3"XX
     add MARC."3"XX
+    remove MARC."4"XX
     add MARC."4"XX
-    add MARC."50"X
-    add MARC."51"X
-    add MARC."52"X
-    add MARC."53"X
-    add MARC."54"X
-    add MARC."55"X
-    add MARC."56"X
-    add MARC."57"X
-    add MARC."58"X
-    add MARC."60"X
-    add MARC."61"X
-    add MARC."62"X
-    add MARC."63"X
-    add MARC."64"X
-    add MARC."65"X
-    add MARC."66"X
-    add MARC."67"X
-    add MARC."68"X
-    add MARC."70"X
-    add MARC."71"X
-    add MARC."72"X
-    add MARC."73"X
-    add MARC."74"X
-    add MARC."75"X
-    add MARC."76"X
-    add MARC."77"X
-    add MARC."78"X
-    add MARC."80"X
-    add MARC."81"X
-    add MARC."82"X
+    
+    remove MARC."500" if not exists subfield "5"
+    add MARC."500"
+    remove MARC."501" if not exists subfield "5"
+    add MARC."501"
+    remove MARC."502"
+    add MARC."502"
+    replace MARC."504" if exists
+    add MARC."504"
+    replace MARC."505" if exists
+    add MARC."505"
+    remove MARC."506"
+    add MARC."506"
+    remove MARC."507"
+    add MARC."507"
+    remove MARC."508"
+    add MARC."508"
+    replace MARC."510" if exists
+    add MARC."510"
+    remove MARC."511" 
+    add MARC."511"
+    remove MARC."513"
+    add MARC."513"
+    remove MARC."514"
+    add MARC."514"
+    remove MARC."515"
+    add MARC."515"
+    remove MARC."516"
+    add MARC."516"
+    remove MARC."518"
+    add MARC."518"
+    replace MARC."520" if exists
+    add MARC."520"
+    remove MARC."521"
+    add MARC."521"
+    remove MARC."522"
+    add MARC."522"
+    remove MARC."524"
+    add MARC."524"
+    remove MARC."525"
+    add MARC."525"
+    remove MARC."526" if not exists subfield "5"
+    add MARC."526"
+    remove MARC."530"
+    add MARC."530"
+    remove MARC."532"
+    add MARC."532"
+    remove MARC."533"
+    add MARC."533"
+    remove MARC."534"
+    add MARC."534"
+    remove MARC."535"
+    add MARC."535"
+    remove MARC."536"
+    add MARC."536"
+    remove MARC."538"
+    add MARC."538"
+    remove MARC."539"
+    add MARC."539"
+    remove MARC."540" if not exists subfield "5"
+    add MARC."540"
+    remove MARC."541" if not exists subfield "5"
+    add MARC."541"
+    remove MARC."542"
+    add MARC."542"
+    remove MARC."544"
+    add MARC."544"
+    remove MARC."545"
+    add MARC."545"
+    replace MARC."546" if exists
+    add MARC."546"
+    remove MARC."547"
+    add MARC."547"
+    remove MARC."550"
+    add MARC."550"
+    remove MARC."552"
+    add MARC."552"
+    remove MARC."555"
+    add MARC."555"
+    remove MARC."556"
+    add MARC."556"
+    remove MARC."561"
+    add MARC."561"
+    remove MARC."562"
+    add MARC."562"
+    remove MARC."563"
+    add MARC."563"
+    remove MARC."565"
+    add MARC."565"
+    remove MARC."567"
+    add MARC."567"
+
+    remove MARC."580"  
+    remove MARC."581"
+    remove MARC."583"
+    remove MARC."584"    
+    remove MARC."586"  
+
+    add MARC."580"
+    add MARC."581"
+    add MARC."583"
+    add MARC."584"
+    add MARC."586"
+
+    remove MARC."585" if not exists subfield "5"
+    add MARC."585"
+
+    remove MARC."588" if not exists subfield "5"
+    add MARC."588"  
+
+    remove MARC."600" 
+    add MARC."600"
+    remove MARC."61"X
+    add MARC."610"
+    add MARC."611"
+    remove MARC."630"
+    add MARC."630"
+    remove MARC."64"X
+    add MARC."647"
+    add MARC."648"
+    remove MARC."650"
+    add MARC."650"
+    remove MARC."651"
+    add MARC."651"
+    remove MARC."653"
+    add MARC."653"
+    remove MARC."654"
+    add MARC."654"
+    remove MARC."655" if not exists subfield "5"
+    add MARC."655"
+    remove MARC."656"
+    add MARC."656"
+    remove MARC."657"
+    add MARC."657"
+    remove MARC."658"
+    add MARC."658"
+    remove MARC."662"
+    add MARC."662"
+    remove MARC."688"
+    add MARC."688"
+    remove MARC."700" if not exists subfield "5"
+    add MARC."700"
+    remove MARC."710" if not exists subfield "5"
+    add MARC."710"
+    remove MARC."711" if not exists subfield "5"
+    add MARC."711"
+    remove MARC."720"
+    add MARC."720"
+    remove MARC."730" if not exists subfield "5"
+    add MARC."730"
+    remove MARC."740" if not exists subfield "5"
+    add MARC."740"
+
+    remove MARC."751"
+    add MARC."751"
+    add MARC."752"
+    remove MARC."753"
+    add MARC."753"
+    remove MARC."754"
+    add MARC."754"
+    remove MARC."758"
+    add MARC."758"
+
+    remove MARC."760"
+    add MARC."760"
+    remove MARC."762"
+    add MARC."762"
+    remove MARC."765"
+    add MARC."765"
+    remove MARC."767"
+    add MARC."767"
+
+    remove MARC."770"
+    add MARC."770"
+    remove MARC."772"
+    add MARC."772"
+    remove MARC."773"
+    add MARC."773"
+    remove MARC."774"
+    add MARC."774"
+    remove MARC."775"
+    add MARC."775"
+    remove MARC."776"
+    add MARC."776"
+    remove MARC."777"
+    add MARC."777"
+
+    remove MARC."780"
+    add MARC."780"
+    remove MARC."785"
+    add MARC."785"
+    remove MARC."786"
+    add MARC."786"
+    remove MARC."787"
+    add MARC."787"
+    remove MARC."788"
+    add MARC."788"
+
+    remove MARC."800" if not exists subfield "5"
+    add MARC."800"
+    remove MARC."810" if not exists subfield "5"
+    add MARC."810"
+    remove MARC."811" if not exists subfield "5"
+    add MARC."811"
+    remove MARC."830" if not exists subfield "5"
+    add MARC."830"
+    remove MARC."880"
     add MARC."88"X
     add MARC."991"
+    remove MARC."998"
 end
