@@ -53,7 +53,17 @@ then
 // removeField "650.{*,7}" if (not exists "650.{*,7}.2.ascl|fnhl|homoit|fast")
     removeField "655" if (exists "655.{*,7}.2.local")
     removeField "69*"
+    removeField "84*"
     removeField "85*"
+    removeField "86*"
+    removeField "87*"
+    removeField "881"
+    removeField "882"
+    removeField "883"
+    removeField "884"
+    removeField "885"
+    removeField "886"
+    removeField "887"
     removeField "90*"
     removeField "91*"
     removeField "92*"
