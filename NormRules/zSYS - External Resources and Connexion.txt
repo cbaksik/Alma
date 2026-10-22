@@ -29,7 +29,7 @@ then
    removeField "561"
    removeField "562"
    removeField "563"
-   removeField "856"
+   removeField "85*"
    removeField "86*"
    removeField "87*"
    removeField "886"
