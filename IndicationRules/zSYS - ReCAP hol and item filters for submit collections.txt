@@ -1,4 +1,6 @@
 rule "remove records from scsb submti collection / ongoing updates - USE THIS RULE FOR PUBLISHING AT THE HOLDINGS LEVEL"
+// true means record will be rejected
+// the filter is applied after the enrichment and before the normalization
 // throw out records without items
 when 
     (not exists "876")
@@ -6,11 +8,10 @@ then
      set indication."true"
 end
 
-rule "2 - if item is not shared or open, and not at RD, remove record"
-// throw out record if it's not at RD AND lacks stat note 2 recap AND lacks provenance Recap statement
+rule "2 - if item has no CGD and not at RD, remove record"
 // this is needed because query is at title level, even tho publishing is at holding level, so all holds on selected title get included, such as GEN
 when 
-    (not exists "876.x.*ReCAP*") AND (not exists "876.4.*RECAP*") AND (not exists "852.c.*RD*")
+    (not exists "876.x.*") AND (not exists "852.c.*RD*")
 then
      set indication."true"
 end
