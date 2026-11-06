@@ -1,32 +1,30 @@
-rule "9 - CGD"
+rule "9 - set CGD"
 when
    (TRUE)
 then
-   replaceContents "876.x.committed to retain - ReCAP" with "Shared" 
-   replaceContents "876.x.committed to retain - collective ReCAP" with "Committed" 
-   addSubField "876.x.Open" if (exists "876.4.RECAP_OPEN" )
-   addSubField "876.x.Uncommittable" if (exists "876.4.RECAP_UNCOMMITTABLE" )  
+   replaceContents "876.x.RECAP_COLLABORATIVE" with "Committed" 
+   replaceContents "876.x.RECAP-UNCOMMITTABLE" with "Uncommittable" 
+   replaceContents "876.x.*_RECAP" with "Shared" 
+   replaceContents "876.x.RECAP" with "Shared" 
+   addSubField "876.x.Private" if (not exists "876.x.*" )
 end
 
-rule "8 - delete items that are HD but not committed, or just hathi"
+rule "8 - delete items that are HD and not pertinent to SCSB"
 when
     (TRUE)
 then
    removeField "876" if(not exists "876.9.*INCLUDE*")
    removeSubField "876.9"
-   replaceContents "876.x.*ReCAP, Hathi*" with "committed to retain - ReCAP" 
-   removeField "876" if(exists "876.x.committed to retain - Hathi")
 end
 
 
-rule "7 -create fake subfield to id HD committeds and opens/uncommitteds, and all RD, since those are the two sets we want to include"
+rule "7 -create fake subfield 9 to id HD shared, committed, uncommittable, and all RD, since those are the sets we want to include"
 when
     (TRUE)
 then
    addSubField "876.9.RDINCLUDE" if ( exists "876.l.RECAP" )
    addSubField "876.9.HDEVAL" if ( exists "876.l.HD" )
-   replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.4.*RECAP*")
-   replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.x.*ReCAP*")
+   replaceContents "876.9.HDEVAL" with "HDINCLUDE" if (exists "876.x.*RECAP*")
 end
 
 rule "6 - restore non-compliant HD/RD 852 c codes"
